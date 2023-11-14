@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalProvider } from './context/GlobalState';
 import AuthState from './context/auth/AuthState';
 import 'react-toastify/dist/ReactToastify.css';
+import HomePage from './pages/Home';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
                 {/* <Route path="/email-sent" element={<EmailSent />} /> */}
                   
                 {/* </Route> */}
+                <Route path="/" element={<HomePage />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
