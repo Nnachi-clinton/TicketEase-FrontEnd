@@ -26,6 +26,7 @@
     "react-yup": "^1.23.0",
     "styled-components": "^5.3.3",
     "web-vitals": "^1.0.1",
+    "webpack-cli": "^5.1.4",
     "yup": "^0.32.11"
   },
   "scripts": {

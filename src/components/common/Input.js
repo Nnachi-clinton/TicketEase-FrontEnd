@@ -83,7 +83,7 @@ export default function Input({
         <FormGroup>
           {type === 'password' ? (
             <ShowPassword onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <VscEyeClosed /> : <VscEye/>}
+              {showPassword ? <VscEyeClosed /> : <VscEye />}
             </ShowPassword>
           ) : null}
           <InputField
@@ -91,7 +91,7 @@ export default function Input({
             value={value}
             onChange={onChange}
             placeholder={placeholder}
-            className={`${className} ${error ? 'input-error' : ""}`}
+            className={`${className} ${error ? 'input-error' : ''}`}
             name={name}
             style={style}
             onBlur={onBlur}
