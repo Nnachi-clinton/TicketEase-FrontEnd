@@ -27,7 +27,7 @@ function App() {
                 {/* <Route path="/email-sent" element={<EmailSent />} /> */}
 
                 {/* </Route> */}
-                <Route path="/" element={<UpdateManager />} />
+                <Route path="/UpdateManager" element={<UpdateManager />} />
 
                 <Route path="/" element={<HomePage />} />
                 <Route path="/AdminDashboard" element={<AdminDashboard />} />
