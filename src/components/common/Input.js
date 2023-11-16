@@ -9,14 +9,14 @@ const InputArea = styled.div`
 `;
 
 const InputField = styled.input`
-  height: 48px;
-  width: 100%;
+  height: 20px;
+  width: 90%;
   background: transparent;
   border: 1px solid #c4c4c4;
   border-radius: 4px;
-  padding: 14px 14px;
+  padding: 10px 20px;
   color: #979797;
-  font-size: 16px;
+  font-size: 14px;
 `;
 
 const Label = styled.p`

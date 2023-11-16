@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import defaultImage from '../assets/defaultImage.svg';
+import defaultImage from '../../assets/defaultImage.svg';
 
 const UpdateUserImage = ({ userPhoto }) => {
   const [selectedImg, setSelectedImg] = useState(null);
@@ -9,8 +9,10 @@ const UpdateUserImage = ({ userPhoto }) => {
     backgroundColor: '#C4C4C4',
     marginLeft: 'auto',
     marginRight: 'auto',
+    marginTop: '20px',
     height: '104px',
     width: '104px',
+    cursor: 'pointer',
   };
 
   const textStyle = {
@@ -43,17 +45,39 @@ const UpdateUserImage = ({ userPhoto }) => {
     }
   };
 
+  const handleClick = (event) => {
+    // 👇️ refers to the image element
+    console.log(event.target);
+    var fileInput = document.getElementById('imgUpload');
+    var fileTrigger = document.getElementById('imgdisplay');
+
+    // fileInput.addEventListener('change', function () {
+    //   console.log('Selected file: ', fileInput.files[0].name);
+    // });
+    fileTrigger.addEventListener('click', function () {
+      fileInput.click();
+    });
+    console.log('Image clicked');
+  };
+
   return (
     <div className="user-profile">
-      <div style={imageProfileStyle}>
+      <div onClick={handleClick} style={imageProfileStyle}>
         <img
           style={imageStyle}
+          id="imgdisplay"
           src={selectedImg || userPhoto || defaultImage}
-          alt="User Profile Photo"
+          alt="User Profile "
           className="profile-photo"
         />
       </div>
-      <input type="file" onChange={handleImageChange} accept="image/*" />
+      <input
+        style={{ display: 'none' }}
+        type="file"
+        id="imgUpload"
+        onChange={handleImageChange}
+        accept="image/*"
+      />
       <p style={textStyle}>Upload Organization Logo</p>
       <p style={textStyles}>Image should not be more than 1mb</p>
     </div>
