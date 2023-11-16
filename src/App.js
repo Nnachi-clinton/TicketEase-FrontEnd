@@ -24,7 +24,7 @@ function App() {
                   
                 {/* </Route> */}
                 <Route path='/' element={<Header/>} />
-                <Route path="/" element={<HomePage />} />
+                <Route path="/Fototer-header" element={<HomePage />} />
                 
               </Routes>
             </AuthState>
