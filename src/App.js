@@ -8,6 +8,7 @@ import { GlobalProvider } from './context/GlobalState';
 import AuthState from './context/auth/AuthState';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/Home';
+import UpdateManager from './pages/UpdateManager';
 import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
 //import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
 import AppLogin from './pages/FirstTimeLogin';
@@ -24,15 +25,16 @@ function App() {
                 {/* <Route exact path="/" element={<AuthLayout />}>
                   <Route exact path="/" element={<Landing />} /> */}
                 {/* <Route path="/email-sent" element={<EmailSent />} /> */}
-                  
+
                 {/* </Route> */}
+                <Route path="/UpdateManager" element={<UpdateManager />} />
 
                 <Route path="/" element={<HomePage />} />
-                <Route path="/AdminDashboard" element={<AdminDashboard/>} />  
+                <Route path="/AdminDashboard" element={<AdminDashboard />} />
                 {/* <Route path="/" element={<HomePage />} /> */}
                 <Route path="/" element={<AppLogin />} />
                 <Route path="/" element={<HomePage />} />
-                <Route path="/contactUs" element={<ContactUs />} />              
+                <Route path="/contactUs" element={<ContactUs />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
