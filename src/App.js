@@ -8,6 +8,7 @@ import { GlobalProvider } from './context/GlobalState';
 import AuthState from './context/auth/AuthState';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/Home';
+import ContactResponse from './pages/ContactResponse';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                   
                 {/* </Route> */}
                 <Route path="/" element={<HomePage />} />
+                <Route path="/contact-response" element={<ContactResponse />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
