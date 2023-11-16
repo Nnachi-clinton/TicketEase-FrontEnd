@@ -8,6 +8,7 @@ import { GlobalProvider } from './context/GlobalState';
 import AuthState from './context/auth/AuthState';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/Home';
+import ChangePassword from './pages/ChangePassword';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                   
                 {/* </Route> */}
                 <Route path="/" element={<HomePage />} />
+                <Route path="/update-password" element={<ChangePassword />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
