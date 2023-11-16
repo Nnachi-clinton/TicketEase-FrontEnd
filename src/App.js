@@ -35,7 +35,7 @@ function App() {
                 {/* <Route path="/" element={<HomePage />} /> */}
                 <Route path="/" element={<AppLogin />} />
                 <Route path="/" element={<HomePage />} />
-                <Route path="/contact-response" element={<ContactResponse />} />
+                {/* <Route path="/contact-response" element={<ContactResponse />} /> */}
                 <Route path="/contactUs" element={<ContactUs />} />
               </Routes>
             </AuthState>
