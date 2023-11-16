@@ -8,7 +8,7 @@ import { GlobalProvider } from './context/GlobalState';
 import AuthState from './context/auth/AuthState';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/Home';
-
+import RegularLogin from './pages/RegularLogin';
 function App() {
   return (
     <ErrorBoundary>
@@ -23,6 +23,7 @@ function App() {
                   
                 {/* </Route> */}
                 <Route path="/" element={<HomePage />} />
+                <Route path= "/login" element={<RegularLogin/>} />
               </Routes>
             </AuthState>
           </GlobalProvider>
