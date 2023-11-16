@@ -8,6 +8,7 @@ import { GlobalProvider } from './context/GlobalState';
 import AuthState from './context/auth/AuthState';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/Home';
+import Header from './pages/landingPage/Header';
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
                 {/* <Route path="/email-sent" element={<EmailSent />} /> */}
                   
                 {/* </Route> */}
+                <Route path='/' element={<Header/>} />
                 <Route path="/" element={<HomePage />} />
+                
               </Routes>
             </AuthState>
           </GlobalProvider>
