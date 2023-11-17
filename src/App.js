@@ -14,6 +14,8 @@ import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
 //import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
 import AppLogin from './pages/FirstTimeLogin';
 import ContactUs from './pages/contactUs/ContactUs';
+import UserProfilePage from '../src/pages/user/UserProfilePage';
+import UpdateUser from './pages/user/UpdateUser';
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
                   <Route exact path="/" element={<Landing />} /> */}
                 {/* <Route path="/email-sent" element={<EmailSent />} /> */}
 
+
                 {/* </Route> */}
                 <Route path="/UpdateManager" element={<UpdateManager />} />
 
@@ -37,6 +40,8 @@ function App() {
                 <Route path="/" element={<AppLogin />} />
                 <Route path="/" element={<HomePage />} />
                 <Route path="/contactUs" element={<ContactUs />} />
+                <Route path="/user-profile" element={<UserProfilePage />} />
+                <Route path="/user-page" element={<UpdateUser />} />
               </Routes>
             </AuthState>
           </GlobalProvider>

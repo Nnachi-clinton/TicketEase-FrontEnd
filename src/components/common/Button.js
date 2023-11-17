@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 const ButtonComponent = styled.button`
   width: 100%;
   height: 48px;
-  background: #14a800;
-  border: #14a800;
+  background: #505f98;
+  border: 1px solid #ccc;
   border-radius: 4px;
   color: #ffffff;
   font-style: normal;
