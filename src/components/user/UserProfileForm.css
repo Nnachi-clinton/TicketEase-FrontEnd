@@ -1,0 +1,36 @@
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+
+fieldset {
+  display: flex;
+  width: 50%;
+  height: 20%;
+  padding: 1px;
+  border: none;
+  border-radius: 4px;
+  flex-direction: column;
+  padding-bottom: 0%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.Field {
+  position: relative;
+  padding-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+.input-style {
+  width: 70%;
+  height: 70%;
+  margin: auto;
+}
+
+.cover {
+  width: 1084px;
+  height: 892px;
+  border-radius: 4px;
+  border: 1px solid rgb(232, 226, 226);
+  margin: 0 auto;
+}
