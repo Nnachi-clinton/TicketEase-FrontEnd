@@ -11,11 +11,11 @@ import HomePage from './pages/Home';
 import Header from './pages/landingPage/Header';
 import UpdateManager from './pages/UpdateManager';
 import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
-//import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
-import AppLogin from './pages/FirstTimeLogin';
+import {Login} from './components/FirstTimeLogin/Login';
 import ContactUs from './pages/contactUs/ContactUs';
 import UserProfilePage from '../src/pages/user/UserProfilePage';
 import UpdateUser from './pages/user/UpdateUser';
+import LogoutPopout from './components/logout/Logout';
 
 function App() {
   return (
@@ -31,18 +31,16 @@ function App() {
 
 
                 {/* </Route> */}
-                <Route path="/UpdateManager" element={<UpdateManager />} />
-
-               
+                <Route path="/UpdateManager" element={<UpdateManager />} />               
                 <Route path="/AdminDashboard" element={<AdminDashboard />} />
-                {/* <Route path="/" element={<HomePage />} /> */}
-                <Route path="/" element={<AppLogin />} />
+                <Route path="/Login" element={<Login />} />
                 <Route path='/' element={<HomePage/>} />
                 <Route path="/Footer-header" element={<Header />} />
-                
                 <Route path="/contactUs" element={<ContactUs />} />
                 <Route path="/user-profile" element={<UserProfilePage />} />
                 <Route path="/user-page" element={<UpdateUser />} />
+                <Route path="/contactUs" element={<ContactUs />} />   
+                <Route path="/logout" element={<LogoutPopout/>} />          
               </Routes>
             </AuthState>
           </GlobalProvider>
