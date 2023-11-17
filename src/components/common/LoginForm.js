@@ -3,6 +3,7 @@ import Button from "./Button";
 import { useState } from "react";
 import styled from "styled-components";
 import { validateEmail } from "../../utils/validateEmail";
+import { VscWhitespace } from "react-icons/vsc";
 
 const Fieldset = styled.fieldset`
     border: none;
@@ -19,6 +20,7 @@ const EmailErrorMessage = () => {
         <p className="FieldError">Please provide a valid Email address </p>
     );
 };
+
 function LoginForm() {
     const [email, setEmail] = useState('');
     const [Password, setPassword] = useState('');
@@ -55,7 +57,10 @@ function LoginForm() {
                         ): ''
                         }
                         style={{
-                            height: '6px',
+                            height: '16px',
+                            width: '90%',
+                            background: 'white'
+
                         }}
                     />
                     <Input
@@ -70,15 +75,17 @@ function LoginForm() {
                         ) : ''
                         }
                         style={{
-                            height: '6px',                     
+                            height: '16px',  
+                            width: '90%',
+                            background: "white"                   
                         }}
                     />
-                    {<p style={{fontSize: "small", color: "blue"}}>Forgot Password?</p>}
+                    {<p style={{fontSize: "small", marginTop: '-7px', marginBottom: '25px', color: "#505F98"}}>Forgot Password?</p>}
                     <Button 
                         style={{
                             background: '#505F98',
                             height : '40px',
-                            width: '107%',
+                            width: '100%',
                         }}
                         type="submit" disabled={!getIsFormValid()}>
                         Login

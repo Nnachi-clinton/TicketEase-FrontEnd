@@ -10,8 +10,8 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-    width: 80%;
-    height: 85%;
+    width: 85%;
+    height: 80%;
     @media only screen and (max-width: 1024px) {
         height: 100%;
     }
