@@ -24,6 +24,7 @@ const Text = styled.p`
 
 const Heading = styled.h2`
     margin-top: 6px;
+    text-align: left !important;
     color: #21334F;
     padding-left: 16px;
     margin-bottom: 0px;
