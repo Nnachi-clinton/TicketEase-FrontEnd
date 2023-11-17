@@ -1,6 +1,7 @@
 import Styled from 'styled-components';
 import headerLogo from '../../assets/headerLogo.svg';
 import Footer from './Footer';
+import LandingPageBody from '../LandingPageBody/LandingPageBody';
 
 const Header = () => {
     return(<>
@@ -18,7 +19,8 @@ const Header = () => {
          <a href="" id='log'>Login</a>
           <a href="" id='apply'>Apply as a business</a>
        </NavList>
-   </Nav>  
+   </Nav> 
+   <LandingPageBody/> 
    <Footer/> 
     </>
     )
