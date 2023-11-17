@@ -23,8 +23,8 @@ function App() {
                 {/* <Route path="/email-sent" element={<EmailSent />} /> */}
                   
                 {/* </Route> */}
-                <Route path='/' element={<Header/>} />
-                <Route path="/Fototer-header" element={<HomePage />} />
+                <Route path='/' element={<HomePage/>} />
+                <Route path="/Footer-header" element={<Header />} />
                 
               </Routes>
             </AuthState>
