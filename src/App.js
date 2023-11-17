@@ -8,6 +8,7 @@ import { GlobalProvider } from './context/GlobalState';
 import AuthState from './context/auth/AuthState';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/Home';
+import ContactResponse from './pages/ContactResponse';
 import Header from './pages/landingPage/Header';
 import UpdateManager from './pages/UpdateManager';
 import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
@@ -25,22 +26,17 @@ function App() {
           <GlobalProvider>
             <AuthState>
               <Routes>
-                {/* <Route exact path="/" element={<AuthLayout />}>
-                  <Route exact path="/" element={<Landing />} /> */}
-                {/* <Route path="/email-sent" element={<EmailSent />} /> */}
-
-
-                {/* </Route> */}
+               
                 <Route path="/UpdateManager" element={<UpdateManager />} />               
                 <Route path="/AdminDashboard" element={<AdminDashboard />} />
                 <Route path="/Login" element={<Login />} />
                 <Route path='/' element={<HomePage/>} />
                 <Route path="/Footer-header" element={<Header />} />
-                <Route path="/contactUs" element={<ContactUs />} />
                 <Route path="/user-profile" element={<UserProfilePage />} />
                 <Route path="/user-page" element={<UpdateUser />} />
                 <Route path="/contactUs" element={<ContactUs />} />   
-                <Route path="/logout" element={<LogoutPopout/>} />          
+                <Route path="/logout" element={<LogoutPopout/>} />  
+                <Route path='/contactResponse' element= {<ContactResponse/>} />
               </Routes>
             </AuthState>
           </GlobalProvider>
