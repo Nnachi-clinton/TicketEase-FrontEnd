@@ -23,7 +23,7 @@ const Text = styled.p`
 `;
 
 const Heading = styled.h2`
-    margin-top: 6px;
+    margin-top: 10px;
     text-align: left !important;
     color: #21334F;
     padding-left: 16px;
