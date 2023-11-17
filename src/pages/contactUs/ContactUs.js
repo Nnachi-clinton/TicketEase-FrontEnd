@@ -1,0 +1,70 @@
+import React from "react";
+import "./ContactUs.css";
+import Logo from "../../assets/images/Logo.svg";
+import Call from "../../assets/images/Call-Icon.svg";
+import Mail from "../../assets/images/Mail-Icon.svg";
+import Map from "../../assets/images/Map-Icon.svg";
+import Button from "../../components/common/Button";
+
+const ContactUs = () => {
+  return (
+    <div className="app-container">
+      <div className="left-partition"></div>
+      <div className="middle-partition">
+        <div className="logo">
+          <img src={Logo} alt="Logo" width="100px" className="logo" />
+        </div>
+        <div className="card1">
+          <p className="getStarted">Get Started ?</p>
+          <br />
+          <p className="contactAdmin">Contact Admin</p>
+          <br />
+          <p className="fill">
+            Fill up the form and an admin will get in <br /> touch with you
+          </p>
+          <div className="card2">
+            <div className="phone-container">
+              <img src={Call} alt="call" className="call-icon" />
+              <p className="call">+234 8036903126</p>
+            </div>
+            <br />
+            <div className="Email-container">
+              <img src={Mail} alt="email" className="email-icon" />
+              <p className="email">hello@ticketease.com</p>
+            </div>
+            <br />
+            <div className="map-container">
+              <img src={Map} alt="map" className="map-icon" />
+              <p className="map">34, Lekki Road, Lekki, Lagos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="right-partition">
+        <form className="form-container">
+          <label className="form-label" htmlFor="Company Name">
+            Company Name
+          </label>
+          <input className="form-input" type="text" id="Company Name" />
+          <br />
+          <label className="form-label" htmlFor="Business Email">
+            Business Email
+          </label>
+          <input className="form-input" type="text" id="Business Email" />
+          <br />
+          <label className="form-label" htmlFor="Company Description">
+            Company Description
+          </label>
+          <textarea className="form-textarea" id="Company Description"></textarea>
+          <br />
+          {/* <button className="form-button">Send</button> */}
+           <Button type="submit" className="form-button" style={{ background: '#505f98' }}>
+            Send
+            </Button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default ContactUs;
