@@ -17,11 +17,6 @@ const InputField = styled.input`
   padding: 14px 14px;
   color: #979797;
   font-size: 16px;
-  
-  @media screen and (max-width: 1024px) {
-    height: 24px;
-    width: 90%;
-  }
 `;
 
 const Label = styled.p`
@@ -31,11 +26,6 @@ const Label = styled.p`
   font-size: 16px;
   margin-bottom: 10px;
   color: #21334f;
-
-  @media screen and (max-width: 768px) {
-    font-size: 10px;
-    margin-bottom: 4px;
-  }
 `;
 
 const ShowPassword = styled.div`
@@ -57,10 +47,6 @@ const HelperText = styled.p`
   color: #14a800;
   margin-bottom: 0;
   margin-top: 10px;
-
-  @media screen and (max-width: 1024px) {
-    margin-top: 0px;
-  }
 `;
 
 const ErrorText = styled.p`
