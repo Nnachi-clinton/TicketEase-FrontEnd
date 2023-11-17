@@ -27,6 +27,8 @@ const Heading = styled.h2`
     text-align: left !important;
     color: #21334F;
     padding-left: 16px;
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 0px;
     @media screen and (max-width: 1024px) {
         font-size: 20px; 
