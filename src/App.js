@@ -11,10 +11,14 @@ import HomePage from './pages/Home';
 import UpdateManager from './pages/UpdateManager';
 import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
 //import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
-import AppLogin from './pages/FirstTimeLogin';
+import {Login} from './components/FirstTimeLogin/Login';
 import ContactUs from './pages/contactUs/ContactUs';
+<<<<<<< HEAD
 import UserProfilePage from '../src/pages/user/UserProfilePage';
 import UpdateUser from './pages/user/UpdateUser';
+=======
+import LogoutPopout from './components/logout/Logout';
+>>>>>>> bd05968 (implemented logout confirmation)
 
 function App() {
   return (
@@ -35,11 +39,16 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/AdminDashboard" element={<AdminDashboard />} />
                 {/* <Route path="/" element={<HomePage />} /> */}
-                <Route path="/" element={<AppLogin />} />
+                <Route path="/" element={<Login />} />
                 <Route path="/" element={<HomePage />} />
+<<<<<<< HEAD
                 <Route path="/contactUs" element={<ContactUs />} />
                 <Route path="/user-profile" element={<UserProfilePage />} />
                 <Route path="/user-page" element={<UpdateUser />} />
+=======
+                <Route path="/contactUs" element={<ContactUs />} />   
+                <Route path="/logout" element={<LogoutPopout/>} />          
+>>>>>>> bd05968 (implemented logout confirmation)
               </Routes>
             </AuthState>
           </GlobalProvider>
