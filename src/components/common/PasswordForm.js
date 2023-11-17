@@ -2,7 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import '../common/PasswordForm.css';
 
-
 const PasswordErrorMessage = () => {
     return (
         <p className="FieldError">Must be at least 8 characters</p>
@@ -55,12 +54,12 @@ function PasswordForm() {
     return (
         <div className="ChangePasswordForm">
             <form onSubmit={handleSubmit}>
-                <fieldset>
-                    <div className="Field">
+                <fieldset className="password-fieldset">
+                    <div className="password-field">
                         <label>
                             Current Password
                         </label>
-                        <input
+                        <input className="password-input"
                             value= {currentPassword.value}
                             type= "password"
                             onChange= {(e) => {
@@ -76,11 +75,12 @@ function PasswordForm() {
                         ) : null}
                     </div>
 
-                    <div className="Field">
+                    <div className="password-field">
                         <label>
                             New Password
                         </label>
                         <input
+                            className="password-input"
                             value= {newPassword.value}
                             type= "password"
                             onChange= {(e) => {
@@ -96,11 +96,12 @@ function PasswordForm() {
                         ) : null}
                     </div>
 
-                    <div className="Field">
+                    <div className="password-field">
                         <label>
                             Confirm New Password
                         </label>
                         <input
+                            className="password-input"
                             value= {confirmNewPassword.value}
                             type= "password"
                             onChange= {(e) => {
