@@ -8,12 +8,12 @@ const LogoutPopout = ({ onLogout }) => {
 
   const handleYesClick = () => {
     setIsVisible(false);
-    navigate('/login'); // Navigate to the login page
+    //navigate('/login'); // Navigate to the login page
   };
 
   const handleNoClick = () => {
     setIsVisible(false);
-    navigate('/Home');
+    //navigate('/Home');
   };
 
   return (
