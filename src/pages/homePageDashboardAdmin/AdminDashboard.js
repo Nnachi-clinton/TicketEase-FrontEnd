@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTable, usePagination } from 'react-table';
 import '../homePageDashboardAdmin/AdminDashboard.css';
+import notification from '../../assets/images/notification 1.svg';
+
 
 const Card = ({ cardType, children }) => {
   return <div className={`card ${cardType}`}>{children}</div>;
@@ -102,14 +104,26 @@ const AdminDashboard = () => {
     },
     // ... more data
   ];
+   //let bellImg = "src/assets/images/notification 1.svg";
 
   return (
     <>
       <div className="app-container">
         <div className="grid-container">
           <Card cardType="top" />
-          <Card cardType="down" />
-          <Card cardType="bell" />
+          <Card cardType="down"/>
+
+          <Card cardType="bell">
+          <section>
+            <div className="bellImg">
+            <img src={notification} alt="bell" />
+            </div>
+            <h1>No notification yet</h1>
+            <h2>You have currently no notification. 
+            We'll notify you when something new arrives!</h2>
+        </section>
+          </Card>
+
           <Card cardType="table">
             <h1>Company Information</h1>
             <BasicTable columns={columns} data={data} />

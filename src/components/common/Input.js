@@ -9,14 +9,14 @@ const InputArea = styled.div`
 `;
 
 const InputField = styled.input`
-  height: 48px;
-  width: 100%;
+  height: 20px;
+  width: 90%;
   background: transparent;
   border: 1px solid #c4c4c4;
   border-radius: 4px;
-  padding: 14px 14px;
+  padding: 10px 20px;
   color: #979797;
-  font-size: 16px;
+  font-size: 14px;
 `;
 
 const Label = styled.p`
@@ -83,7 +83,7 @@ export default function Input({
         <FormGroup>
           {type === 'password' ? (
             <ShowPassword onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <VscEyeClosed /> : <VscEye/>}
+              {showPassword ? <VscEyeClosed /> : <VscEye />}
             </ShowPassword>
           ) : null}
           <InputField
@@ -91,7 +91,7 @@ export default function Input({
             value={value}
             onChange={onChange}
             placeholder={placeholder}
-            className={`${className} ${error ? 'input-error' : ""}`}
+            className={`${className} ${error ? 'input-error' : ''}`}
             name={name}
             style={style}
             onBlur={onBlur}
