@@ -38,6 +38,7 @@ function App() {
 
                 <Route path="/" element={<HomePage />} />
                 <Route path="/update-password" element={<ChangePassword />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/UpdateManager" element={<UpdateManager />} />               
                 <Route path="/AdminDashboard" element={<AdminDashboard />} />
