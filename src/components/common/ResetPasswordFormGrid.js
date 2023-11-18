@@ -1,6 +1,8 @@
 import TicketEaseLogo from '../../../src/assets/TicketEaseLogo.svg';
 import PasswordForm from '../common/PasswordForm';
 import styled from 'styled-components';
+import LoginButton from './LoginButton';
+import ResetPasswordForm from './ResetPasswordForm';
 
 const Wrapper = styled.div`
     width: 80%;
@@ -14,16 +16,8 @@ const Logo = styled.img`
     }
 `;
 
-const Text = styled.p`
-    margin-bottom: 0;
-    padding-left: 16px;
-    @media screen and (max-width: 1024px) {
-        margin-top: 0;
-    }
-`;
-
 const Heading = styled.h2`
-    margin-top: 10px;
+    margin-top: 18px;
     text-align: left !important;
     color: #21334F;
     padding-left: 16px;
@@ -40,9 +34,9 @@ function PasswordFormGrid(props) {
     return (
         <Wrapper className={`ChangePasswordFormDetails ${props.className}`}>
             <Logo src={TicketEaseLogo} alt='TicketEaseLogo' />
-            <Text>Hi, Welcome to your account</Text>
-            <Heading>Change Password</Heading>
-            <PasswordForm />
+            <Heading>Reset Password</Heading>
+            <ResetPasswordForm />
+            <LoginButton />
         </Wrapper>
     );
 }

@@ -19,6 +19,7 @@ import UserProfilePage from '../src/pages/user/UserProfilePage';
 import UpdateUser from './pages/user/UpdateUser';
 import RegularLogin from './pages/RegularLogin';
 import LogoutPopout from './components/logout/Logout';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/update-password" element={<ChangePassword />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/UpdateManager" element={<UpdateManager />} />               
                 <Route path="/AdminDashboard" element={<AdminDashboard />} />
                 <Route path="/Login" element={<Login />} />
