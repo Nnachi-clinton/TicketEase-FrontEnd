@@ -11,7 +11,7 @@ const Container = styled.div`
 const StyledLink = styled(Link)`
   text-decoration: none; 
   color: #505F98; 
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 4px;
   padding: 9px 8px 9px 0;
   background-color: #ebecf2;

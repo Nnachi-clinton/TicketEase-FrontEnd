@@ -14,9 +14,9 @@ const Field = styled.div`
 `;
 const Holder = styled.input`
     border: 1px solid #ccc;
-    height: 6px;
+    height: 36px;
     border-radius: 4px;
-    
+
 
 `;
 
@@ -65,9 +65,9 @@ function ForgotPasswordForm() {
                             onChange= {(e) => {
                                 setEmail(e.target.value);
                             }}
-                            placeholder= ""
+                            placeholder= " Email Address"
                         />
-                        {<p style={{fontSize: '11px', marginTop: '-7px', marginBottom: '5px', color: "#505F98"}}>Enter the Email address associated with your account</p>}
+                        {<p style={{fontSize: '11px', marginTop: '5px', marginBottom: '5px', color: "#505F98"}}>Enter the Email address associated with your account</p>}
                  </Field>
                     <ResetButton type="submit" disabled={!getIsFormValid()}>Reset Password</ResetButton>     
                 </Fieldset>

@@ -1,6 +1,7 @@
-import TicketEaseLogo from '../../assets/images/TicketEaseLogo.svg';
+import TicketEaseLogo from '../../assets/TicketEaseLogo.svg';
 import ForgotPasswordForm from '../common/ForgotPasswordForm';
 import styled from 'styled-components';
+import LoginButton from './LoginButton';
 
 const Wrapper = styled.div`
     width: 80%;
@@ -27,6 +28,7 @@ const Heading = styled.h4`
     color: #21334F;
     padding-left: 16px;
     margin-bottom: 15px;
+    font-weight: 800;
     @media screen and (max-width: 1024px) {
         font-size: 20px; 
         margin-bottom: 0; 
@@ -39,6 +41,7 @@ function ForgotPasswordFormGrid(props) {
             <Logo src={TicketEaseLogo} alt='TicketEaseLogo' />
             <Heading>Forgot Password</Heading>
             <ForgotPasswordForm />
+            <LoginButton />
         </Wrapper>
     );
 }
