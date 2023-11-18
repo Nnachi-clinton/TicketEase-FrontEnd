@@ -32,11 +32,12 @@ export default Footer;
 
 const FooterStyles = Styled.div`
     background: #2D2F48;
-    position: fixed;
+    position: static;
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
+    margin-top:-4.5px;
 
     h1{
        margin-bottom: 50px;
@@ -52,7 +53,7 @@ const FooterStyles = Styled.div`
         border: none;
        border-top: 2px solid #fff; 
        /* margin: 70px 0; */
-       margin: 0px 20px;
+       margin: 0px 60px;
        opacity: 0.2;
        
     }
@@ -76,7 +77,7 @@ const Foot = Styled.div`
     /* margin-top: 100px; */
 
     #all{
-        margin-right: 600px;
+        margin-right: 700px;
         color: #FFF;
         font-feature-settings: 'liga' off;
         font-family: 'Mulish';
@@ -86,7 +87,7 @@ const Foot = Styled.div`
        line-height: 24px; 
     }
     #icons{
-        justify-content: space-evenly
+        cursor: pointer;
     }
 
 
