@@ -12,6 +12,7 @@ import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
 //import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
 import AppLogin from './pages/FirstTimeLogin';
 import ContactUs from './pages/contactUs/ContactUs';
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
   return (
@@ -32,7 +33,8 @@ function App() {
                 {/* <Route path="/" element={<HomePage />} /> */}
                 <Route path="/" element={<AppLogin />} />
                 <Route path="/" element={<HomePage />} />
-                <Route path="/contactUs" element={<ContactUs />} />              
+                <Route path="/contactUs" element={<ContactUs />} /> 
+                <Route path="/forgot-password" element={<ForgotPassword />} />             
               </Routes>
             </AuthState>
           </GlobalProvider>
