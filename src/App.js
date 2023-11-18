@@ -20,6 +20,7 @@ import UpdateUser from './pages/user/UpdateUser';
 import RegularLogin from './pages/RegularLogin';
 import LogoutPopout from './components/logout/Logout';
 import ResetPassword from './pages/ResetPassword';
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
   return (
@@ -29,8 +30,15 @@ function App() {
           <GlobalProvider>
             <AuthState>
               <Routes>
+                {/* <Route exact path="/" element={<AuthLayout />}>
+                  <Route exact path="/" element={<Landing />} /> */}
+                {/* <Route path="/email-sent" element={<EmailSent />} /> */}
+                  
+                {/* </Route> */}
+
                 <Route path="/" element={<HomePage />} />
                 <Route path="/update-password" element={<ChangePassword />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/UpdateManager" element={<UpdateManager />} />               
                 <Route path="/AdminDashboard" element={<AdminDashboard />} />
