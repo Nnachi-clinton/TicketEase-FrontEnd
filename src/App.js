@@ -17,7 +17,10 @@ import {Login} from './components/FirstTimeLogin/Login';
 import ContactUs from './pages/contactUs/ContactUs';
 import UserProfilePage from '../src/pages/user/UserProfilePage';
 import UpdateUser from './pages/user/UpdateUser';
+import RegularLogin from './pages/RegularLogin';
 import LogoutPopout from './components/logout/Logout';
+import ResetPassword from './pages/ResetPassword';
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
   return (
@@ -30,17 +33,20 @@ function App() {
                 {/* <Route exact path="/" element={<AuthLayout />}>
                   <Route exact path="/" element={<Landing />} /> */}
                 {/* <Route path="/email-sent" element={<EmailSent />} /> */}
-
-
+                  
                 {/* </Route> */}
+
                 <Route path="/" element={<HomePage />} />
                 <Route path="/update-password" element={<ChangePassword />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/UpdateManager" element={<UpdateManager />} />               
                 <Route path="/AdminDashboard" element={<AdminDashboard />} />
                 <Route path="/Login" element={<Login />} />
                 <Route path="/Footer-header" element={<Header />} />
                 <Route path="/user-profile" element={<UserProfilePage />} />
                 <Route path="/user-page" element={<UpdateUser />} />
+                <Route path= "/Regularlogin" element={<RegularLogin/>} />
                 <Route path="/contactUs" element={<ContactUs />} />   
                 <Route path="/logout" element={<LogoutPopout/>} />  
                 <Route path='/contactResponse' element= {<ContactResponse/>} />
