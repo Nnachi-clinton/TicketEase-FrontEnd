@@ -8,10 +8,18 @@ import { GlobalProvider } from './context/GlobalState';
 import AuthState from './context/auth/AuthState';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/Home';
+import ChangePassword from './pages/ChangePassword';
+import ContactResponse from './pages/ContactResponse';
+import Header from './pages/landingPage/Header';
+import UpdateManager from './pages/UpdateManager';
 import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
-//import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
-import AppLogin from './pages/FirstTimeLogin';
+import {Login} from './components/FirstTimeLogin/Login';
 import ContactUs from './pages/contactUs/ContactUs';
+import UserProfilePage from '../src/pages/user/UserProfilePage';
+import UpdateUser from './pages/user/UpdateUser';
+import RegularLogin from './pages/RegularLogin';
+import LogoutPopout from './components/logout/Logout';
+import ResetPassword from './pages/ResetPassword';
 import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
@@ -29,12 +37,18 @@ function App() {
                 {/* </Route> */}
 
                 <Route path="/" element={<HomePage />} />
-                <Route path="/AdminDashboard" element={<AdminDashboard/>} />  
-                {/* <Route path="/" element={<HomePage />} /> */}
-                <Route path="/" element={<AppLogin />} />
-                <Route path="/" element={<HomePage />} />
-                <Route path="/contactUs" element={<ContactUs />} /> 
-                <Route path="/forgot-password" element={<ForgotPassword />} />             
+                <Route path="/update-password" element={<ChangePassword />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
+                <Route path="/UpdateManager" element={<UpdateManager />} />               
+                <Route path="/AdminDashboard" element={<AdminDashboard />} />
+                <Route path="/Login" element={<Login />} />
+                <Route path="/Footer-header" element={<Header />} />
+                <Route path="/user-profile" element={<UserProfilePage />} />
+                <Route path="/user-page" element={<UpdateUser />} />
+                <Route path= "/Regularlogin" element={<RegularLogin/>} />
+                <Route path="/contactUs" element={<ContactUs />} />   
+                <Route path="/logout" element={<LogoutPopout/>} />  
+                <Route path='/contactResponse' element= {<ContactResponse/>} />
               </Routes>
             </AuthState>
           </GlobalProvider>

@@ -1,0 +1,11 @@
+.my-button {
+    top: 340px;
+    padding: 14px 52px;
+    border-radius: 4px;
+    gap: 10px;
+    background: #505F98;
+    color: #FFFFFF; 
+    border: none;
+    cursor: pointer;
+  }
+  
