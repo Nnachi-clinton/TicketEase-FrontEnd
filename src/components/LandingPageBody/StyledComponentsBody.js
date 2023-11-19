@@ -79,7 +79,7 @@ export const Line = styled.hr`
   margin-left: 15px;
   margin-top: 17px;
   align-items: center;
-  width: 910px;
+  width: 1135px;
   color: #DADADA;
 `;
 
@@ -157,13 +157,22 @@ export const ContContainer = styled.div`
 `;
 
   export const Content5Heading = styled.h4`
-    color: #FFF;
+    color: #031839;
     font-family: Mulish, sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
   `;
+
+  export const Content6Heading = styled.h1`
+  color: #FFF;
+  font-family: Mulish, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
 
 export const Image11 = styled.div`
   width: 50.67%;

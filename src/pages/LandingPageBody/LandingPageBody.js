@@ -21,7 +21,7 @@ const LandingPageBody = () => {
       <S.MainContainer>
         <S.Main>
           <S.Top>
-            <S.Content>MainContainer with Ticket Ease – The Ultimate Ticket Management Solution!</S.Content>
+            <S.Content>Streamline Your Workflow with Ticket Ease – The Ultimate Ticket Management Solution!</S.Content>
             <S.Content1>Boost Productivity, Resolve Issues Faster – Discover the Power of TicketEase!</S.Content1>
             <Button />
           </S.Top>
@@ -79,9 +79,9 @@ const LandingPageBody = () => {
             <IoIosArrowBack />
             </div>
             <S.Image11>
-              <img style={{width:500}}  src={UnsplashSVh18EWSBeQ} alt='' />
+              <img style={{width:600}}  src={UnsplashSVh18EWSBeQ} alt='' />
               <S.Txt>
-                <S.Name className='name'>Ikechukwu Stonecold <S.Status>CEO Innovat8 Technology</S.Status></S.Name>
+                <S.Name style={{ marginRight: 200}}>Ikechukwu Stonecold <S.Status>CEO Innovat8 Technology</S.Status></S.Name>
                 <S.TestimonialContent>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra dis tempor, lacus orci at. Massa velit mi pharetra faucibus bibendum. Leo sit diam aliquam arcu, gravida habitasse.
                 </S.TestimonialContent>
@@ -89,9 +89,9 @@ const LandingPageBody = () => {
             </S.Image11>
 
             <S.Image11>
-              <img style={{width:500}} src={UnsplashD60MVuUqkOs} alt=''/>
+              <img style={{width:600}} src={UnsplashD60MVuUqkOs} alt=''/>
               <S.Txt>
-                <S.Name1 className='name1'>Mark Collins <S.Status>CEO Arab Money</S.Status></S.Name1>
+                <S.Name1 >Mark Collins <S.Status>CEO Arab Money</S.Status></S.Name1>
                 <S.TestimonialContent>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra dis tempor, lacus orci at. Massa velit mi pharetra faucibus bibendum. Leo sit diam aliquam arcu, gravida habitasse.
                 </S.TestimonialContent>
@@ -109,7 +109,7 @@ const LandingPageBody = () => {
 
       <S.EaseContainer>
           <S.Box2Container>
-            <S.Content5Heading>What is Ticket Ease?</S.Content5Heading>
+            <S.Content6Heading>What is Ticket Ease?</S.Content6Heading>
             <S.Box2Paragraph>
               TicketEase is a web-based application that streamlines and optimizes the management of task projects. Users can effortlessly create, review, and organize tickets for efficient task tracking. The integrated admin dashboard empowers managers with extensive control over various features, ensuring seamless oversight of the Ticket Management System.
             </S.Box2Paragraph>
