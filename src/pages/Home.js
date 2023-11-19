@@ -7,7 +7,8 @@ const HomePage = () => {
 
       {/* Add your content for the home page */}
     </div>
-  );
+);
 };
+
 
 export default HomePage;
