@@ -1,0 +1,243 @@
+body {
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+}
+
+.left-partition {
+  width: 337px;
+  height: 853px;
+}
+
+.middle-partition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 337px;
+}
+
+.logo {
+  width: 337px;
+  height: 66.64px;
+  top: -4px;
+  left: 356px;
+}
+
+.card1 {
+  width: 340px;
+  height: 129px;
+  top: 238px;
+  left: 373px;
+}
+
+.card2 {
+  padding-top: 100px;
+  width: 281px;
+  height: 132px;
+  top: 501px;
+  left: 373px;
+}
+
+.right-partition {
+  width: 585px;
+  height: 587px;
+  top: 217px;
+  left: 767px;
+  border-radius: 6px;
+  background: #21334f;
+  padding-top: 50px;
+  margin-top: 200px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  padding-left: 30px;
+}
+
+.form-label {
+  width: 120px;
+  height: 20px;
+  top: 275px;
+  left: 813px;
+  font-family: Mulish;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  background: #21334f;
+  color: white;
+  white-space: nowrap;
+}
+
+.form-input {
+  width: 494px;
+  height: 48px;
+  top: 305px;
+  left: 813px;
+  border-radius: 4px;
+  border: 1px solid #ffffff;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    linear-gradient(0deg, #ffffff, #ffffff);
+  background: #21334f;
+}
+
+.form-textarea {
+  width: 494px;
+  height: 157px;
+  top: 505px;
+  left: 813px;
+  border-radius: 4px;
+  border: 1px solid #ffffff;
+  background: #21334f;
+}
+
+.form-button {
+  width: 494px;
+  height: 48px;
+  top: 702px;
+  left: 813px;
+  background: #505f98;
+  color: white;
+  border-radius: 4px;
+  font-family: Mulish;
+  font-family: Mulish;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20.08px;
+}
+
+.getStarted {
+  padding-top: 160px;
+  width: 97px;
+  height: 20px;
+  top: 238px;
+  left: 373px;
+  color:  #505f98;
+  font-family: Mulish;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20.08px;
+}
+.contactAdmin {
+  width: 314px;
+  height: 55px;
+  top: 258px;
+  left: 373px;
+  font-family: Mulish;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 55.22px;
+  color: #1d2126;
+}
+.fill {
+  width: 340px;
+  height: 46px;
+  top: 321px;
+  left: 373px;
+  font-family: Mulish;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22.59px;
+  color: #1d2126;
+}
+
+.phone-container {
+  width: 208px;
+  height: 24px;
+  top: 501px;
+  left: 373px;
+  display: flex;
+  align-items: center;
+
+  .call-icon {
+    margin-right: 5px;
+  }
+
+  .call {
+    width: 174px;
+    height: 23px;
+    top: 502px;
+    left: 407px;
+  }
+}
+
+.Email-container {
+  width: 208px;
+  height: 24px;
+  top: 501px;
+  left: 373px;
+  display: flex;
+  align-items: center;
+
+  .email-icon {
+    margin-right: 5px;
+  }
+
+  .email {
+    width: 223px;
+    height: 23px;
+    top: 556px;
+    left: 407px;
+    font-size: 18px;
+    line-height: 22.59px;
+  }
+}
+
+.map-container {
+  white-space: nowrap;
+  width: 208px;
+  height: 24px;
+  top: 501px;
+  left: 373px;
+  display: flex;
+  align-items: center;
+
+  .map-icon {
+    margin-right: 5px;
+  }
+
+  .map {
+    width: 247px;
+    height: 23px;
+    top: 610px;
+    left: 407px;
+    font-family: Mulish;
+    font-size: 18px;
+    line-height: 22.59px;
+  }
+}
+
+@media (max-width: 600px) {
+  .left-partition,
+  .middle-partition,
+  .right-partition {
+    width: 100%;
+  }
+
+  .logo,
+  .card1,
+  .card2,
+  .form-label,
+  .form-input,
+  .form-textarea,
+  .form-button,
+  .getStarted,
+  .contactAdmin,
+  .fill,
+  .phone-container,
+  .Email-container,
+  .map-container {
+    width: 100%;
+    left: 0;
+    margin: 0;
+  }
+
+  .fill {
+    padding-top: 30px; 
+  }
+}

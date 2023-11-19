@@ -1,0 +1,114 @@
+.app-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  body {
+    max-width: 1440px;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+  }
+  
+  .card.top {
+    width: 728px;
+    height: 97px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+  }
+  
+  .card.down {
+    width: 728px;
+    height: 319px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+  }
+  
+  .card.bell {
+    width: 336px;
+    height: 446px;
+    grid-column-start: 3;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  
+  .card.table {
+    width: 1080px;
+    height: 306px;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 3;
+  }
+
+  
+  table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  table tr:hover {
+    background-color: #ddd;
+  }
+  
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #04aa6d;
+    color: white;
+  }
+  
+/* NoNotification starts here */
+  section {
+    margin: 0 auto;
+  }
+  
+  .bellImg {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    color: #1d2125;
+    text-align: center;
+    font-family: Mulish;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  h2 {
+    color: #bdbdbd;
+    text-align: center;
+    font-family: Mulish;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+  }
+/* NoNotification ends here */
