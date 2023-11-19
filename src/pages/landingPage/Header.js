@@ -20,7 +20,7 @@ const Header = () => {
           <a href="" id='apply'>Apply as a business</a>
        </NavList>
    </Nav> 
-   <LandingPageBody/> 
+   <LandingPageBody style={{alignItems: "center"}}/> 
    <Footer/> 
     </>
     )
