@@ -8,6 +8,8 @@ import { GlobalProvider } from './context/GlobalState';
 import AuthState from './context/auth/AuthState';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/Home';
+import AddManager from './pages/manager/AddManagerFom';
+import EmptyOrganisation from './pages/manager/EmptyOrganisation';
 
 function App() {
   return (
@@ -17,12 +19,12 @@ function App() {
           <GlobalProvider>
             <AuthState>
               <Routes>
-                {/* <Route exact path="/" element={<AuthLayout />}>
-                  <Route exact path="/" element={<Landing />} /> */}
+                {/* <Route exact path="/" element={<AuthLayout />}><Route exact path="/" element={<Landing />} /> */}
                 {/* <Route path="/email-sent" element={<EmailSent />} /> */}
-                  
                 {/* </Route> */}
                 <Route path="/" element={<HomePage />} />
+                <Route path="/addManager" element={<AddManager />} />
+                <Route path="/EmptyOrganisation" element={<EmptyOrganisation />} />
               </Routes>
             </AuthState>
           </GlobalProvider>

@@ -1,13 +1,15 @@
 // Home.js
 import React from 'react';
+import '../pages/manager/formstyle.css';
 
-const HomePage = () => {
-  return (
-    <div>
-      <h1>Welcome to My React App</h1>
-      {/* Add your content for the home page */}
+const AddManager = () => {
+  return(
+    <div className="full">
+      <h2>Welcome to my react app</h2>
+      
     </div>
-  );
+);
 };
 
-export default HomePage;
+
+export default AddManager;
