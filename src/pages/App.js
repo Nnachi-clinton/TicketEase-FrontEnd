@@ -1,26 +1,26 @@
 import React, { Suspense } from 'react';
-import ErrorBoundary from './components/common/ErrorBoundary';
+import ErrorBoundary from '../components/common/ErrorBoundary';
 //import EmailSent from './pages/EmailSent';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import AuthLayout from './layouts/AuthLayout';
 // import Landing from './pages/Landing';
-import { GlobalProvider } from './context/GlobalState';
-import AuthState from './context/auth/AuthState';
+import { GlobalProvider } from '../context/GlobalState';
+import AuthState from '../context/auth/AuthState';
 import 'react-toastify/dist/ReactToastify.css';
-import HomePage from './pages/Home';
-import ChangePassword from './pages/ChangePassword';
-import ContactResponse from './pages/ContactResponse';
-import Header from './pages/landingPage/Header';
-import UpdateManager from './pages/UpdateManager';
-import AdminDashboard from './pages/homePageDashboardAdmin/AdminDashboard';
-import {Login} from './components/FirstTimeLogin/Login';
-import ContactUs from './pages/contactUs/ContactUs';
-import UserProfilePage from '../src/pages/user/UserProfilePage';
-import UpdateUser from './pages/user/UpdateUser';
-import RegularLogin from './pages/RegularLogin';
-import LogoutPopout from './components/logout/Logout';
-import ResetPassword from './pages/ResetPassword';
-import ForgotPassword from './pages/ForgotPassword';
+import HomePage from './Home';
+import ChangePassword from './ChangePassword';
+import ContactResponse from './ContactResponse';
+import Header from './landingPage/Header';
+import UpdateManager from './UpdateManager';
+import AdminDashboard from './homePageDashboardAdmin/AdminDashboard';
+import {Login} from '../components/FirstTimeLogin/Login';
+import ContactUs from './contactUs/ContactUs';
+import UserProfilePage from './user/UserProfilePage';
+import UpdateUser from './user/UpdateUser';
+import RegularLogin from './RegularLogin';
+import LogoutPopout from '../components/logout/Logout';
+import ResetPassword from './ResetPassword';
+import ForgotPassword from './ForgotPassword';
 
 function App() {
   return (
