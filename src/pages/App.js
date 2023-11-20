@@ -13,7 +13,7 @@ import ContactResponse from './ContactResponse';
 import Header from './landingPage/Header';
 import UpdateManager from './UpdateManager';
 import AdminDashboard from './homePageDashboardAdmin/AdminDashboard';
-import {Login} from '../components/FirstTimeLogin/Login';
+import { Login } from '../components/FirstTimeLogin/Login';
 import ContactUs from './contactUs/ContactUs';
 import UserProfilePage from './user/UserProfilePage';
 import UpdateUser from './user/UpdateUser';
@@ -33,23 +33,23 @@ function App() {
                 {/* <Route exact path="/" element={<AuthLayout />}>
                   <Route exact path="/" element={<Landing />} /> */}
                 {/* <Route path="/email-sent" element={<EmailSent />} /> */}
-                  
+
                 {/* </Route> */}
 
                 <Route path="/" element={<HomePage />} />
                 <Route path="/update-password" element={<ChangePassword />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
-                <Route path="/UpdateManager" element={<UpdateManager />} />               
+                <Route path="/UpdateManager" element={<UpdateManager />} />
                 <Route path="/AdminDashboard" element={<AdminDashboard />} />
                 <Route path="/Login" element={<Login />} />
                 <Route path="/Footer-header" element={<Header />} />
                 <Route path="/user-profile" element={<UserProfilePage />} />
                 <Route path="/user-page" element={<UpdateUser />} />
-                <Route path= "/Regularlogin" element={<RegularLogin/>} />
-                <Route path="/contactUs" element={<ContactUs />} />   
-                <Route path="/logout" element={<LogoutPopout/>} />  
-                <Route path='/contactResponse' element= {<ContactResponse/>} />
+                <Route path="/Regularlogin" element={<RegularLogin />} />
+                <Route path="/contactUs" element={<ContactUs />} />
+                <Route path="/logout" element={<LogoutPopout />} />
+                <Route path="/contactResponse" element={<ContactResponse />} />
               </Routes>
             </AuthState>
           </GlobalProvider>

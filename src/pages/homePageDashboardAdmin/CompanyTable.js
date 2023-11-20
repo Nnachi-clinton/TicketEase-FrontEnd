@@ -62,8 +62,7 @@
 //   ]);
 
 //   const [currentPage, setCurrentPage] = useState(1);
-//   const [itemsPerPage] = useState(5); 
-
+//   const [itemsPerPage] = useState(5);
 
 //   const indexOfLastItem = currentPage * itemsPerPage;
 //   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -181,19 +180,18 @@
 
 // export default CompanyTable;
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const CompanyTable = () => {
   const [companies] = useState([
     {
-        sn: 1,
-        companyName: "Decagon Institue",
-        address: "Edo TechPark Edo State Nigeria",
-        email: "decagonEdo@dev.com",
-        phoneNumber: "+234(0)80 0897 8787",
-        industry: "Education",
-      }
-      
+      sn: 1,
+      companyName: 'Decagon Institue',
+      address: 'Edo TechPark Edo State Nigeria',
+      email: 'decagonEdo@dev.com',
+      phoneNumber: '+234(0)80 0897 8787',
+      industry: 'Education',
+    },
   ]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -206,16 +204,18 @@ const CompanyTable = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
   const nextPage = () =>
-    setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(companies.length / itemsPerPage)));
+    setCurrentPage((prev) =>
+      Math.min(prev + 1, Math.ceil(companies.length / itemsPerPage))
+    );
 
   return (
     <div>
       {/* Table content */}
       <table
-        style={{ width: "100%", borderCollapse: "collapse", marginTop: "10px" }}
+        style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}
       >
         <thead>
-          <tr style={{ background: "#E5E5E5", color: "#444" }}>
+          <tr style={{ background: '#E5E5E5', color: '#444' }}>
             <th style={tableCellStyle}>SN</th>
             <th style={tableCellStyle}>Company Name</th>
             <th style={tableCellStyle}>Address</th>
@@ -240,23 +240,23 @@ const CompanyTable = () => {
 
       {/* Pagination */}
       <div
-        style={{ marginTop: "10px", display: "flex", justifyContent: "center" }}
+        style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}
       >
         <button onClick={prevPage} style={paginationButtonStyle}>
           Prev
         </button>
         <ul
           style={{
-            listStyle: "none",
-            display: "flex",
-            justifyContent: "center",
-            margin: "0 10px",
+            listStyle: 'none',
+            display: 'flex',
+            justifyContent: 'center',
+            margin: '0 10px',
           }}
         >
           {Array.from(
             { length: Math.ceil(companies.length / itemsPerPage) },
             (_, index) => (
-              <li key={index} style={{ margin: "0 5px" }}>
+              <li key={index} style={{ margin: '0 5px' }}>
                 <button
                   onClick={() => paginate(index + 1)}
                   style={paginationButtonStyle}
@@ -276,13 +276,13 @@ const CompanyTable = () => {
 };
 
 const tableCellStyle = {
-  border: "1px solid #ddd",
-  padding: "8px",
+  border: '1px solid #ddd',
+  padding: '8px',
 };
 
 const paginationButtonStyle = {
-  padding: "3px 8px",
-  cursor: "pointer",
+  padding: '3px 8px',
+  cursor: 'pointer',
 };
 
 export default CompanyTable;
