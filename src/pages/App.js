@@ -21,6 +21,8 @@ import RegularLogin from './RegularLogin';
 import LogoutPopout from '../components/logout/Logout';
 import ResetPassword from './ResetPassword';
 import ForgotPassword from './ForgotPassword';
+import AddManager from './manager/AddManagerFom';
+import NoOrganisation from './manager/EmptyOrganisation';
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
                 {/* </Route> */}
 
                 <Route path="/" element={<HomePage />} />
+                <Route path="/add-manager" element={<AddManager />} />
+                <Route path="/no-organisation" element={<NoOrganisation />} />
                 <Route path="/update-password" element={<ChangePassword />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/reset-password" element={<ResetPassword />} />

@@ -18,7 +18,8 @@ font-size: 14px;
 `;
 const Innerdiv = styled.div `
 background-color: white;
-
+margin-left:20px;
+margin-right:20px;
 .marginb{
     margin-bottom: 20px;
 }
@@ -55,6 +56,7 @@ export const StyledButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-bottom:17em
 `
 
 export const StyledAlert = styled.div`
