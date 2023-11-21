@@ -85,19 +85,6 @@ body {
   margin-right: 5%;
 }
 
-/* .tablecard {
-  display: flex;
-  width: 1081px;
-  height: 329px;
-  padding-top: 6px;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  gap: 14px;
-  background-color: #fff;
-margin-top: 10%;
-} */
-
 .org {
   color: #1d2125;
   font-family: Mulish;
