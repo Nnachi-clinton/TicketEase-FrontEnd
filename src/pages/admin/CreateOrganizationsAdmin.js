@@ -147,7 +147,7 @@ const StockholmIconsCodePlusParent = styled.div`
   left: 814px;
   border-radius: var(--br-7xs);
   background-color: var(--color-steelblue-100);
-  width: 231px;
+  width: 190px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -258,51 +258,56 @@ const CreateOrganizationsAdmin = () => {
           institutionName="Gloryland College"
           groupIcon={groupIcons}
           navigationIcon={stockholmiconsNavigationAngleright}
+          onGroupContainer14Click={onGroupContainer14Click}
           propTop="518px"
           propLeft="306px"
           propWidth="220px"
           propBorder="unset"
-          propCursor="unset"
+          //propCursor="unset"
         />
         <CardContainer
           institutionName="Sterling Bank"
           groupIcon={groupIcons}
           navigationIcon={stockholmiconsNavigationAngleright}
+          onGroupContainer14Click={onGroupContainer14Click}
           propTop="196px"
           propLeft="672px"
           propWidth="155px"
           propBorder="unset"
-          propCursor="unset"
+          //propCursor="unset"
         />
         <CardContainer
           institutionName="Lily Hospital"
           groupIcon={groupIcons}
           navigationIcon={stockholmiconsNavigationAngleright}
+          onGroupContainer14Click={onGroupContainer14Click}
           propTop="518px"
           propLeft="672px"
           propWidth="150px"
           propBorder="1px solid var(--color-black)"
-          propCursor="unset"
+          //propCursor="unset"
         />
         <CardContainer
           institutionName="Access Bank"
           groupIcon={groupIcons}
           navigationIcon={stockholmiconsNavigationAngleright}
+          onGroupContainer14Click={onGroupContainer14Click}
           propTop="196px"
           propLeft="1038px"
           propWidth="150px"
           propBorder="unset"
-          propCursor="unset"
+          //propCursor="unset"
         />
         <CardContainer
           institutionName="Arsenal Football Club"
           groupIcon={groupIcons}
           navigationIcon={stockholmiconsNavigationAngleright}
+          onGroupContainer14Click={onGroupContainer14Click}
           propTop="518px"
           propLeft="1038px"
           propWidth="250px"
           propBorder="unset"
-          propCursor="unset"
+          //propCursor="unset"
         />
       </CreateorganizationsadminRoot>
     </>
