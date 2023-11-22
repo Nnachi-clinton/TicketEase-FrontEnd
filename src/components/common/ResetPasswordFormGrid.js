@@ -1,5 +1,5 @@
 import TicketEaseLogo from '../../../src/assets/TicketEaseLogo.svg';
-import PasswordForm from '../common/PasswordForm';
+// import PasswordForm from '../common/PasswordForm';
 import styled from 'styled-components';
 import LoginButton from './LoginButton';
 import ResetPasswordForm from './ResetPasswordForm';
