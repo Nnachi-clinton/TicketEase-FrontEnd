@@ -3,7 +3,7 @@ import Button from "./Button";
 import { useState } from "react";
 import styled from "styled-components";
 import { validateEmail } from "../../utils/validateEmail";
-import { VscWhitespace } from "react-icons/vsc";
+// import { VscWhitespace } from "react-icons/vsc";
 
 const Fieldset = styled.fieldset`
     border: none;
