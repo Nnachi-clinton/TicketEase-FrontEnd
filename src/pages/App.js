@@ -24,6 +24,7 @@ import ForgotPassword from './ForgotPassword';
 import AddManager from './manager/AddManagerFom';
 import NoOrganisation from './manager/EmptyOrganisation';
 import ProfileDetails from './ProfileDetails';
+import ManagerDashBoard from './homePageDashBoardManager/ManagerDashBoard';
 
 function App() {
   return (
@@ -47,6 +48,10 @@ function App() {
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/UpdateManager" element={<UpdateManager />} />
                 <Route path="/AdminDashboard" element={<AdminDashboard />} />
+                <Route
+                  path="/ManagerDashBoard"
+                  element={<ManagerDashBoard />}
+                />
                 <Route path="/Login" element={<Login />} />
                 <Route path="/Footer-header" element={<Header />} />
                 <Route path="/user-profile" element={<UserProfilePage />} />

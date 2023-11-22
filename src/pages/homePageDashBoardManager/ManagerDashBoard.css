@@ -1,0 +1,96 @@
+* {
+  margin: 20;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #111;
+}
+/* .mothercard {
+    display: ;
+  } */
+.dashboard {
+  color: #1d2125;
+  font-family: Mulish;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-right: 80%;
+}
+.container {
+  width: 728px;
+  height: 97px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: #fff;
+}
+.text {
+  /* margin-left: 15px; */
+  color: #1d2125;
+  font-family: Mulish;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-right: 58%;
+}
+.inner-box {
+  width: 118px;
+  height: 70px;
+  text-align: center;
+  margin-top: -9%;
+  margin-left: 80%;
+  border-radius: 4px;
+  background: rgba(20, 168, 0, 0.05);
+}
+.text2 {
+  color: #505f98;
+  font-family: Mulish;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.card {
+  width: 728px;
+  height: 319px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: #fff;
+  margin-top: 30px;
+}
+
+.active {
+  color: #1d2125;
+  font-family: Mulish;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 10px;
+  margin-right: 90%;
+}
+.card4 {
+  padding: 8px;
+  margin-left: 12px;
+}
+
+.chartdiv {
+  margin-top: 0%;
+  margin-right: 5%;
+}
+
+.org {
+  color: #1d2125;
+  font-family: Mulish;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-right: 1200px;
+}
