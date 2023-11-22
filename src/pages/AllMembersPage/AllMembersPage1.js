@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from "../../components/AllMembers/AllMembers";
 
+
 const Table = ({ data }) => {
   return (
     <S.StyledTable>
