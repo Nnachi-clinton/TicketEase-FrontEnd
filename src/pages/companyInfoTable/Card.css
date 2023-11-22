@@ -1,0 +1,74 @@
+body {
+  width: 1440px;
+  height: 1089px;
+  background-color: #ddd;
+}
+
+.card-container {
+  display: flex;
+  width: 1081px;
+  background: #ddd;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.card-heading {
+  font-size: 1.5em; /* Adjust font size as needed */
+  margin-bottom: 16px; /* Add space between heading and table */
+}
+
+.card-table {
+  width: 1080px;
+  height: 306px;
+  border-collapse: collapse;
+}
+
+.card-table th,
+.card-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.card-table th {
+  background-color: #e5e5e5;
+}
+
+.card-table tbody tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.card-table tbody tr:nth-child(odd) {
+  background-color: #f6f6f6;
+}
+
+.phone-number-cell {
+  display: flex;
+  align-items: center; /* Align items vertically at the center */
+}
+
+.view-button {
+  margin-left: 8px; /* Adjust margin as needed */
+  background-color: #8cc084;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 3px 6px;
+  cursor: pointer;
+}
+
+.view-button:hover {
+  background-color: #6c9e6b;
+}
+
+.card-pagination {
+  text-align: right;
+}
+
+.card-pagination button {
+  position: relative;
+  top: 30px;
+  left: -5px;
+}
