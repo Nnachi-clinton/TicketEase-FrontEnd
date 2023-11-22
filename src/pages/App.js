@@ -27,6 +27,7 @@ import ProfileDetails from './ProfileDetails';
 import ManagerDashBoard from './homePageDashBoardManager/ManagerDashBoard';
 import RegisteredMembers from './RegisteredMembers';
 import CreateOrganizationsAdmin from './admin/CreateOrganizationsAdmin';
+import AllMembers from './AllMembersPage/AllMembersPage';
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
                 <Route path='/RegisteredMembers' element = {<RegisteredMembers/>}/>
                 <Route path="/ProfileDetails" element={<ProfileDetails />} />
                 <Route path="/adminscreen" element={<CreateOrganizationsAdmin />} />
+                <Route path="/allMembers" element={<AllMembers />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
