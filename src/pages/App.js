@@ -23,6 +23,7 @@ import ResetPassword from './ResetPassword';
 import ForgotPassword from './ForgotPassword';
 import AddManager from './manager/AddManagerFom';
 import NoOrganisation from './manager/EmptyOrganisation';
+import ProfileDetails from './ProfileDetails';
 import ManagerDashBoard from './homePageDashBoardManager/ManagerDashBoard';
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
                 <Route path="/contactUs" element={<ContactUs />} />
                 <Route path="/logout" element={<LogoutPopout />} />
                 <Route path="/contactResponse" element={<ContactResponse />} />
+                <Route path="/ProfileDetails" element={<ProfileDetails />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
