@@ -1,6 +1,6 @@
-import Input from "./Input";
 import { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 const Fieldset = styled.fieldset`
     border: none;
@@ -16,8 +16,6 @@ const Holder = styled.input`
     border: 1px solid #ccc;
     height: 36px;
     border-radius: 4px;
-
-
 `;
 
 const ResetButton = styled.button`
@@ -36,7 +34,6 @@ const ResetButton = styled.button`
 function ForgotPasswordForm() {
     const [email, setEmail] = useState('');
     
-
     const getIsFormValid = () => {
         return (
             email.length >= 8 
@@ -45,10 +42,29 @@ function ForgotPasswordForm() {
     const clearForm = () => {
         setEmail('');
     };
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert('Password changed successfully!');
-        clearForm();
+        
+        try
+        {
+            const response = await axios.post(
+                "https://localhost:7075/api/Authentication/forgot-password",
+                { email }
+              );
+        
+              if (response.status === 200) {
+                alert("Password reset email sent successfully!");
+              } else {
+                alert(`Error: ${response.data.message}`);
+              }
+            clearForm();
+        }
+        catch (error)
+        {
+            console.error('An error occurred:', error);
+            alert('An error occurred. Please try again later.');
+        }
     };
 
     return (
@@ -65,7 +81,7 @@ function ForgotPasswordForm() {
                             onChange= {(e) => {
                                 setEmail(e.target.value);
                             }}
-                            placeholder= " Email Address"
+                            placeholder= "Email Address"
                         />
                         {<p style={{fontSize: '11px', marginTop: '5px', marginBottom: '5px', color: "#505F98"}}>Enter the Email address associated with your account</p>}
                  </Field>
