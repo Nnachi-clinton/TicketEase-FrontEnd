@@ -1,5 +1,6 @@
-import { useState } from "react";
-// import styled from "styled-components";
+import { useState, useEffect } from "react";
+import styled from "styled-components";
+import axios from "axios";
 import '../common/PasswordForm.css';
 
 const PasswordErrorMessage = () => {
@@ -17,6 +18,14 @@ function PasswordForm() {
         value: "",
         isTouched: false,
     });
+    const [email, setEmail] = useState("");
+    const [token, setToken] = useState("");
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        setEmail(searchParams.get("email") || "");
+        setToken(searchParams.get("token") || "");
+    }, []);
 
     const getIsFormValid = () => {
         return (
@@ -36,10 +45,46 @@ function PasswordForm() {
         });
     };
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert("Password changed successfully!");
-        clearForm();
+        if (!getIsFormValid()) {
+            return;
+        }
+
+        try 
+        {
+            const response = await axios.post('https://localhost:7075/api/Authentication/reset-password', {
+                email,
+                token,
+                newPassword: password.value,
+                confirmPassword: confirmPassword.value
+            });
+
+            if (response.status === 200) 
+            {
+                alert('Password changed successfully!');
+                clearForm();
+            } 
+            else 
+            {
+                console.error("Error:", response.data);
+
+                if (response.data.errors && response.data.errors.ConfirmPassword) 
+                {
+                    const confirmPasswordErrors = response.data.errors.ConfirmPassword;
+                    console.error("ConfirmPassword errors:", confirmPasswordErrors);
+                } 
+                else 
+                {
+                    alert(`Error: ${response.data.message}`);
+                }
+            }
+        } 
+        catch (error) 
+        {
+            console.error('An error occurred:', error);
+            alert('An error occurred. Please try again later.');
+        }
     };
 
     return (

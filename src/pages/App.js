@@ -23,6 +23,7 @@ import ResetPassword from './ResetPassword';
 import ForgotPassword from './ForgotPassword';
 import AddManager from './manager/AddManagerFom';
 import NoOrganisation from './manager/EmptyOrganisation';
+import ProfileDetails from './ProfileDetails';
 import ManagerDashBoard from './homePageDashBoardManager/ManagerDashBoard';
 import RegisteredMembers from './RegisteredMembers';
 
@@ -61,6 +62,7 @@ function App() {
                 <Route path="/logout" element={<LogoutPopout />} />
                 <Route path="/contactResponse" element={<ContactResponse />} />
                 <Route path='/RegisteredMembers' element = {<RegisteredMembers/>}/>
+                <Route path="/ProfileDetails" element={<ProfileDetails />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
