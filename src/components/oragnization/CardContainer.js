@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const FrameChild = styled.div`
   position: absolute;
@@ -65,7 +65,7 @@ const FrameParent = styled.div`
 const Wrapper = styled.div`
   position: absolute;
   top: 20px;
-  left: 236px;
+  left: 246px;
   background-color: var(--color-steelblue-100);
   width: 50px;
   display: flex;
@@ -150,7 +150,7 @@ const CardContainer = ({
         <Status1>STATUS</Status1>
       </FrameParent>
       <FrameGroup>
-        <Wrapper >
+        <Wrapper>
           <Active>10</Active>
         </Wrapper>
         <Status1>TOTAL MEMBERS</Status1>
