@@ -247,7 +247,7 @@ const BoardLandingPage = () => {
           </StockholmIconsCodePlusParent>
         </OrganizationsGroup>
         <CardContainer
-          institutionName="Decadev Board"
+          institutionName="Decadev Boards"
           groupIcon={groupIcons}
           navigationIcon={stockholmiconsNavigationAngleright}
           propTop="196px"
@@ -267,7 +267,7 @@ const BoardLandingPage = () => {
           //propCursor="unset"
         />
         <CardContainer
-          institutionName="Sterling Bank Board"
+          institutionName="Sterling Bank Boards"
           groupIcon={groupIcons}
           navigationIcon={stockholmiconsNavigationAngleright}
           onGroupContainer14Click={onGroupContainer14Click}
