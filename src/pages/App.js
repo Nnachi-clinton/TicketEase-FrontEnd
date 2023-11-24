@@ -23,7 +23,12 @@ import ResetPassword from './ResetPassword';
 import ForgotPassword from './ForgotPassword';
 import AddManager from './manager/AddManagerFom';
 import NoOrganisation from './manager/EmptyOrganisation';
+import ProfileDetails from './ProfileDetails';
 import ManagerDashBoard from './homePageDashBoardManager/ManagerDashBoard';
+import RegisteredMembers from './RegisteredMembers';
+import CreateOrganizationsAdmin from './admin/CreateOrganizationsAdmin';
+import AllMembers from './AllMembersPage/AllMembersPage';
+import BoardLandingPage from './board/BoardLandingPage';
 
 function App() {
   return (
@@ -59,6 +64,11 @@ function App() {
                 <Route path="/contactUs" element={<ContactUs />} />
                 <Route path="/logout" element={<LogoutPopout />} />
                 <Route path="/contactResponse" element={<ContactResponse />} />
+                <Route path='/RegisteredMembers' element = {<RegisteredMembers/>}/>
+                <Route path="/ProfileDetails" element={<ProfileDetails />} />
+                <Route path="/adminscreen" element={<CreateOrganizationsAdmin />} />
+                <Route path="/allMembers" element={<AllMembers />} />
+                <Route path="/boardlanding" element={<BoardLandingPage />} />
               </Routes>
             </AuthState>
           </GlobalProvider>

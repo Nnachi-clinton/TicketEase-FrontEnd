@@ -1,12 +1,50 @@
-import React from "react";
-import "./ContactUs.css";
-import Logo from "../../assets/images/Logo.svg";
-import Call from "../../assets/images/Call-Icon.svg";
-import Mail from "../../assets/images/Mail-Icon.svg";
-import Map from "../../assets/images/Map-Icon.svg";
-import Button from "../../components/common/Button";
+import React, { useState } from 'react';
+import './ContactUs.css';
+import Logo from '../../assets/images/Logo.svg';
+import Call from '../../assets/images/Call-Icon.svg';
+import Mail from '../../assets/images/Mail-Icon.svg';
+import Map from '../../assets/images/Map-Icon.svg';
+import Button from '../../components/common/Button';
+//import Input from "../../components/common/Input";
 
 const ContactUs = () => {
+  const [companyName, setCompanyName] = useState('');
+  const [businessEmail, setBusinessEmail] = useState('');
+  const [reasonToOnboard, setreasonToOnboard] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Create a data object with the form values
+    const data = {
+      companyName,
+      businessEmail,
+      reasonToOnboard,
+    };
+
+    try {
+      // Make a POST request to your API endpoint
+      const response = await fetch(
+        'https://localhost:7075/api/managers/sendManagerInformation',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (response.ok) {
+        console.log('Email sent successfully');
+      } else {
+        console.error('Failed to send email');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div className="app-container">
       <div className="left-partition"></div>
@@ -41,26 +79,53 @@ const ContactUs = () => {
         </div>
       </div>
       <div className="right-partition">
-        <form className="form-container">
+        <form className="form-container" onSubmit={handleSubmit}>
           <label className="form-label" htmlFor="Company Name">
             Company Name
           </label>
-          <input className="form-input" type="text" id="Company Name" />
+          <input
+            className="form-input"
+            type="text"
+            id="Company Name"
+            value={companyName}
+            onChange={(e) => setCompanyName(e.target.value)}
+          />
+          {/* <Input
+            type="text"
+            label="Company Name"
+            placeholder="Enter your company name"
+            className="form-input"
+          /> */}
           <br />
           <label className="form-label" htmlFor="Business Email">
             Business Email
           </label>
-          <input className="form-input" type="text" id="Business Email" />
+          <input
+            className="form-input"
+            type="text"
+            id="Business Email"
+            value={businessEmail}
+            onChange={(e) => setBusinessEmail(e.target.value)}
+          />
           <br />
           <label className="form-label" htmlFor="Company Description">
             Company Description
           </label>
-          <textarea className="form-textarea" id="Company Description"></textarea>
+          <textarea
+            className="form-textarea"
+            id="Company Description"
+            value={reasonToOnboard}
+            onChange={(e) => setreasonToOnboard(e.target.value)}
+          ></textarea>
           <br />
           {/* <button className="form-button">Send</button> */}
-           <Button type="submit" className="form-button" style={{ background: '#505f98' }}>
+          <Button
+            type="submit"
+            className="form-button"
+            style={{ background: '#505f98' }}
+          >
             Send
-            </Button>
+          </Button>
         </form>
       </div>
     </div>
