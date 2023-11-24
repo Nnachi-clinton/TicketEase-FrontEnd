@@ -24,6 +24,7 @@ import ForgotPassword from './ForgotPassword';
 import AddManager from './manager/AddManagerFom';
 import NoOrganisation from './manager/EmptyOrganisation';
 import ManagerDashBoard from './homePageDashBoardManager/ManagerDashBoard';
+import CreateBoard from './Boards/CreateBoard';
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
                 <Route path="/contactUs" element={<ContactUs />} />
                 <Route path="/logout" element={<LogoutPopout />} />
                 <Route path="/contactResponse" element={<ContactResponse />} />
+                <Route path="/create-board" element={<CreateBoard />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
