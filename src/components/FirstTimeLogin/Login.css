@@ -1,4 +1,4 @@
-.AppLogin {
+.FirstAppLogin {
     text-align: left;
     display: flex;
     min-height: 100vh;
@@ -8,37 +8,41 @@
     padding-left: 100px;
     margin-top: 0%;
     border-radius: 4px;
+
 }
 
-.login-form {
+.Firstlogin-form {
     display: flex;
     flex-direction: column;
 
 }
 
-label {
+.Firstlabel {
     text-align: left;
     padding: 0.25rem 0;
-
+    color: #505F98;
 }
 
-input {
-    margin: 0.5rem 0;
-    padding: 1rem;
+.FirstInput {
     border: none;
+    padding: 20px;
+    border-radius: 4px;
+    color: #505F98;
 }
 
-button {
+
+.FirstButton {
     border: none;
     background-color: #505F98;
     padding: 20px;
     border-radius: 4px;
     cursor: pointer;
     color: #F6F6F6;
+    height: 55px;
 }
 
 
-.password-warning {
+.Firstpassword-warning {
     padding-bottom: 30px;
     width: 100%;
     height: 18%;
@@ -53,34 +57,36 @@ button {
     color: #505F98;
 }
 
-.Header {
+.FirstHeader {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding-left: 100px;
 }
 
-.logoEase {
+.FirstlogoEase {
     width: 170px;
     height: 33px;
     left: 204px;
     top: 103px;
-    width: 170px;
+
 
     color: #21334F;
     padding-left: 20px;
+    font: bold;
     font-family: Mulish;
     font-style: normal;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 24px;
     line-height: 32.63px;
     color: #21334F;
 }
 
-.TicketLogo {
+.FirstTicketLogo {
     padding-left: 0px;
     padding-top: 40px;
 }
 
-.LoginImagery {
+.FirstLoginImagery {
     /* display: flex; */
     justify-content: center;
     /* align-items: center; */
@@ -90,7 +96,7 @@ button {
     margin-left: 50px;
 }
 
-.image {
+.Firstimage {
     max-width: 70%;
     /* Reducing the image width by half */
     height: auto;
@@ -100,13 +106,13 @@ button {
     padding-top: 10px;
 }
 
-.ErrorIcon {
+.FirstErrorIcon {
     width: 24px;
     height: 24px;
     display: flexbox;
 }
 
-.LoginToYourAccount {
+.FirstLoginToYourAccount {
     font-family: Mulish;
     font: bold;
     font-style: normal;
@@ -114,16 +120,16 @@ button {
     font-size: 24px;
     line-height: 30px;
     width: 253px;
-    height: 30ox;
+    height: 30px;
 }
 
-.logo-container {
+.Firstlogo-container {
     display: flex;
     align-items: center;
 
 }
 
-.PassEmail {
+.FirstPassEmail {
     font-family: Mulish;
     font: normal;
     font-style: normal;
@@ -133,5 +139,3 @@ button {
     width: 74px;
     height: 20px;
 }
-
-.PassEmailLabel {}
