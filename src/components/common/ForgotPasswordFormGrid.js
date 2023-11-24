@@ -15,13 +15,13 @@ const Logo = styled.img`
     }
 `;
 
-const Text = styled.p`
-    margin-bottom: 0;
-    padding-left: 16px;
-    @media screen and (max-width: 1024px) {
-        margin-top: 0;
-    }
-`;
+// const Text = styled.p`
+//     margin-bottom: 0;
+//     padding-left: 16px;
+//     @media screen and (max-width: 1024px) {
+//         margin-top: 0;
+//     }
+// `;
 
 const Heading = styled.h4`
     margin-top: 30px;
