@@ -1,6 +1,7 @@
-import { useState } from "react";
-// import styled from "styled-components";
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 import '../common/PasswordForm.css';
+import axios from "axios";
 
 const PasswordErrorMessage = () => {
     return (
@@ -22,6 +23,40 @@ function PasswordForm() {
         isTouched: false,
     });
 
+    const validateAuthToken = async () => {
+        try {
+            const authToken = localStorage.getItem('authToken');
+
+            if (!authToken) {
+                // Redirect or handle unauthenticated user as needed
+                return false;
+            }
+
+            const response = await axios.post('https://localhost:7075/api/Authentication/validate-token', {
+                token: authToken,
+            });
+
+            return response.status === 200;
+        } catch (error) {
+            console.error('Token validation error:', error);
+            return false;
+        }
+    };
+
+    useEffect(() => {
+        const validateToken = async () => {
+            const isValidToken = await validateAuthToken();
+
+            if (!isValidToken) {
+                console.log("Token is not valid. Redirecting to login page...");
+                // Example: Redirect to the login page
+                window.location.href = '/Regularlogin';
+            }
+        };
+
+        validateToken();
+    }, []);
+    
     const getIsFormValid = () => {
         return (
             currentPassword.value.length >= 8 &&
@@ -47,8 +82,49 @@ function PasswordForm() {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        alert("Password changed successfully!");
-        clearForm();
+
+        if (!getIsFormValid()) {
+            return;
+        }
+
+        try {
+            const authToken = localStorage.getItem('authToken');
+
+            if (!(await validateAuthToken())) {
+                // Redirect or handle unauthenticated user as needed
+                return;
+            }
+
+            const response = await axios.post('https://localhost:7075/api/Authentication/update-password', {
+                currentPassword: currentPassword.value,
+                newPassword: newPassword.value,
+                confirmNewPassword: confirmNewPassword.value,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${authToken}`,
+                },
+            });
+
+            if (response.status === 200) {
+                alert("Password changed successfully!");
+                clearForm();
+            } else {
+                alert(`Error: ${response.data.message}`);
+                console.error("Error:", response.data);
+            }
+        } catch (error) {
+            if (error.response) {
+                console.error('Server Error:', error.response.status);
+                console.error('Error Message:', error.response.data.message);
+                alert(`Error: ${error.response.data.message}`);
+            } else if (error.request) {
+                console.error('No Response from Server');
+                alert('No response from the server. Please try again.');
+            } else {
+                console.error('Unexpected Error:', error.message);
+                alert('An unexpected error occurred while changing the password.');
+            }
+        }    
     };
 
     return (
