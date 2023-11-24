@@ -25,9 +25,11 @@ import AddManager from './manager/AddManagerFom';
 import NoOrganisation from './manager/EmptyOrganisation';
 import ProfileDetails from './ProfileDetails';
 import ManagerDashBoard from './homePageDashBoardManager/ManagerDashBoard';
+import CreateBoard from './Boards/CreateBoard';
 import RegisteredMembers from './RegisteredMembers';
 import CreateOrganizationsAdmin from './admin/CreateOrganizationsAdmin';
 import AllMembers from './AllMembersPage/AllMembersPage';
+import BoardLandingPage from './board/BoardLandingPage';
 import TableData from './companyInfoTable/TableData';
 
 function App() {
@@ -64,10 +66,12 @@ function App() {
                 <Route path="/contactUs" element={<ContactUs />} />
                 <Route path="/logout" element={<LogoutPopout />} />
                 <Route path="/contactResponse" element={<ContactResponse />} />
+                <Route path="/create-board" element={<CreateBoard />} />
                 <Route path='/RegisteredMembers' element = {<RegisteredMembers/>}/>
                 <Route path="/ProfileDetails" element={<ProfileDetails />} />
                 <Route path="/adminscreen" element={<CreateOrganizationsAdmin />} />
                 <Route path="/allMembers" element={<AllMembers />} />
+                <Route path="/boardlanding" element={<BoardLandingPage />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
