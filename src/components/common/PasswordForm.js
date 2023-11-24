@@ -45,7 +45,7 @@ function PasswordForm() {
         });
     };
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         alert("Password changed successfully!");
         clearForm();
