@@ -25,11 +25,13 @@ import AddManager from './manager/AddManagerFom';
 import NoOrganisation from './manager/EmptyOrganisation';
 import ProfileDetails from './ProfileDetails';
 import ManagerDashBoard from './homePageDashBoardManager/ManagerDashBoard';
+import CreateBoard from './Boards/CreateBoard';
 import RegisteredMembers from './RegisteredMembers';
 import CreateOrganizationsAdmin from './admin/CreateOrganizationsAdmin';
 import AllMembers from './AllMembersPage/AllMembersPage';
 import BoardLandingPage from './board/BoardLandingPage';
 import CreateBoardEmptyManager from './CreateBoardEmptyManager';
+import TableData from './companyInfoTable/TableData';
 
 function App() {
   return (
@@ -44,7 +46,7 @@ function App() {
                 {/* <Route path="/email-sent" element={<EmailSent />} /> */}
 
                 {/* </Route> */}
-
+                <Route path="/TableData" element={<TableData />} />
                 <Route path="/" element={<HomePage />} />
                 <Route path="/add-manager" element={<AddManager />} />
                 <Route path="/no-organisation" element={<NoOrganisation />} />
@@ -65,6 +67,7 @@ function App() {
                 <Route path="/contactUs" element={<ContactUs />} />
                 <Route path="/logout" element={<LogoutPopout />} />
                 <Route path="/contactResponse" element={<ContactResponse />} />
+                <Route path="/create-board" element={<CreateBoard />} />
                 <Route path='/RegisteredMembers' element = {<RegisteredMembers/>}/>
                 <Route path="/ProfileDetails" element={<ProfileDetails />} />
                 <Route path="/adminscreen" element={<CreateOrganizationsAdmin />} />

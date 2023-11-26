@@ -4,6 +4,8 @@ import notification from '../../assets/images/notification 1.svg';
 import HorizontalBarChart from './HorizontalBarChart.js';
 import CompanyTable from './CompanyTable.js';
 import AxiosInstance from '../../Request/AxiosInstance.js';
+import SideBar from './SideBar.js';
+import {Frame} from '../../components/Header/Header/Header.js'
 
 function AdminDashBoard() {
   const [managers, setManagers] = useState([]);
@@ -35,6 +37,8 @@ function AdminDashBoard() {
 
   return (
     <section className="mothercard">
+      <Frame/>
+      <SideBar />
       <h2 className="dashboard">Admin Dashboard</h2>
       <div className="container">
         <h2 className="text">Total Organizations</h2>
