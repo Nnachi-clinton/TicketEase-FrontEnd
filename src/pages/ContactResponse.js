@@ -19,7 +19,7 @@ const StyledContactSent = styled.p`
   text-align: center;
   margin: 0 auto;
   display: block;
-//   margin-bottom: 5px;
+  margin-bottom: 5px;
 `;
 
 const StyledAdminText = styled.p`

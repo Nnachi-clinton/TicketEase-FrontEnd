@@ -30,6 +30,7 @@ import RegisteredMembers from './RegisteredMembers';
 import CreateOrganizationsAdmin from './admin/CreateOrganizationsAdmin';
 import AllMembers from './AllMembersPage/AllMembersPage';
 import BoardLandingPage from './board/BoardLandingPage';
+import CreateBoardEmptyManager from './CreateBoardEmptyManager';
 import TableData from './companyInfoTable/TableData';
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
                 <Route path="/adminscreen" element={<CreateOrganizationsAdmin />} />
                 <Route path="/allMembers" element={<AllMembers />} />
                 <Route path="/boardlanding" element={<BoardLandingPage />} />
+                <Route path="/createboard" element={<CreateBoardEmptyManager />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
