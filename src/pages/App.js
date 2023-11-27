@@ -30,6 +30,8 @@ import RegisteredMembers from './RegisteredMembers';
 import CreateOrganizationsAdmin from './admin/CreateOrganizationsAdmin';
 import AllMembers from './AllMembersPage/AllMembersPage';
 import BoardLandingPage from './board/BoardLandingPage';
+import CreateBoardEmptyManager from './CreateBoardEmptyManager';
+import TableData from './companyInfoTable/TableData';
 
 function App() {
   return (
@@ -44,7 +46,7 @@ function App() {
                 {/* <Route path="/email-sent" element={<EmailSent />} /> */}
 
                 {/* </Route> */}
-
+                <Route path="/TableData" element={<TableData />} />
                 <Route path="/" element={<HomePage />} />
                 <Route path="/add-manager" element={<AddManager />} />
                 <Route path="/no-organisation" element={<NoOrganisation />} />
@@ -71,6 +73,7 @@ function App() {
                 <Route path="/adminscreen" element={<CreateOrganizationsAdmin />} />
                 <Route path="/allMembers" element={<AllMembers />} />
                 <Route path="/boardlanding" element={<BoardLandingPage />} />
+                <Route path="/createboard" element={<CreateBoardEmptyManager />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
