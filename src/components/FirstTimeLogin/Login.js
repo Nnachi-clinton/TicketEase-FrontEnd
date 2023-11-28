@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import image from './Login.png';
 import Logo from './TicketEaseLogo.jpg';
 import ErrorIcon from './ErrorIcon.svg';
@@ -9,6 +9,7 @@ export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,6 +27,7 @@ export const Login = () => {
       .then((response) => {
         if (response.ok) {
           // Successful login
+          navigate('/update-password');
           setLoginError('');
           return response.json();
         } else {

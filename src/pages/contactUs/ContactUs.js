@@ -5,7 +5,7 @@ import Call from '../../assets/images/Call-Icon.svg';
 import Mail from '../../assets/images/Mail-Icon.svg';
 import Map from '../../assets/images/Map-Icon.svg';
 import Button from '../../components/common/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 //import Input from "../../components/common/Input";
 
@@ -13,6 +13,7 @@ const ContactUs = () => {
   const [companyName, setCompanyName] = useState('');
   const [businessEmail, setBusinessEmail] = useState('');
   const [reasonToOnboard, setreasonToOnboard] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +39,8 @@ const ContactUs = () => {
       );
 
       if (response.ok) {
-        console.log('Email sent successfully');
+        alert('Email sent successfully');
+        navigate('/contactResponse');
       } else {
         console.error('Failed to send email');
       }
@@ -94,12 +96,6 @@ const ContactUs = () => {
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
           />
-          {/* <Input
-            type="text"
-            label="Company Name"
-            placeholder="Enter your company name"
-            className="form-input"
-          /> */}
           <br />
           <label className="form-label" htmlFor="Business Email">
             Business Email
@@ -111,6 +107,7 @@ const ContactUs = () => {
             value={businessEmail}
             onChange={(e) => setBusinessEmail(e.target.value)}
           />
+
           <br />
           <label className="form-label" htmlFor="Company Description">
             Company Description
@@ -121,6 +118,7 @@ const ContactUs = () => {
             value={reasonToOnboard}
             onChange={(e) => setreasonToOnboard(e.target.value)}
           ></textarea>
+
           <br />
           {/* <button className="form-button">Send</button> */}
           <Button

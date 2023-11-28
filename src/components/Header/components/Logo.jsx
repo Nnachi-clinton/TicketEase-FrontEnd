@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import logo from '../../../assets/Logo.svg'
+import React from 'react';
+import styled from 'styled-components';
+import logo from '../../../assets/Logo.svg';
+import { Link } from 'react-router-dom';
 
 const StyledBox = styled.div`
   height: 73px;
   position: relative;
   width: 255px;
-
 `;
 
 const StyledGroup = styled.div`
@@ -16,7 +16,7 @@ const StyledGroup = styled.div`
 
 const StyledTextWrapper = styled.div`
   color: #031839;
-  font-family: "Mulish-Black", Helvetica;
+  font-family: 'Mulish-Black', Helvetica;
   font-size: 26px;
   font-weight: 900;
   left: 76px;
@@ -40,19 +40,17 @@ const StyledOverlapWrapper = styled.div`
   }
 `;
 
-
-
 export const Logo = () => {
   return (
     <StyledBox>
       <StyledGroup>
         <StyledTextWrapper>TICKET EASE</StyledTextWrapper>
         <StyledOverlapWrapper>
-            <img className="logo" alt="logo" src={logo}/>
+          <Link to="/Footer-header">
+            <img className="logo" alt="logo" src={logo} />
+          </Link>
         </StyledOverlapWrapper>
       </StyledGroup>
     </StyledBox>
   );
 };
-
-

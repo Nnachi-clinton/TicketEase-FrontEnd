@@ -3,12 +3,15 @@ import PasswordFormGrid from '../components/common/PasswordFormGrid';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  margin-left: 290px;
-  margin-top: 84px;
+  margin-left: 288px;
+  margin-top: 80px;
   display: grid;
   grid-template-columns: 50% 50%;
   padding: 10px;
   background: #f6f6f6;
+  width: 1205px;
+  height: 799px;
+  overflow: hidden;
 `;
 const Image = styled.img`
   width: 80%;

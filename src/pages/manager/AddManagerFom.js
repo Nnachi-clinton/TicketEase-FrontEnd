@@ -6,6 +6,8 @@ const Fulldiv = styled.div`
   background-color: #f0f0f0;
   margin-left: 280px;
   margin-top: 78px;
+  width: 1233px;
+  height: 899px;
 `;
 const Hnomargin = styled.h2`
   text-align: left;
@@ -22,6 +24,7 @@ const Innerdiv = styled.div`
   background-color: white;
   margin-left: 20px;
   margin-right: 20px;
+  height: 899px;
   .marginb {
     margin-bottom: 20px;
   }
@@ -29,7 +32,7 @@ const Innerdiv = styled.div`
 const FormSpace = styled.div`
   width: 300px;
   margin: auto;
-  padding-top: 2em;
+  padding-top: 4em;
   background-color: white;
 `;
 export const StyledForm = styled.form`
@@ -45,8 +48,10 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledInput = styled.input`
-  width: 100%;
+  width: 465px;
   padding: 10px;
+  margin: 10px;
+  height: 28px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
@@ -54,8 +59,10 @@ export const StyledInput = styled.input`
 
 export const StyledButton = styled.button`
   color: white;
-  width: 100%;
+  width: 465px;
+  height: 28px;
   margin-top: 20px;
+  margin-left: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -115,7 +122,7 @@ function AddManager2() {
             <StyledInput
               type="text"
               name="companyName"
-              placeholder=""
+              placeholder="Tickectease Company"
               value={formData.companyName}
               onChange={handleChange}
             />

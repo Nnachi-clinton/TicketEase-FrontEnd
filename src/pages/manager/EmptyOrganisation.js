@@ -9,6 +9,8 @@ const Fulldiv = styled.div`
   background-color: #f0f0f0;
   margin-left: 280px;
   margin-top: 78px;
+  width: 1233px;
+  height: 899px;
 `;
 const Ptop = styled.p`
   margin-top: 0px 20px 0px;
@@ -48,6 +50,7 @@ const SpanInnerSortBy = styled.span`
 
 const Innerdiv = styled.div`
   background-color: white;
+  height: 899px;
 
   .marginb {
     margin-bottom: 20px;
@@ -129,9 +132,9 @@ function AddManager() {
                   <Column>
                     <p>Phone Number</p>
                   </Column>
-                  <hr />
                 </div>
               </Roww>
+              <hr />
               <FormSpaceNotFoundd>
                 <Innerdiv style={{ textAlign: 'center' }}>
                   <ImgDiv>

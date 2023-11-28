@@ -180,7 +180,7 @@ const OrganizationsGroup = styled.div`
 const CreateorganizationsadminRoot = styled.div`
   position: relative;
   background-color: #f6f6f6;
-  width: 100%;
+  width: 1513px;
   height: 923px;
   overflow: hidden;
   text-align: left;
