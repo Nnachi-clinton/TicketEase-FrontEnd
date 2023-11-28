@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+// import styled from "styled-components";
 import '../common/PasswordForm.css';
 
 const PasswordErrorMessage = () => {
@@ -45,7 +45,7 @@ function PasswordForm() {
         });
     };
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         alert("Password changed successfully!");
         clearForm();

@@ -3,7 +3,7 @@ import Button from "./Button";
 import { useState } from "react";
 import styled from "styled-components";
 import { validateEmail } from "../../utils/validateEmail";
-import { VscWhitespace } from "react-icons/vsc";
+import axios from "axios";
 
 const Fieldset = styled.fieldset`
     border: none;
@@ -23,22 +23,55 @@ const EmailErrorMessage = () => {
 
 function LoginForm() {
     const [email, setEmail] = useState('');
-    const [Password, setPassword] = useState('');
+    const [password, setPassword] = useState('');
 
     const getIsFormValid = () => {
         return (
         validateEmail(email) &&
-        Password.value.length >= 8
+        password.length >= 8
         );
     };
     const clearForm = () => {
         setEmail('');
         setPassword('');
     };
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert('Login successful!');
-        clearForm();
+        
+        if (!getIsFormValid()) {
+            return;
+        }
+
+        try {
+            const response = await axios.post('https://localhost:7075/api/Authentication/login', {
+                email: email,
+                password: password,
+            });
+    
+            if (response.status === 200) {
+                const token = response.data.data;
+                console.log(token);
+                localStorage.setItem('authToken', token);
+                
+                alert("Login successful!");
+                clearForm();
+            } else {
+                alert(`Error: ${response.data.message}`);
+                console.error("Error:", response.data);
+            }
+        } catch (error) {
+            if (error.response) {
+                console.error('Server Error:', error.response.status);
+                console.error('Error Message:', error.response.data.message);
+                alert(`Error: ${error.response.data.message}`);
+            } else if (error.request) {
+                console.error('No Response from Server');
+                alert('No response from the server. Please try again.');
+            } else {
+                console.error('Unexpected Error:', error.message);
+                alert('An unexpected error occurred during login.');
+            }
+        }
     };
 
     return (
@@ -50,11 +83,8 @@ function LoginForm() {
                         label="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        onBlur={() => {}}
                         errorMessage={
-                        email.isTouched && !validateEmail(email) ? (
-                            <EmailErrorMessage/>
-                        ): ''
+                            email && !validateEmail(email) ? <EmailErrorMessage /> : ''
                         }
                         style={{
                             height: '16px',
@@ -66,13 +96,10 @@ function LoginForm() {
                     <Input
                         type="password"
                         label="Password"
-                        value={Password}
+                        value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        onBlur={() => {}}
                         errorMessage={
-                        Password.isTouched && Password.value.length < 8 ? (
-                            <PasswordErrorMessage/>
-                        ) : ''
+                            password && password.length < 8 ? <PasswordErrorMessage /> : ''
                         }
                         style={{
                             height: '16px',  

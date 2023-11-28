@@ -203,7 +203,7 @@ function UpdateUserProfileForm() {
         </div>
 
         
-        <StyledButton>Submit</StyledButton>
+        <StyledButton onClick={handleSubmit}>Submit</StyledButton>
         
 
       </FormField>

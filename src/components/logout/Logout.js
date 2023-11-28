@@ -1,14 +1,30 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+// import { toast, ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 const LogoutPopout = ({ onLogout }) => {
   const [isVisible, setIsVisible] = useState(true);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleYesClick = async () => {
     setIsVisible(false);
-    //navigate('/login'); // Navigate to the login page
+    try {
+      const response = await axios.post(
+        'https://localhost:7075/api/Authentication/logout'
+      );
+      if (response.status === 200) {
+        navigate('/Footer-header');
+        //  toast.success('Logout successful');
+        alert('Logout Successful');
+      } else {
+        console.error('Logout failed');
+      }
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
   };
 
   const handleNoClick = () => {
@@ -41,6 +57,7 @@ const LogoutPopout = ({ onLogout }) => {
           </Btnwrap>
         </Logout>
       </Moodal>
+      {/* <ToastContainer/> */}
     </>
   );
 };
@@ -50,7 +67,7 @@ const Moodal = styled.div`
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.724);
+  background-color: #f6f6f6;
   align-items: center;
   jsutify-content: center;
   padding-top: 50px;
@@ -64,6 +81,7 @@ const Logout = styled.div`
   color: black;
   margin: auto;
   position: relative;
+  margin-top: 190px;
 `;
 
 const Btn = styled.button`
