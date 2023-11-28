@@ -33,6 +33,7 @@ import BoardLandingPage from './board/BoardLandingPage';
 import CreateBoardEmptyManager from './CreateBoardEmptyManager';
 import TableData from './companyInfoTable/TableData'
 import CreateNewTicket from './CreateNewTicket';  
+import TicketInputfield from '../pages/TicketInputfield';
 
 function App() {
   return (
@@ -76,6 +77,7 @@ function App() {
                 <Route path="/boardlanding" element={<BoardLandingPage />} />
                 <Route path="/createboard" element={<CreateBoardEmptyManager />} />
                 <Route path="/create-newticket" element={<CreateNewTicket />}/>
+                <Route path="/ticketInputField" element={<TicketInputfield/>}/>
               </Routes>
             </AuthState>
           </GlobalProvider>
