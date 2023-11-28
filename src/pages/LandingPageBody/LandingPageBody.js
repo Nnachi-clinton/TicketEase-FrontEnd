@@ -1,7 +1,7 @@
 import * as S from '../../components/LandingPageBody/StyledComponentsBody';
 import Button from '../../components/LandingPageBody/ButtonBody';
 import Button1 from '../../components/LandingPageBody/ButtonBody1';
-import Frame7778 from '../../assets/images/Frame 7778.svg'
+import Frame7778 from '../../assets/images/Frame 7778.svg';
 import Group4 from '../../assets/images/Group 4.svg';
 import Frame from '../../assets/images/Frame.svg';
 import Frame1 from '../../assets/images/Frame-1.svg';
@@ -21,8 +21,14 @@ const LandingPageBody = () => {
       <S.MainContainer>
         <S.Main>
           <S.Top>
-            <S.Content>Streamline Your Workflow with Ticket Ease – The Ultimate Ticket Management Solution!</S.Content>
-            <S.Content1>Boost Productivity, Resolve Issues Faster – Discover the Power of TicketEase!</S.Content1>
+            <S.Content>
+              Streamline Your Workflow with Ticket Ease – The Ultimate Ticket
+              Management Solution!
+            </S.Content>
+            <S.Content1>
+              Boost Productivity, Resolve Issues Faster – Discover the Power of
+              TicketEase!
+            </S.Content1>
             <Button />
           </S.Top>
           <S.MainImage src={Frame7778} />
@@ -38,88 +44,116 @@ const LandingPageBody = () => {
             </div>
           </S.SponsorsLine>
           <S.Sponsors>
-            <img src={Frame} alt='' />
-            <img src={Group4} alt=''/>
-            <img src={Frame1} alt='' />
-            <img src={Frame2}  alt=''/>
-            <img src={Frame3} alt='' />
+            <img src={Frame} alt="" />
+            <img src={Group4} alt="" />
+            <img src={Frame1} alt="" />
+            <img src={Frame2} alt="" />
+            <img src={Frame3} alt="" />
           </S.Sponsors>
         </S.SponsorsContainer>
 
         <S.TaskContainer>
-          <S.TaskImage src={Image9}  />
+          <S.TaskImage src={Image9} />
           <S.Pad2Container>
             <S.Pad2Heading>Manage Tasks</S.Pad2Heading>
-            <S.Pad2Paragraph>Revolutionize Your Workflow – TicketEase: Where Every Ticket Tells a Success Story.</S.Pad2Paragraph>
+            <S.Pad2Paragraph>
+              Revolutionize Your Workflow – TicketEase: Where Every Ticket Tells
+              a Success Story.
+            </S.Pad2Paragraph>
           </S.Pad2Container>
         </S.TaskContainer>
 
-          <S.TaskContainer>
-            <S.Pad2Container>
-              <S.Pad2Heading className='sub'>Statistics Analysis</S.Pad2Heading>
-              <S.Pad2Paragraph className='sub1'>Get useful insights and analysis that will guide the entire task process from start to finish.</S.Pad2Paragraph>
-            </S.Pad2Container>
-            <S.TaskImage src={Image8}  />
-          </S.TaskContainer>
+        <S.TaskContainer>
+          <S.Pad2Container>
+            <S.Pad2Heading className="sub">Statistics Analysis</S.Pad2Heading>
+            <S.Pad2Paragraph className="sub1">
+              Get useful insights and analysis that will guide the entire task
+              process from start to finish.
+            </S.Pad2Paragraph>
+          </S.Pad2Container>
+          <S.TaskImage src={Image8} />
+        </S.TaskContainer>
 
         <S.TaskContainer>
-          <S.TaskImage src={Image10}  />
+          <S.TaskImage src={Image10} />
           <S.Pad2Container>
             <S.Pad2Heading>Manage Multiple Boards</S.Pad2Heading>
-            <S.Pad2Paragraph>Whether its a group of 10 boards or more, you have the ability to track work activities for multiple boards.</S.Pad2Paragraph>
+            <S.Pad2Paragraph>
+              Whether its a group of 10 boards or more, you have the ability to
+              track work activities for multiple boards.
+            </S.Pad2Paragraph>
           </S.Pad2Container>
         </S.TaskContainer>
 
         <S.Content5Container>
-            <S.ContContainer>
-              <S.Content5Heading>Testimonials <br /> <S.Content5Span>Hear What Users of Ticket Ease are Saying</S.Content5Span></S.Content5Heading>
-            </S.ContContainer>
+          <S.ContContainer>
+            <S.Content5Heading>
+              Testimonials <br />{' '}
+              <S.Content5Span>
+                Hear What Users of Ticket Ease are Saying
+              </S.Content5Span>
+            </S.Content5Heading>
+          </S.ContContainer>
           <S.TestimonialsContainer>
-            <div style={{ marginTop: 180}}>
-            <IoIosArrowBack />
+            <div style={{ marginTop: 180 }}>
+              <IoIosArrowBack />
             </div>
             <S.Image11>
-              <img style={{width:600}}  src={UnsplashSVh18EWSBeQ} alt='' />
+              <img style={{ width: 600 }} src={UnsplashSVh18EWSBeQ} alt="" />
               <S.Txt>
-                <S.Name style={{ marginRight: 200}}>Ikechukwu Stonecold <S.Status>CEO Innovat8 Technology</S.Status></S.Name>
+                <S.Name style={{ marginRight: 200 }}>
+                  Ikechukwu Stonecold{' '}
+                  <S.Status>CEO Innovat8 Technology</S.Status>
+                </S.Name>
                 <S.TestimonialContent>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra dis tempor, lacus orci at. Massa velit mi pharetra faucibus bibendum. Leo sit diam aliquam arcu, gravida habitasse.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                  viverra dis tempor, lacus orci at. Massa velit mi pharetra
+                  faucibus bibendum. Leo sit diam aliquam arcu, gravida
+                  habitasse.
                 </S.TestimonialContent>
               </S.Txt>
             </S.Image11>
 
             <S.Image11>
-              <img style={{width:600}} src={UnsplashD60MVuUqkOs} alt=''/>
+              <img style={{ width: 600 }} src={UnsplashD60MVuUqkOs} alt="" />
               <S.Txt>
-                <S.Name1 >Mark Collins <S.Status>CEO Arab Money</S.Status></S.Name1>
+                <S.Name1>
+                  Mark Collins <S.Status>CEO Arab Money</S.Status>
+                </S.Name1>
                 <S.TestimonialContent>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra dis tempor, lacus orci at. Massa velit mi pharetra faucibus bibendum. Leo sit diam aliquam arcu, gravida habitasse.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                  viverra dis tempor, lacus orci at. Massa velit mi pharetra
+                  faucibus bibendum. Leo sit diam aliquam arcu, gravida
+                  habitasse.
                 </S.TestimonialContent>
               </S.Txt>
             </S.Image11>
 
-                <div style={{marginTop: 180}}>
-                  <IoIosArrowForward />
-                </div>
-
+            <div style={{ marginTop: 180 }}>
+              <IoIosArrowForward />
+            </div>
           </S.TestimonialsContainer>
         </S.Content5Container>
-        
       </S.MainContainer>
 
       <S.EaseContainer>
-          <S.Box2Container>
-            <S.Content6Heading>What is Ticket Ease?</S.Content6Heading>
-            <S.Box2Paragraph>
-              TicketEase is a web-based application that streamlines and optimizes the management of task projects. Users can effortlessly create, review, and organize tickets for efficient task tracking. The integrated admin dashboard empowers managers with extensive control over various features, ensuring seamless oversight of the Ticket Management System.
-            </S.Box2Paragraph>
-            <Button1 />
-          </S.Box2Container>
+        <S.Box2Container>
+          <S.Content6Heading>What is Ticket Ease?</S.Content6Heading>
+          <S.Box2Paragraph>
+            TicketEase is a web-based application that streamlines and optimizes
+            the management of task projects. Users can effortlessly create,
+            review, and organize tickets for efficient task tracking. The
+            integrated admin dashboard empowers managers with extensive control
+            over various features, ensuring seamless oversight of the Ticket
+            Management System.
+          </S.Box2Paragraph>
+          <Button1 />
+        </S.Box2Container>
 
-          <S.EaseImage src={Image2}  />
-        </S.EaseContainer>
+        <S.EaseImage src={Image2} />
+      </S.EaseContainer>
     </>
   );
-}
+};
 
 export default LandingPageBody;
