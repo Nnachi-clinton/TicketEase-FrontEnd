@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const NewMemberContainer = styled.button`
+const NewTicketContainer = styled.button`
   color: #fff;
   white-space: nowrap;
   justify-content: center;
@@ -18,12 +18,12 @@ const NewMemberContainer = styled.button`
   font: 700 14px/18px Mulish, sans-serif;
   @media (max-width: 991px) {
     white-space: initial;
-    margin: 40px 0;
+    margin: 55px 0;
   }
 `;
 
-const NewMemberSection = () => {
-  return <NewMemberContainer>Create a new Ticket</NewMemberContainer>;
+const NewTicketSection = () => {
+  return <NewTicketContainer>Create a new Ticket</NewTicketContainer>;
 };
 
-export default NewMemberSection;
+export default NewTicketSection;

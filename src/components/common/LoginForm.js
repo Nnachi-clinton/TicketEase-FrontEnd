@@ -9,11 +9,14 @@ const Fieldset = styled.fieldset`
     border: none;
     width: 80%;
 `;
-const PasswordErrorMessage = () => {
-    return (
-        <p className="FieldError"> Password incorrect. If you don't remember your password. Reset it </p>
-    );
-};
+
+    const PasswordErrorMessage = () => {  
+        return (
+            <p className="FieldError" style={{ marginTop: '5px' }}>
+                Password incorrect. If you don't remember your password. Reset it
+            </p>
+        );
+    };
 
 const EmailErrorMessage = () => {
     return (
@@ -87,8 +90,8 @@ function LoginForm() {
                             email && !validateEmail(email) ? <EmailErrorMessage /> : ''
                         }
                         style={{
-                            height: '16px',
-                            width: '90%',
+                            height: '18px',
+                            width: '97%',
                             background: 'white'
 
                         }}
@@ -102,8 +105,8 @@ function LoginForm() {
                             password && password.length < 8 ? <PasswordErrorMessage /> : ''
                         }
                         style={{
-                            height: '16px',  
-                            width: '90%',
+                            height: '18px',  
+                            width: '97%',
                             background: "white"                   
                         }}
                     />
@@ -111,7 +114,7 @@ function LoginForm() {
                     <Button 
                         style={{
                             background: '#505F98',
-                            height : '40px',
+                            height : '15px',
                             width: '100%',
                         }}
                         type="submit" disabled={!getIsFormValid()}>

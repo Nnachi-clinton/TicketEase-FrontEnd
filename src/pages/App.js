@@ -31,7 +31,8 @@ import CreateOrganizationsAdmin from './admin/CreateOrganizationsAdmin';
 import AllMembers from './AllMembersPage/AllMembersPage';
 import BoardLandingPage from './board/BoardLandingPage';
 import CreateBoardEmptyManager from './CreateBoardEmptyManager';
-import TableData from './companyInfoTable/TableData';
+import TableData from './companyInfoTable/TableData'
+import CreateNewTicket from './CreateNewTicket';  
 
 function App() {
   return (
@@ -74,6 +75,7 @@ function App() {
                 <Route path="/allMembers" element={<AllMembers />} />
                 <Route path="/boardlanding" element={<BoardLandingPage />} />
                 <Route path="/createboard" element={<CreateBoardEmptyManager />} />
+                <Route path="/create-newticket" element={<CreateNewTicket />}/>
               </Routes>
             </AuthState>
           </GlobalProvider>
