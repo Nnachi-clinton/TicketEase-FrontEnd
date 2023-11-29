@@ -25,7 +25,6 @@ function AdminDashBoard() {
       );
 
       setManagers(res.data.result.data.data);
-      setCurrentPage(res.data.result.data.currentPage);
       setTotalItems(res.data.result.data.totalCount);
     } catch (error) {
       console.log(error);
@@ -89,6 +88,8 @@ function AdminDashBoard() {
                   itemsPerPage={itemsPerPage}
                   handleViewClick={handleViewClick}
                   totalItems={totalItems}
+                  setCurrentPage={setCurrentPage}
+                  getManagers={getManagers}
                 />
               </div>
             </div>

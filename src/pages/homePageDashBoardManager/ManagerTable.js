@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CompanyTable = ({
+const ManagerTable = ({
   companies,
   currentPage,
   itemsPerPage,
@@ -134,4 +134,4 @@ const CompanyTable = ({
   );
 };
 
-export default CompanyTable;
+export default ManagerTable;
