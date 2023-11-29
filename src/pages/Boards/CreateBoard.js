@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { IoIosAddCircle } from 'react-icons/io';
 
@@ -106,44 +106,52 @@ const Button = styled.button`
 `;
 
 function AddManager() {
+  const [steps, setsteps] = useState(0);
   return (
-    <Fulldiv>
-      <Container>
-        <Board>Boards</Board>
-        <Button>
-          <div>
-            <IoIosAddCircle />{' '}
-          </div>
-          <div>Create Boards</div>
-        </Button>
-      </Container>
+    <>
+      {steps === 0 && (
+        <>
+          return (
+          <Fulldiv>
+            <Container>
+              <Board>Boards</Board>
+              <Button>
+                <div>
+                  <IoIosAddCircle />{' '}
+                </div>
+                <div>Create Boards</div>
+              </Button>
+            </Container>
 
-      {/* YourStyledComponent and Pcreatemanager components remain the same */}
+            {/* YourStyledComponent and Pcreatemanager components remain the same */}
 
-      <Innerdiv>
-        <FormSpace>
-          <StyledForm>
-            <h1 style={{ textAlign: 'left', gap: '5px' }}>
-              Work Collaboratively with <br />
-              team members.{' '}
-              <span style={{ color: '#505f98' }}> Create Board</span>{' '}
-            </h1>
-            <StyledLabel>Title:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
-            <StyledLabel>Add Board:</StyledLabel>
-            <StyledInput type="text" placeholder="Cc" />
-            <StyledLabel>Fill:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
-            <StyledLabel>Fill:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
-            <StyledLabel>Fill:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
-            {/* Other form fields */}
-            <StyledButton type="submit">Create Board</StyledButton>
-          </StyledForm>
-        </FormSpace>
-      </Innerdiv>
-    </Fulldiv>
+            <Innerdiv>
+              <FormSpace>
+                <StyledForm>
+                  <h1 style={{ textAlign: 'left', gap: '5px' }}>
+                    Work Collaboratively with <br />
+                    team members.{' '}
+                    <span style={{ color: '#505f98' }}> Create Board</span>{' '}
+                  </h1>
+                  <StyledLabel>Title:</StyledLabel>
+                  <StyledInput type="text" placeholder="" />
+                  <StyledLabel>Add Board:</StyledLabel>
+                  <StyledInput type="text" placeholder="Cc" />
+                  <StyledLabel>Fill:</StyledLabel>
+                  <StyledInput type="text" placeholder="" />
+                  <StyledLabel>Fill:</StyledLabel>
+                  <StyledInput type="text" placeholder="" />
+                  <StyledLabel>Fill:</StyledLabel>
+                  <StyledInput type="text" placeholder="" />
+                  {/* Other form fields */}
+                  <StyledButton type="submit">Create Board</StyledButton>
+                </StyledForm>
+              </FormSpace>
+            </Innerdiv>
+          </Fulldiv>
+        </>
+      )}
+    </>
   );
 }
 

@@ -7,6 +7,7 @@ import { Frame } from '../../components/Header/Header/Header.js';
 import ManagerTable from './ManagerTable.js';
 import CreateBoardEmptyManager from '../CreateBoardEmptyManager.js';
 import RegisteredMembers from '../RegisteredMembers.js';
+import LogoutPopout from '../../components/logout/Logout.js';
 
 function ManagerDashBoard() {
   const [managers, setManagers] = useState([]);
@@ -82,6 +83,7 @@ function ManagerDashBoard() {
         )}
         {step === 1 && <RegisteredMembers />}
         {step === 2 && <CreateBoardEmptyManager />}
+        {step === 5 && <LogoutPopout />}
       </>
     </section>
   );
