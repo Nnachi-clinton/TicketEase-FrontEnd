@@ -32,6 +32,9 @@ import AllMembers from './AllMembersPage/AllMembersPage';
 import BoardLandingPage from './board/BoardLandingPage';
 import CreateBoardEmptyManager from './CreateBoardEmptyManager';
 import TableData from './companyInfoTable/TableData';
+import CreateProject from './Projects/CreateProject';
+import CreateTicket from './TicketInputfield';
+import CreateNewTicket from './CreateNewTIcket';
 
 function App() {
   return (
@@ -84,6 +87,9 @@ function App() {
                   path="/createboard"
                   element={<CreateBoardEmptyManager />}
                 />
+                <Route path="/CreateProject" element={<CreateProject />} />
+                <Route path="/CreateTicket" element={<CreateTicket />} />
+                <Route path="/createNewTicket" element={<CreateNewTicket />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
