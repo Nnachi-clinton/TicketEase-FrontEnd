@@ -30,11 +30,6 @@ const SidebarContainer = styled.div`
    display:none;
 `;
 
-const BottomNavs = styled.div`
-  position: absolute;
-  bottom: 29px;
-  width: ${({ collapsed }) => (collapsed ? '65px' : '236px')};
-`;
 const MenuItemsArea = styled.div`
   padding: 0 ${({ collapsed }) => (collapsed ? '29px' : '26px')};
   padding-bottom: 10px;

@@ -1,10 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import { IoIosAddCircle } from "react-icons/io"
+import React from 'react';
+import styled from 'styled-components';
+import { IoIosAddCircle } from 'react-icons/io';
 
 const Fulldiv = styled.div`
   overflow: hidden;
-  background-color: #f0f0f0;
+  margin-top: 90px;
+  margin-left: 290px;
 `;
 
 const YourStyledComponent = styled.h2`
@@ -16,8 +17,8 @@ const Pcreatemanager = styled.p`
 `;
 
 const Innerdiv = styled.div`
-  background-color: white;
-  margin-left: 20px;
+  background-color: #fff;
+  margin-left: 40px;
   margin-right: 20px;
 
   & .marginb {
@@ -28,8 +29,10 @@ const Innerdiv = styled.div`
 const FormSpace = styled.div`
   width: 300px;
   margin: auto;
+  margin-top: 20px;
+  margin-left: 400px;
   padding-top: 2em;
-  background-color: white;
+  background-color: ##8c92a2;
 `;
 
 export const StyledForm = styled.form`
@@ -41,7 +44,7 @@ export const StyledLabel = styled.label`
   margin-bottom: 5px;
   font-weight: bold;
   padding-top: 1em;
-  color: ${(props) => (props.invalid ? "red" : "black")};
+  color: ${(props) => (props.invalid ? 'red' : 'black')};
 `;
 
 export const StyledInput = styled.input`
@@ -53,13 +56,13 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledButton = styled.button`
-color: white;
-width: 100%;
-margin-top: 10px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-margin-bottom: 17em;
+  color: white;
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 17em;
 `;
 
 export const StyledAlert = styled.div`
@@ -79,13 +82,16 @@ const Container = styled.div`
 `;
 
 const Board = styled.div`
-  font-weight: bold;
-  color: #333;
-  padding: 8px
+  color: #1d2126;
+  font-family: Mulish;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 `;
 
 const Button = styled.button`
-background-color: #505f98;
+  background-color: #505f98;
   color: white;
   border: none;
   padding: 10px 30px;
@@ -103,13 +109,13 @@ function AddManager() {
   return (
     <Fulldiv>
       <Container>
-        <Board>Board</Board>
+        <Board>Boards</Board>
         <Button>
-          <div>< IoIosAddCircle />   </div>
-        <div>Create Boards</div>
-        
+          <div>
+            <IoIosAddCircle />{' '}
+          </div>
+          <div>Create Boards</div>
         </Button>
-
       </Container>
 
       {/* YourStyledComponent and Pcreatemanager components remain the same */}
@@ -117,8 +123,11 @@ function AddManager() {
       <Innerdiv>
         <FormSpace>
           <StyledForm>
-            <h1 style={{textAlign:"left", gap: "5px"}}>Work Collaboratively with <br />
-              team members. <span style={{color: "#505f98"}}> Create Board</span> </h1>
+            <h1 style={{ textAlign: 'left', gap: '5px' }}>
+              Work Collaboratively with <br />
+              team members.{' '}
+              <span style={{ color: '#505f98' }}> Create Board</span>{' '}
+            </h1>
             <StyledLabel>Title:</StyledLabel>
             <StyledInput type="text" placeholder="" />
             <StyledLabel>Add Board:</StyledLabel>
