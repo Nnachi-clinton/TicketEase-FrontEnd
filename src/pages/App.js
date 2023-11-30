@@ -35,6 +35,7 @@ import TableData from './companyInfoTable/TableData';
 import CreateProject from './Projects/CreateProject';
 import CreateTicket from './TicketInputfield';
 import CreateNewTicket from './CreateNewTIcket';
+import PersonalInfo from './PersonalInfo';
 
 function App() {
   return (
@@ -90,6 +91,7 @@ function App() {
                 <Route path="/CreateProject" element={<CreateProject />} />
                 <Route path="/CreateTicket" element={<CreateTicket />} />
                 <Route path="/createNewTicket" element={<CreateNewTicket />} />
+                <Route path="/PersonalInfo" element={<PersonalInfo />} />
               </Routes>
             </AuthState>
           </GlobalProvider>

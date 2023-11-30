@@ -124,7 +124,7 @@ const ContactUs = () => {
           <Button
             type="submit"
             className="form-button"
-            style={{ background: '#505f98' }}
+            style={{ background: '#505f98', width: '470px' }}
           >
             Send
           </Button>
