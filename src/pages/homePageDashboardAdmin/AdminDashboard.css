@@ -1,0 +1,183 @@
+* {
+  margin: 20;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #111;
+}
+/* .mothercard {
+  display: ;
+} */
+.dashboard {
+  color: #1d2125;
+  font-family: Mulish;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  /* margin-left: 23%; */
+  margin-right: 100%;
+  margin-top: 7%;
+}
+.container {
+  width: 730px !important;
+  height: 97px;
+  border-radius: 4px;
+  background: #fff;
+  margin-left: 233px;
+  margin-top: 10%;
+  white-space: nowrap;
+}
+.text {
+  /* margin-left: 15px; */
+  color: #1d2125;
+  font-family: Mulish;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-right: 58%;
+  margin-top: 5%;
+  padding: 5px;
+  /* padding-top: 20px !important; */
+}
+.inner-box {
+  width: 118px;
+  height: 70px;
+  text-align: center;
+  margin-top: -9%;
+  margin-left: 80%;
+  border-radius: 4px;
+  background: rgba(20, 168, 0, 0.05);
+}
+.text2 {
+  color: #505f98;
+  font-family: Mulish;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-top: 10px;
+}
+
+.card {
+  width: 118px;
+  height: 319px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: #fff;
+  margin-top: 30px;
+  margin-left: 23%;
+}
+
+.active {
+  color: #1d2125;
+  font-family: Mulish;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 10px;
+  margin-right: -60%;
+}
+.card4 {
+  padding: 8px;
+  margin-left: 12px;
+}
+
+.chartdiv {
+  margin-top: 0%;
+  margin-right: 5%;
+}
+.bellCard {
+  width: 376px;
+  height: 446px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: #fff;
+  margin-top: -30.9%;
+  margin-left: 1100px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  margin: 0 auto;
+}
+
+.bellImg {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  /* margin-bottom: 35%; */
+  /* background-color: ; */
+  position: absolute;
+  top: 80px;
+}
+.bellText {
+  height: 90px;
+  width: 336;
+  /* background-color: ; */
+  position: absolute;
+  top: 200px;
+}
+
+h1 {
+  color: #1d2125;
+  text-align: center;
+  font-family: Mulish;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+h2 {
+  color: #bdbdbd;
+  text-align: center;
+  font-family: Mulish;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.tablecard {
+  display: flex;
+  width: 1150px;
+  height: auto;
+  padding-top: 6px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 14px;
+  background-color: #fff;
+  margin-left: 329px;
+}
+
+.org {
+  color: #1d2125;
+  font-family: Mulish;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+
+  margin-left: 23%;
+  margin-top: 2%;
+}
+
+.tableit {
+  width: 1150px;
+  height: 306px;
+  flex-shrink: 0;
+  background: #fff;
+  margin-bottom: 2.1%;
+}

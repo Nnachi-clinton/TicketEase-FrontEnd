@@ -1,0 +1,141 @@
+.FirstAppLogin {
+    text-align: left;
+    display: flex;
+    min-height: 100vh;
+    align-items: left;
+    justify-content: left;
+    background-color: #F6F6F6;
+    padding-left: 100px;
+    margin-top: 0%;
+    border-radius: 4px;
+
+}
+
+.Firstlogin-form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.Firstlabel {
+    text-align: left;
+    padding: 0.25rem 0;
+    color: #505F98;
+}
+
+.FirstInput {
+    border: none;
+    padding: 20px;
+    border-radius: 4px;
+    color: #505F98;
+}
+
+
+.FirstButton {
+    border: none;
+    background-color: #505F98;
+    padding: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #F6F6F6;
+    height: 55px;
+}
+
+
+.Firstpassword-warning {
+    padding-bottom: 30px;
+    width: 100%;
+    height: 18%;
+    left: 465%;
+    top: 517%;
+
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15.60px;
+    color: #505F98;
+}
+
+.FirstHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 100px;
+}
+
+.FirstlogoEase {
+    width: 170px;
+    height: 33px;
+    left: 204px;
+    top: 103px;
+
+
+    color: #21334F;
+    padding-left: 20px;
+    font: bold;
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32.63px;
+    color: #21334F;
+}
+
+.FirstTicketLogo {
+    padding-left: 0px;
+    padding-top: 40px;
+}
+
+.FirstLoginImagery {
+    /* display: flex; */
+    justify-content: center;
+    /* align-items: center; */
+    height: 1125px;
+    width: 600px;
+    padding-left: 80px;
+    margin-left: 50px;
+}
+
+.Firstimage {
+    max-width: 70%;
+    /* Reducing the image width by half */
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    /* Remove default inline spacing */
+    padding-top: 10px;
+}
+
+.FirstErrorIcon {
+    width: 24px;
+    height: 24px;
+    display: flexbox;
+}
+
+.FirstLoginToYourAccount {
+    font-family: Mulish;
+    font: bold;
+    font-style: normal;
+    font-weight: 800px;
+    font-size: 24px;
+    line-height: 30px;
+    width: 253px;
+    height: 30px;
+}
+
+.Firstlogo-container {
+    display: flex;
+    align-items: center;
+
+}
+
+.FirstPassEmail {
+    font-family: Mulish;
+    font: normal;
+    font-style: normal;
+    font-weight: 400px;
+    font-size: 16px;
+    line-height: 20.08px;
+    width: 74px;
+    height: 20px;
+}
