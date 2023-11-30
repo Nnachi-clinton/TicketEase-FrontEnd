@@ -29,6 +29,7 @@ const AllMembersTable = ({
   const tableCellStyle = {
     border: '1px solid #ddd',
     padding: '8px',
+    // background: '#FFFFFF'
   };
 
   const paginationButtonStyle = {
@@ -44,10 +45,10 @@ const AllMembersTable = ({
     <div>
       {/* Table content */}
       <table
-        style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}
+        style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px', background: '#FFF'}}
       >
         <thead>
-          <tr style={{ background: '#E5E5E5', color: '#444' }}>
+          <tr style={{ background: '#FAFAFA', color: '#444' }}>
             <th style={tableCellStyle}>SN</th>
             <th style={tableCellStyle}>First Name</th>
             <th style={tableCellStyle}>Last Name</th>
