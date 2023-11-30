@@ -35,7 +35,7 @@ import TableData from './companyInfoTable/TableData';
 import CreateProject from './Projects/CreateProject';
 import CreateTicket from './TicketInputfield';
 import CreateNewTicket from './CreateNewTIcket';
-import PersonalInfo from './PersonalInfo';
+import PersonalInfo from './PersonalInfo.js';
 
 function App() {
   return (

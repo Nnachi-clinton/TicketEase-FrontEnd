@@ -32,8 +32,10 @@ export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  // justify-content: right;
   padding: 20px; 
-  width: 70%
+  width: 70%;
+  margin-left: auto;
 `;
 
 export const MainTop = styled.h1`
