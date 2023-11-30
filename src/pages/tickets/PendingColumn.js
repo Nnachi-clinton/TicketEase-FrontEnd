@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import TicketCard from "./TicketCard";
+import AxiosInstance from "../../Request/AxiosInstance";
+import { useEffect, useState } from "react";
 
 const InProgress1 = styled.div`
   position: relative;
@@ -188,20 +190,35 @@ const Bod = styled.div`
 --br-xl: 20px;
 `
 
+
+
 const Pending = () => {
-  const title = 'Introduction to computer science and everything related to programming';
-  const title2 = 'Title 2';
-  const title3 = 'Title 3';
-  const priorityh = 'High';
-  const priorityl = 'Low';
-  const prioritym = 'Medium';
+
+const [alltickets, setTickets] = useState([]);
+
+  useEffect(() => {
+    
+    const fetchTicket = async () =>{
+      try{
+      const response = await AxiosInstance.get('/Ticket/status-by-pagination/0?page=1&pageSize=2');
+      setTickets(response.data);
+      console.log(response.data);
+      }
+      catch(error){
+        console.error('Error fetching tickets: ',error);
+      }
+    };
+    fetchTicket();
+  },[]);
+  
   return (
     <Bod>
     <InProgressRoot>
       <InProgress1>Pending</InProgress1>
-      <TicketCard title={title}priority={prioritym}/> 
-      <TicketCard title={title2} priority={priorityh} />       
-      <TicketCard title={title3}  priority={priorityl} />      
+        {alltickets.map((ticket)=>(
+          <TicketCard title={ticket.Title}  priority={ticket.Priority} />   
+        ))
+        }        
     </InProgressRoot>
     </Bod>
   );
