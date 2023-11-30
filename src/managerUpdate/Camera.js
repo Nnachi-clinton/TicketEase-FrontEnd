@@ -56,6 +56,7 @@ const CameraIcon = () => {
             accept="image/*"
             style={{ display: 'none' }}
             id="logoInput"
+            name='logoInput'
           />
           <label htmlFor="logoInput">
             <img src={camera} alt="Upload Icon" style={{ cursor: 'pointer' }} />
