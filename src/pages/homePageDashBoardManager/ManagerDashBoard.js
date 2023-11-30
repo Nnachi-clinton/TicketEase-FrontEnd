@@ -20,7 +20,7 @@ function ManagerDashBoard() {
   const getUsers = async () => {
     try {
       const res = await AxiosInstance.get(
-       // `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem('mangerId')}&page=${currentPage}&perPage=${itemsPerPage}`
+        // `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem('mangerId')}&page=${currentPage}&perPage=${itemsPerPage}`
         `/User/get-Users-By-ManagerId?managerId=6ba586e7-df76-490b-8216-8930991c68ab&page=${currentPage}&perPage=${itemsPerPage}`
       );
 
@@ -51,7 +51,7 @@ function ManagerDashBoard() {
             <div className="container">
               <h2 className="text">Total Members</h2>
               <div className="inner-box">
-              <h1 className="text2">{totalItems}</h1>
+                <h1 className="text2">{totalItems}</h1>
               </div>
 
               <div />
@@ -73,13 +73,13 @@ function ManagerDashBoard() {
             <div className="tablecard">
               <div className="tableit">
                 <ManagerTable
-                  companies={managers}
+                  registeredUsers={users}
                   currentPage={currentPage}
                   itemsPerPage={itemsPerPage}
                   handleViewClick={handleViewClick}
                   totalItems={totalItems}
                   setCurrentPage={setCurrentPage}
-                  getManagers={getManagers}
+                  getUsers={getUsers}
                 />
               </div>
             </div>
