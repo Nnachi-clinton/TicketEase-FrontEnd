@@ -8,14 +8,6 @@ const Fulldiv = styled.div`
   margin-left: 290px;
 `;
 
-const YourStyledComponent = styled.h2`
-  /* Your existing styles for YourStyledComponent */
-`;
-
-const Pcreatemanager = styled.p`
-  /* Your existing styles for Pcreatemanager */
-`;
-
 const Innerdiv = styled.div`
   background-color: #fff;
   margin-left: 40px;
@@ -107,6 +99,52 @@ const Button = styled.button`
 
 function AddManager() {
   const [steps, setsteps] = useState(0);
+  const [formData, setFormData] = useState({
+    title: '',
+    addBoard: '',
+    managerId: '',
+    description: '',
+    fill: '',
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Handling submit...');
+
+    if (!formData.title || !formData.addBoard) {
+      console.error('Please fill in all required fields.');
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        'https://localhost:7075/api/Board/AddBoard',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Name: formData.title,
+            ManagerId: formData.managerId,
+            Description: formData.description,
+            AddBoard: formData.addBoard,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Error:', errorData);
+        return;
+      }
+
+      const responseData = await response.json();
+      console.log('Success:', responseData);
+    } catch (error) {
+      console.error('Error occurred:', error);
+    }
+  };
   return (
     <>
       {steps === 0 && (
@@ -123,27 +161,59 @@ function AddManager() {
               </Button>
             </Container>
 
-            {/* YourStyledComponent and Pcreatemanager components remain the same */}
-
             <Innerdiv>
               <FormSpace>
-                <StyledForm>
+                <StyledForm onSubmit={handleSubmit}>
                   <h1 style={{ textAlign: 'left', gap: '5px' }}>
                     Work Collaboratively with <br />
                     team members.{' '}
                     <span style={{ color: '#505f98' }}> Create Board</span>{' '}
                   </h1>
                   <StyledLabel>Title:</StyledLabel>
-                  <StyledInput type="text" placeholder="" />
+                  <StyledInput
+                    type="text"
+                    placeholder=""
+                    value={formData.title}
+                    onChange={(e) =>
+                      setFormData({ ...formData, title: e.target.value })
+                    }
+                  />
                   <StyledLabel>Add Board:</StyledLabel>
-                  <StyledInput type="text" placeholder="Cc" />
+                  <StyledInput
+                    type="text"
+                    placeholder="Cc"
+                    value={formData.addBoard}
+                    onChange={(e) =>
+                      setFormData({ ...formData, addBoard: e.target.value })
+                    }
+                  />
+                  <StyledLabel>Manager's Id:</StyledLabel>
+                  <StyledInput
+                    type="text"
+                    placeholder=""
+                    value={formData.managerId}
+                    onChange={(e) =>
+                      setFormData({ ...formData, managerId: e.target.value })
+                    }
+                  />
+                  <StyledLabel>Description:</StyledLabel>
+                  <StyledInput
+                    type="text"
+                    placeholder=""
+                    value={formData.description}
+                    onChange={(e) =>
+                      setFormData({ ...formData, description: e.target.value })
+                    }
+                  />
                   <StyledLabel>Fill:</StyledLabel>
-                  <StyledInput type="text" placeholder="" />
-                  <StyledLabel>Fill:</StyledLabel>
-                  <StyledInput type="text" placeholder="" />
-                  <StyledLabel>Fill:</StyledLabel>
-                  <StyledInput type="text" placeholder="" />
-                  {/* Other form fields */}
+                  <StyledInput
+                    type="text"
+                    placeholder=""
+                    value={formData.fill}
+                    onChange={(e) =>
+                      setFormData({ ...formData, fill: e.target.value })
+                    }
+                  />
                   <StyledButton type="submit">Create Board</StyledButton>
                 </StyledForm>
               </FormSpace>
