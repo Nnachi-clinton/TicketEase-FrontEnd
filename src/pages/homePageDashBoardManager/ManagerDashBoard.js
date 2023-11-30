@@ -11,7 +11,7 @@ import LogoutPopout from '../../components/logout/Logout.js';
 import ContactUs from '../contactUs/ContactUs.js';
 
 function ManagerDashBoard() {
-  const [managers, setManagers] = useState([]);
+  const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const [totalItems, setTotalItems] = useState(0);
