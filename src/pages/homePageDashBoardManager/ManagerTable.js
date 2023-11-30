@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 const ManagerTable = ({
-  companies,
+  registeredUsers,
   currentPage,
   itemsPerPage,
   handleViewClick,
   totalItems,
   setCurrentPage,
-  getManagers,
+  getUsers,
 }) => {
   const changePage = (direction) => {
     if (direction === 'prev' && currentPage > 1) {
