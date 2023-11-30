@@ -23,7 +23,7 @@ const ManagerTable = ({
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     handleViewClick(pageNumber);
-    getManagers(pageNumber);
+    getUsers(pageNumber);
   };
 
   const tableCellStyle = {
@@ -49,8 +49,8 @@ const ManagerTable = ({
         <thead>
           <tr style={{ background: '#E5E5E5', color: '#444' }}>
             <th style={tableCellStyle}>SN</th>
-            <th style={tableCellStyle}>Company Name</th>
-            <th style={tableCellStyle}>Address</th>
+            <th style={tableCellStyle}>First Name</th>
+            <th style={tableCellStyle}>Last Name</th>
             <th style={tableCellStyle}>Email</th>
             <th style={tableCellStyle}>Phone Number</th>
             <th style={tableCellStyle}></th>
