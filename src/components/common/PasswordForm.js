@@ -1,12 +1,85 @@
-import { useState } from "react";
-// import styled from "styled-components";
-import '../common/PasswordForm.css';
+import { useState, useEffect } from "react";
+import styled from "styled-components";
+import axios from "axios";
 
-const PasswordErrorMessage = () => {
-    return (
-        <p className="FieldError">Must be at least 8 characters</p>
-    );
-};
+const PasswordErrorMessage = styled.p`
+  position: absolute;
+  bottom: -6px;
+  color: red;
+  font-size: 12px;
+`;
+
+const PasswordFieldset = styled.fieldset`
+  display: flex;
+  width: 80%;
+  padding: 16px;
+  border: none;
+  border-radius: 4px;
+  flex-direction: column;
+  padding-bottom: 0%;
+  margin-left: 0% !important;
+  margin-right: auto !important;
+
+  @media only screen and (max-width: 1024px) {
+    label {
+      margin-bottom: 4px;
+      font-size: 10px;
+      text-align: left;
+    }
+  }
+`;
+
+const PasswordLabel = styled.label`
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-align: left;
+`;
+
+const PasswordInput = styled.input`
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  height: 42px;
+  padding: 0 8px;
+
+  &::placeholder {
+    font-size: 10px;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    height: 24px;
+  }
+`;
+
+const PasswordField = styled.div`
+  position: relative;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (max-width: 1024px) {
+    padding-bottom: 10px;
+  }
+`;
+
+const StyledButton = styled.button`
+  padding: 12px !important;
+  width: auto;
+  border-radius: 4px;
+  border: 1px solid #ccc !important;
+  background-color: #505f98;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:disabled,
+  &[disabled] {
+    border: 1px solid #999999;
+    background-color: #505f98;
+    color: white;
+    cursor: not-allowed;
+  }
+`;
 
 function PasswordForm() {
     const [currentPassword, setCurrentPassword] = useState({
@@ -22,6 +95,38 @@ function PasswordForm() {
         isTouched: false,
     });
 
+    const validateAuthToken = async () => {
+        try {
+            const authToken = localStorage.getItem('authToken');
+
+            if (!authToken) {
+                // Redirect or handle unauthenticated user as needed
+                return false;
+            }
+
+            const response = await axios.post('https://localhost:7075/api/Authentication/validate-token', {
+                token: authToken,
+            });
+
+            return response.status === 200;
+        } catch (error) {
+            console.error('Token validation error:', error);
+            return false;
+        }
+    };
+
+    useEffect(() => {
+        const validateToken = async () => {
+            const isValidToken = await validateAuthToken();
+
+            if (!isValidToken) {
+                console.log("Token is not valid. Redirecting to login page...");
+            }
+        };
+
+        validateToken();
+    }, []);
+    
     const getIsFormValid = () => {
         return (
             currentPassword.value.length >= 8 &&
@@ -47,19 +152,60 @@ function PasswordForm() {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        alert("Password changed successfully!");
-        clearForm();
+
+        if (!getIsFormValid()) {
+            return;
+        }
+
+        try {
+            const authToken = localStorage.getItem('authToken');
+
+            if (!(await validateAuthToken())) {
+                // Redirect or handle unauthenticated user as needed
+                return;
+            }
+
+            const response = await axios.post('https://localhost:7075/api/Authentication/update-password', {
+                currentPassword: currentPassword.value,
+                newPassword: newPassword.value,
+                confirmNewPassword: confirmNewPassword.value,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${authToken}`,
+                },
+            });
+
+            if (response.status === 200) {
+                alert("Password changed successfully!");
+                clearForm();
+            } else {
+                alert(`Error: ${response.data.message}`);
+                console.error("Error:", response.data);
+            }
+        } catch (error) {
+            if (error.response) {
+                console.error('Server Error:', error.response.status);
+                console.error('Error Message:', error.response.data.message);
+                alert(`Error: ${error.response.data.message}`);
+            } else if (error.request) {
+                console.error('No Response from Server');
+                alert('No response from the server. Please try again.');
+            } else {
+                console.error('Unexpected Error:', error.message);
+                alert('An unexpected error occurred while changing the password.');
+            }
+        }    
     };
 
     return (
         <div className="ChangePasswordForm">
             <form onSubmit={handleSubmit}>
-                <fieldset className="password-fieldset">
-                    <div className="password-field">
-                        <label>
+                <PasswordFieldset className="password-fieldset">
+                    <PasswordField className="password-field">
+                        <PasswordLabel>
                             Current Password
-                        </label>
-                        <input className="password-input"
+                        </PasswordLabel>
+                        <PasswordInput className="password-input"
                             value= {currentPassword.value}
                             type= "password"
                             onChange= {(e) => {
@@ -71,15 +217,17 @@ function PasswordForm() {
                             placeholder= "Current Password"
                         />
                         {currentPassword.isTouched && currentPassword.value.length < 8 ? (
-                            <PasswordErrorMessage />
+                            <PasswordErrorMessage>
+                                Must be at least 8 characters
+                            </PasswordErrorMessage>
                         ) : null}
-                    </div>
+                    </PasswordField>
 
-                    <div className="password-field">
-                        <label>
+                    <PasswordField className="password-field">
+                        <PasswordLabel>
                             New Password
-                        </label>
-                        <input
+                        </PasswordLabel>
+                        <PasswordInput
                             className="password-input"
                             value= {newPassword.value}
                             type= "password"
@@ -92,15 +240,17 @@ function PasswordForm() {
                             placeholder= "New password"
                         />
                         {newPassword.isTouched && newPassword.value.length < 8 ? (
-                            <PasswordErrorMessage />
+                            <PasswordErrorMessage>
+                                Must be at least 8 characters
+                            </PasswordErrorMessage>
                         ) : null}
-                    </div>
+                    </PasswordField>
 
-                    <div className="password-field">
-                        <label>
+                    <PasswordField className="password-field">
+                        <PasswordLabel>
                             Confirm New Password
-                        </label>
-                        <input
+                        </PasswordLabel>
+                        <PasswordInput
                             className="password-input"
                             value= {confirmNewPassword.value}
                             type= "password"
@@ -113,12 +263,14 @@ function PasswordForm() {
                             placeholder= "Confirm new password"
                         />
                         {confirmNewPassword.isTouched && confirmNewPassword.value.length < 8 ? (
-                            <PasswordErrorMessage />
+                            <PasswordErrorMessage>
+                                Must be at least 8 characters
+                            </PasswordErrorMessage>
                         ) : null}
-                    </div>
+                    </PasswordField>
 
-                    <button type="submit" disabled={!getIsFormValid()}>Update Password</button>
-                </fieldset>
+                    <StyledButton type="submit" disabled={!getIsFormValid()}>Update Password</StyledButton>
+                </PasswordFieldset>
             </form>
         </div>
     );
