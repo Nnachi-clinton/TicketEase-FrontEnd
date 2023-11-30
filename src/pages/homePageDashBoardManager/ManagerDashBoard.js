@@ -36,13 +36,10 @@ function ManagerDashBoard() {
     getUsers();
   }, [currentPage]);
 
-  const handleViewClick = (manager) => {
-    console.log('View clicked:', manager);
+  const handleViewClick = (users) => {
+    console.log('View clicked:', users);
   };
 
-  useEffect(() => {
-    getManagers();
-  }, [currentPage]);
   return (
     <section className="mothercard">
       <Frame />
@@ -54,7 +51,7 @@ function ManagerDashBoard() {
             <div className="container">
               <h2 className="text">Total Members</h2>
               <div className="inner-box">
-                <h1 className="text2">80</h1>
+              <h1 className="text2">{totalItems}</h1>
               </div>
 
               <div />
