@@ -17,18 +17,24 @@ function ManagerDashBoard() {
   const [totalItems, setTotalItems] = useState(0);
   const [step, setStep] = useState(0);
 
-  const getManagers = async () => {
+  const getUsers = async () => {
     try {
       const res = await AxiosInstance.get(
-        `/managers/GetAll?page=${currentPage}&perPage=${itemsPerPage}`
+       // `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem('mangerId')}&page=${currentPage}&perPage=${itemsPerPage}`
+        `/User/get-Users-By-ManagerId?managerId=6ba586e7-df76-490b-8216-8930991c68ab&page=${currentPage}&perPage=${itemsPerPage}`
       );
 
-      setManagers(res.data.result.data.data);
-      setTotalItems(res.data.result.data.totalCount);
+      console.log(res.data);
+      //const { data, totalCount } = res.data;
+      setUsers(res.data.data);
+      setTotalItems(res.data.totalCount);
     } catch (error) {
       console.log(error);
     }
   };
+  useEffect(() => {
+    getUsers();
+  }, [currentPage]);
 
   const handleViewClick = (manager) => {
     console.log('View clicked:', manager);
