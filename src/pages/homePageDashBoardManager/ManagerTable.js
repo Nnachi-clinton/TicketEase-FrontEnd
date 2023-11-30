@@ -58,18 +58,18 @@ const ManagerTable = ({
         </thead>
 
         <tbody>
-          {companies.map((company, index) => (
-            <tr key={company.id}>
+          {registeredUsers.map((user, index) => (
+            <tr key={user.id}>
               <td style={tableCellStyle}>
                 {(currentPage - 1) * itemsPerPage + index + 1}
               </td>
-              <td style={tableCellStyle}>{company.companyName}</td>
-              <td style={tableCellStyle}>{company.companyAddress}</td>
-              <td style={tableCellStyle}>{company.businessEmail}</td>
-              <td style={tableCellStyle}>{company.businessPhone}</td>
+              <td style={tableCellStyle}>{user.firstName}</td>
+              <td style={tableCellStyle}>{user.lastName}</td>
+              <td style={tableCellStyle}>{user.email}</td>
+              <td style={tableCellStyle}>{user.phoneNumber}</td>
               <td style={tableCellStyle}>
                 <button
-                  onClick={() => handleViewClick(company)}
+                  onClick={() => handleViewClick(user)}
                   style={viewButtonStyle}
                 >
                   View
