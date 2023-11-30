@@ -36,6 +36,7 @@ import CreateProject from './Projects/CreateProject';
 import CreateTicket from './TicketInputfield';
 import CreateNewTicket from './CreateNewTIcket';
 import PersonalInfo from './PersonalInfo.js';
+import ViewTickets from './tickets/ViewTickets.js';
 
 function App() {
   return (
@@ -88,6 +89,7 @@ function App() {
                   path="/createboard"
                   element={<CreateBoardEmptyManager />}
                 />
+                <Route path="/ViewTickets" element={<ViewTickets />} />
                 <Route path="/CreateProject" element={<CreateProject />} />
                 <Route path="/CreateTicket" element={<CreateTicket />} />
                 <Route path="/createNewTicket" element={<CreateNewTicket />} />
