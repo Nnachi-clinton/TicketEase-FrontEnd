@@ -201,8 +201,7 @@ const [alltickets, setTickets] = useState([]);
     const fetchTicket = async () =>{
       try{
       const response = await AxiosInstance.get('/Ticket/status-by-pagination/0?page=1&pageSize=2');
-      setTickets(response.data);
-      console.log(response.data);
+      setTickets(response.data.data);
       }
       catch(error){
         console.error('Error fetching tickets: ',error);
@@ -215,8 +214,8 @@ const [alltickets, setTickets] = useState([]);
     <Bod>
     <InProgressRoot>
       <InProgress1>Pending</InProgress1>
-        {alltickets.map((ticket)=>(
-          <TicketCard title={ticket.Title}  priority={ticket.Priority} />   
+        {alltickets.map((ticket, index)=>(          
+          <TicketCard reference={ticket.ticketReference} date={ticket.createdAt} description={ticket.description} key={index} title={ticket.title}  priority={ticket.Priority===0?'Low':ticket.Priority===1?'Medium':'High'} />   
         ))
         }        
     </InProgressRoot>

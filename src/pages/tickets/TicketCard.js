@@ -24,7 +24,7 @@ const AddMoreUser = styled.div`
   font-size: var(--font-size-xs);
   font-weight: 500;
   display: inline-block;
-  width: 250px;
+  width: 100%;
 `;
 const Tagmobile = styled.div`
   border-radius: var(--br-9xs);
@@ -38,7 +38,7 @@ const Tagmobile = styled.div`
 `;
 const Tagweb = styled.div`
   border-radius: var(--br-9xs);
-  background-color: var(--color-mediumblue);
+  background-color: #505F98;
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -217,7 +217,7 @@ const Header = styled.div`
 
 `;
 const TicketCard = (props) => {
-  const { title, priority } = props;
+  const { title, priority, description,date,reference } = props;
   const PriorityComponent =
     priority === "Low"
       ? Prioritylow
@@ -232,23 +232,20 @@ const TicketCard = (props) => {
           <PriorityComponent>
             <Low>{priority}</Low>
           </PriorityComponent>
-          <Title>Introduction</Title>
+          <Title>{title}</Title>
         </Header>
 
-        <AddMoreUser>{title}</AddMoreUser>
+        <AddMoreUser>{description}</AddMoreUser>
         <TagmobileParent>
-          <Tagmobile>
-            <Medium>Mobile</Medium>
-          </Tagmobile>
+          
           <Tagweb>
-            <Medium>Web</Medium>
+            <Medium>{reference}</Medium>
           </Tagweb>
         </TagmobileParent>
         
         <div style={{display:'flex', justifyContent:'space-between', width:'100%'}}>
-          <Mar32020>Mar 3, 2020</Mar32020>
+          <Mar32020>{date}</Mar32020>
            <Useruser01Parent>
-          <Useruser01Icon alt="" src="useruser-01.svg" />
           <Useruser01Icon alt="" src="useruser-2.svg" />
         </Useruser01Parent>
         </div>

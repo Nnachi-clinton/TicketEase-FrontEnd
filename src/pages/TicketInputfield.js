@@ -98,6 +98,13 @@ const Button = styled.button`
 `;
 
 function CreateTicket() {
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+  }
+
+
   return (
     <Fulldiv>
       <Container>
@@ -114,27 +121,27 @@ function CreateTicket() {
 
       <Innerdiv>
         <FormSpace>
-          <StyledForm>
+          <StyledForm onSubmit={handleSubmit}>
             <h1 style={{ textAlign: 'left', gap: '5px' }}>
               Work Collaboratively with <br />
               team members.{' '}
               <span style={{ color: '#505f98' }}> Create a Ticket</span>{' '}
             </h1>
             <StyledLabel>Title:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
+            <StyledInput type="text" name="title" required placeholder="" />
             <StyledLabel>Description:</StyledLabel>
-            <StyledInput type="text" placeholder="Cc" />
+            <StyledInput type="text" name='description' required placeholder="Cc" />
             <StyledLabel>Priority:</StyledLabel>
-            <StyledSelect>
-              <option value="high">Choose a Priority</option>
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
+            <StyledSelect required name="priority">
+              <option value="">Choose a Priority</option>
+              <option value="2">High</option>
+              <option value="1">Medium</option>
+              <option value="0">Low</option>
             </StyledSelect>
             <StyledLabel>Assigned To:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
+            <StyledInput type="text" name='assignedto' placeholder="" />
             <StyledLabel>Project Id:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
+            <StyledInput required name='projectid' type="text" placeholder="" />
             {/* Other form fields */}
             <StyledButton type="submit">Create a New Ticket</StyledButton>
           </StyledForm>

@@ -23,7 +23,6 @@ const StatusColumns = () => {
       <Column> <PendingColumn/></Column>
       <Column> <IncompleteColumn/></Column>
       <Column><CompletedColumn/></Column>
-      
   </Container>
   );
 };

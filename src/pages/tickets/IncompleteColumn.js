@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import TicketCard from "./TicketCard";
+import { useEffect, useState } from "react";
+import AxiosInstance from "../../Request/AxiosInstance";
 
 const InProgress1 = styled.div`
   position: relative;
@@ -189,11 +191,29 @@ const Bod = styled.div`
 `
 
 const Incomplete = () => {
+  const [alltickets, setTickets] = useState([]);
+
+  useEffect(() => {
+    
+    const fetchTicket = async () =>{
+      try{
+      const response = await AxiosInstance.get('/Ticket/status-by-pagination/1?page=1&pageSize=2');
+      setTickets(response.data.data);
+      }
+      catch(error){
+        console.error('Error fetching tickets: ',error);
+      }
+    };
+    fetchTicket();
+  },[]);
   return (
     <Bod>
     <InProgressRoot>
       <InProgress1>Incomplete</InProgress1>
-      <TicketCard/>          
+      {alltickets.map((ticket, index)=>(          
+          <TicketCard reference={ticket.ticketReference} date={ticket.createdAt} description={ticket.description} key={index} title={ticket.title}  priority={ticket.Priority===0?'Low':ticket.Priority===1?'Medium':'High'} />   
+        ))
+        }           
     </InProgressRoot>
     </Bod>
   );
