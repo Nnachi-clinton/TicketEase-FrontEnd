@@ -4,7 +4,9 @@ import axios from "axios";
 
 const Fieldset = styled.fieldset`
     border: none;
-    width: 80%;
+    width: 100%;
+    padding-left: 8px;
+    margin-top: 36px;
 `;
 const Field = styled.div`
     position: relative;
@@ -12,20 +14,23 @@ const Field = styled.div`
     display: flex;
     flex-direction: column; 
 `;
+const Label = styled.label`
+    margin-bottom: 8px;
+`
 const Holder = styled.input`
     border: 1px solid #ccc;
-    height: 36px;
+    height: 48px;
     border-radius: 4px;
+    width: 89%;
 `;
 
 const ResetButton = styled.button`
-    padding: 12px;
-    width: 100%;
+    padding: 18px;
+    width: 90%;
     border-radius: 4px;
     border: 1px solid #ccc;
     background-color: #505F98;
     color: white;
-    // text-transform: lowercase;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
@@ -72,9 +77,9 @@ function ForgotPasswordForm() {
           <form onSubmit={handleSubmit}>
                 <Fieldset>
                  <Field>
-                        <label>
+                        <Label>
                             Email
-                        </label>
+                        </Label>
                         <Holder
                             value= {email}
                             type= "email"
