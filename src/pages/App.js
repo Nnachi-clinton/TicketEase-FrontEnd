@@ -36,6 +36,7 @@ import CreateProject from './Projects/CreateProject';
 import CreateTicket from './TicketInputfield';
 import CreateNewTicket from './CreateNewTIcket';
 import PersonalInfo from './PersonalInfo';
+import ManagerView from '../components/ManagerView/managerView'
 
 function App() {
   return (
@@ -92,6 +93,7 @@ function App() {
                 <Route path="/CreateTicket" element={<CreateTicket />} />
                 <Route path="/createNewTicket" element={<CreateNewTicket />} />
                 <Route path="/PersonalInfo" element={<PersonalInfo />} />
+                <Route path="/ManagerView" element={<ManagerView />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
