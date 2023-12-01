@@ -34,7 +34,8 @@ import CreateBoardEmptyManager from './CreateBoardEmptyManager';
 import TableData from './companyInfoTable/TableData';
 import CreateProject from './Projects/CreateProject';
 import CreateTicket from './TicketInputfield';
-import CreateNewTicket from './CreateNewTIcket';
+import CreateNewTicket from './CreateNewTicket';
+import TicketInputfield from '../pages/TicketInputfield';
 import PersonalInfo from './PersonalInfo.js';
 import EmailSent from '../components/checkEmail/EmailSent.js';
 import BoardMain from './BoardPage/BoardMain';
@@ -95,6 +96,7 @@ function App() {
                 <Route path="/CreateProject" element={<CreateProject />} />
                 <Route path="/CreateTicket" element={<CreateTicket />} />
                 <Route path="/createNewTicket" element={<CreateNewTicket />} />
+                <Route path="/ticketInputField" element={<TicketInputfield/>}/>
                 <Route path="/PersonalInfo" element={<PersonalInfo />} />
                 <Route path="/ManagerView" element={<ManagerView />} />
                 <Route path="/BoardMain" element={<BoardMain />} />
