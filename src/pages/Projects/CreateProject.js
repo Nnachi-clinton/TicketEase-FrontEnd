@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
 
 const Fulldiv = styled.div`
   overflow: hidden;
@@ -51,6 +52,8 @@ export const StyledButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 17em;
+  height: 40px !important;
+  background: #505f98;
 `;
 
 export const StyledAlert = styled.div`
@@ -70,15 +73,23 @@ const CreateProject = ({ boardId }) => {
     e.preventDefault();
 
     if (!title || !description) {
-      // Handle validation error, display a message, or prevent submission
+      Swal.fire({
+        icon: 'error',
+        title: 'Empty input',
+        text: 'Please fill input',
+        confirmButtonText: 'OK',
+      });
       return;
     }
 
     // Check if the project with the same title already exists
     if (existingProjects.some((project) => project.title === title)) {
-      alert(
-        'Project with the same title already exists. Please choose a different title.'
-      );
+      Swal.fire({
+        icon: 'error',
+        title: 'Error creating project',
+        text: 'Project with the same title already exists. Please choose a different title.',
+        confirmButtonText: 'OK',
+      });
       return;
     }
 
@@ -106,19 +117,35 @@ const CreateProject = ({ boardId }) => {
       if (response.ok) {
         // Update the list of existing projects with the new project
         setExistingProjects([...existingProjects, { title, description }]);
-        console.log('Project created successfully');
-        alert('Project created successfully');
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Project created successfully!',
+          showConfirmButton: false,
+          timer: 1500, // Automatically close after 1.5 seconds
+          position: 'top-end',
+        });
 
         // Clear the input fields
         setTitle('');
         setDescription('');
       } else {
-        console.error('Error creating project');
-        alert('Error creating project');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error creating project',
+          text: 'There was an error while creating the project.',
+          confirmButtonText: 'OK',
+        });
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('Error: ' + error.message);
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An unexpected error occurred: ' + error.message,
+        confirmButtonText: 'OK',
+      });
     }
   };
 

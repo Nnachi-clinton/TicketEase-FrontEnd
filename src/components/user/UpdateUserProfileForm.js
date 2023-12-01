@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import Input from '../common/Input';
 import styled from 'styled-components';
 import '../../components/user/UserProfileForm.css';
+import Swal from 'sweetalert2';
 
 function UpdateUserProfileForm() {
   // State for managing form values
@@ -78,7 +79,13 @@ function UpdateUserProfileForm() {
     // If there are no errors, proceed with updating the user profile
     if (Object.keys(errors).length === 0) {
       // Replace the alert with your actual logic for updating the user profile
-      alert('Update User Profile Logic');
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Update User Profile Logic',
+        text: 'Please Update User Profile Logic',
+        confirmButtonText: 'OK',
+      });
     }
   };
 
@@ -202,10 +209,7 @@ function UpdateUserProfileForm() {
           </Value>
         </div>
 
-        
         <StyledButton onClick={handleSubmit}>Submit</StyledButton>
-        
-
       </FormField>
     </Form>
   );

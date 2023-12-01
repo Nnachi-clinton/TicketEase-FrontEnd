@@ -10,18 +10,18 @@ const Wrapper = styled.div`
 
 const Logo = styled.img`
   margin-top: 5%;
-  padding-left: 32px;
+  padding-left: 42px;
   @media screen and (max-width: 1024px) {
     max-width: 80%;
   }
 `;
 
-const Heading = styled.h4`
-  margin-top: 20px;
+const Heading = styled.h3`
+  margin-top: 38px;
   color: #21334f;
   padding-left: 48px;
-  margin-bottom: 0px;
-  // margin-left: 35px;
+  margin-bottom: 8px;
+  margin-left: 18px;
   @media screen and (max-width: 1024px) {
     font-size: 20px;
     margin-bottom: 0;
