@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const PasswordErrorMessage = styled.p`
   position: absolute;
@@ -82,198 +83,253 @@ const StyledButton = styled.button`
 `;
 
 function PasswordForm() {
-    const [currentPassword, setCurrentPassword] = useState({
-        value: "",
-        isTouched: false,
-    });
-    const [newPassword, setNewPassword] = useState({
-        value: "",
-        isTouched: false,
-    });
-    const [confirmNewPassword, setConfirmNewPassword] = useState({
-        value: "",
-        isTouched: false,
-    });
+  const [currentPassword, setCurrentPassword] = useState({
+    value: '',
+    isTouched: false,
+  });
+  const [newPassword, setNewPassword] = useState({
+    value: '',
+    isTouched: false,
+  });
+  const [confirmNewPassword, setConfirmNewPassword] = useState({
+    value: '',
+    isTouched: false,
+  });
 
-    const validateAuthToken = async () => {
-        try {
-            const authToken = localStorage.getItem('authToken');
+  const validateAuthToken = async () => {
+    try {
+      const authToken = localStorage.getItem('authToken');
 
-            if (!authToken) {
-                // Redirect or handle unauthenticated user as needed
-                return false;
-            }
+      if (!authToken) {
+        // Redirect or handle unauthenticated user as needed
+        return false;
+      }
 
-            const response = await axios.post('https://localhost:7075/api/Authentication/validate-token', {
-                token: authToken,
-            });
-
-            return response.status === 200;
-        } catch (error) {
-            console.error('Token validation error:', error);
-            return false;
+      const response = await axios.post(
+        'https://localhost:7075/api/Authentication/validate-token',
+        {
+          token: authToken,
         }
-    };
+      );
 
-    useEffect(() => {
-        const validateToken = async () => {
-            const isValidToken = await validateAuthToken();
+      return response.status === 200;
+    } catch (error) {
+      console.error('Token validation error:', error);
 
-            if (!isValidToken) {
-                console.log("Token is not valid. Redirecting to login page...");
-            }
-        };
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An unexpected error occurred: ' + error.message,
+        confirmButtonText: 'OK',
+      });
+      return false;
+    }
+  };
 
-        validateToken();
-    }, []);
-    
-    const getIsFormValid = () => {
-        return (
-            currentPassword.value.length >= 8 &&
-            newPassword.value.length >= 8 &&
-            confirmNewPassword.value.length >= 8
-        );
-    };
+  useEffect(() => {
+    const validateToken = async () => {
+      const isValidToken = await validateAuthToken();
 
-    const clearForm = () => {
-        setCurrentPassword({
-            value: "",
-            isTouched: false,
+      if (!isValidToken) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error Invalid Token',
+          text: 'Token is not valid. Redirecting to login page...',
+          confirmButtonText: 'OK',
         });
-        setNewPassword({
-            value: "",
-            isTouched: false,
-        });
-        setConfirmNewPassword({
-            value: "",
-            isTouched: false,
-        });
-    };
-    
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        if (!getIsFormValid()) {
-            return;
-        }
-
-        try {
-            const authToken = localStorage.getItem('authToken');
-
-            if (!(await validateAuthToken())) {
-                // Redirect or handle unauthenticated user as needed
-                return;
-            }
-
-            const response = await axios.post('https://localhost:7075/api/Authentication/update-password', {
-                currentPassword: currentPassword.value,
-                newPassword: newPassword.value,
-                confirmNewPassword: confirmNewPassword.value,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${authToken}`,
-                },
-            });
-
-            if (response.status === 200) {
-                alert("Password changed successfully!");
-                clearForm();
-            } else {
-                alert(`Error: ${response.data.message}`);
-                console.error("Error:", response.data);
-            }
-        } catch (error) {
-            if (error.response) {
-                console.error('Server Error:', error.response.status);
-                console.error('Error Message:', error.response.data.message);
-                alert(`Error: ${error.response.data.message}`);
-            } else if (error.request) {
-                console.error('No Response from Server');
-                alert('No response from the server. Please try again.');
-            } else {
-                console.error('Unexpected Error:', error.message);
-                alert('An unexpected error occurred while changing the password.');
-            }
-        }    
+      }
     };
 
+    validateToken();
+  }, []);
+
+  const getIsFormValid = () => {
     return (
-        <div className="ChangePasswordForm">
-            <form onSubmit={handleSubmit}>
-                <PasswordFieldset className="password-fieldset">
-                    <PasswordField className="password-field">
-                        <PasswordLabel>
-                            Current Password
-                        </PasswordLabel>
-                        <PasswordInput className="password-input"
-                            value= {currentPassword.value}
-                            type= "password"
-                            onChange= {(e) => {
-                                setCurrentPassword({...currentPassword, value: e.target.value});
-                            }}
-                            onBlur= {() => {
-                                setCurrentPassword({...currentPassword, isTouched: true});
-                            }}
-                            placeholder= "Current Password"
-                        />
-                        {currentPassword.isTouched && currentPassword.value.length < 8 ? (
-                            <PasswordErrorMessage>
-                                Must be at least 8 characters
-                            </PasswordErrorMessage>
-                        ) : null}
-                    </PasswordField>
-
-                    <PasswordField className="password-field">
-                        <PasswordLabel>
-                            New Password
-                        </PasswordLabel>
-                        <PasswordInput
-                            className="password-input"
-                            value= {newPassword.value}
-                            type= "password"
-                            onChange= {(e) => {
-                                setNewPassword({...newPassword, value: e.target.value});
-                            }}
-                            onBlur= {() => {
-                                setNewPassword({...newPassword, isTouched: true});
-                            }}
-                            placeholder= "New password"
-                        />
-                        {newPassword.isTouched && newPassword.value.length < 8 ? (
-                            <PasswordErrorMessage>
-                                Must be at least 8 characters
-                            </PasswordErrorMessage>
-                        ) : null}
-                    </PasswordField>
-
-                    <PasswordField className="password-field">
-                        <PasswordLabel>
-                            Confirm New Password
-                        </PasswordLabel>
-                        <PasswordInput
-                            className="password-input"
-                            value= {confirmNewPassword.value}
-                            type= "password"
-                            onChange= {(e) => {
-                                setConfirmNewPassword({...confirmNewPassword, value: e.target.value});
-                            }}
-                            onBlur= {() => {
-                                setConfirmNewPassword({...confirmNewPassword, isTouched: true});
-                            }}
-                            placeholder= "Confirm new password"
-                        />
-                        {confirmNewPassword.isTouched && confirmNewPassword.value.length < 8 ? (
-                            <PasswordErrorMessage>
-                                Must be at least 8 characters
-                            </PasswordErrorMessage>
-                        ) : null}
-                    </PasswordField>
-
-                    <StyledButton type="submit" disabled={!getIsFormValid()}>Update Password</StyledButton>
-                </PasswordFieldset>
-            </form>
-        </div>
+      currentPassword.value.length >= 8 &&
+      newPassword.value.length >= 8 &&
+      confirmNewPassword.value.length >= 8
     );
+  };
+
+  const clearForm = () => {
+    setCurrentPassword({
+      value: '',
+      isTouched: false,
+    });
+    setNewPassword({
+      value: '',
+      isTouched: false,
+    });
+    setConfirmNewPassword({
+      value: '',
+      isTouched: false,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!getIsFormValid()) {
+      return;
+    }
+
+    try {
+      const authToken = localStorage.getItem('authToken');
+
+      if (!(await validateAuthToken())) {
+        // Redirect or handle unauthenticated user as needed
+        return;
+      }
+
+      const response = await axios.post(
+        'https://localhost:7075/api/Authentication/update-password',
+        {
+          currentPassword: currentPassword.value,
+          newPassword: newPassword.value,
+          confirmNewPassword: confirmNewPassword.value,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Password changed successfully!',
+          showConfirmButton: false,
+          timer: 1500, // Automatically close after 1.5 seconds
+          position: 'top-end',
+        });
+        clearForm();
+      } else {
+        console.error('Error:', response.data);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: `Error: ${response.data.message}`,
+          confirmButtonText: 'OK',
+        });
+      }
+    } catch (error) {
+      if (error.response) {
+        console.error('Server Error:', error.response.status);
+        console.error('Error Message:', error.response.data.message);
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'An unexpected error occurred: ' + error.message,
+          confirmButtonText: 'OK',
+        });
+      } else if (error.request) {
+        console.error('No Response from Server');
+
+        Swal.fire({
+          icon: 'error',
+          title: 'No Response from Server',
+          text: 'No response from the server. Please try again.',
+          confirmButtonText: 'OK',
+        });
+      } else {
+        console.error('Unexpected Error:', error.message);
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Error changing password',
+          text: 'An unexpected error occurred while changing the password.',
+          confirmButtonText: 'OK',
+        });
+      }
+    }
+  };
+
+  return (
+    <div className="ChangePasswordForm">
+      <form onSubmit={handleSubmit}>
+        <PasswordFieldset className="password-fieldset">
+          <PasswordField className="password-field">
+            <PasswordLabel>Current Password</PasswordLabel>
+            <PasswordInput
+              className="password-input"
+              value={currentPassword.value}
+              type="password"
+              onChange={(e) => {
+                setCurrentPassword({
+                  ...currentPassword,
+                  value: e.target.value,
+                });
+              }}
+              onBlur={() => {
+                setCurrentPassword({ ...currentPassword, isTouched: true });
+              }}
+              placeholder="Current Password"
+            />
+            {currentPassword.isTouched && currentPassword.value.length < 8 ? (
+              <PasswordErrorMessage>
+                Must be at least 8 characters
+              </PasswordErrorMessage>
+            ) : null}
+          </PasswordField>
+
+          <PasswordField className="password-field">
+            <PasswordLabel>New Password</PasswordLabel>
+            <PasswordInput
+              className="password-input"
+              value={newPassword.value}
+              type="password"
+              onChange={(e) => {
+                setNewPassword({ ...newPassword, value: e.target.value });
+              }}
+              onBlur={() => {
+                setNewPassword({ ...newPassword, isTouched: true });
+              }}
+              placeholder="New password"
+            />
+            {newPassword.isTouched && newPassword.value.length < 8 ? (
+              <PasswordErrorMessage>
+                Must be at least 8 characters
+              </PasswordErrorMessage>
+            ) : null}
+          </PasswordField>
+
+          <PasswordField className="password-field">
+            <PasswordLabel>Confirm New Password</PasswordLabel>
+            <PasswordInput
+              className="password-input"
+              value={confirmNewPassword.value}
+              type="password"
+              onChange={(e) => {
+                setConfirmNewPassword({
+                  ...confirmNewPassword,
+                  value: e.target.value,
+                });
+              }}
+              onBlur={() => {
+                setConfirmNewPassword({
+                  ...confirmNewPassword,
+                  isTouched: true,
+                });
+              }}
+              placeholder="Confirm new password"
+            />
+            {confirmNewPassword.isTouched &&
+            confirmNewPassword.value.length < 8 ? (
+              <PasswordErrorMessage>
+                Must be at least 8 characters
+              </PasswordErrorMessage>
+            ) : null}
+          </PasswordField>
+
+          <StyledButton type="submit" disabled={!getIsFormValid()}>
+            Update Password
+          </StyledButton>
+        </PasswordFieldset>
+      </form>
+    </div>
+  );
 }
 
 export default PasswordForm;
