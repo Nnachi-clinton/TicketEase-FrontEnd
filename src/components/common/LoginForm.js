@@ -5,11 +5,13 @@ import styled from 'styled-components';
 import { validateEmail } from '../../utils/validateEmail';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Fieldset = styled.fieldset`
   border: none;
   width: 80%;
 `;
+
 const PasswordErrorMessage = () => {
   return (
     <p className="FieldError">
@@ -57,23 +59,52 @@ function LoginForm() {
         localStorage.setItem('authToken', token);
         navigate('/ManagerDashBoard');
 
-        alert('Login successful!');
+        Swal.fire({
+          icon: 'success',
+          title: 'Login successful!',
+          showConfirmButton: false,
+          timer: 1500, // Automatically close after 1.5 seconds
+          position: 'top-end',
+        });
         clearForm();
       } else {
-        alert(`Error: ${response.data.message}`);
         console.error('Error:', response.data);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: `Error: ${response.data.message}`,
+          confirmButtonText: 'OK',
+        });
       }
     } catch (error) {
       if (error.response) {
         console.error('Server Error:', error.response.status);
         console.error('Error Message:', error.response.data.message);
-        alert(`Error: ${error.response.data.message}`);
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'An unexpected error occurred: ' + error.message,
+          confirmButtonText: 'OK',
+        });
       } else if (error.request) {
         console.error('No Response from Server');
-        alert('No response from the server. Please try again.');
+
+        Swal.fire({
+          icon: 'error',
+          title: 'No Response from Server',
+          text: 'No response from the server. Please try again.',
+          confirmButtonText: 'OK',
+        });
       } else {
         console.error('Unexpected Error:', error.message);
-        alert('An unexpected error occurred during login.');
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Error during login.',
+          text: 'An unexpected error occurred during login.',
+          confirmButtonText: 'OK',
+        });
       }
     }
   };
@@ -91,7 +122,7 @@ function LoginForm() {
               email && !validateEmail(email) ? <EmailErrorMessage /> : ''
             }
             style={{
-              height: '16px',
+              height: '26px',
               width: '90%',
               background: 'white',
             }}
@@ -105,7 +136,7 @@ function LoginForm() {
               password && password.length < 8 ? <PasswordErrorMessage /> : ''
             }
             style={{
-              height: '16px',
+              height: '26px',
               width: '90%',
               background: 'white',
             }}
@@ -125,8 +156,8 @@ function LoginForm() {
           <Button
             style={{
               background: '#505F98',
-              height: '40px',
-              width: '100%',
+              height: '48px',
+              width: '98%',
             }}
             type="submit"
             disabled={!getIsFormValid()}
