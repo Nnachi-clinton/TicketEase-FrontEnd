@@ -35,7 +35,8 @@ import TableData from './companyInfoTable/TableData';
 import CreateProject from './Projects/CreateProject';
 import CreateTicket from './TicketInputfield';
 import CreateNewTicket from './CreateNewTIcket';
-import PersonalInfo from './PersonalInfo';
+import PersonalInfo from './PersonalInfo.js';
+import EmailSent from '../components/checkEmail/EmailSent.js';
 import BoardMain from './BoardPage/BoardMain';
 import MemberProfile from './MemberProfile.js';
 
@@ -96,6 +97,7 @@ function App() {
                 <Route path="/PersonalInfo" element={<PersonalInfo />} />
                 <Route path="/BoardMain" element={<BoardMain />} />
                 <Route path="/MemberProfile" element={<MemberProfile />} />
+                <Route path="/EmailSent" element={<EmailSent />} />
               </Routes>
             </AuthState>
           </GlobalProvider>
