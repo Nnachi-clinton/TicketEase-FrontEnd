@@ -36,6 +36,7 @@ import CreateProject from './Projects/CreateProject';
 import CreateTicket from './TicketInputfield';
 import CreateNewTicket from './CreateNewTIcket';
 import PersonalInfo from './PersonalInfo.js';
+import EmailSent from '../components/checkEmail/EmailSent.js';
 
 function App() {
   return (
@@ -92,6 +93,7 @@ function App() {
                 <Route path="/CreateTicket" element={<CreateTicket />} />
                 <Route path="/createNewTicket" element={<CreateNewTicket />} />
                 <Route path="/PersonalInfo" element={<PersonalInfo />} />
+                <Route path='/EmailSent' element = {<EmailSent/>}/>
               </Routes>
             </AuthState>
           </GlobalProvider>
