@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AxiosInstance from '../../Request/AxiosInstance';
+import managerView from './managerView.svg'
 
 const Container = styled.div`
   display: flex;
@@ -10,6 +11,22 @@ const Container = styled.div`
   font-family: Arial, sans-serif;
   padding-bottom: 30px
   align-items: flex-start;
+  border: 2px solid blue;
+  max-width: 600px; 
+  margin: 0 auto;
+  background-color: white;
+  position: relative; 
+  margin-top: 30px;
+
+  /* Adding a blue strip at the top */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px; /* Width of the blue strip */
+    height: 100%;
+    background-color: #505F98;
 `;
 
 const ProfileImage = styled.img`
@@ -19,66 +36,77 @@ const ProfileImage = styled.img`
   object-fit: cover;
   margin-bottom: 20px;
 `;
-const EmptyProfileImage = styled.div`
+const EmptyProfileImage = styled.img`
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: lightgray;
+  // background-color: lightgray;
   margin-bottom: 20px;
+  object-fit: cover;
 `;
 
 const InfoItem = styled.div`
   margin-bottom: 10px;
   padding-bottom: 40px;
   text-align: left;
+  
 `;
-
 
 function App() {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const fetchManagerDetails = async () => {
-      try {
-        const res = await AxiosInstance.get(
-          '/managers/GetbyId?id=242e5eee-bea2-4c77-8c26-d5920c1cb039'
-        );
-        console.log('Fetched manager details:', res.data);
-        // const managerDetails = res.data;
-      } catch (error) {
-        console.error('Error fetching manager details:', error.message);
-      }
+  const fetchManagerDetails = async () => {
+    try {
+      const res = await AxiosInstance.get(
+        '/managers/GetbyId?id=242e5eee-bea2-4c77-8c26-d5920c1cb039'
+      );
+      console.log(res.data)
+      setUser(res.data.data);
+    } catch (error) {
+      console.error('Error fetching manager details:', error); // Log the entire error object
     }
-    // fetch('https://localhost:7075/api/managers/GetById?id=242e5eee-bea2-4c77-8c26-d5920c1cb039')
-    // .then(response => response.json())
-    // .then(data => setUser(data))
-    // .catch(error => console.error('Error fetching user data:', error));
+  };
+
+  useEffect(() => {
     fetchManagerDetails();
   }, []);
 
+
+
   return (
     <Container>
-     {user && (
+      {user && (
         <>
-          {user.profileImage ? (
-            <ProfileImage src={user.profileImage} alt="Profile" />
+          {user.imgUrl ? (
+            <ProfileImage src={user.imgUrl} alt="Profile" />
           ) : (
-            <EmptyProfileImage />
+            <EmptyProfileImage  src={managerView} alt='profile'/>
           )}
-      
-      <InfoItem><strong>Company Name:</strong> {user.name}</InfoItem>
-      <InfoItem><strong>Business Number:</strong> {user.phoneNumber}</InfoItem>
-      <InfoItem><strong>Business Email:</strong> {user.email}</InfoItem>
-      <InfoItem><strong>company Address:</strong> {user.address}</InfoItem>
-      <InfoItem><strong>Company Description:</strong> {user.description}</InfoItem>
-      
-    </>
-    )}
-    </Container>
+          
+          <InfoItem>
+            <strong >Company Name:</strong> {user.companyName? user.companyName: "nill"}
+          </InfoItem>
+          <InfoItem>
+            <strong>Business Number:</strong>{' '}
+            {user.businessPhone ? user.businessPhone : 'nill'}
+          </InfoItem>
+          <InfoItem>
+            <strong>Business Email:</strong>{' '}
+            {user.businessEmail ? user.businessEmail : 'nill'}
+          </InfoItem>
+          <InfoItem>
+            <strong>Company Address:</strong> {user.companyAddress? user.companyAddress :"nill"}
+          </InfoItem>
+          <InfoItem>
+            <strong>Company Description:</strong> {user.companyDescription ? user.companyDescription : "nill"}
+          </InfoItem>
+          <InfoItem>
+            <strong>State:</strong> {user.state ? user.state : "nill"}
+          </InfoItem>
+        </>
+      )}
+    </Container> 
   );
 }
 
-
 export default App;
-
-                 
