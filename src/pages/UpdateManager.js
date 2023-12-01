@@ -29,7 +29,7 @@ function App() {
         <div>
           <InnerDiv>
             <div>
-              
+              <CameraIcon />
               {/* <LineThrough /> */}
               <Inputs />
             </div>

@@ -26,26 +26,6 @@ border-bottom: 1px solid rgba(229, 229, 229, 1);
 padding-bottom: 25px;
 `;
 
-// const CameraIcon = () => {
-//   return (
-//     <>
-//       <Main>
-//         <div>
-//           <div>
-//             <img src={camera} alt="Uplaod Icon"></img>
-//           </div>
-//           <Text1>
-//             <p>Upload Organization Logo</p>
-//           </Text1>
-//           <Text2>
-//             <p>Image should not be more than 1mb</p>
-//           </Text2>
-//         </div>
-//       </Main>
-//     </>
-//   );
-// };
-
 const CameraIcon = () => {
   return (
     <Main>
@@ -56,7 +36,7 @@ const CameraIcon = () => {
             accept="image/*"
             style={{ display: 'none' }}
             id="logoInput"
-            name='logoInput'
+            name="logoInput"
           />
           <label htmlFor="logoInput">
             <img src={camera} alt="Upload Icon" style={{ cursor: 'pointer' }} />

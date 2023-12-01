@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import AxiosInstance from '../Request/AxiosInstance';
 import edit from '../../src/assets/edit.svg';
-import CameraIcon from './Camera';
-
 
 const Form = styled.form`
   max-width: 300px;
@@ -68,7 +66,7 @@ const SubmitButton = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 413px;
+  width: 390px;
   height: 48px;
   margin-top: 58px;
   margin-bottom: 94px;
@@ -129,12 +127,12 @@ const Inputs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       console.log('Form Data:', formData);
+  
       // Make a PUT request to the UpdateManager endpoint
       const response = await AxiosInstance.put(
-        // '/managers/updateManager/${managerId}'
         '/managers/updateManager/a7dea8d4-a391-4da8-87f5-f8e387def404',
         formData,
         {
@@ -143,14 +141,14 @@ const Inputs = () => {
           },
         }
       );
-
+  
       console.log('API response:', response.data);
-
+  
       // Check if the request was successful
-      if (response.data.success) {
+      if (response.status===200) {
         // Add any success handling logic here
         console.log('Manager updated successfully:', response.data.message);
-
+  
         // Clear the form
         setFormData({
           CompanyName: '',
@@ -173,7 +171,6 @@ const Inputs = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <CameraIcon />
       <FormGroup>
         <Label htmlFor="CompanyName">Company Name</Label>
         <Input
