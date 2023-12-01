@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import AxiosInstance from '../Request/AxiosInstance';
 import edit from '../../src/assets/edit.svg';
+import Swal from 'sweetalert2';
 
 const Form = styled.form`
   max-width: 300px;
@@ -127,10 +128,10 @@ const Inputs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       console.log('Form Data:', formData);
-  
+
       // Make a PUT request to the UpdateManager endpoint
       const response = await AxiosInstance.put(
         '/managers/updateManager/a7dea8d4-a391-4da8-87f5-f8e387def404',
@@ -141,14 +142,18 @@ const Inputs = () => {
           },
         }
       );
-  
+
       console.log('API response:', response.data);
-  
+
       // Check if the request was successful
-      if (response.status===200) {
-        // Add any success handling logic here
-        console.log('Manager updated successfully:', response.data.message);
-  
+      if (response.status === 200) {
+        // Show success alert
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Manager updated successfully!',
+        });
+
         // Clear the form
         setFormData({
           CompanyName: '',
@@ -160,11 +165,27 @@ const Inputs = () => {
       } else {
         // Handle unsuccessful update
         setErrors(response.data.message);
+
+        // Show error alert
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: response.data.message || 'Failed to update manager.',
+        });
+
         console.error('Failed to update manager:', response.data.message);
       }
     } catch (error) {
       // Handle the error from the API request
       setErrors('Error updating manager. Please try again.');
+
+      // Show error alert
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Error updating manager. Please try again.',
+      });
+
       console.error('Error updating manager:', error.message);
     }
   };
