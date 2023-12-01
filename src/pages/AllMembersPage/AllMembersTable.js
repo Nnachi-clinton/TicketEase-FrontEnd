@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const ManagerTable = ({
-  registeredUsers,
+const AllMembersTable = ({
+  data,
   currentPage,
   itemsPerPage,
   handleViewClick,
   totalItems,
   setCurrentPage,
-  getUsers,
+  getMembers,
 }) => {
   const changePage = (direction) => {
     if (direction === 'prev' && currentPage > 1) {
@@ -23,12 +23,13 @@ const ManagerTable = ({
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     handleViewClick(pageNumber);
-    getUsers(pageNumber);
+    getMembers(pageNumber);
   };
 
   const tableCellStyle = {
     border: '1px solid #ddd',
     padding: '8px',
+    // background: '#FFFFFF'
   };
 
   const paginationButtonStyle = {
@@ -44,10 +45,10 @@ const ManagerTable = ({
     <div>
       {/* Table content */}
       <table
-        style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}
+        style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px', background: '#FFF'}}
       >
         <thead>
-          <tr style={{ background: '#E5E5E5', color: '#444' }}>
+          <tr style={{ background: '#FAFAFA', color: '#444' }}>
             <th style={tableCellStyle}>SN</th>
             <th style={tableCellStyle}>First Name</th>
             <th style={tableCellStyle}>Last Name</th>
@@ -58,21 +59,22 @@ const ManagerTable = ({
         </thead>
 
         <tbody>
-          {registeredUsers.map((user, index) => (
-            <tr key={user.id}>
+        {console.log('Data:', data)}
+        {data && data.map((item, index) => (
+            <tr key={item.id}>
               <td style={tableCellStyle}>
                 {(currentPage - 1) * itemsPerPage + index + 1}
               </td>
-              <td style={tableCellStyle}>{user.firstName}</td>
-              <td style={tableCellStyle}>{user.lastName}</td>
-              <td style={tableCellStyle}>{user.email}</td>
-              <td style={tableCellStyle}>{user.phoneNumber}</td>
+              <td style={tableCellStyle}>{item.firstName}</td>
+              <td style={tableCellStyle}>{item.lastName}</td>
+              <td style={tableCellStyle}>{item.email}</td>
+              <td style={tableCellStyle}>{item.phoneNumber}</td>
               <td style={tableCellStyle}>
                 <button
-                  onClick={() => handleViewClick(user)}
+                  onClick={() => handleViewClick(item)}
                   style={viewButtonStyle}
                 >
-                  View
+                  View Details
                 </button>
               </td>
             </tr>
@@ -134,4 +136,4 @@ const ManagerTable = ({
   );
 };
 
-export default ManagerTable;
+export default AllMembersTable;

@@ -65,6 +65,15 @@ function App() {
       setUser(res.data.data);
     } catch (error) {
       console.error('Error fetching manager details:', error); // Log the entire error object
+      setUser({
+        companyName: 'nill',
+        businessPhone: 'nill',
+        businessEmail: 'nill',
+        companyAddress: 'nill',
+        companyDescription: 'nill',
+        state: 'nill',
+        imgUrl: null // Or provide a default image URL here if needed
+      });
     }
   };
 
