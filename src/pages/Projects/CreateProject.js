@@ -52,6 +52,8 @@ export const StyledButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 17em;
+  height: 40px !important;
+  background: #505f98;
 `;
 
 export const StyledAlert = styled.div`
