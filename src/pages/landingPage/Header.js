@@ -2,29 +2,37 @@ import Styled from 'styled-components';
 import headerLogo from '../../assets/headerLogo.svg';
 import Footer from './Footer';
 import LandingPageBody from '../LandingPageBody/LandingPageBody';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
-    return(<>
-    <Nav>
-       <Div>
+  return (
+    <>
+      <Nav>
+        <Div>
           <div>
-             <img src={headerLogo} alt="TicketEaseLogo"/>
+            <img src={headerLogo} alt="TicketEaseLogo" />
           </div>
           <div>
             <h1>TICKET EASE</h1>
           </div>
-    </Div>    
-      <NavList>
-         <a href="/" id='part'>Partners</a>
-         <a href="" id='log'>Login</a>
-          <a href="" id='apply'>Apply as a business</a>
-       </NavList>
-   </Nav> 
-   <LandingPageBody style={{alignItems: "center"}}/> 
-   <Footer/> 
+        </Div>
+        <NavList>
+          <a href="/" id="part">
+            Partners
+          </a>
+          <NavLink to="/Regularlogin" id="log">
+            Login
+          </NavLink>
+          <NavLink to="/contactUs" id="apply">
+            Apply as a business
+          </NavLink>
+        </NavList>
+      </Nav>
+      <LandingPageBody style={{ alignItems: 'center' }} />
+      <Footer />
     </>
-    )
-}
+  );
+};
 
 export default Header;
 
@@ -42,7 +50,7 @@ const Nav = Styled.div`
    border: 1px;
    padding: 7px;
    box-shadow: 3px 10px #fcf9f9;
-`
+`;
 const Div = Styled.div`
    display: flex;
    img{
@@ -57,7 +65,7 @@ const Div = Styled.div`
       font-weight: 900;
       line-height: normal;
    }
-`
+`;
 const NavList = Styled.div`
     display: flex;
     text-decoration: none;
@@ -85,5 +93,4 @@ const NavList = Styled.div`
         border-radius: 4px;
         background: #505F98;
    }
-`
-
+`;

@@ -1,6 +1,7 @@
-import { Bar } from "react-chartjs-2";import React,{useState, useEffect} from 'react';
+import { Bar } from 'react-chartjs-2';
+import React, { useState, useEffect } from 'react';
 
-import ChartDataLabels from "chartjs-plugin-datalabels";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {
   Chart as ChartJS,
   BarElement,
@@ -8,13 +9,12 @@ import {
   LinearScale,
   Tooltip,
   Legend,
-} from "chart.js";
+} from 'chart.js';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 ChartJS.register(ChartDataLabels);
 
 const HorizontalBarChart = () => {
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -23,69 +23,66 @@ const HorizontalBarChart = () => {
 
     // Make a GET request to the API
     fetch(apiUrl)
-      .then(response => {
+      .then((response) => {
         // Check if the response is successful (status code 200-299)
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         return response.json();
       })
-      .then(resultData => {
+      .then((resultData) => {
         // Update the state with the retrieved data
         setData(resultData);
         console.log(resultData);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, []); 
+  }, []);
   const ticket = data[0];
   const board = data[1];
   const project = data[2];
-  
 
   const chartData = {
-    labels: ["Total Boards", "Total Projects", "Total Tickets"],
+    labels: ['Total Boards', 'Total Projects', 'Total Tickets'],
     datasets: [
       {
-        label: "Tracker",
+        label: 'Tracker',
         data: [ticket, board, project],
-        backgroundColor: ["#F7C450", "#14A800", "#14A800"],
+        backgroundColor: ['#F7C450', '#14A800', '#14A800'],
         tension: 0.1,
         borderWidth: 4,
         datalabels: {
           display: true,
-          anchor: "end",
-          align: "end",
-          formatter: (value, context) => value + " activities",
+          anchor: 'end',
+          align: 'end',
+          formatter: (value, context) => value + ' activities',
         },
       },
     ],
   };
 
   const chartOptions = {
-    indexAxis: "y",
+    indexAxis: 'y',
     plugins: {
       // legend: {
       //   display: false,
       // },
       datalabels: {
-        color: "black", 
+        color: 'black',
       },
     },
     layout: {
       padding: {
         left: 50,
-        right: 50,
+        right: 30,
+        top: -40,
+        bottom: -5,
       },
     },
-    responsive: true, 
+    responsive: true,
     maintainAspectRatio: false,
   };
-
-
-
-
 
   return (
     <div className="bar-options">

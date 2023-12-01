@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
   align-self: center;
@@ -9,7 +9,7 @@ const HeaderContainer = styled.div`
   max-width: 900px;
   justify-content: space-around;
   gap: 100px;
-  padding:  20px;
+  padding: 20px;
   @media (max-width: 991px) {
     max-width: 100%;
     flex-wrap: wrap;
@@ -23,14 +23,15 @@ const HeaderItem = styled.div`
 `;
 
 const HeaderSection = () => {
-  return (<>
-    <HeaderContainer>
-      <HeaderItem>Project</HeaderItem>
-      <HeaderItem>Title</HeaderItem>
-      <HeaderItem>Description</HeaderItem>
-      <HeaderItem>Phone Number</HeaderItem>
-    </HeaderContainer>
-  </>
+  return (
+    <>
+      <HeaderContainer>
+        <HeaderItem>Project</HeaderItem>
+        <HeaderItem>Title</HeaderItem>
+        <HeaderItem>Description</HeaderItem>
+        <HeaderItem>Phone Number</HeaderItem>
+      </HeaderContainer>
+    </>
   );
 };
 

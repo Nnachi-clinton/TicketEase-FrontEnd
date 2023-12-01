@@ -5,9 +5,9 @@ import group1554 from '../../assets/cardimages/group-1554.svg';
 import stockholmiconsCodePlus from '../../assets/cardimages/stockholmicons--code--plus.svg';
 import groupIcons from '../../assets/cardimages/group-icons.svg';
 import stockholmiconsNavigationAngleright from '../../assets/cardimages/stockholmicons--navigation--angleright.svg';
-
 import styled from 'styled-components';
 import CardContainer from '../../components/oragnization/CardContainer';
+import AddManager2 from '../manager/AddManagerFom';
 
 const GroupItem = styled.div`
   position: absolute;
@@ -180,7 +180,7 @@ const OrganizationsGroup = styled.div`
 const CreateorganizationsadminRoot = styled.div`
   position: relative;
   background-color: #f6f6f6;
-  width: 100%;
+  width: 1513px;
   height: 923px;
   overflow: hidden;
   text-align: left;
@@ -196,6 +196,7 @@ const CreateorganizationsadminRoot = styled.div`
 
 const CreateOrganizationsAdmin = () => {
   const [isFrameOpen, setFrameOpen] = useState(false);
+  const [steps, setSteps] = useState(0);
 
   const onGroupContainer14Click = useCallback(() => {
     // Please sync "AllMembersProfile/Manager" to the project
@@ -211,105 +212,110 @@ const CreateOrganizationsAdmin = () => {
 
   return (
     <>
-      <CreateorganizationsadminRoot>
-        <GroupParent>
-          <GroupDiv>
-            <GroupItem />
-            <Div>1</Div>
-          </GroupDiv>
-          <Div1>3</Div1>
-          <Div2>10</Div2>
-          <Copy2>2</Copy2>
-          <Parent1>
-            <Div3>Prev</Div3>
-            <StockholmIconsNavigation1
-              alt="stockholmiconsNavigationLeft2"
-              src={stockholmiconsNavigationLeft2}
+      {steps === 0 && (
+        <>
+          <CreateorganizationsadminRoot>
+            <GroupParent>
+              <GroupDiv>
+                <GroupItem />
+                <Div>1</Div>
+              </GroupDiv>
+              <Div1>3</Div1>
+              <Div2>10</Div2>
+              <Copy2>2</Copy2>
+              <Parent1>
+                <Div3>Prev</Div3>
+                <StockholmIconsNavigation1
+                  alt="stockholmiconsNavigationLeft2"
+                  src={stockholmiconsNavigationLeft2}
+                />
+              </Parent1>
+              <Group>
+                <Div4>Next</Div4>
+                <StockholmIconsNavigation2
+                  alt="stockholmiconsNavigationLeft21"
+                  src={stockholmiconsNavigationLeft21}
+                />
+              </Group>
+              <GroupInner alt="group1554" src={group1554} />
+            </GroupParent>
+            <OrganizationsGroup>
+              <Organizations1>Organizations</Organizations1>
+              <StockholmIconsCodePlusParent onClick={() => setSteps(1)}>
+                <StockholmIconsCodePlus
+                  alt="stockholmiconsCodePlus"
+                  src={stockholmiconsCodePlus}
+                />
+                <CreateOrganizations>Create Organizations</CreateOrganizations>
+              </StockholmIconsCodePlusParent>
+            </OrganizationsGroup>
+            <CardContainer
+              institutionName="Decagon"
+              groupIcon={groupIcons}
+              navigationIcon={stockholmiconsNavigationAngleright}
+              propTop="196px"
+              propLeft="306px"
+              onGroupContainer14Click={onGroupContainer14Click}
             />
-          </Parent1>
-          <Group>
-            <Div4>Next</Div4>
-            <StockholmIconsNavigation2
-              alt="stockholmiconsNavigationLeft21"
-              src={stockholmiconsNavigationLeft21}
+            <CardContainer
+              institutionName="Gloryland College"
+              groupIcon={groupIcons}
+              navigationIcon={stockholmiconsNavigationAngleright}
+              onGroupContainer14Click={onGroupContainer14Click}
+              propTop="518px"
+              propLeft="306px"
+              propWidth="220px"
+              propBorder="unset"
+              //propCursor="unset"
             />
-          </Group>
-          <GroupInner alt="group1554" src={group1554} />
-        </GroupParent>
-        <OrganizationsGroup>
-          <Organizations1>Organizations</Organizations1>
-          <StockholmIconsCodePlusParent onClick={onFrameContainer10Click}>
-            <StockholmIconsCodePlus
-              alt="stockholmiconsCodePlus"
-              src={stockholmiconsCodePlus}
+            <CardContainer
+              institutionName="Sterling Bank"
+              groupIcon={groupIcons}
+              navigationIcon={stockholmiconsNavigationAngleright}
+              onGroupContainer14Click={onGroupContainer14Click}
+              propTop="196px"
+              propLeft="672px"
+              propWidth="155px"
+              propBorder="unset"
+              //propCursor="unset"
             />
-            <CreateOrganizations>Create Organizations</CreateOrganizations>
-          </StockholmIconsCodePlusParent>
-        </OrganizationsGroup>
-        <CardContainer
-          institutionName="Decagon"
-          groupIcon={groupIcons}
-          navigationIcon={stockholmiconsNavigationAngleright}
-          propTop="196px"
-          propLeft="306px"
-          onGroupContainer14Click={onGroupContainer14Click}
-        />
-        <CardContainer
-          institutionName="Gloryland College"
-          groupIcon={groupIcons}
-          navigationIcon={stockholmiconsNavigationAngleright}
-          onGroupContainer14Click={onGroupContainer14Click}
-          propTop="518px"
-          propLeft="306px"
-          propWidth="220px"
-          propBorder="unset"
-          //propCursor="unset"
-        />
-        <CardContainer
-          institutionName="Sterling Bank"
-          groupIcon={groupIcons}
-          navigationIcon={stockholmiconsNavigationAngleright}
-          onGroupContainer14Click={onGroupContainer14Click}
-          propTop="196px"
-          propLeft="672px"
-          propWidth="155px"
-          propBorder="unset"
-          //propCursor="unset"
-        />
-        <CardContainer
-          institutionName="Lily Hospital"
-          groupIcon={groupIcons}
-          navigationIcon={stockholmiconsNavigationAngleright}
-          onGroupContainer14Click={onGroupContainer14Click}
-          propTop="518px"
-          propLeft="672px"
-          propWidth="150px"
-          propBorder="1px solid var(--color-black)"
-          //propCursor="unset"
-        />
-        <CardContainer
-          institutionName="Access Bank"
-          groupIcon={groupIcons}
-          navigationIcon={stockholmiconsNavigationAngleright}
-          onGroupContainer14Click={onGroupContainer14Click}
-          propTop="196px"
-          propLeft="1038px"
-          propWidth="150px"
-          propBorder="unset"
-          //propCursor="unset"
-        />
-        <CardContainer
-          institutionName="Arsenal Football Club"
-          groupIcon={groupIcons}
-          navigationIcon={stockholmiconsNavigationAngleright}
-          onGroupContainer14Click={onGroupContainer14Click}
-          propTop="518px"
-          propLeft="1038px"
-          propWidth="250px"
-          propBorder="unset"
-          //propCursor="unset"
-        />
-      </CreateorganizationsadminRoot>
+            <CardContainer
+              institutionName="Lily Hospital"
+              groupIcon={groupIcons}
+              navigationIcon={stockholmiconsNavigationAngleright}
+              onGroupContainer14Click={onGroupContainer14Click}
+              propTop="518px"
+              propLeft="672px"
+              propWidth="150px"
+              propBorder="1px solid var(--color-black)"
+              //propCursor="unset"
+            />
+            <CardContainer
+              institutionName="Access Bank"
+              groupIcon={groupIcons}
+              navigationIcon={stockholmiconsNavigationAngleright}
+              onGroupContainer14Click={onGroupContainer14Click}
+              propTop="196px"
+              propLeft="1038px"
+              propWidth="150px"
+              propBorder="unset"
+              //propCursor="unset"
+            />
+            <CardContainer
+              institutionName="Arsenal Football Club"
+              groupIcon={groupIcons}
+              navigationIcon={stockholmiconsNavigationAngleright}
+              onGroupContainer14Click={onGroupContainer14Click}
+              propTop="518px"
+              propLeft="1038px"
+              propWidth="250px"
+              propBorder="unset"
+              //propCursor="unset"
+            />
+          </CreateorganizationsadminRoot>
+        </>
+      )}
+      {steps === 1 && <AddManager2 />}
     </>
   );
 };

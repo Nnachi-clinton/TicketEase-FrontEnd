@@ -1,12 +1,10 @@
-import PropTypes from "prop-types";
-import React from "react";
-import styled from 'styled-components'
-import { ProfileDropdown } from "./Profile";
-import SearchInput from "./SearchInput";
-import { NotificationBell } from "./NotificationBell";
-import { Settings } from "./Settings";
-
-
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
+import { ProfileDropdown } from './Profile';
+import SearchInput from './SearchInput';
+import { NotificationBell } from './NotificationBell';
+import { Settings } from './Settings';
 
 const StyledComponent = styled.div`
   position: fixed;
@@ -36,7 +34,7 @@ const StyledComponent = styled.div`
 
   .text-wrapper {
     color: #000000;
-    font-family: "Mulish", Helvetica;
+    font-family: 'Mulish', Helvetica;
     font-size: 14px;
     font-weight: 400;
     left: 49px;
@@ -102,7 +100,7 @@ const StyledComponent = styled.div`
 
   .text-wrapper-2 {
     color: #000000;
-    font-family: "Mulish", Helvetica;
+    font-family: 'Mulish', Helvetica;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0;
@@ -120,22 +118,28 @@ const StyledComponent = styled.div`
 
 export const Component = ({
   className,
+  logout,
+  ChangePassword,
   overlapGroupClassName,
 }) => {
   return (
     <StyledComponent className={`component ${className}`}>
       <div className={`overlap-group ${overlapGroupClassName}`}>
         <div className="div">
-          <SearchInput/>
+          <SearchInput />
         </div>
         <div className="stockholm-icons-wrapper">
-          <NotificationBell/>
+          <NotificationBell />
         </div>
         <div className="img-wrapper">
-            <Settings/>
+          <Settings />
         </div>
         <div className="frame-2">
-         <ProfileDropdown name="Goliath" />
+          <ProfileDropdown
+            logout={logout}
+            ChangePassword={ChangePassword}
+            name="Goliath"
+          />
         </div>
       </div>
     </StyledComponent>

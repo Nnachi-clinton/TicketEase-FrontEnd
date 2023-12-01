@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 import member from '../../assets/member.svg';
 
 const ImageContainer = styled.div`
@@ -17,7 +17,7 @@ const ImageContainer = styled.div`
 `;
 
 const Image = styled.img`
-  aspect-ratio: 1.2;  
+  aspect-ratio: 1.2;
   object-fit: contain;
   object-position: center;
   width: 200px;
@@ -34,11 +34,7 @@ const ImageSection = () => {
   return (
     <>
       <ImageContainer>
-        <Image
-          loading="lazy"
-          src={member}
-          alt="Sample Image"
-        />
+        <Image loading="lazy" src={member} alt="Sample Image" />
       </ImageContainer>
     </>
   );

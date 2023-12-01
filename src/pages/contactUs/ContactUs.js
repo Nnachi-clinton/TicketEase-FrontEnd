@@ -5,12 +5,16 @@ import Call from '../../assets/images/Call-Icon.svg';
 import Mail from '../../assets/images/Mail-Icon.svg';
 import Map from '../../assets/images/Map-Icon.svg';
 import Button from '../../components/common/Button';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 //import Input from "../../components/common/Input";
 
 const ContactUs = () => {
   const [companyName, setCompanyName] = useState('');
   const [businessEmail, setBusinessEmail] = useState('');
   const [reasonToOnboard, setreasonToOnboard] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,12 +40,31 @@ const ContactUs = () => {
       );
 
       if (response.ok) {
-        console.log('Email sent successfully');
+        Swal.fire({
+          icon: 'success',
+          title: 'Email sent successfully!',
+          showConfirmButton: false,
+          timer: 1500, // Automatically close after 1.5 seconds
+          position: 'top-end',
+        });
+        navigate('/contactResponse');
       } else {
-        console.error('Failed to send email');
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed to send email',
+          text: 'There was an error while sending email.',
+          confirmButtonText: 'OK',
+        });
       }
     } catch (error) {
       console.error('Error:', error);
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An unexpected error occurred: ' + error.message,
+        confirmButtonText: 'OK',
+      });
     }
   };
 
@@ -50,7 +73,9 @@ const ContactUs = () => {
       <div className="left-partition"></div>
       <div className="middle-partition">
         <div className="logo">
-          <img src={Logo} alt="Logo" width="100px" className="logo" />
+          <Link to="/Footer-header">
+            <img src={Logo} alt="Logo" width="100px" className="logo" />
+          </Link>
         </div>
         <div className="card1">
           <p className="getStarted">Get Started ?</p>
@@ -90,12 +115,6 @@ const ContactUs = () => {
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
           />
-          {/* <Input
-            type="text"
-            label="Company Name"
-            placeholder="Enter your company name"
-            className="form-input"
-          /> */}
           <br />
           <label className="form-label" htmlFor="Business Email">
             Business Email
@@ -107,6 +126,7 @@ const ContactUs = () => {
             value={businessEmail}
             onChange={(e) => setBusinessEmail(e.target.value)}
           />
+
           <br />
           <label className="form-label" htmlFor="Company Description">
             Company Description
@@ -117,12 +137,13 @@ const ContactUs = () => {
             value={reasonToOnboard}
             onChange={(e) => setreasonToOnboard(e.target.value)}
           ></textarea>
+
           <br />
           {/* <button className="form-button">Send</button> */}
           <Button
             type="submit"
             className="form-button"
-            style={{ background: '#505f98' }}
+            style={{ background: '#505f98', width: '470px' }}
           >
             Send
           </Button>

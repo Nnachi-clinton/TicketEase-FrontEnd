@@ -2,34 +2,44 @@ import React, { useState } from 'react';
 
 const CompanyTable = ({
   companies,
-  currentPage =1,
+  currentPage,
   itemsPerPage,
   handleViewClick,
   totalItems,
+  setCurrentPage,
+  getManagers,
 }) => {
-  const [localCurrentPage, setCurrentPage] = useState(1);
-  const indexOfLastItem = localCurrentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = companies.slice(indexOfFirstItem, indexOfLastItem);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const prevPage = () => {
-    if (localCurrentPage > 1) {
+  const changePage = (direction) => {
+    if (direction === 'prev' && currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
-    }
-  };
-
-  const nextPage = () => {
-    if (localCurrentPage < Math.ceil(totalItems / itemsPerPage)) {
+    } else if (
+      direction === 'next' &&
+      currentPage < Math.ceil(totalItems / itemsPerPage)
+    ) {
       setCurrentPage((prev) => prev + 1);
     }
   };
 
-  // const handleViewClick = (company) => {
-  //   // Implement your view logic here
-  //   console.log('View clicked:', company);
-  // };
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    handleViewClick(pageNumber);
+    getManagers(pageNumber);
+  };
 
+  const tableCellStyle = {
+    border: '1px solid #ddd',
+    padding: '8px',
+  };
+
+  const paginationButtonStyle = {
+    padding: '3px 8px',
+    cursor: 'pointer',
+  };
+
+  const viewButtonStyle = {
+    padding: '3px 8px',
+    cursor: 'pointer',
+  };
   return (
     <div>
       {/* Table content */}
@@ -50,7 +60,9 @@ const CompanyTable = ({
         <tbody>
           {companies.map((company, index) => (
             <tr key={company.id}>
-              <td style={tableCellStyle}>{index + 1}</td>
+              <td style={tableCellStyle}>
+                {(currentPage - 1) * itemsPerPage + index + 1}
+              </td>
               <td style={tableCellStyle}>{company.companyName}</td>
               <td style={tableCellStyle}>{company.companyAddress}</td>
               <td style={tableCellStyle}>{company.businessEmail}</td>
@@ -77,7 +89,7 @@ const CompanyTable = ({
         }}
       >
         <button
-          onClick={prevPage}
+          onClick={() => changePage('prev')}
           style={paginationButtonStyle}
           disabled={currentPage === 1}
         >
@@ -96,7 +108,7 @@ const CompanyTable = ({
             (_, index) => (
               <li key={index} style={{ margin: '0 5px' }}>
                 <button
-                  onClick={() => paginate(index + 1)}
+                  onClick={() => handlePageChange(index + 1)}
                   style={{
                     ...paginationButtonStyle,
                     fontWeight: currentPage === index + 1 ? 'bold' : 'normal',
@@ -109,9 +121,9 @@ const CompanyTable = ({
             )
           )}
         </ul>
-      
+
         <button
-          onClick={nextPage}
+          onClick={() => changePage('next')}
           style={paginationButtonStyle}
           disabled={currentPage === Math.ceil(totalItems / itemsPerPage)}
         >
@@ -120,21 +132,6 @@ const CompanyTable = ({
       </div>
     </div>
   );
-};
-
-const tableCellStyle = {
-  border: '1px solid #ddd',
-  padding: '8px',
-};
-
-const paginationButtonStyle = {
-  padding: '3px 8px',
-  cursor: 'pointer',
-};
-
-const viewButtonStyle = {
-  padding: '3px 8px',
-  cursor: 'pointer',
 };
 
 export default CompanyTable;

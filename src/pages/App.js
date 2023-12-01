@@ -21,7 +21,7 @@ import RegularLogin from './RegularLogin';
 import LogoutPopout from '../components/logout/Logout';
 import ResetPassword from './ResetPassword';
 import ForgotPassword from './ForgotPassword';
-import AddManager from './manager/AddManagerFom';
+import AddManager2 from './manager/AddManagerFom';
 import NoOrganisation from './manager/EmptyOrganisation';
 import ProfileDetails from './ProfileDetails';
 import ManagerDashBoard from './homePageDashBoardManager/ManagerDashBoard';
@@ -31,9 +31,16 @@ import CreateOrganizationsAdmin from './admin/CreateOrganizationsAdmin';
 import AllMembers from './AllMembersPage/AllMembersPage';
 import BoardLandingPage from './board/BoardLandingPage';
 import CreateBoardEmptyManager from './CreateBoardEmptyManager';
-import TableData from './companyInfoTable/TableData'
-import CreateNewTicket from './CreateNewTicket';  
+import TableData from './companyInfoTable/TableData';
+import CreateProject from './Projects/CreateProject';
+import CreateTicket from './TicketInputfield';
+import CreateNewTicket from './CreateNewTIcket';
 import TicketInputfield from '../pages/TicketInputfield';
+import PersonalInfo from './PersonalInfo.js';
+import EmailSent from '../components/checkEmail/EmailSent.js';
+import BoardMain from './BoardPage/BoardMain';
+import MemberProfile from './MemberProfile.js';
+import ManagerView from '../components/ManagerView/managerView'
 
 function App() {
   return (
@@ -49,8 +56,9 @@ function App() {
 
                 {/* </Route> */}
                 <Route path="/TableData" element={<TableData />} />
+                <Route path="/TableData" element={<TableData />} />
                 <Route path="/" element={<HomePage />} />
-                <Route path="/add-manager" element={<AddManager />} />
+                <Route path="/add-manager" element={<AddManager2 />} />
                 <Route path="/no-organisation" element={<NoOrganisation />} />
                 <Route path="/update-password" element={<ChangePassword />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -70,14 +78,30 @@ function App() {
                 <Route path="/logout" element={<LogoutPopout />} />
                 <Route path="/contactResponse" element={<ContactResponse />} />
                 <Route path="/create-board" element={<CreateBoard />} />
-                <Route path='/RegisteredMembers' element = {<RegisteredMembers/>}/>
+                <Route
+                  path="/RegisteredMembers"
+                  element={<RegisteredMembers />}
+                />
                 <Route path="/ProfileDetails" element={<ProfileDetails />} />
-                <Route path="/adminscreen" element={<CreateOrganizationsAdmin />} />
+                <Route
+                  path="/adminscreen"
+                  element={<CreateOrganizationsAdmin />}
+                />
                 <Route path="/allMembers" element={<AllMembers />} />
                 <Route path="/boardlanding" element={<BoardLandingPage />} />
-                <Route path="/createboard" element={<CreateBoardEmptyManager />} />
-                <Route path="/create-newticket" element={<CreateNewTicket />}/>
+                <Route
+                  path="/createboard"
+                  element={<CreateBoardEmptyManager />}
+                />
+                <Route path="/CreateProject" element={<CreateProject />} />
+                <Route path="/CreateTicket" element={<CreateTicket />} />
+                <Route path="/createNewTicket" element={<CreateNewTicket />} />
                 <Route path="/ticketInputField" element={<TicketInputfield/>}/>
+                <Route path="/PersonalInfo" element={<PersonalInfo />} />
+                <Route path="/ManagerView" element={<ManagerView />} />
+                <Route path="/BoardMain" element={<BoardMain />} />
+                <Route path="/MemberProfile" element={<MemberProfile />} />
+                <Route path="/EmailSent" element={<EmailSent />} />
               </Routes>
             </AuthState>
           </GlobalProvider>

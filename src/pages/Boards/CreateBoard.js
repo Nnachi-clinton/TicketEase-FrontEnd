@@ -1,23 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import { IoIosAddCircle } from "react-icons/io"
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { IoIosAddCircle } from 'react-icons/io';
+import Swal from 'sweetalert2';
 
 const Fulldiv = styled.div`
   overflow: hidden;
-  background-color: #f0f0f0;
-`;
-
-const YourStyledComponent = styled.h2`
-  /* Your existing styles for YourStyledComponent */
-`;
-
-const Pcreatemanager = styled.p`
-  /* Your existing styles for Pcreatemanager */
+  margin-top: 90px;
+  margin-left: 290px;
 `;
 
 const Innerdiv = styled.div`
-  background-color: white;
-  margin-left: 20px;
+  background-color: #fff;
+  margin-left: 40px;
   margin-right: 20px;
 
   & .marginb {
@@ -28,8 +22,10 @@ const Innerdiv = styled.div`
 const FormSpace = styled.div`
   width: 300px;
   margin: auto;
+  margin-top: 20px;
+  margin-left: 400px;
   padding-top: 2em;
-  background-color: white;
+  background-color: ##8c92a2;
 `;
 
 export const StyledForm = styled.form`
@@ -41,7 +37,7 @@ export const StyledLabel = styled.label`
   margin-bottom: 5px;
   font-weight: bold;
   padding-top: 1em;
-  color: ${(props) => (props.invalid ? "red" : "black")};
+  color: ${(props) => (props.invalid ? 'red' : 'black')};
 `;
 
 export const StyledInput = styled.input`
@@ -53,13 +49,13 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledButton = styled.button`
-color: white;
-width: 100%;
-margin-top: 10px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-margin-bottom: 17em;
+  color: white;
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 17em;
 `;
 
 export const StyledAlert = styled.div`
@@ -79,13 +75,16 @@ const Container = styled.div`
 `;
 
 const Board = styled.div`
-  font-weight: bold;
-  color: #333;
-  padding: 8px
+  color: #1d2126;
+  font-family: Mulish;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 `;
 
 const Button = styled.button`
-background-color: #505f98;
+  background-color: #505f98;
   color: white;
   border: none;
   padding: 10px 30px;
@@ -100,41 +99,127 @@ background-color: #505f98;
 `;
 
 function AddManager() {
+  const [steps] = useState(0);
+  const [formData, setFormData] = useState({
+    Name: '',
+    managerId: '',
+    description: '',
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Handling submit...');
+
+    if (!formData.Name || !formData.managerId) {
+      console.error('Please fill in all required fields.');
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        'https://localhost:7075/api/Board/AddBoard',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Name: formData.Name,
+            ManagerId: formData.managerId,
+            Description: formData.description,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Error:', errorData);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'An unexpected error occurred: ' + errorData.message,
+          confirmButtonText: 'OK',
+        });
+        return;
+      }
+
+      const responseData = await response.json();
+      console.log('Success:', responseData);
+      Swal.fire({
+        icon: 'success',
+        title: 'Board created successfully!',
+        showConfirmButton: false,
+        timer: 1500, // Automatically close after 1.5 seconds
+      });
+    } catch (error) {
+      console.error('Error occurred:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An unexpected error occurred: ' + error.message,
+        confirmButtonText: 'OK',
+      });
+    }
+  };
   return (
-    <Fulldiv>
-      <Container>
-        <Board>Board</Board>
-        <Button>
-          <div>< IoIosAddCircle />   </div>
-        <div>Create Boards</div>
-        
-        </Button>
+    <>
+      {steps === 0 && (
+        <>
+       
+          <Fulldiv>
+            <Container>
+              <Board>Boards</Board>
+              <Button>
+                <div>
+                  <IoIosAddCircle />{' '}
+                </div>
+                <div>Create Boards</div>
+              </Button>
+            </Container>
 
-      </Container>
-
-      {/* YourStyledComponent and Pcreatemanager components remain the same */}
-
-      <Innerdiv>
-        <FormSpace>
-          <StyledForm>
-            <h1 style={{textAlign:"left", gap: "5px"}}>Work Collaboratively with <br />
-              team members. <span style={{color: "#505f98"}}> Create Board</span> </h1>
-            <StyledLabel>Title:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
-            <StyledLabel>Add Board:</StyledLabel>
-            <StyledInput type="text" placeholder="Cc" />
-            <StyledLabel>Fill:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
-            <StyledLabel>Fill:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
-            <StyledLabel>Fill:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
-            {/* Other form fields */}
-            <StyledButton type="submit">Create Board</StyledButton>
-          </StyledForm>
-        </FormSpace>
-      </Innerdiv>
-    </Fulldiv>
+            <Innerdiv>
+              <FormSpace>
+                <StyledForm onSubmit={handleSubmit}>
+                  <h1 style={{ textAlign: 'left', gap: '5px' }}>
+                    Work Collaboratively with <br />
+                    team members.{' '}
+                    <span style={{ color: '#505f98' }}> Create Board</span>{' '}
+                  </h1>
+                  <StyledLabel>Name:</StyledLabel>
+                  <StyledInput
+                    type="text"
+                    placeholder=""
+                    value={formData.Name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, Name: e.target.value })
+                    }
+                  />
+                  <StyledLabel>Manager's Id:</StyledLabel>
+                  <StyledInput
+                    type="text"
+                    placeholder=""
+                    value={formData.managerId}
+                    onChange={(e) =>
+                      setFormData({ ...formData, managerId: e.target.value })
+                    }
+                  />
+                  <StyledLabel>Description:</StyledLabel>
+                  <StyledInput
+                    type="text"
+                    placeholder=""
+                    value={formData.description}
+                    onChange={(e) =>
+                      setFormData({ ...formData, description: e.target.value })
+                    }
+                  />
+                  <StyledButton type="submit">Create Board</StyledButton>
+                </StyledForm>
+              </FormSpace>
+            </Innerdiv>
+          </Fulldiv>
+        </>
+      )}
+    </>
   );
 }
 

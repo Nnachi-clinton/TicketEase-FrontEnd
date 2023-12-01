@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import image from '../../../assets/image.jpeg'
-import arrow from '../../../assets/ArrowRight.svg'
+import image from '../../../assets/image.jpeg';
+import arrow from '../../../assets/ArrowRight.svg';
 
 const ProfileDropdownContainer = styled.div`
   justify-content: flex-start;
@@ -10,20 +10,17 @@ const ProfileDropdownContainer = styled.div`
   position: relative;
   align-items: flex-start;
   margin-top: -12px;
-  
-  
 `;
 
 const ProfileButton = styled.button`
-  display: inline-flex;  
+  display: inline-flex;
   background-color: #fff;
   border: none;
   padding: 0;
   outline: none;
-  overflow : hidden;
+  overflow: hidden;
   cursor: pointer;
   color: black;
- 
 `;
 
 const DropdownContent = styled.div`
@@ -81,7 +78,7 @@ const Separator = styled.div`
 
 const PrivacyPolicy = styled.div`
   color: #1d2126;
-  text-align: left; 
+  text-align: left;
   align-self: start;
   white-space: nowrap;
   margin: 15px 0 140px 28px;
@@ -93,7 +90,7 @@ const PrivacyPolicy = styled.div`
   }
 `;
 
-export const ProfileDropdown = ({ name }) => {
+export const ProfileDropdown = ({ name, logout, ChangePassword }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   let timeoutId;
@@ -135,40 +132,38 @@ export const ProfileDropdown = ({ name }) => {
         <img
           src={image}
           alt="Profile"
-          style={{ width: '30px', height: '30px', borderRadius: '50%', marginRight: '8px' }}
+          style={{
+            width: '30px',
+            height: '30px',
+            borderRadius: '50%',
+            marginRight: '8px',
+          }}
         />
         {name}
       </ProfileButton>
       <DropdownContent isOpen={isOpen} ref={dropdownRef}>
-        <Dropdown />
+        <Dropdown logout={logout} ChangePassword={ChangePassword} />
       </DropdownContent>
     </ProfileDropdownContainer>
   );
 };
 
-const Dropdown = () => {
+const Dropdown = ({ logout, ChangePassword }) => {
   return (
     <>
-      <InteractiveMenuItem onClick={() => console.log('Navigate to Personal Info')}>
+      <InteractiveMenuItem
+        onClick={() => console.log('Navigate to Personal Info')}
+      >
         <MenuItemText>Personal Info</MenuItemText>
-        <Icon
-          src={arrow}
-          alt="Personal Info Icon"
-        />
+        <Icon src={arrow} alt="Personal Info Icon" />
       </InteractiveMenuItem>
-      <InteractiveMenuItem onClick={() => console.log('Navigate to Change Password')}>
+      <InteractiveMenuItem onClick={ChangePassword}>
         <MenuItemText>Change Password</MenuItemText>
-        <Icon
-          src={arrow}
-          alt="Change Password Icon"
-        />
+        <Icon src={arrow} alt="Change Password Icon" />
       </InteractiveMenuItem>
-      <InteractiveMenuItem onClick={() => console.log('Log Out')}>
+      <InteractiveMenuItem onClick={logout}>
         <MenuItemText>Log Out</MenuItemText>
-        <Icon
-          src={arrow}
-          alt="Log Out Icon"
-        />
+        <Icon src={arrow} alt="Log Out Icon" />
       </InteractiveMenuItem>
       <Separator />
       <PrivacyPolicy>Privacy Policy</PrivacyPolicy>

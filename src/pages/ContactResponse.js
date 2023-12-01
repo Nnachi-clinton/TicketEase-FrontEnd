@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import ContactUs from '../assets/ContactUs.svg';
+import { Link } from 'react-router-dom';
 
 const ImgTag = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
-  
 `;
 
 const StyledContactSent = styled.p`
@@ -49,18 +49,24 @@ const StyledMain = styled.div`
   margin-top: 94px;
 `;
 
-
 function ContactResponse() {
   return (
-  <StyledMain>
-
-    <div>
-      <ImgTag src={ContactUs} alt="imag" />
-      <StyledContactSent className="ContactSent">Contact Sent</StyledContactSent>
-      <StyledAdminText className="AdminText">Admin will reach out to you via your <br /> email shortly</StyledAdminText>
-      <StyledButton className="btn">Continue Exploring Ticket Ease</StyledButton>
-    </div>
-  </StyledMain>
+    <StyledMain>
+      <div>
+        <ImgTag src={ContactUs} alt="imag" />
+        <StyledContactSent className="ContactSent">
+          Contact Sent
+        </StyledContactSent>
+        <StyledAdminText className="AdminText">
+          Admin will reach out to you via your <br /> email shortly
+        </StyledAdminText>
+        <Link to="/Footer-header">
+          <StyledButton className="btn">
+            Continue Exploring Ticket Ease
+          </StyledButton>
+        </Link>
+      </div>
+    </StyledMain>
   );
 }
 

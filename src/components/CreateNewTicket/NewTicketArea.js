@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const NewTicketContainer = styled.button`
   color: #fff;
@@ -7,7 +7,7 @@ const NewTicketContainer = styled.button`
   justify-content: center;
   align-items: center;
   background-color: #505f98;
-  align-self: center;  
+  align-self: center;
   width: 232px;
   height: 60px;
   max-width: 100%;

@@ -25,13 +25,13 @@ export const Top = styled.div`
 `;
 
 export const Content = styled.h1`
- font-family: 'Mulish', sans-serif;
- font-size: 40px;
- font-weight: 700;
- line-height: 55px;
- letter-spacing: 0em;
- text-align: left;
- color: #21334F;
+  font-family: 'Mulish', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 55px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #21334f;
 `;
 
 export const Content1 = styled.p`
@@ -41,7 +41,7 @@ export const Content1 = styled.p`
   line-height: 27px;
   letter-spacing: 0em;
   text-align: left;
-  color: #21334F;
+  color: #21334f;
 `;
 
 export const SvgImage = styled.img`
@@ -66,7 +66,7 @@ export const Sponsors = styled.div`
 `;
 
 export const SponsorsText = styled.p`
-  color: #21334F;
+  color: #21334f;
   font-family: 'Mulish', sans-serif;
   font-size: 12px;
   font-style: normal;
@@ -80,7 +80,7 @@ export const Line = styled.hr`
   margin-top: 17px;
   align-items: center;
   width: 1135px;
-  color: #DADADA;
+  color: #dadada;
 `;
 
 export const Txt = styled.div`
@@ -109,7 +109,7 @@ export const Pad2Container = styled.div`
 `;
 
 export const Pad2Heading = styled.h1`
-  color: #21334F;
+  color: #21334f;
   font-size: 32px;
   font-style: normal;
   font-weight: 700;
@@ -117,7 +117,7 @@ export const Pad2Heading = styled.h1`
 `;
 
 export const Pad2Paragraph = styled.p`
-  color: #21334F;
+  color: #21334f;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -131,7 +131,7 @@ export const Content5Container = styled.div`
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 48px; 
+  line-height: 48px;
   margin-top: 0%;
   // Background-color: red;
 `;
@@ -156,17 +156,17 @@ export const ContContainer = styled.div`
   margin-left: 250px;
 `;
 
-  export const Content5Heading = styled.h4`
-    color: #031839;
-    font-family: Mulish, sans-serif;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  `;
+export const Content5Heading = styled.h4`
+  color: #031839;
+  font-family: Mulish, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
 
-  export const Content6Heading = styled.h1`
-  color: #FFF;
+export const Content6Heading = styled.h1`
+  color: #fff;
   font-family: Mulish, sans-serif;
   font-size: 32px;
   font-style: normal;
@@ -181,7 +181,7 @@ export const Image11 = styled.div`
 `;
 
 export const Arrow = styled.div`
-  marginTop: 180;
+  margintop: 180;
 `;
 
 export const Name = styled.h1`
@@ -237,7 +237,7 @@ export const TestimonialContainer = styled.div`
 
 export const EaseContainer = styled.div`
   display: flex;
-  background-color: #505F98;
+  background-color: #505f98;
 `;
 
 export const EaseImage = styled.img`
@@ -247,7 +247,7 @@ export const EaseImage = styled.img`
 `;
 
 export const Box2Container = styled.div`
-  color: #FFF;
+  color: #fff;
   font-size: 46px;
   font-weight: 700;
   font-family: 'Mulish', sans-serif;
@@ -256,7 +256,7 @@ export const Box2Container = styled.div`
 `;
 
 export const Box2Paragraph = styled.p`
-  color: #FFF;
+  color: #fff;
   font-family: Mulish, sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -270,8 +270,8 @@ export const MyButton = styled.div`
   padding: 14px 62px;
   border-radius: 4px;
   gap: 10px;
-  background: #505F98;
-  color: #FFFFFF;
+  background: #505f98;
+  color: #ffffff;
   border: none;
   cursor: pointer;
 `;
