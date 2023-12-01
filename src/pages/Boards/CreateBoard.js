@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { IoIosAddCircle } from 'react-icons/io';
+import Swal from 'sweetalert2';
 
 const Fulldiv = styled.div`
   overflow: hidden;
@@ -133,13 +134,31 @@ function AddManager() {
       if (!response.ok) {
         const errorData = await response.json();
         console.error('Error:', errorData);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'An unexpected error occurred: ' + errorData.message,
+          confirmButtonText: 'OK',
+        });
         return;
       }
 
       const responseData = await response.json();
       console.log('Success:', responseData);
+      Swal.fire({
+        icon: 'success',
+        title: 'Board created successfully!',
+        showConfirmButton: false,
+        timer: 1500, // Automatically close after 1.5 seconds
+      });
     } catch (error) {
       console.error('Error occurred:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An unexpected error occurred: ' + error.message,
+        confirmButtonText: 'OK',
+      });
     }
   };
   return (
