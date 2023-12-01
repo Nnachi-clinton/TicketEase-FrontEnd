@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 const ManagerTable = ({
-  companies,
+  registeredUsers,
   currentPage,
   itemsPerPage,
   handleViewClick,
   totalItems,
   setCurrentPage,
-  getManagers,
+  getUsers,
 }) => {
   const changePage = (direction) => {
     if (direction === 'prev' && currentPage > 1) {
@@ -23,7 +23,7 @@ const ManagerTable = ({
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     handleViewClick(pageNumber);
-    getManagers(pageNumber);
+    getUsers(pageNumber);
   };
 
   const tableCellStyle = {
@@ -49,8 +49,8 @@ const ManagerTable = ({
         <thead>
           <tr style={{ background: '#E5E5E5', color: '#444' }}>
             <th style={tableCellStyle}>SN</th>
-            <th style={tableCellStyle}>Company Name</th>
-            <th style={tableCellStyle}>Address</th>
+            <th style={tableCellStyle}>First Name</th>
+            <th style={tableCellStyle}>Last Name</th>
             <th style={tableCellStyle}>Email</th>
             <th style={tableCellStyle}>Phone Number</th>
             <th style={tableCellStyle}></th>
@@ -58,18 +58,18 @@ const ManagerTable = ({
         </thead>
 
         <tbody>
-          {companies.map((company, index) => (
-            <tr key={company.id}>
+          {registeredUsers.map((user, index) => (
+            <tr key={user.id}>
               <td style={tableCellStyle}>
                 {(currentPage - 1) * itemsPerPage + index + 1}
               </td>
-              <td style={tableCellStyle}>{company.companyName}</td>
-              <td style={tableCellStyle}>{company.companyAddress}</td>
-              <td style={tableCellStyle}>{company.businessEmail}</td>
-              <td style={tableCellStyle}>{company.businessPhone}</td>
+              <td style={tableCellStyle}>{user.firstName}</td>
+              <td style={tableCellStyle}>{user.lastName}</td>
+              <td style={tableCellStyle}>{user.email}</td>
+              <td style={tableCellStyle}>{user.phoneNumber}</td>
               <td style={tableCellStyle}>
                 <button
-                  onClick={() => handleViewClick(company)}
+                  onClick={() => handleViewClick(user)}
                   style={viewButtonStyle}
                 >
                   View
