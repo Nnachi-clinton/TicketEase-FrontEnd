@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
 
 const Fulldiv = styled.div`
   overflow: hidden;
@@ -101,12 +102,27 @@ function AddManager2() {
         }
       );
       if (response.ok) {
-        console.log('Manager registered successfully');
+        Swal.fire({
+          icon: 'success',
+          title: 'Manager registered successfully!',
+          showConfirmButton: false,
+          timer: 1500, // Automatically close after 1.5 seconds
+        });
       } else {
-        console.log('Failed to submit data');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error registering Manager',
+          text: 'There was an error while registering Manager.',
+          confirmButtonText: 'OK',
+        });
       }
     } catch (error) {
-      console.log('Error: ', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An unexpected error occurred: ' + error.message,
+        confirmButtonText: 'OK',
+      });
     }
   };
   return (

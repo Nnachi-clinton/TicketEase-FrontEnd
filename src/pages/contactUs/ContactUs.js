@@ -6,6 +6,7 @@ import Mail from '../../assets/images/Mail-Icon.svg';
 import Map from '../../assets/images/Map-Icon.svg';
 import Button from '../../components/common/Button';
 import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 //import Input from "../../components/common/Input";
 
@@ -39,13 +40,31 @@ const ContactUs = () => {
       );
 
       if (response.ok) {
-        alert('Email sent successfully');
+        Swal.fire({
+          icon: 'success',
+          title: 'Email sent successfully!',
+          showConfirmButton: false,
+          timer: 1500, // Automatically close after 1.5 seconds
+          position: 'top-end',
+        });
         navigate('/contactResponse');
       } else {
-        console.error('Failed to send email');
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed to send email',
+          text: 'There was an error while sending email.',
+          confirmButtonText: 'OK',
+        });
       }
     } catch (error) {
       console.error('Error:', error);
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An unexpected error occurred: ' + error.message,
+        confirmButtonText: 'OK',
+      });
     }
   };
 
