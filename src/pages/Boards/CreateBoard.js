@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { IoIosAddCircle } from 'react-icons/io';
+import Swal from 'sweetalert2';
 
 const Fulldiv = styled.div`
   overflow: hidden;
@@ -98,20 +99,18 @@ const Button = styled.button`
 `;
 
 function AddManager() {
-  const [steps, setsteps] = useState(0);
+  const [steps] = useState(0);
   const [formData, setFormData] = useState({
-    title: '',
-    addBoard: '',
+    Name: '',
     managerId: '',
     description: '',
-    fill: '',
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Handling submit...');
 
-    if (!formData.title || !formData.addBoard) {
+    if (!formData.Name || !formData.managerId) {
       console.error('Please fill in all required fields.');
       return;
     }
@@ -125,10 +124,9 @@ function AddManager() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            Name: formData.title,
+            Name: formData.Name,
             ManagerId: formData.managerId,
             Description: formData.description,
-            AddBoard: formData.addBoard,
           }),
         }
       );
@@ -136,20 +134,38 @@ function AddManager() {
       if (!response.ok) {
         const errorData = await response.json();
         console.error('Error:', errorData);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'An unexpected error occurred: ' + errorData.message,
+          confirmButtonText: 'OK',
+        });
         return;
       }
 
       const responseData = await response.json();
       console.log('Success:', responseData);
+      Swal.fire({
+        icon: 'success',
+        title: 'Board created successfully!',
+        showConfirmButton: false,
+        timer: 1500, // Automatically close after 1.5 seconds
+      });
     } catch (error) {
       console.error('Error occurred:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An unexpected error occurred: ' + error.message,
+        confirmButtonText: 'OK',
+      });
     }
   };
   return (
     <>
       {steps === 0 && (
         <>
-          return (
+       
           <Fulldiv>
             <Container>
               <Board>Boards</Board>
@@ -169,22 +185,13 @@ function AddManager() {
                     team members.{' '}
                     <span style={{ color: '#505f98' }}> Create Board</span>{' '}
                   </h1>
-                  <StyledLabel>Title:</StyledLabel>
+                  <StyledLabel>Name:</StyledLabel>
                   <StyledInput
                     type="text"
                     placeholder=""
-                    value={formData.title}
+                    value={formData.Name}
                     onChange={(e) =>
-                      setFormData({ ...formData, title: e.target.value })
-                    }
-                  />
-                  <StyledLabel>Add Board:</StyledLabel>
-                  <StyledInput
-                    type="text"
-                    placeholder="Cc"
-                    value={formData.addBoard}
-                    onChange={(e) =>
-                      setFormData({ ...formData, addBoard: e.target.value })
+                      setFormData({ ...formData, Name: e.target.value })
                     }
                   />
                   <StyledLabel>Manager's Id:</StyledLabel>
@@ -203,15 +210,6 @@ function AddManager() {
                     value={formData.description}
                     onChange={(e) =>
                       setFormData({ ...formData, description: e.target.value })
-                    }
-                  />
-                  <StyledLabel>Fill:</StyledLabel>
-                  <StyledInput
-                    type="text"
-                    placeholder=""
-                    value={formData.fill}
-                    onChange={(e) =>
-                      setFormData({ ...formData, fill: e.target.value })
                     }
                   />
                   <StyledButton type="submit">Create Board</StyledButton>

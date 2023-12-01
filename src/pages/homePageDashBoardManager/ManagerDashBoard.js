@@ -9,37 +9,41 @@ import CreateBoardEmptyManager from '../CreateBoardEmptyManager.js';
 import RegisteredMembers from '../RegisteredMembers.js';
 import LogoutPopout from '../../components/logout/Logout.js';
 import ContactUs from '../contactUs/ContactUs.js';
+import ChangePassword from '../ChangePassword.js';
 
 function ManagerDashBoard() {
-  const [managers, setManagers] = useState([]);
+  const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const [totalItems, setTotalItems] = useState(0);
   const [step, setStep] = useState(0);
 
-  const getManagers = async () => {
+  const getUsers = async () => {
     try {
       const res = await AxiosInstance.get(
-        `/managers/GetAll?page=${currentPage}&perPage=${itemsPerPage}`
+        // `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem('mangerId')}&page=${currentPage}&perPage=${itemsPerPage}`
+        `/User/get-Users-By-ManagerId?managerId=6ba586e7-df76-490b-8216-8930991c68ab&page=${currentPage}&perPage=${itemsPerPage}`
       );
 
-      setManagers(res.data.result.data.data);
-      setTotalItems(res.data.result.data.totalCount);
+      console.log(res.data);
+      //const { data, totalCount } = res.data;
+      setUsers(res.data.data);
+      setTotalItems(res.data.totalCount);
     } catch (error) {
       console.log(error);
     }
   };
+  useEffect(() => {
+    getUsers();
+  }, [currentPage]);
 
-  const handleViewClick = (manager) => {
-    console.log('View clicked:', manager);
+  const handleViewClick = (users) => {
+    console.log('View clicked:', users);
   };
 
-  useEffect(() => {
-    getManagers();
-  }, [currentPage]);
   return (
     <section className="mothercard">
-      <Frame />
+      <Frame logout={() => setStep(5)} ChangePassword={() => setStep(6)} />
       <Sider step={step} selectstep={(step) => setStep(step)} />
       <>
         {step === 0 && (
@@ -48,7 +52,7 @@ function ManagerDashBoard() {
             <div className="container">
               <h2 className="text">Total Members</h2>
               <div className="inner-box">
-                <h1 className="text2">80</h1>
+                <h1 className="text2">{totalItems}</h1>
               </div>
 
               <div />
@@ -70,13 +74,13 @@ function ManagerDashBoard() {
             <div className="tablecard">
               <div className="tableit">
                 <ManagerTable
-                  companies={managers}
+                  registeredUsers={users}
                   currentPage={currentPage}
                   itemsPerPage={itemsPerPage}
                   handleViewClick={handleViewClick}
                   totalItems={totalItems}
                   setCurrentPage={setCurrentPage}
-                  getManagers={getManagers}
+                  getUsers={getUsers}
                 />
               </div>
             </div>
@@ -86,6 +90,7 @@ function ManagerDashBoard() {
         {step === 2 && <CreateBoardEmptyManager />}
         {step === 3 && <ContactUs />}
         {step === 5 && <LogoutPopout />}
+        {step === 6 && <ChangePassword />}
       </>
     </section>
   );
