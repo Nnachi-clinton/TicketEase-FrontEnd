@@ -9,6 +9,7 @@ import CreateBoardEmptyManager from '../CreateBoardEmptyManager.js';
 import RegisteredMembers from '../RegisteredMembers.js';
 import LogoutPopout from '../../components/logout/Logout.js';
 import ContactUs from '../contactUs/ContactUs.js';
+import ChangePassword from '../ChangePassword.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -42,7 +43,7 @@ function ManagerDashBoard() {
 
   return (
     <section className="mothercard">
-      <Frame />
+      <Frame logout={() => setStep(5)} ChangePassword={() => setStep(6)} />
       <Sider step={step} selectstep={(step) => setStep(step)} />
       <>
         {step === 0 && (
@@ -89,6 +90,7 @@ function ManagerDashBoard() {
         {step === 2 && <CreateBoardEmptyManager />}
         {step === 3 && <ContactUs />}
         {step === 5 && <LogoutPopout />}
+        {step === 6 && <ChangePassword />}
       </>
     </section>
   );
