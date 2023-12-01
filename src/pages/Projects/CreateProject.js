@@ -71,7 +71,12 @@ const CreateProject = ({ boardId }) => {
     e.preventDefault();
 
     if (!title || !description) {
-      // Handle validation error, display a message, or prevent submission
+      Swal.fire({
+        icon: 'error',
+        title: 'Empty input',
+        text: 'Please fill input',
+        confirmButtonText: 'OK',
+      });
       return;
     }
 
