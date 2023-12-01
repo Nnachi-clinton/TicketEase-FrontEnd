@@ -1,13 +1,69 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import '../common/PasswordForm.css';
 
-const PasswordErrorMessage = () => {
-    return (
-        <p className="FieldError">Must be at least 8 characters</p>
-    );
-};
+const PasswordErrorMessage = styled.p`
+  position: absolute;
+  bottom: -6px;
+  color: red;
+  font-size: 12px;
+`;
+
+const PasswordFieldset = styled.fieldset`
+  display: flex;
+  width: 80%;
+  padding: 16px;
+  border: none;
+  border-radius: 4px;
+  flex-direction: column;
+  padding-bottom: 0%;
+  margin-left: 0% !important;
+  margin-right: auto !important;
+`;
+
+const PasswordLabel = styled.label`
+  margin-bottom: 8px;
+  font-size: 16px;
+  text-align: left;
+`;
+
+const PasswordInput = styled.input`
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  height: 48px;
+  padding: 0 10px;
+
+  &::placeholder {
+    font-size: 12px;
+  }
+`;
+
+const PasswordField = styled.div`
+  position: relative;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledButton = styled.button`
+  padding: 20px !important;
+  width: auto;
+  border-radius: 4px;
+  border: 1px solid #ccc !important;
+  background-color: #505f98;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:disabled,
+  &[disabled] {
+    border: 1px solid #999999;
+    background-color: #505f98;
+    color: white;
+    cursor: not-allowed;
+  }
+`;
 
 function PasswordForm() {
     const [password, setPassword] = useState({
@@ -90,12 +146,12 @@ function PasswordForm() {
     return (
         <div className="ChangePasswordForm">
             <form onSubmit={handleSubmit}>
-                <fieldset className="password-fieldset">
-                    <div className="password-field">
-                        <label>
+                <PasswordFieldset className="password-fieldset">
+                    <PasswordField className="password-field">
+                        <PasswordLabel>
                             Password
-                        </label>
-                        <input
+                        </PasswordLabel>
+                        <PasswordInput
                             className="password-input"
                             value= {password.value}
                             type= "password"
@@ -108,15 +164,17 @@ function PasswordForm() {
                             placeholder= "Password"
                         />
                         {password.isTouched && password.value.length < 8 ? (
-                            <PasswordErrorMessage />
+                            <PasswordErrorMessage>
+                                Must be at least 8 characters
+                            </PasswordErrorMessage>
                         ) : null}
-                    </div>
+                    </PasswordField>
 
-                    <div className="password-field">
-                        <label>
+                    <PasswordField className="password-field">
+                        <PasswordLabel>
                             Confirm Password
-                        </label>
-                        <input
+                        </PasswordLabel>
+                        <PasswordInput
                             className="password-input"
                             value= {confirmPassword.value}
                             type= "password"
@@ -129,12 +187,14 @@ function PasswordForm() {
                             placeholder= "Confirm password"
                         />
                         {confirmPassword.isTouched && confirmPassword.value.length < 8 ? (
-                            <PasswordErrorMessage />
+                            <PasswordErrorMessage>
+                                Must be at least 8 characters
+                            </PasswordErrorMessage>
                         ) : null}
-                    </div>
+                    </PasswordField>
 
-                    <button type="submit" disabled={!getIsFormValid()}>Reset Password</button>
-                </fieldset>
+                    <StyledButton type="submit" disabled={!getIsFormValid()}>Reset Password</StyledButton>
+                </PasswordFieldset>
             </form>
         </div>
     );
