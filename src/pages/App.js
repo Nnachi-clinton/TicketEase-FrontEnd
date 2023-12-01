@@ -39,7 +39,7 @@ import PersonalInfo from './PersonalInfo.js';
 import EmailSent from '../components/checkEmail/EmailSent.js';
 import BoardMain from './BoardPage/BoardMain';
 import MemberProfile from './MemberProfile.js';
-import ManagerView from '../components/ManagerView/managerView'
+import ManagerView from '../components/ManagerView/managerView';
 
 function App() {
   return (
