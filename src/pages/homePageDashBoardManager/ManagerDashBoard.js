@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../homePageDashBoardManager/ManagerDashBoard.css';
-import HorizontalBarChart from '../homePageDashboardAdmin/HorizontalBarChart.js';
+import HorizontalBarChart2 from '../homePageDashBoardManager/HorizontalBarChart2.js';
 import Sider from '../../components/SideBar/Sider.jsx';
 import AxiosInstance from '../../Request/AxiosInstance.js';
 import { Frame } from '../../components/Header/Header/Header.js';
@@ -10,6 +10,7 @@ import RegisteredMembers from '../RegisteredMembers.js';
 import LogoutPopout from '../../components/logout/Logout.js';
 import ContactUs from '../contactUs/ContactUs.js';
 import ChangePassword from '../ChangePassword.js';
+import BoardMain from '../BoardPage/BoardMain.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -65,7 +66,7 @@ function ManagerDashBoard() {
                     <h1 className="active">ACTIVITIES</h1>
                   </div>
                   <div className="chartdiv">
-                    <HorizontalBarChart />
+                    <HorizontalBarChart2 />
                   </div>
                 </div>
               </div>
@@ -91,6 +92,7 @@ function ManagerDashBoard() {
         {step === 3 && <ContactUs />}
         {step === 5 && <LogoutPopout />}
         {step === 6 && <ChangePassword />}
+        {step === 4 && <BoardMain />}
       </>
     </section>
   );

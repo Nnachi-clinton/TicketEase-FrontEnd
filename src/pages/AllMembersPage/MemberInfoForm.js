@@ -15,6 +15,7 @@ const Fieldset = styled.fieldset`
   flex-shrink: 0;
   border-radius: 4px;
   background: #fff;
+  margin-left: 20rem;
 `;
 
 const Input = styled.input`
@@ -75,23 +76,6 @@ const MemberInfoForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // try {
-    //   const response = await AxiosInstance.post(
-    //     '/Authentication/Register/6db01435-a30c-44ae-9e23-95e1fecf0180',
-    //     {
-    //       firstName,
-    //       lastName,
-    //       email,
-    //       password,
-    //     }
-    //   );
-
-    //   console.log('API Response:', response.data);
-    //   // alert('Personal Information saved!');
-    //   clearForm();
-    // } catch (error) {
-    //   console.error('API Error:', error.message);
-    // }
     try {
       const response = await AxiosInstance.post('/Authentication/Register/', {
         firstName,

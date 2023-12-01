@@ -7,6 +7,7 @@ const Container = styled.div`
 `;
 const Form = styled.div`
   margin-top: 5%;
+  marging-left: 100rem;
 `;
 const MemberProfile = () => {
   return (

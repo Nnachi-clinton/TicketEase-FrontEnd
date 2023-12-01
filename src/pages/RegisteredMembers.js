@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import image from '../pages/manager/images/vector.jpg';
 import styled from 'styled-components';
+import MemberProfile from './MemberProfile';
 
 const Fulldiv = styled.div`
   overflow: hidden;
@@ -158,7 +159,7 @@ function RegisteredMembers() {
           </Fulldiv>
         </>
       )}
-      {/* {steps === 1 && < />} */}
+      {steps === 1 && <MemberProfile />}
     </>
   );
 }
