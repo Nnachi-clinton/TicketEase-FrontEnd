@@ -1,18 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { IoIosAddCircle } from "react-icons/io"
+import { IoIosAddCircle } from "react-icons/io";
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Fulldiv = styled.div`
   overflow: hidden;
   background-color: #f0f0f0;
-`;
-
-const YourStyledComponent = styled.h2`
-  /* Your existing styles for YourStyledComponent */
-`;
-
-const Pcreatemanager = styled.p`
-  /* Your existing styles for Pcreatemanager */
 `;
 
 const Innerdiv = styled.div`
@@ -59,13 +53,13 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledButton = styled.button`
-color: white;
-width: 100%;
-margin-top: 30px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-margin-bottom: 17em;
+  color: white;
+  width: 100%;
+  margin-top: 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 17em;
 `;
 
 export const StyledAlert = styled.div`
@@ -87,11 +81,11 @@ const Container = styled.div`
 const Board = styled.div`
   font-weight: bold;
   color: #333;
-  padding: 8px
+  padding: 8px;
 `;
 
 const Button = styled.button`
-background-color: #505f98;
+  background-color: #505f98;
   color: white;
   border: none;
   padding: 10px 30px;
@@ -106,45 +100,132 @@ background-color: #505f98;
 `;
 
 function CreateTicket() {
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    status: 0,
+    priority: 0,
+    assignedTo: ''
+  });
+
+  const userId = '8f0598ed-e732-45c7-85ab-3aa7c6379d7b'; 
+  const projectId = '9fd2436d-8cad-4bdb-aead-4c9b65a98b34';
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    const updatedValue = (name === 'status' || name === 'priority') ? parseInt(value, 10) : value;
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: updatedValue,
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await axios.post(
+        `https://localhost:7075/api/Ticket/add-ticket?userId=${userId}&projectId=${projectId}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      
+      Swal.fire({
+        icon: 'success',
+        title: 'Ticket created successfully!',
+        showConfirmButton: false,
+        timer: 3000,
+      });
+
+      console.log('Ticket created successfully:', response.data);
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An unexpected error occurred: ' + error.message,
+        confirmButtonText: 'OK',
+      });
+      console.error('Error creating ticket:', error.response.data);
+    }
+  };
+
   return (
     <Fulldiv>
       <Container>
-        <Board>Board</Board>
+        <Board>Ticket</Board>
         <Button>
           <div>< IoIosAddCircle />   </div>
-        <div>Create a Ticket</div>
-        
+          <div>Create a Ticket</div>
         </Button>
-
       </Container>
-
-      {/* YourStyledComponent and Pcreatemanager components remain the same */}
 
       <Innerdiv>
         <FormSpace>
-          <StyledForm>
-            <h1 style={{textAlign:"left", gap: "5px"}}>Work Collaboratively with <br />
-              team members. <span style={{color: "#505f98"}}> Create a Ticket</span> </h1>
+          <StyledForm onSubmit={handleSubmit}>
+            <h1 style={{ textAlign: "left", gap: "5px" }}>
+              Work Collaboratively with <br />
+              team members.{" "}
+              <span style={{ color: "#505f98" }}> Create a Ticket</span>{" "}
+            </h1>
             <StyledLabel>Title:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
+            <StyledInput
+              type="text"
+              required
+              placeholder=""
+              value={formData.title}
+              onChange={handleChange}
+              name="title"
+            />
             <StyledLabel>Description:</StyledLabel>
-            <StyledInput type="text" placeholder="Cc" />
-            <StyledLabel>Priority:</StyledLabel>
-            <StyledSelect>
-              <option value="high">Choose a Priority</option>
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
+            <StyledInput
+              type="text"
+              required
+              placeholder=""
+              value={formData.description}
+              onChange={handleChange}
+              name="description"
+            />
+
+            <StyledLabel>Status:</StyledLabel>
+            <StyledSelect
+              value={formData.status.toString()} // Convert number to string for rendering
+              onChange={handleChange}
+              name="status"
+            >
+              <option value="0">Completed</option>
+              <option value="1">Pending</option>
+              <option value="2">Incomplete</option>
             </StyledSelect>
+
+            <StyledLabel>Priority:</StyledLabel>
+            <StyledSelect
+              value={formData.priority.toString()} // Convert number to string for rendering
+              onChange={handleChange}
+              name="priority"
+            >
+              <option value="0">High</option>
+              <option value="1">Medium</option>
+              <option value="2">Low</option>
+            </StyledSelect>
+
             <StyledLabel>Assigned To:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
-            <StyledLabel>Project Id:</StyledLabel>
-            <StyledInput type="text" placeholder="" />
-            {/* Other form fields */}
+            <StyledInput
+              type="text"
+              placeholder=""
+              value={formData.assignedTo}
+              onChange={handleChange}
+              name="assignedTo"
+            />
             <StyledButton type="submit">Create a New Ticket</StyledButton>
           </StyledForm>
         </FormSpace>
-      </Innerdiv>
+    </Innerdiv>
     </Fulldiv>
   );
 }
