@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoIosAddCircle } from 'react-icons/io';
 import Swal from 'sweetalert2';
@@ -98,13 +99,14 @@ const Button = styled.button`
   gap: 10px;
 `;
 
-function AddManager() {
+function AddManager({ handleBoardMain }) {
   const [steps] = useState(0);
   const [formData, setFormData] = useState({
     Name: '',
     managerId: '',
     description: '',
   });
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -151,6 +153,12 @@ function AddManager() {
         showConfirmButton: false,
         timer: 1500, // Automatically close after 1.5 seconds
       });
+
+      const handleBoard = () => {
+        handleBoardMain();
+      };
+
+      handleBoard();
     } catch (error) {
       console.error('Error occurred:', error);
       Swal.fire({
@@ -165,7 +173,6 @@ function AddManager() {
     <>
       {steps === 0 && (
         <>
-       
           <Fulldiv>
             <Container>
               <Board>Boards</Board>

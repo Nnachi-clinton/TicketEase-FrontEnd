@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { validateEmail } from '../../utils/validateEmail';
 import AxiosInstance from '../../Request/AxiosInstance';
+import Swal from 'sweetalert2';
 
 const Container = styled.div`
   display: grid;
@@ -61,6 +62,7 @@ const MemberInfoForm = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [managerId, setManagerId] = useState('');
 
   const getIsFormValid = () => {
     return firstName && lastName && password && validateEmail(email);
@@ -71,6 +73,7 @@ const MemberInfoForm = () => {
     setLastName('');
     setEmail('');
     setPassword('');
+    setManagerId('');
   };
 
   const handleSubmit = async (e) => {
@@ -82,19 +85,39 @@ const MemberInfoForm = () => {
         lastName,
         email,
         password,
+        managerId,
       });
 
       console.log('API Response:', response.data);
       // Assuming success status code is 200
       if (response.status === 200) {
         // alert('Personal Information saved!');
+        Swal.fire({
+          icon: 'success',
+          title: 'Personal Information saved!',
+          showConfirmButton: false,
+          timer: 1500,
+          position: 'top-end',
+        });
         clearForm();
       } else {
         console.error('API Error:', 'Unexpected status code:', response.status);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: `Error: ${response.data.message}`,
+          confirmButtonText: 'OK',
+        });
       }
     } catch (error) {
       console.error('API Error:', error.message);
       // Handle specific error scenarios here
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An unexpected error occurred: ' + error.message,
+        confirmButtonText: 'OK',
+      });
     }
   };
 
@@ -145,6 +168,16 @@ const MemberInfoForm = () => {
                     setEmail(e.target.value);
                   }}
                   placeholder="Email"
+                />
+              </Field>
+              <Field className="Field">
+                <Label>ManagerId</Label>
+                <Input
+                  value={managerId}
+                  onChange={(e) => {
+                    setManagerId(e.target.value);
+                  }}
+                  placeholder="manager Id"
                 />
               </Field>
             </div>

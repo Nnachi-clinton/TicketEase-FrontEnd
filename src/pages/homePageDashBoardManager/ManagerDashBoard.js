@@ -19,6 +19,10 @@ function ManagerDashBoard() {
   const [totalItems, setTotalItems] = useState(0);
   const [step, setStep] = useState(0);
 
+  const handleBoardMain = () => {
+    setStep(7);
+  };
+
   const getUsers = async () => {
     try {
       const res = await AxiosInstance.get(
@@ -88,11 +92,13 @@ function ManagerDashBoard() {
           </>
         )}
         {step === 1 && <RegisteredMembers />}
-        {step === 2 && <CreateBoardEmptyManager />}
+        {step === 2 && (
+          <CreateBoardEmptyManager handleBoardMain={handleBoardMain} />
+        )}
         {step === 3 && <ContactUs />}
         {step === 5 && <LogoutPopout />}
         {step === 6 && <ChangePassword />}
-        {step === 4 && <BoardMain />}
+        {step === 7 && <BoardMain />}
       </>
     </section>
   );

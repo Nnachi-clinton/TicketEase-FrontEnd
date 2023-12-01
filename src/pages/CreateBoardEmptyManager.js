@@ -73,7 +73,7 @@ const StyledButton = styled.button`
   margin: 0 auto;
 `;
 
-function CreateBoardEmptyManager() {
+function CreateBoardEmptyManager({ handleBoardMain }) {
   const [steps, setsteps] = useState(0);
   return (
     <>
@@ -103,7 +103,7 @@ function CreateBoardEmptyManager() {
           </Fulldiv>
         </>
       )}
-      {steps === 1 && <CreateBoard />}
+      {steps === 1 && <CreateBoard handleBoardMain={handleBoardMain} />}
     </>
   );
 }
