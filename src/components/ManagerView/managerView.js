@@ -11,12 +11,13 @@ const Container = styled.div`
   font-family: Arial, sans-serif;
   padding-bottom: 30px
   align-items: flex-start;
-  border: 2px solid blue;
+  border: 2px solid #505F98;
   max-width: 600px; 
   margin: 0 auto;
   background-color: white;
   position: relative; 
   margin-top: 30px;
+  
 
   /* Adding a blue strip at the top */
   &::before {
@@ -24,7 +25,7 @@ const Container = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 50px; /* Width of the blue strip */
+    width: 50px; 
     height: 100%;
     background-color: #505F98;
 `;
@@ -83,26 +84,12 @@ function App() {
             <EmptyProfileImage  src={managerView} alt='profile'/>
           )}
           
-          <InfoItem>
-            <strong >Company Name:</strong> {user.companyName? user.companyName: "nill"}
-          </InfoItem>
-          <InfoItem>
-            <strong>Business Number:</strong>{' '}
-            {user.businessPhone ? user.businessPhone : 'nill'}
-          </InfoItem>
-          <InfoItem>
-            <strong>Business Email:</strong>{' '}
-            {user.businessEmail ? user.businessEmail : 'nill'}
-          </InfoItem>
-          <InfoItem>
-            <strong>Company Address:</strong> {user.companyAddress? user.companyAddress :"nill"}
-          </InfoItem>
-          <InfoItem>
-            <strong>Company Description:</strong> {user.companyDescription ? user.companyDescription : "nill"}
-          </InfoItem>
-          <InfoItem>
-            <strong>State:</strong> {user.state ? user.state : "nill"}
-          </InfoItem>
+          <InfoItem><strong >Company Name:</strong> {user.companyName? user.companyName: "nill"}</InfoItem>
+          <InfoItem> <strong>Business Number:</strong>{' '}{user.businessPhone ? user.businessPhone : 'nill'}</InfoItem>
+          <InfoItem><strong>Business Email:</strong>{' '}{user.businessEmail ? user.businessEmail : 'nill'}</InfoItem>
+          <InfoItem><strong>Company Address:</strong> {user.companyAddress? user.companyAddress :"nill"}</InfoItem>
+          <InfoItem><strong>Company Description:</strong> {user.companyDescription ? user.companyDescription : "nill"}</InfoItem>
+          <InfoItem><strong>State:</strong> {user.state ? user.state : "nill"}</InfoItem>
         </>
       )}
     </Container> 

@@ -98,7 +98,7 @@ const Button = styled.button`
 `;
 
 function AddManager() {
-  const [steps, setsteps] = useState(0);
+  const [steps] = useState(0);
   const [formData, setFormData] = useState({
     title: '',
     addBoard: '',
@@ -149,7 +149,7 @@ function AddManager() {
     <>
       {steps === 0 && (
         <>
-          return (
+       
           <Fulldiv>
             <Container>
               <Board>Boards</Board>
