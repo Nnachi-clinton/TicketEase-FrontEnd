@@ -95,7 +95,7 @@ const Inputs = () => {
       try {
         const response = await AxiosInstance.get(
           // '/managers/GetById?id={managerId}'
-          '/managers/GetById?id=a7dea8d4-a391-4da8-87f5-f8e387def404'
+          '/managers/GetById?id=a863edac-aa44-49fe-ab79-82bdf51ecea4'
         );
         console.log('Fetched manager details:', response.data);
         const managerDetails = response.data;
@@ -134,7 +134,7 @@ const Inputs = () => {
 
       // Make a PUT request to the UpdateManager endpoint
       const response = await AxiosInstance.put(
-        '/managers/updateManager/a7dea8d4-a391-4da8-87f5-f8e387def404',
+        '/managers/updateManager/a863edac-aa44-49fe-ab79-82bdf51ecea4',
         formData,
         {
           headers: {
