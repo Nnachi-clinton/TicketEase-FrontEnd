@@ -4,6 +4,7 @@ import Arrow from './Arrow-left.svg'
 import email from './email(2) 1.svg'
 
 
+
 export default function EmailSent(props) {
   const handleResendClick = () => {
     // Handle click to resend action
@@ -45,6 +46,7 @@ export default function EmailSent(props) {
     </Div>
   );
 }
+
 const Div = styled.div`
   background-color: #f6f6f6;
   display: flex;
