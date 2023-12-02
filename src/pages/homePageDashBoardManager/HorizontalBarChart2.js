@@ -14,12 +14,14 @@ import {
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 ChartJS.register(ChartDataLabels);
 
-const HorizontalBarChart = () => {
+const HorizontalBarChart2 = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     // Define the API endpoint
-    const apiUrl = 'https://localhost:7075/api/TotalCount/GetTotalCounts';
+    const id = '6db01435-a30c-44ae-9e23-95e1fecf0180';
+    const apiUrl =
+      'https://localhost:7075/api/managers/GetManagerDetails/' + id;
 
     // Make a GET request to the API
     fetch(apiUrl)
@@ -39,16 +41,16 @@ const HorizontalBarChart = () => {
         console.error('Error fetching data:', error);
       });
   }, []);
-  const board = data[2];
-  const project = data[0];
-  const ticket = data[1];
+  const board = data.boards;
+  const project = data.projects;
+  const ticket = data.tickets;
 
   const chartData = {
     labels: ['Total Boards', 'Total Projects', 'Total Tickets'],
     datasets: [
       {
         label: 'Tracker',
-        data: [ticket, board, project],
+        data: [board, project, ticket],
         backgroundColor: ['#F7C450', '#14A800', '#14A800'],
         tension: 0.1,
         borderWidth: 4,
@@ -75,9 +77,7 @@ const HorizontalBarChart = () => {
     layout: {
       padding: {
         left: 50,
-        right: 30,
-        top: -40,
-        bottom: -5,
+        right: 50,
       },
     },
     responsive: true,
@@ -91,4 +91,4 @@ const HorizontalBarChart = () => {
   );
 };
 
-export default HorizontalBarChart;
+export default HorizontalBarChart2;

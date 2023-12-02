@@ -7,13 +7,14 @@ const Container = styled.div`
 `;
 const Form = styled.div`
   margin-top: 5%;
+  marging-left: 100rem;
 `;
-const MemberProfile = () => {
+const MemberProfile = ({ handleAllMembers }) => {
   return (
     <Container>
       <MemberInforHeader />
       <Form>
-        <MemberInfoForm />
+        <MemberInfoForm handleAllMembers={handleAllMembers} />
       </Form>
     </Container>
   );
