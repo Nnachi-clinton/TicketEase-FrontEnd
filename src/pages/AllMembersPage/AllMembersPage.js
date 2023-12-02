@@ -15,7 +15,7 @@ const AllMembers = () => {
     try {
       const res = await AxiosInstance.get(
         // `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem('mangerId')}&page=${currentPage}&perPage=${itemsPerPage}`
-        `/User/get-Users-By-ManagerId?managerId=fb7f3e38-9ca8-4057-bf41-92a34be32c86&page=${currentPage}&perPage=${itemsPerPage}`
+        `/User/get-Users-By-ManagerId?managerId=263559eb-cec8-4402-b2f2-a094153db202&page=${currentPage}&perPage=${itemsPerPage}`
       );
       // console.log('API Response:', res.data);
       const { data, totalCount } = res.data;
