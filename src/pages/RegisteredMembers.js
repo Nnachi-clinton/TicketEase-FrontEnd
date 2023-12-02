@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import image from '../pages/manager/images/vector.jpg';
 import styled from 'styled-components';
 import { StyledButton } from './TicketInputfield';
+import MemberProfile from './MemberProfile';
 
 const Fulldiv = styled.div`
   overflow: hidden;
@@ -96,7 +97,7 @@ const Img = styled.img`
   background-color: white;
   width: 100%;
 `;
-function RegisteredMembers() {
+function RegisteredMembers({ handleAllMembers }) {
   const [steps, setSteps] = useState(0);
 
   return (
@@ -170,7 +171,7 @@ function RegisteredMembers() {
           </Fulldiv>
         </>
       )}
-      {/* {steps === 1 && < />} */}
+      {steps === 1 && <MemberProfile handleAllMembers={handleAllMembers} />}
     </>
   );
 }
