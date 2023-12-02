@@ -165,7 +165,6 @@ function AddManager() {
     <>
       {steps === 0 && (
         <>
-       
           <Fulldiv>
             <Container>
               <Board>Boards</Board>
@@ -212,7 +211,23 @@ function AddManager() {
                       setFormData({ ...formData, description: e.target.value })
                     }
                   />
-                  <StyledButton type="submit">Create Board</StyledButton>
+                  <StyledButton
+                    style={{
+                      marginBottom: 20,
+                      backgroundColor: '#505F98',
+                      color: 'white',
+                      width: '300px',
+                      height: '48px',
+                      fontfamily: 'Mulish',
+                      fontsize: '20px',
+                      fontstyle: 'normal',
+                      fontweight: '600',
+                      lineheight: 'normal',
+                    }}
+                    type="submit"
+                  >
+                    Create Board
+                  </StyledButton>
                 </StyledForm>
               </FormSpace>
             </Innerdiv>

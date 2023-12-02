@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import image from '../pages/manager/images/vector.jpg';
 import styled from 'styled-components';
+import { StyledButton } from './TicketInputfield';
 
 const Fulldiv = styled.div`
   overflow: hidden;
@@ -146,7 +147,18 @@ function RegisteredMembers() {
                   <Centerp>Sorry we couldnt find any results</Centerp>
 
                   <button
-                    style={{ marginBottom: 20 }}
+                    style={{
+                      marginBottom: 20,
+                      backgroundColor: '#505F98',
+                      color: 'white',
+                      width: '250px',
+                      height: '48px',
+                      fontfamily: 'Mulish',
+                      fontsize: '16px',
+                      fontstyle: 'normal',
+                      fontweight: '600',
+                      lineheight: 'normal',
+                    }}
                     type="button"
                     onClick={() => setSteps(1)}
                   >
