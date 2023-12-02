@@ -93,7 +93,11 @@ function CreateBoardEmptyManager({ handleBoardMain }) {
                 </StyledSecondText>
 
                 <div>
-                  <StyledButton className="btn" onClick={() => setsteps(1)}>
+                  <StyledButton
+                    className="btn"
+                    onClick={() => setsteps(1)}
+                    style={{ background: '#505f98', width: '270px' }}
+                  >
                     <img src={AddIcon} alt="AddIcon" />
                     Create Board
                   </StyledButton>

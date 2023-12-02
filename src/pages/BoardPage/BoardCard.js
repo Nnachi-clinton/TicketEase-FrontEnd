@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const MergedComponent = () => {
   return (
@@ -211,7 +212,9 @@ const StyledImg4 = styled.img`
   }
 `;
 
-const BoardCard = ({ boardName }) => {
+const BoardCard = ({ boardName, handleCreateProject }) => {
+  const navigate = useNavigate();
+
   return (
     <StyledCardContainer>
       <StyledDiv5 style={{ width: '100%' }}>
@@ -243,9 +246,11 @@ const BoardCard = ({ boardName }) => {
                   paddingTop: '0px',
                 }}
               >
-                <button style={{ marginBottom: '16px', marginRight: '3em' }}>
-                  View all Projects
-                </button>
+                <div>
+                  <button style={{ marginBottom: '16px', marginRight: '3em' }}>
+                    View all Projects
+                  </button>
+                </div>
 
                 <button style={{ marginBottom: '16px' }}>Create Project</button>
               </div>

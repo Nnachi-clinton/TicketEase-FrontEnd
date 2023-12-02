@@ -219,7 +219,16 @@ function AddManager({ handleBoardMain }) {
                       setFormData({ ...formData, description: e.target.value })
                     }
                   />
-                  <StyledButton type="submit">Create Board</StyledButton>
+                  <StyledButton
+                    type="submit"
+                    style={{
+                      background: '#505f98',
+                      width: '300px',
+                      height: '55px',
+                    }}
+                  >
+                    Create Board
+                  </StyledButton>
                 </StyledForm>
               </FormSpace>
             </Innerdiv>

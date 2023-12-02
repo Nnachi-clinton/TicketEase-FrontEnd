@@ -11,6 +11,7 @@ import LogoutPopout from '../../components/logout/Logout.js';
 import ContactUs from '../contactUs/ContactUs.js';
 import ChangePassword from '../ChangePassword.js';
 import BoardMain from '../BoardPage/BoardMain.js';
+import AllMembers from '../AllMembersPage/AllMembersPage.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -22,12 +23,19 @@ function ManagerDashBoard() {
   const handleBoardMain = () => {
     setStep(7);
   };
+  const handleAllMembers = () => {
+    setStep(8);
+  };
+
+  const handleCreateProject = () => {
+    setStep(8);
+  };
 
   const getUsers = async () => {
     try {
       const res = await AxiosInstance.get(
         // `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem('mangerId')}&page=${currentPage}&perPage=${itemsPerPage}`
-        `/User/get-Users-By-ManagerId?managerId=6ba586e7-df76-490b-8216-8930991c68ab&page=${currentPage}&perPage=${itemsPerPage}`
+        `/User/get-Users-By-ManagerId?managerId=6db01435-a30c-44ae-9e23-95e1fecf0180&page=${currentPage}&perPage=${itemsPerPage}`
       );
 
       console.log(res.data);
@@ -91,14 +99,17 @@ function ManagerDashBoard() {
             </div>
           </>
         )}
-        {step === 1 && <RegisteredMembers />}
+        {step === 1 && (
+          <RegisteredMembers handleAllMembers={handleAllMembers} />
+        )}
         {step === 2 && (
           <CreateBoardEmptyManager handleBoardMain={handleBoardMain} />
         )}
         {step === 3 && <ContactUs />}
         {step === 5 && <LogoutPopout />}
         {step === 6 && <ChangePassword />}
-        {step === 7 && <BoardMain />}
+        {step === 7 && <BoardMain handleCreateProject={handleCreateProject} />}
+        {step === 8 && <AllMembers />}
       </>
     </section>
   );

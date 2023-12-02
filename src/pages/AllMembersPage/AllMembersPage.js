@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import * as S from "../../components/AllMembers/AllMembers"
-import { FaArrowLeft } from "react-icons/fa";
-import AllMembersTable from "../AllMembersPage/AllMembersTable";
+import * as S from '../../components/AllMembers/AllMembers';
+import { FaArrowLeft } from 'react-icons/fa';
+import AllMembersTable from '../AllMembersPage/AllMembersTable';
 import AxiosInstance from '../../Request/AxiosInstance.js';
-
 
 const AllMembers = () => {
   const [allMembers, setMembers] = useState([]);
@@ -15,11 +14,11 @@ const AllMembers = () => {
     try {
       const res = await AxiosInstance.get(
         // `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem('mangerId')}&page=${currentPage}&perPage=${itemsPerPage}`
-        `/User/get-Users-By-ManagerId?managerId=fb7f3e38-9ca8-4057-bf41-92a34be32c86&page=${currentPage}&perPage=${itemsPerPage}`
+        `/User/get-Users-By-ManagerId?managerId=6db01435-a30c-44ae-9e23-95e1fecf0180&page=${currentPage}&perPage=${itemsPerPage}`
       );
       // console.log('API Response:', res.data);
       const { data, totalCount } = res.data;
-  
+
       setMembers(data);
       setTotalItems(totalCount);
     } catch (error) {
@@ -57,7 +56,7 @@ const AllMembers = () => {
 
           {/* Updated prop name from 'companies' to 'data' */}
           <AllMembersTable
-            data={allMembers}  // Updated prop name
+            data={allMembers} // Updated prop name
             currentPage={currentPage}
             itemsPerPage={itemsPerPage}
             handleViewClick={handleViewClick}
@@ -72,4 +71,3 @@ const AllMembers = () => {
 };
 
 export default AllMembers;
-

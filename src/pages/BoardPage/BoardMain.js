@@ -11,7 +11,7 @@ const CardsContainer = styled.div`
   gap: 10px;
 `;
 
-const BoardMain = () => {
+const BoardMain = ({ handleCreateProject }) => {
   // State to store the board data
   const [boardData, setBoardData] = useState([]);
 
@@ -38,7 +38,7 @@ const BoardMain = () => {
   return (
     <div style={{ marginLeft: '10em' }}>
       {/* Render MergedComponent above the CardsContainer */}
-      <MergedComponent />
+      <MergedComponent handleCreateProject={handleCreateProject} />
 
       {/* CardsContainer with board data */}
       <CardsContainer>

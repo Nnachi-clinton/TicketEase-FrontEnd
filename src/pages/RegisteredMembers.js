@@ -96,7 +96,7 @@ const Img = styled.img`
   background-color: white;
   width: 100%;
 `;
-function RegisteredMembers() {
+function RegisteredMembers({ handleAllMembers }) {
   const [steps, setSteps] = useState(0);
 
   return (
@@ -159,7 +159,7 @@ function RegisteredMembers() {
           </Fulldiv>
         </>
       )}
-      {steps === 1 && <MemberProfile />}
+      {steps === 1 && <MemberProfile handleAllMembers={handleAllMembers} />}
     </>
   );
 }

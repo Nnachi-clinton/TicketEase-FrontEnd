@@ -57,7 +57,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const MemberInfoForm = () => {
+const MemberInfoForm = ({ handleAllMembers }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -99,7 +99,11 @@ const MemberInfoForm = () => {
           timer: 1500,
           position: 'top-end',
         });
-        clearForm();
+        const handleMembers = () => {
+          handleAllMembers();
+        };
+        handleMembers();
+        // clearForm();
       } else {
         console.error('API Error:', 'Unexpected status code:', response.status);
         Swal.fire({

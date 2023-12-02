@@ -1,41 +1,60 @@
-import React from "react";
-import styled from "styled-components";
-import Arrow from './Arrow-left.svg'
-import email from './email(2) 1.svg'
-
+import React from 'react';
+import styled from 'styled-components';
+import Arrow from './Arrow-left.svg';
+import email from './email(2) 1.svg';
 
 export default function EmailSent(props) {
-    return (
-      <Div>
-        <Div2>
-          <Div3>
-            <Img loading="lazy" src={email} />
-            <Div4>Check your email</Div4>
-            <Div5>
-              We sent a password reset link to
-              <br />
-              sochimachiebuka@gmail.com
-            </Div5>
-            <Div6>Open email app</Div6>
-            <Div7>
-              <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 400, color: 'rgba(189,189,189,1)' }}>
-                Don’t receive the email?
-              </span>
-              <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 400, color: 'rgba(0,0,0,1)' }}>
-              </span>
-              <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 700, color: 'rgba(20,168,0,1)' }}>
-                Click to Resend link{" "}
-              </span>
-            </Div7>
-            <Div8>
-              <Img2 loading="lazy" src={Arrow} />
-              <Div9>Back to Login</Div9>
-            </Div8>
-          </Div3>
-        </Div2>
-      </Div>
-    );
-  }
+  return (
+    <Div>
+      <Div2>
+        <Div3>
+          <Img loading="lazy" src={email} />
+          <Div4>Check your email</Div4>
+          <Div5>
+            We sent a password reset link to
+            <br />
+            sochimachiebuka@gmail.com
+          </Div5>
+          <Div6 style={{ backgroundColor: 'rgba(80, 95, 152, 1)' }}>
+            Open email app
+          </Div6>
+          <Div7>
+            <span
+              style={{
+                fontFamily: 'Mulish, sans-serif',
+                fontWeight: 400,
+                color: 'rgba(189,189,189,1)',
+              }}
+            >
+              Don’t receive the email?
+            </span>
+
+            <span
+              style={{
+                fontFamily: 'Mulish, sans-serif',
+                fontWeight: 700,
+                color: 'rgba(80, 95, 152, 1)',
+              }}
+            >
+              Click to Resend link{' '}
+            </span>
+          </Div7>
+          <Div8 style={{ pointer: 'cursor' }}>
+            <Img2
+              loading="lazy"
+              src={Arrow}
+              style={{
+                background: 'rgba(80, 95, 152, 1)',
+                color: 'rgba(80, 95, 152, 1)',
+              }}
+            />
+            <Div9 style={{ pointer: 'cursor' }}>Back to Login</Div9>
+          </Div8>
+        </Div3>
+      </Div2>
+    </Div>
+  );
+}
 
 const Div = styled.div`
   background-color: #f6f6f6;
@@ -104,7 +123,7 @@ const Div5 = styled.div`
 `;
 
 const Div6 = styled.div`
-  color: #fff;
+  color:rgba(80, 95, 152, 1)
   white-space: nowrap;
   align-items: center;
   border-radius: 4px;
@@ -121,7 +140,7 @@ const Div6 = styled.div`
 `;
 
 const Div7 = styled.div`
-  color: #14a800;
+  color: rgba(80, 95, 152, 1)
   text-align: center;
   align-self: stretch;
   margin-top: 18px;
@@ -135,12 +154,13 @@ const Div7 = styled.div`
 const Div8 = styled.div`
   justify-content: center;
   border-radius: 4px;
-  background-color: rgba(20, 168, 0, 0.05);
+  background-color: rgba(80, 95, 152, 1)
   align-self: center;
   display: flex;
   margin-top: 64px;
   gap: 10px;
   padding: 10px 14px;
+  pointer:cursor;
   @media (max-width: 991px) {
     margin-top: 40px;
   }
@@ -156,7 +176,7 @@ const Img2 = styled.img`
 `;
 
 const Div9 = styled.div`
-  color: #14a800;
+  color:rgba(80, 95, 152, 1)
   align-self: center;
   flex-grow: 1;
   white-space: nowrap;
@@ -166,5 +186,3 @@ const Div9 = styled.div`
     white-space: initial;
   }
 `;
-
-
