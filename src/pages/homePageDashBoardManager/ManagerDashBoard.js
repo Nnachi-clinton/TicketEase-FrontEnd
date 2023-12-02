@@ -12,6 +12,7 @@ import ContactUs from '../contactUs/ContactUs.js';
 import ChangePassword from '../ChangePassword.js';
 import BoardMain from '../BoardPage/BoardMain.js';
 import AllMembers from '../AllMembersPage/AllMembersPage.js';
+import CreateProject from '../Projects/CreateProject.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -28,7 +29,7 @@ function ManagerDashBoard() {
   };
 
   const handleCreateProject = () => {
-    setStep(8);
+    setStep(9);
   };
 
   const getUsers = async () => {
@@ -110,6 +111,7 @@ function ManagerDashBoard() {
         {step === 6 && <ChangePassword />}
         {step === 7 && <BoardMain handleCreateProject={handleCreateProject} />}
         {step === 8 && <AllMembers />}
+        {step === 9 && <CreateProject />}
       </>
     </section>
   );

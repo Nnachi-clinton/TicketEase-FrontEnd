@@ -38,13 +38,17 @@ const BoardMain = ({ handleCreateProject }) => {
   return (
     <div style={{ marginLeft: '10em' }}>
       {/* Render MergedComponent above the CardsContainer */}
-      <MergedComponent handleCreateProject={handleCreateProject} />
+      <MergedComponent />
 
       {/* CardsContainer with board data */}
       <CardsContainer>
         {boardData.length > 0 ? (
           boardData.map((board) => (
-            <BoardCard key={board.id} boardName={board.name} />
+            <BoardCard
+              handleCreateProject={handleCreateProject}
+              key={board.id}
+              boardName={board.name}
+            />
           ))
         ) : (
           <div>No Available boards</div>

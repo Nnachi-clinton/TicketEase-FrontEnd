@@ -7,7 +7,7 @@ import AxiosInstance from '../../Request/AxiosInstance.js';
 const AllMembers = () => {
   const [allMembers, setMembers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 8;
   const [totalItems, setTotalItems] = useState(0);
 
   const getMembers = async () => {

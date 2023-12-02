@@ -40,7 +40,7 @@ import PersonalInfo from './PersonalInfo.js';
 import EmailSent from '../components/checkEmail/EmailSent.js';
 import BoardMain from './BoardPage/BoardMain';
 import MemberProfile from './MemberProfile.js';
-import ManagerView from '../components/ManagerView/managerView'
+import ManagerView from '../components/ManagerView/managerView';
 
 function App() {
   return (
@@ -96,7 +96,10 @@ function App() {
                 <Route path="/CreateProject" element={<CreateProject />} />
                 <Route path="/CreateTicket" element={<CreateTicket />} />
                 <Route path="/createNewTicket" element={<CreateNewTicket />} />
-                <Route path="/ticketInputField" element={<TicketInputfield/>}/>
+                <Route
+                  path="/ticketInputField"
+                  element={<TicketInputfield />}
+                />
                 <Route path="/PersonalInfo" element={<PersonalInfo />} />
                 <Route path="/ManagerView" element={<ManagerView />} />
                 <Route path="/BoardMain" element={<BoardMain />} />

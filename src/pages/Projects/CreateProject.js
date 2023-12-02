@@ -5,12 +5,17 @@ import Swal from 'sweetalert2';
 const Fulldiv = styled.div`
   overflow: hidden;
   background-color: #f0f0f0;
+  width: 70%;
+  margin-left: 20em;
+  margin-right: 40em;
+  margin-top: 6em;
 `;
 
 const Innerdiv = styled.div`
   background-color: white;
   margin-left: 20px;
   margin-right: 20px;
+  padding-top: 4em;
 
   & .marginb {
     margin-bottom: 20px;
@@ -102,7 +107,7 @@ const CreateProject = ({ boardId }) => {
 
     try {
       // Make a POST request to your API endpoint
-
+      const boardId = '16600789-f9b3-4ef6-bc80-289a4ef9fc86';
       const response = await fetch(
         `https://localhost:7075/Project/AddProject/${boardId}`,
         {

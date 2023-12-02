@@ -252,7 +252,12 @@ const BoardCard = ({ boardName, handleCreateProject }) => {
                   </button>
                 </div>
 
-                <button style={{ marginBottom: '16px' }}>Create Project</button>
+                <button
+                  style={{ marginBottom: '16px' }}
+                  onClick={handleCreateProject}
+                >
+                  Create Project
+                </button>
               </div>
             </StyledDiv14>
           </StyledDiv11>
