@@ -4,38 +4,48 @@ import Arrow from './Arrow-left.svg'
 import email from './email(2) 1.svg'
 
 
+
 export default function EmailSent(props) {
-    return (
-      <Div>
-        <Div2>
-          <Div3>
-            <Img loading="lazy" src={email} />
-            <Div4>Check your email</Div4>
-            <Div5>
-              We sent a password reset link to
-              <br />
-              sochimachiebuka@gmail.com
-            </Div5>
+  const handleResendClick = () => {
+    // Handle click to resend action
+    // Add your logic here
+  };
+
+  return (
+    <Div>
+      <Div2>
+        <Div3>
+          <Img loading="lazy" src={email} />
+          <Div4>Check your email</Div4>
+          <Div5>
+            We sent a password reset link to
+            <br />
+            sochimachiebuka@gmail.com
+          </Div5>
+          <a href="mailto:ticketeasesq017@gmail.com" style={{ color: '#505F98', textDecoration: 'none' }}>
             <Div6>Open email app</Div6>
-            <Div7>
-              <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 400, color: 'rgba(189,189,189,1)' }}>
-                Don’t receive the email?
+          </a>
+          <Div7>
+            <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 400, color: 'rgba(189,189,189,1)' }}>
+              Don’t receive the email?
+            </span>
+            <a href="#" onClick={handleResendClick} style={{ color: '#505F98', textDecoration: 'none' }}>
+              <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 700, color: '#505F98' }}>
+                Click to Resend link
               </span>
-              <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 400, color: 'rgba(0,0,0,1)' }}>
-              </span>
-              <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 700, color: 'rgba(20,168,0,1)' }}>
-                Click to Resend link{" "}
-              </span>
-            </Div7>
+            </a>
+          </Div7>
+          <a href="/login" style={{ color: '#505F98', textDecoration: 'none' }}>
             <Div8>
               <Img2 loading="lazy" src={Arrow} />
               <Div9>Back to Login</Div9>
             </Div8>
-          </Div3>
-        </Div2>
-      </Div>
-    );
-  }
+          </a>
+        </Div3>
+      </Div2>
+    </Div>
+  );
+}
 
 const Div = styled.div`
   background-color: #f6f6f6;
@@ -103,12 +113,25 @@ const Div5 = styled.div`
   font: 400 16px Mulish, sans-serif;
 `;
 
+
+const Img2 = styled.img`
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 24px;
+  overflow: hidden;
+  max-width: 100%;
+  filter: invert(100%) brightness(0) sepia(100%) saturate(10000%) hue-rotate(270deg); 
+`;
+
+// ... (existing code remains unchanged)
+
 const Div6 = styled.div`
-  color: #fff;
+  color: #fff; /* Text color remains unchanged */
   white-space: nowrap;
   align-items: center;
   border-radius: 4px;
-  background-color: #14a800;
+  background-color: #505F98; /* Changed background color to #505F98 */
   align-self: stretch;
   margin-top: 30px;
   justify-content: center;
@@ -121,7 +144,7 @@ const Div6 = styled.div`
 `;
 
 const Div7 = styled.div`
-  color: #14a800;
+  color: #505F98; /* Text color for Click to Resend link */
   text-align: center;
   align-self: stretch;
   margin-top: 18px;
@@ -135,7 +158,7 @@ const Div7 = styled.div`
 const Div8 = styled.div`
   justify-content: center;
   border-radius: 4px;
-  background-color: rgba(20, 168, 0, 0.05);
+  background-color: #505F98; /* Changed background color to #505F98 */
   align-self: center;
   display: flex;
   margin-top: 64px;
@@ -146,17 +169,8 @@ const Div8 = styled.div`
   }
 `;
 
-const Img2 = styled.img`
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 24px;
-  overflow: hidden;
-  max-width: 100%;
-`;
-
 const Div9 = styled.div`
-  color: #14a800;
+  color: #fff; /* Text color for Back to Login */
   align-self: center;
   flex-grow: 1;
   white-space: nowrap;
@@ -166,5 +180,4 @@ const Div9 = styled.div`
     white-space: initial;
   }
 `;
-
 
