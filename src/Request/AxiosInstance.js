@@ -5,13 +5,13 @@ const AxiosInstance = axios.create({
 });
 
 AxiosInstance.interceptors.request.use(
-  (configs) => {
+  (config) => {
     const token = localStorage.getItem('token');
 
     if (token) {
-      configs.headers.Authorization = token;
+      config.headers.Authorization = `Bearer ${token}`;
     }
-    return configs;
+    return config;
   },
   (error) => {
     return Promise.reject(error);
