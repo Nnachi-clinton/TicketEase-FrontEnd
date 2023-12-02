@@ -39,7 +39,7 @@ const ContactUs = () => {
         }
       );
 
-      if (response.ok) {
+      if (response.status === 200) {
         Swal.fire({
           icon: 'success',
           title: 'Email sent successfully!',

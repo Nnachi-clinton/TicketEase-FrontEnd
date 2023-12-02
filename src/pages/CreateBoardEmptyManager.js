@@ -73,7 +73,7 @@ const StyledButton = styled.button`
   margin: 0 auto;
 `;
 
-function CreateBoardEmptyManager() {
+function CreateBoardEmptyManager({ handleBoardMain }) {
   const [steps, setsteps] = useState(0);
   return (
     <>
@@ -93,7 +93,11 @@ function CreateBoardEmptyManager() {
                 </StyledSecondText>
 
                 <div>
-                  <StyledButton className="btn" onClick={() => setsteps(1)}>
+                  <StyledButton
+                    className="btn"
+                    onClick={() => setsteps(1)}
+                    style={{ background: '#505f98', width: '270px' }}
+                  >
                     <img src={AddIcon} alt="AddIcon" />
                     Create Board
                   </StyledButton>
@@ -103,7 +107,7 @@ function CreateBoardEmptyManager() {
           </Fulldiv>
         </>
       )}
-      {steps === 1 && <CreateBoard />}
+      {steps === 1 && <CreateBoard handleBoardMain={handleBoardMain} />}
     </>
   );
 }

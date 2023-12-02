@@ -1,9 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Arrow from './Arrow-left.svg'
-import email from './email(2) 1.svg'
-
-
+import React from 'react';
+import styled from 'styled-components';
+import Arrow from './Arrow-left.svg';
+import email from './email(2) 1.svg';
 
 export default function EmailSent(props) {
   const handleResendClick = () => {
@@ -22,15 +20,34 @@ export default function EmailSent(props) {
             <br />
             sochimachiebuka@gmail.com
           </Div5>
-          <a href="mailto:ticketeasesq017@gmail.com" style={{ color: '#505F98', textDecoration: 'none' }}>
+          <a
+            href="mailto:ticketeasesq017@gmail.com"
+            style={{ color: '#505F98', textDecoration: 'none' }}
+          >
             <Div6>Open email app</Div6>
           </a>
           <Div7>
-            <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 400, color: 'rgba(189,189,189,1)' }}>
+            <span
+              style={{
+                fontFamily: 'Mulish, sans-serif',
+                fontWeight: 400,
+                color: 'rgba(189,189,189,1)',
+              }}
+            >
               Don’t receive the email?
             </span>
-            <a href="#" onClick={handleResendClick} style={{ color: '#505F98', textDecoration: 'none' }}>
-              <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 700, color: '#505F98' }}>
+            <a
+              href="#"
+              onClick={handleResendClick}
+              style={{ color: '#505F98', textDecoration: 'none' }}
+            >
+              <span
+                style={{
+                  fontFamily: 'Mulish, sans-serif',
+                  fontWeight: 700,
+                  color: '#505F98',
+                }}
+              >
                 Click to Resend link
               </span>
             </a>
@@ -113,7 +130,6 @@ const Div5 = styled.div`
   font: 400 16px Mulish, sans-serif;
 `;
 
-
 const Img2 = styled.img`
   aspect-ratio: 1;
   object-fit: contain;
@@ -121,7 +137,8 @@ const Img2 = styled.img`
   width: 24px;
   overflow: hidden;
   max-width: 100%;
-  filter: invert(100%) brightness(0) sepia(100%) saturate(10000%) hue-rotate(270deg); 
+  filter: invert(100%) brightness(0) sepia(100%) saturate(10000%)
+    hue-rotate(270deg);
 `;
 
 // ... (existing code remains unchanged)
@@ -131,7 +148,7 @@ const Div6 = styled.div`
   white-space: nowrap;
   align-items: center;
   border-radius: 4px;
-  background-color: #505F98; /* Changed background color to #505F98 */
+  background-color: #505f98; /* Changed background color to #505F98 */
   align-self: stretch;
   margin-top: 30px;
   justify-content: center;
@@ -144,7 +161,7 @@ const Div6 = styled.div`
 `;
 
 const Div7 = styled.div`
-  color: #505F98; /* Text color for Click to Resend link */
+  color: #505f98; /* Text color for Click to Resend link */
   text-align: center;
   align-self: stretch;
   margin-top: 18px;
@@ -158,12 +175,13 @@ const Div7 = styled.div`
 const Div8 = styled.div`
   justify-content: center;
   border-radius: 4px;
-  background-color: #505F98; /* Changed background color to #505F98 */
+  background-color: #505f98; /* Changed background color to #505F98 */
   align-self: center;
   display: flex;
   margin-top: 64px;
   gap: 10px;
   padding: 10px 14px;
+  pointer: cursor;
   @media (max-width: 991px) {
     margin-top: 40px;
   }
@@ -180,4 +198,3 @@ const Div9 = styled.div`
     white-space: initial;
   }
 `;
-
