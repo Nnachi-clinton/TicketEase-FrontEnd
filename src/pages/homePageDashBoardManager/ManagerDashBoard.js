@@ -13,6 +13,8 @@ import ChangePassword from '../ChangePassword.js';
 import BoardMain from '../BoardPage/BoardMain.js';
 import AllMembers from '../AllMembersPage/AllMembersPage.js';
 import CreateProject from '../Projects/CreateProject.js';
+import AllProjects from '../AllProjectsPage/AllProjects.jsx';
+import CreateBoard from '../Boards/CreateBoard.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -30,6 +32,14 @@ function ManagerDashBoard() {
 
   const handleCreateProject = () => {
     setStep(9);
+  };
+
+  const handleViewAllProjecs = () => {
+    setStep(10);
+  };
+
+  const handleCreateBoard = () => {
+    setStep(11);
   };
 
   const getUsers = async () => {
@@ -109,9 +119,19 @@ function ManagerDashBoard() {
         {step === 3 && <ContactUs />}
         {step === 5 && <LogoutPopout />}
         {step === 6 && <ChangePassword />}
-        {step === 7 && <BoardMain handleCreateProject={handleCreateProject} />}
+        {step === 7 && (
+          <BoardMain
+            handleCreateProject={handleCreateProject}
+            handleViewAllProjecs={handleViewAllProjecs}
+            handleCreateBoard={handleCreateBoard}
+          />
+        )}
         {step === 8 && <AllMembers />}
-        {step === 9 && <CreateProject />}
+        {step === 9 && (
+          <CreateProject handleViewAllProjecs={handleViewAllProjecs} />
+        )}
+        {step === 10 && <AllProjects />}
+        {step === 11 && <CreateBoard />}
       </>
     </section>
   );
