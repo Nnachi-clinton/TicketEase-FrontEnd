@@ -1,24 +1,19 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { validateEmail } from '../../utils/validateEmail';
+import Edit from './Editimg/Edit.svg';
 import AxiosInstance from '../../Request/AxiosInstance';
-import Swal from 'sweetalert2';
 
 const Container = styled.div`
   display: grid;
   grid-template-columns: 45% 45%;
   justify-content: center;
 `;
-
 const Fieldset = styled.fieldset`
-  width: 1084px;
-  height: 1034px;
-  flex-shrink: 0;
-  border-radius: 4px;
-  background: #fff;
-  margin-left: 20rem;
+  margin-left: 16px;
+  margin-right: 16px;
+  border: none;
 `;
-
 const Input = styled.input`
   background: rgba(246, 246, 246, 0.49);
   border: none;
@@ -30,19 +25,20 @@ const Input = styled.input`
     color: rgba(151, 151, 151, 1);
   }
 `;
-
-const Select = styled.select`
-  height: 48px; /* Adjust the height as needed */
-  font-size: 14px;
-`;
-
 const Field = styled.div`
   width: 90%;
   position: relative;
 `;
-
 const Label = styled.label`
   font-size: 14px;
+`;
+const ImageIcon = styled.img`
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
 `;
 
 const Button = styled.button`
@@ -54,15 +50,16 @@ const Button = styled.button`
   background: rgba(80, 95, 152, 1);
   color: white;
   margin: 16px auto 16px auto;
-  cursor: pointer;
+  // margin-top: 16px;
+  // margin-left: 10%;
+  // margin-right: 10%;
 `;
 
-const MemberInfoForm = ({ handleAllMembers }) => {
+const EditMemberData = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [managerId, setManagerId] = useState('');
 
   const getIsFormValid = () => {
     return firstName && lastName && password && validateEmail(email);
@@ -73,55 +70,30 @@ const MemberInfoForm = ({ handleAllMembers }) => {
     setLastName('');
     setEmail('');
     setPassword('');
-    setManagerId('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await AxiosInstance.post('/Authentication/Register/263559eb-cec8-4402-b2f2-a094153db202', {
-        firstName,
-        lastName,
-        email,
-        password,
-        managerId,
-      });
+      const response = await AxiosInstance.post(
+        '/Authentication/Register/263559eb-cec8-4402-b2f2-a094153db202',
+        {
+          firstName,
+          lastName,
+          email,
+          password,
+        }
+      );
 
       console.log('API Response:', response.data);
-      // Assuming success status code is 200
       if (response.status === 200) {
-        // alert('Personal Information saved!');
-        Swal.fire({
-          icon: 'success',
-          title: 'Personal Information saved!',
-          showConfirmButton: false,
-          timer: 1500,
-          position: 'top-end',
-        });
-        const handleMembers = () => {
-          handleAllMembers();
-        };
-        handleMembers();
-        // clearForm();
+        clearForm();
       } else {
         console.error('API Error:', 'Unexpected status code:', response.status);
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: `Error: ${response.data.message}`,
-          confirmButtonText: 'OK',
-        });
       }
     } catch (error) {
       console.error('API Error:', error.message);
-      // Handle specific error scenarios here
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'An unexpected error occurred: ' + error.message,
-        confirmButtonText: 'OK',
-      });
     }
   };
 
@@ -140,6 +112,7 @@ const MemberInfoForm = ({ handleAllMembers }) => {
                   }}
                   placeholder="First Name"
                 />
+                <ImageIcon src={Edit} alt="Edit Icon" />
               </Field>
               <Field className="Field">
                 <Label>Last Name</Label>
@@ -150,19 +123,21 @@ const MemberInfoForm = ({ handleAllMembers }) => {
                   }}
                   placeholder="Last Name"
                 />
+                <ImageIcon src={Edit} alt="Edit Icon" />
               </Field>
             </div>
 
             <div>
-              <Field className="Field">
+            <Field className="Field">
                 <Label>Password</Label>
                 <Input
                   value={password}
                   onChange={(e) => {
-                    setPassword(e.target.value);
+                    setEmail(e.target.value);
                   }}
                   placeholder="Password"
                 />
+                <ImageIcon src={Edit} alt="Edit Icon" />
               </Field>
               <Field className="Field">
                 <Label>Email</Label>
@@ -173,21 +148,13 @@ const MemberInfoForm = ({ handleAllMembers }) => {
                   }}
                   placeholder="Email"
                 />
-              </Field>
-              <Field className="Field">
-                <Label>ManagerId</Label>
-                <Input
-                  value={managerId}
-                  onChange={(e) => {
-                    setManagerId(e.target.value);
-                  }}
-                  placeholder="manager Id"
-                />
+                <ImageIcon src={Edit} alt="Edit Icon" />
               </Field>
             </div>
           </Container>
           <Button type="submit" disabled={!getIsFormValid()}>
-            Save
+            {' '}
+            Save{' '}
           </Button>
         </Fieldset>
       </form>
@@ -195,4 +162,4 @@ const MemberInfoForm = ({ handleAllMembers }) => {
   );
 };
 
-export default MemberInfoForm;
+export default EditMemberData;

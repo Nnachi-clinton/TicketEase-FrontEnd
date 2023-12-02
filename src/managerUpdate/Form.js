@@ -1,174 +1,8 @@
-// import { useState } from 'react';
-// import styled from 'styled-components';
-// import edit from '../../src/assets/edit.svg';
-
-// const Form = styled.form`
-//   max-width: 300px;
-//   margin: 0 auto;
-// `;
-
-// const FormGroup = styled.div`
-//   margin-bottom: 15px;
-//   &.address {
-//     margin-top: -19px;
-//   }
-// `;
-
-// const Label = styled.label`
-//   display: block;
-//   margin-bottom: 5px;
-//   font-size: 14px;
-//   color: #333;
-// `;
-
-// const Icon = styled.img`
-//   position: relative;
-//   top: -60px;
-//   right: -350px;
-//   transform: translateY(100%);
-//   //width: 20px;
-//   height: 20px;
-//   z-index: 1;
-// `;
-// const Input = styled.input`
-//   width: 350px;
-//   padding: 8px;
-//   padding-left: 30px;
-//   height: 38px;
-//   font-size: 14px;
-//   margin-top: 10px;
-//   border: 1px solid #ccc;
-//   border-radius: 4px;
-//   background: rgba(0, 0, 0, 0.04);
-//   &::placeholder {
-//     color: rgba(151, 151, 151, 1);
-//     font-family: Mulish;
-//     font-size: 16px;
-//     font-style: normal;
-//     font-weight: 400;
-//     line-height: normal;
-//   }
-//   &.state {
-//     background: rgba(246, 246, 246, 0.49);
-//   }
-//   &.businessPhone {
-//     position: relative;
-//     background: rgba(251, 251, 251, 1);
-//   }
-// `;
-
-// const SubmitButton = styled.button`
-//   background-color: rgba(80, 95, 152, 1);
-//   color: white;
-//   padding: 10px 15px;
-//   font-size: 16px;
-//   border: none;
-//   border-radius: 4px;
-//   cursor: pointer;
-//   width: 413px;
-//   height: 48px;
-//   margin-top: 58px;
-//   margin-bottom: 94px;
-//   margin-left: -8px;
-// `;
-
-// const Inputs = () => {
-//   const [formData, setFormData] = useState({
-//     username: '',
-//     email: '',
-//     password: '',
-//   });
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({
-//       ...formData,
-//       [name]: value,
-//     });
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     // Add your form submission logic here
-//     console.log('Form data submitted:', formData);
-//   };
-
-//   return (
-//     <Form onSubmit={handleSubmit}>
-//       <FormGroup>
-//         <Label htmlFor="Company Name">Company Name</Label>
-
-//         <Input
-//           type="name"
-//           id="Company Name"
-//           name="Company Name"
-//           value={formData.CompanyName}
-//           onChange={handleChange}
-//           placeholder="Sochima Ikeji"
-//         />
-//       </FormGroup>
-
-//       <FormGroup>
-//         <Label htmlFor="Business Email">Business Email</Label>
-//         <Input
-//           type="email"
-//           id="Business Email"
-//           name="Business Email"
-//           value={formData.BusinessEmail}
-//           onChange={handleChange}
-//           placeholder="Sochimaikeji34@gmail.com"
-//         />
-//       </FormGroup>
-
-//       <FormGroup>
-//         <Label htmlFor="Business Phone">Business Phone</Label>
-//         <Input
-//           type="phonenumber"
-//           id="Business Phone"
-//           name="Business Phone"
-//           value={formData.BusinessPhone}
-//           onChange={handleChange}
-//           placeholder="07089675844"
-//           className="businessPhone"
-//         />
-//         <Icon src={edit} alt="edit Icon" />
-//       </FormGroup>
-
-//       <FormGroup className="address">
-//         <Label htmlFor="Company Address">Company Address</Label>
-//         <Input
-//           type="address"
-//           id="Company Address"
-//           name="Company Address"
-//           value={formData.CompanyAddress}
-//           onChange={handleChange}
-//           placeholder="12B, Owoniyi street, Iju, Lagos"
-//         />
-//       </FormGroup>
-
-//       <FormGroup>
-//         <Label htmlFor="State">State</Label>
-//         <Input
-//           type="address"
-//           id="State"
-//           name="State"
-//           value={formData.State}
-//           onChange={handleChange}
-//           placeholder="state"
-//           className="state"
-//         />
-//       </FormGroup>
-
-//       <SubmitButton type="submit">Submit</SubmitButton>
-//     </Form>
-//   );
-// };
-
-// export default Inputs;
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import edit from '../../src/assets/edit.svg'; // Replace with the correct path
+import AxiosInstance from '../Request/AxiosInstance';
+import edit from '../../src/assets/edit.svg';
+import Swal from 'sweetalert2';
 
 const Form = styled.form`
   max-width: 300px;
@@ -233,7 +67,7 @@ const SubmitButton = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 413px;
+  width: 390px;
   height: 48px;
   margin-top: 58px;
   margin-bottom: 94px;
@@ -245,8 +79,6 @@ const ErrorMsg = styled.span`
   font-size: 12px;
 `;
 
-// ... (previous imports)
-
 const Inputs = () => {
   const [formData, setFormData] = useState({
     CompanyName: '',
@@ -256,64 +88,105 @@ const Inputs = () => {
     State: '',
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState('');
+
+  useEffect(() => {
+    const fetchManagerDetails = async () => {
+      try {
+        const response = await AxiosInstance.get(
+          // '/managers/GetById?id={managerId}'
+          '/managers/GetById?id=a863edac-aa44-49fe-ab79-82bdf51ecea4'
+        );
+        console.log('Fetched manager details:', response.data);
+        const managerDetails = response.data;
+
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          CompanyName: managerDetails.CompanyName,
+          BusinessEmail: managerDetails.BusinessEmail,
+          BusinessPhone: managerDetails.BusinessPhone,
+          CompanyAddress: managerDetails.CompanyAddress,
+          State: managerDetails.State,
+        }));
+      } catch (error) {
+        console.error('Error fetching manager details:', error.message);
+      }
+    };
+
+    fetchManagerDetails();
+  }, []); // Run only once on component mount
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    console.log(`Setting ${name} to ${value}`);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
-    });
-    setErrors({
-      ...errors,
-      [name]: '',
-    });
+    }));
+    setErrors('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Basic form validation
-    let valid = true;
-    const newErrors = {};
 
-    // Check if CompanyName is empty
-    if (!formData.CompanyName.trim()) {
-      valid = false;
-      newErrors.CompanyName = 'Company Name is required';
-    }
+    try {
+      console.log('Form Data:', formData);
 
-    // Check if BusinessEmail is a valid email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.BusinessEmail)) {
-      valid = false;
-      newErrors.BusinessEmail = 'Invalid email format';
-    }
+      // Make a PUT request to the UpdateManager endpoint
+      const response = await AxiosInstance.put(
+        '/managers/updateManager/a863edac-aa44-49fe-ab79-82bdf51ecea4',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
 
-    // Check if BusinessPhone is a valid phone number
-    const phoneRegex = /^\d{11}$/;
-    if (!phoneRegex.test(formData.BusinessPhone)) {
-      valid = false;
-      newErrors.BusinessPhone = 'Invalid phone number';
-    }
+      console.log('API response:', response.data);
 
-    // Check if CompanyAddress is empty
-    if (!formData.CompanyAddress.trim()) {
-      valid = false;
-      newErrors.CompanyAddress = 'Company Address is required';
-    }
+      // Check if the request was successful
+      if (response.status === 200) {
+        // Show success alert
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Manager updated successfully!',
+        });
 
-    // Check if State is empty
-    if (!formData.State.trim()) {
-      valid = false;
-      newErrors.State = 'State is required';
-    }
+        // Clear the form
+        setFormData({
+          CompanyName: '',
+          BusinessEmail: '',
+          BusinessPhone: '',
+          CompanyAddress: '',
+          State: '',
+        });
+      } else {
+        // Handle unsuccessful update
+        setErrors(response.data.message);
 
-    if (valid) {
-      // Add your form submission logic here
-      console.log('Form data submitted:', formData);
-    } else {
-      // Update errors state with the new error messages
-      setErrors(newErrors);
+        // Show error alert
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: response.data.message || 'Failed to update manager.',
+        });
+
+        console.error('Failed to update manager:', response.data.message);
+      }
+    } catch (error) {
+      // Handle the error from the API request
+      setErrors('Error updating manager. Please try again.');
+
+      // Show error alert
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Error updating manager. Please try again.',
+      });
+
+      console.error('Error updating manager:', error.message);
     }
   };
 
@@ -327,9 +200,9 @@ const Inputs = () => {
           name="CompanyName"
           value={formData.CompanyName}
           onChange={handleChange}
-          placeholder="Sochima Ikeji"
+          placeholder="Enter company name"
         />
-        {errors.CompanyName && <ErrorMsg>{errors.CompanyName}</ErrorMsg>}
+        {errors && <ErrorMsg>{errors}</ErrorMsg>}
       </FormGroup>
 
       <FormGroup>
@@ -340,7 +213,7 @@ const Inputs = () => {
           name="BusinessEmail"
           value={formData.BusinessEmail}
           onChange={handleChange}
-          placeholder="Sochimaikeji34@gmail.com"
+          placeholder="Enter business name"
         />
         {errors.BusinessEmail && <ErrorMsg>{errors.BusinessEmail}</ErrorMsg>}
       </FormGroup>
@@ -353,7 +226,7 @@ const Inputs = () => {
           name="BusinessPhone"
           value={formData.BusinessPhone}
           onChange={handleChange}
-          placeholder="07089675844"
+          placeholder="Enter phone number"
           className="businessPhone"
         />
         {errors.BusinessPhone && <ErrorMsg>{errors.BusinessPhone}</ErrorMsg>}
@@ -368,7 +241,7 @@ const Inputs = () => {
           name="CompanyAddress"
           value={formData.CompanyAddress}
           onChange={handleChange}
-          placeholder="12B, Owoniyi street, Iju, Lagos"
+          placeholder="Enter company address"
         />
         {errors.CompanyAddress && <ErrorMsg>{errors.CompanyAddress}</ErrorMsg>}
       </FormGroup>
@@ -381,7 +254,7 @@ const Inputs = () => {
           name="State"
           value={formData.State}
           onChange={handleChange}
-          placeholder="State"
+          placeholder="Enter your state"
           className="state"
         />
         {errors.State && <ErrorMsg>{errors.State}</ErrorMsg>}

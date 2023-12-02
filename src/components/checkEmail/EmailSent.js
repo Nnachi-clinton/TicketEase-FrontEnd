@@ -4,6 +4,11 @@ import Arrow from './Arrow-left.svg';
 import email from './email(2) 1.svg';
 
 export default function EmailSent(props) {
+  const handleResendClick = () => {
+    // Handle click to resend action
+    // Add your logic here
+  };
+
   return (
     <Div>
       <Div2>
@@ -15,9 +20,12 @@ export default function EmailSent(props) {
             <br />
             sochimachiebuka@gmail.com
           </Div5>
-          <Div6 style={{ backgroundColor: 'rgba(80, 95, 152, 1)' }}>
-            Open email app
-          </Div6>
+          <a
+            href="mailto:ticketeasesq017@gmail.com"
+            style={{ color: '#505F98', textDecoration: 'none' }}
+          >
+            <Div6>Open email app</Div6>
+          </a>
           <Div7>
             <span
               style={{
@@ -28,28 +36,28 @@ export default function EmailSent(props) {
             >
               Don’t receive the email?
             </span>
-
-            <span
-              style={{
-                fontFamily: 'Mulish, sans-serif',
-                fontWeight: 700,
-                color: 'rgba(80, 95, 152, 1)',
-              }}
+            <a
+              href="#"
+              onClick={handleResendClick}
+              style={{ color: '#505F98', textDecoration: 'none' }}
             >
-              Click to Resend link{' '}
-            </span>
+              <span
+                style={{
+                  fontFamily: 'Mulish, sans-serif',
+                  fontWeight: 700,
+                  color: '#505F98',
+                }}
+              >
+                Click to Resend link
+              </span>
+            </a>
           </Div7>
-          <Div8 style={{ pointer: 'cursor' }}>
-            <Img2
-              loading="lazy"
-              src={Arrow}
-              style={{
-                background: 'rgba(80, 95, 152, 1)',
-                color: 'rgba(80, 95, 152, 1)',
-              }}
-            />
-            <Div9 style={{ pointer: 'cursor' }}>Back to Login</Div9>
-          </Div8>
+          <a href="/login" style={{ color: '#505F98', textDecoration: 'none' }}>
+            <Div8>
+              <Img2 loading="lazy" src={Arrow} />
+              <Div9>Back to Login</Div9>
+            </Div8>
+          </a>
         </Div3>
       </Div2>
     </Div>
@@ -122,12 +130,25 @@ const Div5 = styled.div`
   font: 400 16px Mulish, sans-serif;
 `;
 
+const Img2 = styled.img`
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 24px;
+  overflow: hidden;
+  max-width: 100%;
+  filter: invert(100%) brightness(0) sepia(100%) saturate(10000%)
+    hue-rotate(270deg);
+`;
+
+// ... (existing code remains unchanged)
+
 const Div6 = styled.div`
-  color:rgba(80, 95, 152, 1)
+  color: #fff; /* Text color remains unchanged */
   white-space: nowrap;
   align-items: center;
   border-radius: 4px;
-  background-color: #14a800;
+  background-color: #505f98; /* Changed background color to #505F98 */
   align-self: stretch;
   margin-top: 30px;
   justify-content: center;
@@ -140,7 +161,7 @@ const Div6 = styled.div`
 `;
 
 const Div7 = styled.div`
-  color: rgba(80, 95, 152, 1)
+  color: #505f98; /* Text color for Click to Resend link */
   text-align: center;
   align-self: stretch;
   margin-top: 18px;
@@ -154,29 +175,20 @@ const Div7 = styled.div`
 const Div8 = styled.div`
   justify-content: center;
   border-radius: 4px;
-  background-color: rgba(80, 95, 152, 1)
+  background-color: #505f98; /* Changed background color to #505F98 */
   align-self: center;
   display: flex;
   margin-top: 64px;
   gap: 10px;
   padding: 10px 14px;
-  pointer:cursor;
+  pointer: cursor;
   @media (max-width: 991px) {
     margin-top: 40px;
   }
 `;
 
-const Img2 = styled.img`
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 24px;
-  overflow: hidden;
-  max-width: 100%;
-`;
-
 const Div9 = styled.div`
-  color:rgba(80, 95, 152, 1)
+  color: #fff; /* Text color for Back to Login */
   align-self: center;
   flex-grow: 1;
   white-space: nowrap;
