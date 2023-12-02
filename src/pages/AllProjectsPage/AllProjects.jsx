@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaArrowLeft } from "react-icons/fa";
 import Table from './Table.jsx';
-import AxiosInstance from '../../Request/AxiosInstance.js';
+import { AxiosInstance2 } from '../../Request/AxiosInstance.js';
 import styled from 'styled-components'
 
 
@@ -75,8 +75,9 @@ const AllProjects = () => {
 
   const getPojects = async () => {
     try {
-      const res = await AxiosInstance.get(
-        `/User/get-Users-By-ManagerId?managerId=fb7f3e38-9ca8-4057-bf41-92a34be32c86&page=${currentPage}&perPage=${itemsPerPage}`
+      const res = await AxiosInstance2.get(
+       // `/Project/GetProjectsByBoardId?boardId=${localStorage.getItem('boardId')}&page=${currentPage}&perPage=${itemsPerPage}`
+        `/Project/GetProjectsByBoardId?boardId= &page=${currentPage}&perPage=${itemsPerPage}`
       );
       
       const { data, totalCount } = res.data;
