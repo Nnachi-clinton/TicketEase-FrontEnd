@@ -146,6 +146,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
   gap: 180px;
+  background-color: #fff;
 `;
 
 const AllMembersTable = ({

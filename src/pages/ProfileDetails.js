@@ -52,7 +52,7 @@ const Title = styled.div`
 `;
 
 const Separator = styled.div`
-  background-color: #d3d3d3;
+  background-color: white;
   align-self: stretch;
   min-height: 1px;
   width: 100%;
@@ -74,8 +74,8 @@ const DetailsContainer = styled.div`
 
 const MyComponent = (props) => {
   return (
-    <Container>
-      <SubContainer>
+    <Container style={{ backgroundCsolor: 'white' }}>
+      <SubContainer style={{ backgroundCsolor: 'white' }}>
         <div>
           <Header>
             <img src={Direction} alt="direction" />
