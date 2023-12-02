@@ -40,7 +40,9 @@ import PersonalInfo from './PersonalInfo.js';
 import EmailSent from '../components/checkEmail/EmailSent.js';
 import BoardMain from './BoardPage/BoardMain';
 import MemberProfile from './MemberProfile.js';
-import ManagerView from '../components/ManagerView/managerView'
+import ManagerView from '../components/ManagerView/managerView';
+import EditMember from './EditMemberFolder/EditMember.js'
+
 
 function App() {
   return (
@@ -102,6 +104,8 @@ function App() {
                 <Route path="/BoardMain" element={<BoardMain />} />
                 <Route path="/MemberProfile" element={<MemberProfile />} />
                 <Route path="/EmailSent" element={<EmailSent />} />
+                <Route path="/EditMember" element={<EditMember />} />
+
               </Routes>
             </AuthState>
           </GlobalProvider>
