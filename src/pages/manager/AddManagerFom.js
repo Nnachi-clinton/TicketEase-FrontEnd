@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
 
@@ -79,18 +80,32 @@ export const StyledAlert = styled.div`
 `;
 
 function AddManager2() {
-  const [formData, setFormData] = useState({
-    companyName: '',
-    businessEmail: '',
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const [companyName, setCompanyName] = useState('');
+  const [businessEmail, setBusinessEmail] = useState('');
+  const [companyDescription, setCompanyDescription] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!companyName || !businessEmail) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Empty input',
+        text: 'Please fill input',
+        confirmButtonText: 'OK',
+      });
+      return;
+    }
+    // Create a data object with the form values
+    const data = {
+      companyName,
+      businessEmail,
+      companyDescription: '-',
+    };
+
     try {
+      // Make a POST request to your API endpoint
       const response = await fetch(
         'https://localhost:7075/api/managers/AddManager',
         {
@@ -98,31 +113,39 @@ function AddManager2() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(data),
         }
       );
+
       if (response.ok) {
         Swal.fire({
           icon: 'success',
-          title: 'Manager registered successfully!',
+          title: 'Email sent successfully!',
           showConfirmButton: false,
           timer: 1500, // Automatically close after 1.5 seconds
+          position: 'top-end',
         });
+        navigate('/contactResponse');
       } else {
         Swal.fire({
           icon: 'error',
-          title: 'Error registering Manager',
-          text: 'There was an error while registering Manager.',
+          title: 'Failed to send email',
+          text: 'There was an error while sending email.',
           confirmButtonText: 'OK',
         });
       }
     } catch (error) {
+      console.error('Error:', error);
+
       Swal.fire({
         icon: 'error',
         title: 'Error',
         text: 'An unexpected error occurred: ' + error.message,
         confirmButtonText: 'OK',
       });
+
+      // Log the full error object for more details
+      console.error('Full error object:', error);
     }
   };
   return (
@@ -139,16 +162,22 @@ function AddManager2() {
               type="text"
               name="companyName"
               placeholder="Tickectease Company"
-              value={formData.companyName}
-              onChange={handleChange}
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
             />
             <StyledLabel>Business Email:</StyledLabel>
             <StyledInput
               type="email"
               name="businessEmail"
               placeholder="example@gmail.com"
-              value={formData.businessEmail}
-              onChange={handleChange}
+              value={businessEmail}
+              onChange={(e) => setBusinessEmail(e.target.value)}
+            />
+            <input
+              type="hidden"
+              name="companyDescription"
+              value="companyDescription"
+              onChange={(e) => setCompanyDescription(e.target.value)}
             />
             <StyledButton type="submit">Submit</StyledButton>
           </StyledForm>
