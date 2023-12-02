@@ -5,38 +5,46 @@ import email from './email(2) 1.svg'
 
 
 export default function EmailSent(props) {
-    return (
-      <Div>
-        <Div2>
-          <Div3>
-            <Img loading="lazy" src={email} />
-            <Div4>Check your email</Div4>
-            <Div5>
-              We sent a password reset link to
-              <br />
-              sochimachiebuka@gmail.com
-            </Div5>
+  const handleResendClick = () => {
+    // Handle click to resend action
+    // Add your logic here
+  };
+
+  return (
+    <Div>
+      <Div2>
+        <Div3>
+          <Img loading="lazy" src={email} />
+          <Div4>Check your email</Div4>
+          <Div5>
+            We sent a password reset link to
+            <br />
+            sochimachiebuka@gmail.com
+          </Div5>
+          <a href="mailto:your-email@example.com"> {/* Replace with your email */}
             <Div6>Open email app</Div6>
-            <Div7>
-              <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 400, color: 'rgba(189,189,189,1)' }}>
-                Don’t receive the email?
-              </span>
-              <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 400, color: 'rgba(0,0,0,1)' }}>
-              </span>
+          </a>
+          <Div7>
+            <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 400, color: 'rgba(189,189,189,1)' }}>
+              Don’t receive the email?
+            </span>
+            <a href="#" onClick={handleResendClick}>
               <span style={{ fontFamily: 'Mulish, sans-serif', fontWeight: 700, color: 'rgba(20,168,0,1)' }}>
-                Click to Resend link{" "}
+                Click to Resend link
               </span>
-            </Div7>
+            </a>
+          </Div7>
+          <a href="/Regularlogin"> {/* Replace with your login route */}
             <Div8>
               <Img2 loading="lazy" src={Arrow} />
               <Div9>Back to Login</Div9>
             </Div8>
-          </Div3>
-        </Div2>
-      </Div>
-    );
-  }
-
+          </a>
+        </Div3>
+      </Div2>
+    </Div>
+  );
+}
 const Div = styled.div`
   background-color: #f6f6f6;
   display: flex;
