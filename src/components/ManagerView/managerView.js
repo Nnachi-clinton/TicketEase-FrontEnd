@@ -16,7 +16,8 @@ const Container = styled.div`
   margin: 0 auto;
   background-color: white;
   position: relative;
-  margin-top: 30px;
+  margin-top: 99px;
+  margin-right: 30em;
  
  
   /* Adding a blue strip at the top */

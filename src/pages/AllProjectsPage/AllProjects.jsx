@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft } from 'react-icons/fa';
 import Table from './Table.jsx';
+import AxiosInstance from '../../Request/AxiosInstance.js';
 import { AxiosInstance2 } from '../../Request/AxiosInstance.js';
-import styled from 'styled-components'
-
+import styled from 'styled-components';
 
 const StyledContainer = styled.div`
   display: flex;
+  margin-top: 3em;
+  margin-left: 20em;
   flex-direction: column;
   align-items: flex-start;
-  // justify-content: right;
-  padding: 20px; 
+  padding: 20px;
   width: 70%;
-  margin-left: auto;
 `;
 
 const MainTop = styled.h1`
@@ -22,9 +22,8 @@ const MainTop = styled.h1`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 `;
-
 
 const Show = styled.div`
   display: flex;
@@ -32,26 +31,26 @@ const Show = styled.div`
 `;
 
 const Sort = styled.h6`
-    // display: inline-flex;
-    display: flex;
-    padding: 8px 12px;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    border-radius: 4px;
-    background: rgba(80, 95, 152, 0.05);
-    color: #1D2125;
-    font-family: Mulish;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-left: 600px;
+  // display: inline-flex;
+  display: flex;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 4px;
+  background: rgba(80, 95, 152, 0.05);
+  color: #1d2125;
+  font-family: Mulish;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 600px;
 
-    select {
-        margin-left: 20px;
-      }
-`
+  select {
+    margin-left: 20px;
+  }
+`;
 const Leftarrow = styled.div`
   display: flex;
   align-items: center;
@@ -64,24 +63,21 @@ const Text = styled.h6`
   font-size: 16px;
 `;
 
-
-
-
 const AllProjects = () => {
   const [allProjects, setProject] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 8;
   const [totalItems, setTotalItems] = useState(0);
 
   const getPojects = async () => {
     try {
       const res = await AxiosInstance2.get(
-       // `/Project/GetProjectsByBoardId?boardId=${localStorage.getItem('boardId')}&page=${currentPage}&perPage=${itemsPerPage}`
-        `/Project/GetProjectsByBoardId?boardId= &page=${currentPage}&perPage=${itemsPerPage}`
+        // `/Project/GetProjectsByBoardId?boardId=${localStorage.getItem('boardId')}&page=${currentPage}&perPage=${itemsPerPage}`
+        `/Project/GetProjectsByBoardId?boardId=16600789-f9b3-4ef6-bc80-289a4ef9fc86&page=${currentPage}&perPage=${itemsPerPage}`
       );
-      
-      const { data, totalCount } = res.data;
-  
+
+      const { data, totalCount } = res.data.data;
+      console.log('Data:', data);
       setProject(data);
       setTotalItems(totalCount);
     } catch (error) {
@@ -117,8 +113,17 @@ const AllProjects = () => {
             </Sort>
           </Show>
 
+          {/* <Table
+            data={allProjects}
+            currentPage={currentPage}
+            itemsPerPage={itemsPerPage}
+            handleViewClick={handleViewClick}
+            totalItems={totalItems}
+            setCurrentPage={setCurrentPage}
+            getProjects={getPojects}
+          /> */}
           <Table
-            data={allProjects}  
+            data={Array.isArray(allProjects) ? allProjects : []}
             currentPage={currentPage}
             itemsPerPage={itemsPerPage}
             handleViewClick={handleViewClick}
@@ -133,4 +138,3 @@ const AllProjects = () => {
 };
 
 export default AllProjects;
-

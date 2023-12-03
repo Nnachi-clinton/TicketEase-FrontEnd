@@ -2,14 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-const MergedComponent = () => {
+const MergedComponent = ({ handleCreateBoard }) => {
   return (
     <StyledDiv1 style={{ marginTop: '6em', marginLeft: '11em' }}>
       <StyledDiv2>Boards</StyledDiv2>
       <img
         alt=""
         src="create_board_button.svg"
-        style={{ cursor: 'pointer', marginRight: '11em' }}
+        style={{
+          cursor: 'pointer',
+          marginRight: '5em',
+        }}
+        onClick={handleCreateBoard}
       />
     </StyledDiv1>
   );
@@ -212,7 +216,11 @@ const StyledImg4 = styled.img`
   }
 `;
 
-const BoardCard = ({ boardName, handleCreateProject }) => {
+const BoardCard = ({
+  boardName,
+  handleCreateProject,
+  handleViewAllProjecs,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -247,7 +255,10 @@ const BoardCard = ({ boardName, handleCreateProject }) => {
                 }}
               >
                 <div>
-                  <button style={{ marginBottom: '16px', marginRight: '3em' }}>
+                  <button
+                    style={{ marginBottom: '16px', marginRight: '3em' }}
+                    onClick={handleViewAllProjecs}
+                  >
                     View all Projects
                   </button>
                 </div>

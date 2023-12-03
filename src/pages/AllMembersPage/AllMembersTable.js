@@ -138,8 +138,15 @@
 
 // export default AllMembersTable;
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import ProfileDetails from '../ProfileDetails.js';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 180px;
+`;
 
 const AllMembersTable = ({
   data,
@@ -149,6 +156,7 @@ const AllMembersTable = ({
   setCurrentPage,
   getMembers,
 }) => {
+  const [showProfileDetails, setShowProfileDetails] = useState(false);
   const changePage = (direction) => {
     if (direction === 'prev' && currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
@@ -164,6 +172,10 @@ const AllMembersTable = ({
     setCurrentPage(pageNumber);
     getMembers(pageNumber);
   };
+  const handleViewDetails = () => {
+    setShowProfileDetails(true);
+    // Additional logic or data fetching related to showing details
+  };
 
   const tableCellStyle = {
     border: '1px solid #ddd',
@@ -176,95 +188,110 @@ const AllMembersTable = ({
   };
 
   return (
-    <div>
-      {/* Table content */}
-      <table
-        style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px', background: '#FFF'}}
-      >
-        <thead>
-          <tr style={{ background: '#FAFAFA', color: '#444' }}>
-            <th style={tableCellStyle}>SN</th>
-            <th style={tableCellStyle}>First Name</th>
-            <th style={tableCellStyle}>Last Name</th>
-            <th style={tableCellStyle}>Email</th>
-            <th style={tableCellStyle}>Phone Number</th>
-            <th style={tableCellStyle}></th>
-          </tr>
-        </thead>
+    <>
+      <Container>
+        <div>
+          {/* Table content */}
+          <table
+            style={{
+              width: '125%',
+              borderCollapse: 'collapse',
+              marginTop: '10px',
+              background: '#FFF',
+              height: '100%',
+            }}
+          >
+            <thead>
+              <tr style={{ background: '#FAFAFA', color: '#444' }}>
+                <th style={tableCellStyle}>SN</th>
+                <th style={tableCellStyle}>First Name</th>
+                <th style={tableCellStyle}>Last Name</th>
+                <th style={tableCellStyle}>Email</th>
+                <th style={tableCellStyle}>Phone Number</th>
+                <th style={tableCellStyle}></th>
+              </tr>
+            </thead>
 
-        <tbody>
-          {data && data.map((item, index) => (
-            <tr key={item.id}>
-              <td style={tableCellStyle}>
-                {(currentPage - 1) * itemsPerPage + index + 1}
-              </td>
-              <td style={tableCellStyle}>{item.firstName}</td>
-              <td style={tableCellStyle}>{item.lastName}</td>
-              <td style={tableCellStyle}>{item.email}</td>
-              <td style={tableCellStyle}>{item.phoneNumber}</td>
-              <td style={tableCellStyle}>
-                <Link to={`/ProfileDetails/`}>
-                  <button style={{ ...paginationButtonStyle, cursor: 'pointer' }}>
-                    View Details
-                  </button>
-                </Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            <tbody>
+              {data &&
+                data.map((item, index) => (
+                  <tr key={item.id}>
+                    <td style={tableCellStyle}>
+                      {(currentPage - 1) * itemsPerPage + index + 1}
+                    </td>
+                    <td style={tableCellStyle}>{item.firstName}</td>
+                    <td style={tableCellStyle}>{item.lastName}</td>
+                    <td style={tableCellStyle}>{item.email}</td>
+                    <td style={tableCellStyle}>{item.phoneNumber}</td>
+                    <td style={tableCellStyle}>
+                      <button
+                        style={{ ...paginationButtonStyle, cursor: 'pointer' }}
+                        onClick={handleViewDetails}
+                      >
+                        View Details
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
 
-      {/* Pagination */}
-      <div
-        style={{
-          marginTop: '10px',
-          display: 'flex',
-          justifyContent: 'flex-end',
-        }}
-      >
-        <button
-          onClick={() => changePage('prev')}
-          style={paginationButtonStyle}
-          disabled={currentPage === 1}
-        >
-          Prev
-        </button>
-        <ul
-          style={{
-            listStyle: 'none',
-            display: 'flex',
-            justifyContent: 'center',
-            margin: '0 10px',
-          }}
-        >
-          {Array.from(
-            { length: Math.ceil(totalItems / itemsPerPage) },
-            (_, index) => (
-              <li key={index} style={{ margin: '0 5px' }}>
-                <button
-                  onClick={() => handlePageChange(index + 1)}
-                  style={{
-                    ...paginationButtonStyle,
-                    fontWeight: currentPage === index + 1 ? 'bold' : 'normal',
-                    cursor: 'pointer',
-                  }}
-                >
-                  {index + 1}
-                </button>
-              </li>
-            )
-          )}
-        </ul>
+          {/* Pagination */}
+          <div
+            style={{
+              marginTop: '10px',
+              display: 'flex',
+              justifyContent: 'flex-end',
+            }}
+          >
+            <button
+              onClick={() => changePage('prev')}
+              style={paginationButtonStyle}
+              disabled={currentPage === 1}
+            >
+              Prev
+            </button>
+            <ul
+              style={{
+                listStyle: 'none',
+                display: 'flex',
+                justifyContent: 'center',
+                margin: '0 10px',
+              }}
+            >
+              {Array.from(
+                { length: Math.ceil(totalItems / itemsPerPage) },
+                (_, index) => (
+                  <li key={index} style={{ margin: '0 5px' }}>
+                    <button
+                      onClick={() => handlePageChange(index + 1)}
+                      style={{
+                        ...paginationButtonStyle,
+                        fontWeight:
+                          currentPage === index + 1 ? 'bold' : 'normal',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      {index + 1}
+                    </button>
+                  </li>
+                )
+              )}
+            </ul>
 
-        <button
-          onClick={() => changePage('next')}
-          style={paginationButtonStyle}
-          disabled={currentPage === Math.ceil(totalItems / itemsPerPage)}
-        >
-          Next
-        </button>
-      </div>
-    </div>
+            <button
+              onClick={() => changePage('next')}
+              style={paginationButtonStyle}
+              disabled={currentPage === Math.ceil(totalItems / itemsPerPage)}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+        {/* <ProfileDetails /> */}
+        {showProfileDetails && <ProfileDetails />}
+      </Container>
+    </>
   );
 };
 
