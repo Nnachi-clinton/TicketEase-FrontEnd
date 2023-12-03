@@ -8,6 +8,7 @@ const InProgress1 = styled.div`
 `;
 const Medium = styled.div`
   position: relative;
+  font-size:11px
 `;
 const Prioritymedium = styled.div`
   border-radius: var(--br-xl);
@@ -25,6 +26,7 @@ const AddMoreUser = styled.div`
   font-weight: 500;
   display: inline-block;
   width: 100%;
+  
 `;
 const Tagmobile = styled.div`
   border-radius: var(--br-9xs);
@@ -105,54 +107,8 @@ const Tagmobile1 = styled.div`
   justify-content: flex-start;
   padding: var(--padding-9xs);
 `;
-const Mar320201 = styled.div`
-  position: relative;
-  font-size: var(--font-size-2xs);
-  color: var(--support-dark-grey);
-`;
-const Useruser2Icon1 = styled.img`
-  position: relative;
-  width: 32px;
-  height: 32px;
-  display: none;
-`;
-const Tagweb2 = styled.div`
-  border-radius: var(--br-9xs);
-  background-color: var(--color-mediumblue);
-  overflow: hidden;
-  display: none;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  padding: var(--padding-9xs);
-`;
-const Useruser01Parent1 = styled.div`
-  overflow: hidden;
-  display: none;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--gap-5xs);
-`;
-const InProgressRoot = styled.div`
-  position: relative;
-  border-radius: var(--br-9xs);
-  background-color: var(--support-white-grey);
-  border: 1px solid var(--support-light-grey);
-  box-sizing: border-box;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 16px;
-  gap: 16px;
-  text-align: left;
-  font-size: var(--font-size-3xs);
-  color: var(--primary-black);
-  font-family: var(--font-poppins);
-`;
+
+
 const Bod = styled.div`
   /* fonts */
   --font-poppins: Poppins;
@@ -188,10 +144,9 @@ const Bod = styled.div`
 `;
 const Low = styled.div`
   position: relative;
+  font-size:12px;
 `;
-const High = styled.div`
-  position: relative;
-`;
+
 const Priorityhigh = styled.div`
   border-radius: var(--br-xl);
   background-color: #de1d3e;
@@ -209,6 +164,7 @@ const Title = styled.span`
   float:right;
   justify-content: flex-end;
   font-weight:bold;
+  font-size:12px;
 `;
 const Header = styled.div`
   display: flex;

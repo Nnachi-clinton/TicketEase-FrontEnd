@@ -197,7 +197,7 @@ const Incomplete = () => {
     
     const fetchTicket = async () =>{
       try{
-      const response = await AxiosInstance.get('/Ticket/status-by-pagination/1?page=1&pageSize=2');
+      const response = await AxiosInstance.get('/Ticket/status-by-pagination/1?page=1&pageSize=5');
       setTickets(response.data.data);
       }
       catch(error){
@@ -211,7 +211,7 @@ const Incomplete = () => {
     <InProgressRoot>
       <InProgress1>Incomplete</InProgress1>
       {alltickets.map((ticket, index)=>(          
-          <TicketCard reference={ticket.ticketReference} date={ticket.createdAt} description={ticket.description} key={index} title={ticket.title}  priority={ticket.Priority===0?'Low':ticket.Priority===1?'Medium':'High'} />   
+          <TicketCard reference={ticket.ticketReference} date={ticket.createdAt} description={ticket.description} key={index} title={ticket.title}  priority={ticket.priority===0?'Low':ticket.priority===1?'Medium':'High'} />   
         ))
         }           
     </InProgressRoot>

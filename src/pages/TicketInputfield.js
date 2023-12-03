@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IoIosAddCircle } from 'react-icons/io';
+import { Axios } from 'axios';
+import AxiosInstance from '../Request/AxiosInstance';
 
 const Fulldiv = styled.div`
   overflow: hidden;
@@ -101,7 +103,11 @@ function CreateTicket() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    try {
+      const response = await AxiosInstance.post('/');
+    } catch (error) {
+      
+    }
   }
 
 
