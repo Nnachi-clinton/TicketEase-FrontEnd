@@ -13,6 +13,9 @@ import ChangePassword from '../ChangePassword.js';
 import BoardMain from '../BoardPage/BoardMain.js';
 import AllMembers from '../AllMembersPage/AllMembersPage.js';
 import CreateProject from '../Projects/CreateProject.js';
+import AllProjects from '../AllProjectsPage/AllProjects.jsx';
+import CreateBoard from '../Boards/CreateBoard.js';
+import ManagerView from '../../components/ManagerView/managerView.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -32,11 +35,19 @@ function ManagerDashBoard() {
     setStep(9);
   };
 
+  const handleViewAllProjecs = () => {
+    setStep(10);
+  };
+
+  const handleCreateBoard = () => {
+    setStep(11);
+  };
+
   const getUsers = async () => {
     try {
       const res = await AxiosInstance.get(
         // `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem('mangerId')}&page=${currentPage}&perPage=${itemsPerPage}`
-        `/User/get-Users-By-ManagerId?managerId=6db01435-a30c-44ae-9e23-95e1fecf0180&page=${currentPage}&perPage=${itemsPerPage}`
+        `/User/get-Users-By-ManagerId?managerId=b59466aa-a65c-4a70-8d0b-5394a160ef67&page=${currentPage}&perPage=${itemsPerPage}`
       );
 
       console.log(res.data);
@@ -57,7 +68,11 @@ function ManagerDashBoard() {
 
   return (
     <section className="mothercard">
-      <Frame logout={() => setStep(5)} ChangePassword={() => setStep(6)} />
+      <Frame
+        logout={() => setStep(5)}
+        ChangePassword={() => setStep(6)}
+        managerdetails={() => setStep(12)}
+      />
       <Sider step={step} selectstep={(step) => setStep(step)} />
       <>
         {step === 0 && (
@@ -109,9 +124,20 @@ function ManagerDashBoard() {
         {step === 3 && <ContactUs />}
         {step === 5 && <LogoutPopout />}
         {step === 6 && <ChangePassword />}
-        {step === 7 && <BoardMain handleCreateProject={handleCreateProject} />}
+        {step === 7 && (
+          <BoardMain
+            handleCreateProject={handleCreateProject}
+            handleViewAllProjecs={handleViewAllProjecs}
+            handleCreateBoard={handleCreateBoard}
+          />
+        )}
         {step === 8 && <AllMembers />}
-        {step === 9 && <CreateProject />}
+        {step === 9 && (
+          <CreateProject handleViewAllProjecs={handleViewAllProjecs} />
+        )}
+        {step === 10 && <AllProjects />}
+        {step === 11 && <CreateBoard />}
+        {step === 12 && <ManagerView />}
       </>
     </section>
   );

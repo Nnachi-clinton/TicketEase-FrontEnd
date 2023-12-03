@@ -69,7 +69,7 @@ export const StyledAlert = styled.div`
   border-radius: 5px;
 `;
 
-const CreateProject = ({ boardId }) => {
+const CreateProject = ({ boardId, handleViewAllProjecs }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [existingProjects, setExistingProjects] = useState([]);
@@ -119,7 +119,7 @@ const CreateProject = ({ boardId }) => {
         }
       );
 
-      if (response.ok) {
+      if (response.status === 200) {
         // Update the list of existing projects with the new project
         setExistingProjects([...existingProjects, { title, description }]);
 
@@ -130,10 +130,10 @@ const CreateProject = ({ boardId }) => {
           timer: 1500, // Automatically close after 1.5 seconds
           position: 'top-end',
         });
-
-        // Clear the input fields
-        setTitle('');
-        setDescription('');
+        const handleViewAllProjects = () => {
+          handleViewAllProjecs();
+        };
+        handleViewAllProjects();
       } else {
         Swal.fire({
           icon: 'error',

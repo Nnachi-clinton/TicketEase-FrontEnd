@@ -11,7 +11,11 @@ const CardsContainer = styled.div`
   gap: 10px;
 `;
 
-const BoardMain = ({ handleCreateProject }) => {
+const BoardMain = ({
+  handleCreateProject,
+  handleViewAllProjecs,
+  handleCreateBoard,
+}) => {
   // State to store the board data
   const [boardData, setBoardData] = useState([]);
 
@@ -38,7 +42,7 @@ const BoardMain = ({ handleCreateProject }) => {
   return (
     <div style={{ marginLeft: '10em' }}>
       {/* Render MergedComponent above the CardsContainer */}
-      <MergedComponent />
+      <MergedComponent handleCreateBoard={handleCreateBoard} />
 
       {/* CardsContainer with board data */}
       <CardsContainer>
@@ -46,6 +50,7 @@ const BoardMain = ({ handleCreateProject }) => {
           boardData.map((board) => (
             <BoardCard
               handleCreateProject={handleCreateProject}
+              handleViewAllProjecs={handleViewAllProjecs}
               key={board.id}
               boardName={board.name}
             />
