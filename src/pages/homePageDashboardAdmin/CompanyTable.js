@@ -34,6 +34,8 @@ const CompanyTable = ({
   const paginationButtonStyle = {
     padding: '3px 8px',
     cursor: 'pointer',
+    background: "#505F98",
+    color: "white",
   };
 
   const viewButtonStyle = {

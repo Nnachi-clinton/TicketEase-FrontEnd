@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 // import { toast, ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
@@ -19,6 +20,13 @@ const LogoutPopout = ({ onLogout }) => {
         navigate('/Footer-header');
         //  toast.success('Logout successful');
         alert('Logout Successful');
+        Swal.fire({
+          icon: 'success',
+          title: 'Logout Successful',
+          showConfirmButton: false,
+          timer: 1500, // Automatically close after 1.5 seconds
+          position: 'top-end',
+        });
       } else {
         console.error('Logout failed');
       }

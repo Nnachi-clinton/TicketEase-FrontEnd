@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import image from '../pages/manager/images/vector.jpg';
 import styled from 'styled-components';
+import { StyledButton } from './TicketInputfield';
+import MemberProfile from './MemberProfile';
 
 const Fulldiv = styled.div`
   overflow: hidden;
@@ -95,7 +97,7 @@ const Img = styled.img`
   background-color: white;
   width: 100%;
 `;
-function RegisteredMembers() {
+function RegisteredMembers({ handleAllMembers }) {
   const [steps, setSteps] = useState(0);
 
   return (
@@ -146,7 +148,18 @@ function RegisteredMembers() {
                   <Centerp>Sorry we couldnt find any results</Centerp>
 
                   <button
-                    style={{ marginBottom: 20 }}
+                    style={{
+                      marginBottom: 20,
+                      backgroundColor: '#505F98',
+                      color: 'white',
+                      width: '250px',
+                      height: '48px',
+                      fontfamily: 'Mulish',
+                      fontsize: '16px',
+                      fontstyle: 'normal',
+                      fontweight: '600',
+                      lineheight: 'normal',
+                    }}
                     type="button"
                     onClick={() => setSteps(1)}
                   >
@@ -158,7 +171,7 @@ function RegisteredMembers() {
           </Fulldiv>
         </>
       )}
-      {/* {steps === 1 && < />} */}
+      {steps === 1 && <MemberProfile handleAllMembers={handleAllMembers} />}
     </>
   );
 }

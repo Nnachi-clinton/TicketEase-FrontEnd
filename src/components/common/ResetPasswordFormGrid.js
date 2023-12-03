@@ -24,7 +24,7 @@ const Heading = styled.h2`
   padding-left: 16px;
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 0px;
+  margin-bottom: 24px !important;
   @media screen and (max-width: 1024px) {
     font-size: 20px;
     margin-bottom: 0;
