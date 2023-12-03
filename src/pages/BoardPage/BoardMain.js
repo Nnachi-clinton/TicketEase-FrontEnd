@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import BoardCard from './BoardCard.js';
+import BoardCard, { MergedComponent } from './BoardCard.js';
 import styled from 'styled-components';
 
 const CardsContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  marging-left: 54em !important;
   gap: 10px;
 `;
 
-const BoardMain = () => {
+const BoardMain = ({
+  handleCreateProject,
+  handleViewAllProjecs,
+  handleCreateBoard,
+}) => {
   // State to store the board data
   const [boardData, setBoardData] = useState([]);
 
@@ -34,15 +40,26 @@ const BoardMain = () => {
   }, []); // Empty dependency array ensures the effect runs only once on mount
 
   return (
-    <CardsContainer>
-      {boardData.length > 0 ? (
-        boardData.map((board) => (
-          <BoardCard key={board.id} boardName={board.name} />
-        ))
-      ) : (
-        <div>No Available boards</div>
-      )}
-    </CardsContainer>
+    <div style={{ marginLeft: '10em' }}>
+      {/* Render MergedComponent above the CardsContainer */}
+      <MergedComponent handleCreateBoard={handleCreateBoard} />
+
+      {/* CardsContainer with board data */}
+      <CardsContainer>
+        {boardData.length > 0 ? (
+          boardData.map((board) => (
+            <BoardCard
+              handleCreateProject={handleCreateProject}
+              handleViewAllProjecs={handleViewAllProjecs}
+              key={board.id}
+              boardName={board.name}
+            />
+          ))
+        ) : (
+          <div>No Available boards</div>
+        )}
+      </CardsContainer>
+    </div>
   );
 };
 

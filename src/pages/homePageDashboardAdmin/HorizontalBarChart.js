@@ -39,9 +39,9 @@ const HorizontalBarChart = () => {
         console.error('Error fetching data:', error);
       });
   }, []);
-  const ticket = data[0];
-  const board = data[1];
-  const project = data[2];
+  const board = data[2];
+  const project = data[0];
+  const ticket = data[1];
 
   const chartData = {
     labels: ['Total Boards', 'Total Projects', 'Total Tickets'],

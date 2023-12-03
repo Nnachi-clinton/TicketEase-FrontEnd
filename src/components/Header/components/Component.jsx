@@ -120,6 +120,7 @@ export const Component = ({
   className,
   logout,
   ChangePassword,
+  managerdetails,
   overlapGroupClassName,
 }) => {
   return (
@@ -138,6 +139,7 @@ export const Component = ({
           <ProfileDropdown
             logout={logout}
             ChangePassword={ChangePassword}
+            managerdetails={managerdetails}
             name="Goliath"
           />
         </div>

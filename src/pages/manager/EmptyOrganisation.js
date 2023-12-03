@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import './formstyle.css';
 import image from './images/vector.jpg';
 import styled from 'styled-components';
-import AddManager2 from './AddManagerFom';
+import AddManager2, { StyledButton } from './AddManagerFom';
 
 const Fulldiv = styled.div`
   overflow: hidden;
@@ -147,13 +147,20 @@ function AddManager() {
                   </ImgDiv>
                   <Centerp>Sorry we couldnt find any results</Centerp>
 
-                  <button
-                    style={{ marginBottom: 20 }}
+                  <StyledButton
+                    style={{
+                      marginBottom: 20,
+                      backgroundColor: '#505F98',
+                      color: 'white',
+                      width: '250px',
+                      height: '48px',
+                      // marginleft: '200px',
+                    }}
                     type="button"
                     onClick={() => setSteps(1)}
                   >
                     Create a new Manager
-                  </button>
+                  </StyledButton>
                 </Innerdiv>
               </FormSpaceNotFoundd>
             </Innerdiv>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../homePageDashBoardManager/ManagerDashBoard.css';
-import HorizontalBarChart from '../homePageDashboardAdmin/HorizontalBarChart.js';
+import HorizontalBarChart2 from '../homePageDashBoardManager/HorizontalBarChart2.js';
 import Sider from '../../components/SideBar/Sider.jsx';
 import AxiosInstance from '../../Request/AxiosInstance.js';
 import { Frame } from '../../components/Header/Header/Header.js';
@@ -10,6 +10,12 @@ import RegisteredMembers from '../RegisteredMembers.js';
 import LogoutPopout from '../../components/logout/Logout.js';
 import ContactUs from '../contactUs/ContactUs.js';
 import ChangePassword from '../ChangePassword.js';
+import BoardMain from '../BoardPage/BoardMain.js';
+import AllMembers from '../AllMembersPage/AllMembersPage.js';
+import CreateProject from '../Projects/CreateProject.js';
+import AllProjects from '../AllProjectsPage/AllProjects.jsx';
+import CreateBoard from '../Boards/CreateBoard.js';
+import ManagerView from '../../components/ManagerView/managerView.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -18,11 +24,30 @@ function ManagerDashBoard() {
   const [totalItems, setTotalItems] = useState(0);
   const [step, setStep] = useState(0);
 
+  const handleBoardMain = () => {
+    setStep(7);
+  };
+  const handleAllMembers = () => {
+    setStep(8);
+  };
+
+  const handleCreateProject = () => {
+    setStep(9);
+  };
+
+  const handleViewAllProjecs = () => {
+    setStep(10);
+  };
+
+  const handleCreateBoard = () => {
+    setStep(11);
+  };
+
   const getUsers = async () => {
     try {
       const res = await AxiosInstance.get(
         // `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem('mangerId')}&page=${currentPage}&perPage=${itemsPerPage}`
-        `/User/get-Users-By-ManagerId?managerId=6ba586e7-df76-490b-8216-8930991c68ab&page=${currentPage}&perPage=${itemsPerPage}`
+        `/User/get-Users-By-ManagerId?managerId=6db01435-a30c-44ae-9e23-95e1fecf0180&page=${currentPage}&perPage=${itemsPerPage}`
       );
 
       console.log(res.data);
@@ -43,7 +68,11 @@ function ManagerDashBoard() {
 
   return (
     <section className="mothercard">
-      <Frame logout={() => setStep(5)} ChangePassword={() => setStep(6)} />
+      <Frame
+        logout={() => setStep(5)}
+        ChangePassword={() => setStep(6)}
+        managerdetails={() => setStep(12)}
+      />
       <Sider step={step} selectstep={(step) => setStep(step)} />
       <>
         {step === 0 && (
@@ -65,7 +94,7 @@ function ManagerDashBoard() {
                     <h1 className="active">ACTIVITIES</h1>
                   </div>
                   <div className="chartdiv">
-                    <HorizontalBarChart />
+                    <HorizontalBarChart2 />
                   </div>
                 </div>
               </div>
@@ -86,11 +115,29 @@ function ManagerDashBoard() {
             </div>
           </>
         )}
-        {step === 1 && <RegisteredMembers />}
-        {step === 2 && <CreateBoardEmptyManager />}
+        {step === 1 && (
+          <RegisteredMembers handleAllMembers={handleAllMembers} />
+        )}
+        {step === 2 && (
+          <CreateBoardEmptyManager handleBoardMain={handleBoardMain} />
+        )}
         {step === 3 && <ContactUs />}
         {step === 5 && <LogoutPopout />}
         {step === 6 && <ChangePassword />}
+        {step === 7 && (
+          <BoardMain
+            handleCreateProject={handleCreateProject}
+            handleViewAllProjecs={handleViewAllProjecs}
+            handleCreateBoard={handleCreateBoard}
+          />
+        )}
+        {step === 8 && <AllMembers />}
+        {step === 9 && (
+          <CreateProject handleViewAllProjecs={handleViewAllProjecs} />
+        )}
+        {step === 10 && <AllProjects />}
+        {step === 11 && <CreateBoard />}
+        {step === 12 && <ManagerView />}
       </>
     </section>
   );

@@ -16,19 +16,11 @@ const Logo = styled.img`
   }
 `;
 
-// const Text = styled.p`
-//     margin-bottom: 0;
-//     padding-left: 16px;
-//     @media screen and (max-width: 1024px) {
-//         margin-top: 0;
-//     }
-// `;
-
-const Heading = styled.h4`
-  margin-top: 30px;
+const Heading = styled.h3`
+  margin-top: 36px;
   color: #21334f;
-  padding-left: 16px;
-  margin-bottom: 15px;
+  padding-left: 8px;
+  margin-bottom: 15px !important;
   font-weight: 800;
   @media screen and (max-width: 1024px) {
     font-size: 20px;

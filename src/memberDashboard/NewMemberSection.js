@@ -23,7 +23,7 @@ const NewMemberContainer = styled.button`
 `;
 
 const NewMemberSection = () => {
-  return <NewMemberContainer>Create a new member</NewMemberContainer>;
+  return <NewMemberContainer>Create a new Ticket</NewMemberContainer>;
 };
 
 export default NewMemberSection;
