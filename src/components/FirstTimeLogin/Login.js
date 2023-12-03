@@ -37,7 +37,10 @@ export const Login = () => {
       })
       .then((data) => {
         // Handle successful login
+        const token = data.message;
         console.log('Login successful:', data);
+        console.log(token);
+        localStorage.setItem('authToken', token);
         // Perform actions upon successful login, e.g., redirect to another page
       })
       .catch((error) => {

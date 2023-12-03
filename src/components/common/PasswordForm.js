@@ -129,15 +129,6 @@ function PasswordForm() {
   useEffect(() => {
     const validateToken = async () => {
       const isValidToken = await validateAuthToken();
-
-      if (!isValidToken) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error Invalid Token',
-          text: 'Token is not valid. Redirecting to login page...',
-          confirmButtonText: 'OK',
-        });
-      }
     };
 
     validateToken();
@@ -200,8 +191,7 @@ function PasswordForm() {
           icon: 'success',
           title: 'Password changed successfully!',
           showConfirmButton: false,
-          timer: 1500, // Automatically close after 1.5 seconds
-          position: 'top-end',
+          timer: 3000,
         });
         clearForm();
       } else {
