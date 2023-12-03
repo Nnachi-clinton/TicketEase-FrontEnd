@@ -80,7 +80,7 @@ const MemberInfoForm = ({ handleAllMembers }) => {
     e.preventDefault();
 
     try {
-      const response = await AxiosInstance.post('/Authentication/Register/263559eb-cec8-4402-b2f2-a094153db202', {
+      const response = await AxiosInstance.post('/Authentication/Register', {
         firstName,
         lastName,
         email,
