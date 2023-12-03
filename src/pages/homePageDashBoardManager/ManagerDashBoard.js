@@ -52,7 +52,7 @@ function ManagerDashBoard() {
     try {
       const res = await AxiosInstance.get(
         // `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem('mangerId')}&page=${currentPage}&perPage=${itemsPerPage}`
-        `/User/get-Users-By-ManagerId?managerId=6db01435-a30c-44ae-9e23-95e1fecf0180&page=${currentPage}&perPage=${itemsPerPage}`
+        `/User/get-Users-By-ManagerId?managerId=b59466aa-a65c-4a70-8d0b-5394a160ef67&page=${currentPage}&perPage=${itemsPerPage}`
       );
 
       console.log(res.data);
