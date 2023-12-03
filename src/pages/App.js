@@ -43,8 +43,7 @@ import BoardMain from './BoardPage/BoardMain';
 import MemberProfile from './MemberProfile.js';
 import ManagerView from '../components/ManagerView/managerView';
 import EditMember from './EditMemberFolder/EditMember.js';
-import ViewTickets from './tickets/ViewTickets.js';
-import Viewticket from './tickets/all-tickets.js';
+import ViewTicket from './tickets/all-tickets.js';
 
 function App() {
   return (
@@ -97,8 +96,8 @@ function App() {
                   path="/createboard"
                   element={<CreateBoardEmptyManager />}
                 />
-                <Route path="/ViewTickets" element={<ViewTickets />} />
-                <Route path="/View-Tickets" element={<Viewticket />} />
+                
+                <Route path="/view-tickets" element={<ViewTicket />} />
                 <Route path="/CreateProject" element={<CreateProject />} />
                 <Route path="/CreateTicket" element={<CreateTicket />} />
                 <Route path="/createNewTicket" element={<CreateNewTicket />} />
