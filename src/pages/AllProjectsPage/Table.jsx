@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const ManagerTable = ({
-  registeredUsers,
+const Table = ({
+  data,
   currentPage,
   itemsPerPage,
   handleViewClick,
   totalItems,
   setCurrentPage,
-  getUsers,
+  getProjects,
 }) => {
   const changePage = (direction) => {
     if (direction === 'prev' && currentPage > 1) {
@@ -23,19 +23,18 @@ const ManagerTable = ({
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     handleViewClick(pageNumber);
-    getUsers(pageNumber);
+    getProjects(pageNumber);
   };
 
   const tableCellStyle = {
     border: '1px solid #ddd',
     padding: '8px',
+    // background: '#FFFFFF'
   };
 
   const paginationButtonStyle = {
     padding: '3px 8px',
     cursor: 'pointer',
-    background: '#505F98',
-    color: 'white',
   };
 
   const viewButtonStyle = {
@@ -46,35 +45,40 @@ const ManagerTable = ({
     <div>
       {/* Table content */}
       <table
-        style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}
+        style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px', background: '#FFF'}}
       >
         <thead>
-          <tr style={{ background: '#E5E5E5', color: '#444' }}>
+          <tr style={{ background: '#FAFAFA', color: '#444' }}>
             <th style={tableCellStyle}>SN</th>
-            <th style={tableCellStyle}>First Name</th>
-            <th style={tableCellStyle}>Last Name</th>
-            <th style={tableCellStyle}>Email</th>
-            <th style={tableCellStyle}>Phone Number</th>
+            <th style={tableCellStyle}>Board ID</th>
+            <th style={tableCellStyle}>Title</th>
+            <th style={tableCellStyle}>Description</th>
             <th style={tableCellStyle}></th>
           </tr>
         </thead>
 
         <tbody>
-          {registeredUsers.map((user, index) => (
-            <tr key={user.id}>
+        {console.log('Data:', data)}
+        {data && data.map((item, index) => (
+            <tr key={item.id}>
               <td style={tableCellStyle}>
                 {(currentPage - 1) * itemsPerPage + index + 1}
               </td>
-              <td style={tableCellStyle}>{user.firstName}</td>
-              <td style={tableCellStyle}>{user.lastName}</td>
-              <td style={tableCellStyle}>{user.email}</td>
-              <td style={tableCellStyle}>{user.phoneNumber}</td>
+              <td style={tableCellStyle}>{item.BoardId}</td>
+              <td style={tableCellStyle}>{item.Title}</td>
+              <td style={tableCellStyle}>{item.description}</td>
               <td style={tableCellStyle}>
                 <button
-                  onClick={() => handleViewClick(user)}
+                  onClick={() => handleViewClick(item)}
                   style={viewButtonStyle}
                 >
-                  View
+                  View Tickets
+                </button>
+                <button
+                  onClick={() => handleViewClick(item)}
+                  style={viewButtonStyle}
+                >
+                  Create Ticket
                 </button>
               </td>
             </tr>
@@ -136,4 +140,4 @@ const ManagerTable = ({
   );
 };
 
-export default ManagerTable;
+export default Table;

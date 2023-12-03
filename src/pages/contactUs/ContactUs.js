@@ -13,17 +13,26 @@ import Swal from 'sweetalert2';
 const ContactUs = () => {
   const [companyName, setCompanyName] = useState('');
   const [businessEmail, setBusinessEmail] = useState('');
-  const [reasonToOnboard, setreasonToOnboard] = useState('');
+  const [companyDescription, setreasonToOnboard] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!companyName || !businessEmail || !companyDescription) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Empty input',
+        text: 'Please fill input',
+        confirmButtonText: 'OK',
+      });
+      return;
+    }
     // Create a data object with the form values
     const data = {
       companyName,
       businessEmail,
-      reasonToOnboard,
+      companyDescription,
     };
 
     try {
@@ -39,7 +48,7 @@ const ContactUs = () => {
         }
       );
 
-      if (response.ok) {
+      if (response.status === 200) {
         Swal.fire({
           icon: 'success',
           title: 'Email sent successfully!',
@@ -65,6 +74,9 @@ const ContactUs = () => {
         text: 'An unexpected error occurred: ' + error.message,
         confirmButtonText: 'OK',
       });
+
+      // Log the full error object for more details
+      console.error('Full error object:', error);
     }
   };
 
@@ -134,7 +146,7 @@ const ContactUs = () => {
           <textarea
             className="form-textarea"
             id="Company Description"
-            value={reasonToOnboard}
+            value={companyDescription}
             onChange={(e) => setreasonToOnboard(e.target.value)}
           ></textarea>
 
