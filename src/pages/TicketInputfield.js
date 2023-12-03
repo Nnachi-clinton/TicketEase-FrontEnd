@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-import React from 'react';
-import styled from 'styled-components';
-import { IoIosAddCircle } from 'react-icons/io';
-import { Axios } from 'axios';
-import AxiosInstance from '../Request/AxiosInstance';
-=======
 import React, { useState } from "react";
 import styled from "styled-components";
 import { IoIosAddCircle } from "react-icons/io";
 import axios from 'axios';
 import Swal from 'sweetalert2';
->>>>>>> development
 
 const Fulldiv = styled.div`
   overflow: hidden;
@@ -108,18 +100,6 @@ const Button = styled.button`
 `;
 
 function CreateTicket() {
-<<<<<<< HEAD
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await AxiosInstance.post('/');
-    } catch (error) {
-      
-    }
-  }
-
-=======
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -174,7 +154,6 @@ function CreateTicket() {
       console.error('Error creating ticket:', error.response.data);
     }
   };
->>>>>>> development
 
   return (
     <Fulldiv>
@@ -189,27 +168,12 @@ function CreateTicket() {
       <Innerdiv>
         <FormSpace>
           <StyledForm onSubmit={handleSubmit}>
-<<<<<<< HEAD
-            <h1 style={{ textAlign: 'left', gap: '5px' }}>
-=======
             <h1 style={{ textAlign: "left", gap: "5px" }}>
->>>>>>> development
               Work Collaboratively with <br />
               team members.{" "}
               <span style={{ color: "#505f98" }}> Create a Ticket</span>{" "}
             </h1>
             <StyledLabel>Title:</StyledLabel>
-<<<<<<< HEAD
-            <StyledInput type="text" name="title" required placeholder="" />
-            <StyledLabel>Description:</StyledLabel>
-            <StyledInput type="text" name='description' required placeholder="Cc" />
-            <StyledLabel>Priority:</StyledLabel>
-            <StyledSelect required name="priority">
-              <option value="">Choose a Priority</option>
-              <option value="2">High</option>
-              <option value="1">Medium</option>
-              <option value="0">Low</option>
-=======
             <StyledInput
               type="text"
               required
@@ -237,7 +201,6 @@ function CreateTicket() {
               <option value="0">Completed</option>
               <option value="1">Pending</option>
               <option value="2">Incomplete</option>
->>>>>>> development
             </StyledSelect>
 
             <StyledLabel>Priority:</StyledLabel>
@@ -252,12 +215,6 @@ function CreateTicket() {
             </StyledSelect>
 
             <StyledLabel>Assigned To:</StyledLabel>
-<<<<<<< HEAD
-            <StyledInput type="text" name='assignedto' placeholder="" />
-            <StyledLabel>Project Id:</StyledLabel>
-            <StyledInput required name='projectid' type="text" placeholder="" />
-            {/* Other form fields */}
-=======
             <StyledInput
               type="text"
               placeholder=""
@@ -265,7 +222,6 @@ function CreateTicket() {
               onChange={handleChange}
               name="assignedTo"
             />
->>>>>>> development
             <StyledButton type="submit">Create a New Ticket</StyledButton>
           </StyledForm>
         </FormSpace>

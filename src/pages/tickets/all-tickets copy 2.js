@@ -18,29 +18,22 @@ const App = () => {
 
   useEffect(() => {
     
-    const fetchData = async (url) => {
+    const fetchData = async (url, setter) => {
       try {
         const response = await axios.get(url);
-        const apiData = response.data.data.data;
-
-        apiData.forEach(item => {
-          if(item.status===0){
-            setList1(prevList => [...prevList, item]);
-          }
-          if(item.status===1){
-            setList2(prevList => [...prevList, item]);
-          }
-          if(item.status===2){
-            setList3(prevList => [...prevList, item]);
-          }
-        });
+        const apiData = response.data.data;
+        setter(apiData);
       } catch (error) {
         console.error(`Error fetching data from ${url}:`, error);
       }
     };
-    const apiUrl1 =  'https://localhost:7075/api/Ticket/project/b0fc9152-aa78-46d5-84a0-8b53fb5008c2?page=1&perPage=5';
-   
-    fetchData(apiUrl1);
+    const apiUrl1 =  'https://localhost:7075/api/Ticket/status-by-pagination/0?page=1&pageSize=5';
+    const apiUrl2 =  'https://localhost:7075/api/Ticket/status-by-pagination/1?page=1&pageSize=5';
+    const apiUrl3 = 'https://localhost:7075/api/Ticket/status-by-pagination/2?page=1&pageSize=5';
+
+    fetchData(apiUrl1, setList1);
+    fetchData(apiUrl2, setList2);
+    fetchData(apiUrl3, setList3);
   }, []); 
 
 
