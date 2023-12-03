@@ -15,6 +15,7 @@ import phone from '../assets/ProfileDetails/phone.svg';
 const Container = styled.div`
 background-color: red:
 width: 75%;
+margin-top: 0.7em;
 `;
 
 const SubContainer = styled.div`
@@ -74,7 +75,7 @@ const DetailsContainer = styled.div`
 
 const MyComponent = (props) => {
   return (
-    <Container style={{ backgroundCsolor: 'white' }}>
+    <Container style={{ backgroundColor: 'white' }}>
       <SubContainer style={{ backgroundCsolor: 'white' }}>
         <div>
           <Header>

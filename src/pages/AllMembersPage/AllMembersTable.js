@@ -146,7 +146,6 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
   gap: 180px;
-  background-color: #fff;
 `;
 
 const AllMembersTable = ({
@@ -195,7 +194,7 @@ const AllMembersTable = ({
           {/* Table content */}
           <table
             style={{
-              width: '120%',
+              width: '125%',
               borderCollapse: 'collapse',
               marginTop: '10px',
               background: '#FFF',

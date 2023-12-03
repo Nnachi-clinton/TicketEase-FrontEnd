@@ -15,6 +15,7 @@ import AllMembers from '../AllMembersPage/AllMembersPage.js';
 import CreateProject from '../Projects/CreateProject.js';
 import AllProjects from '../AllProjectsPage/AllProjects.jsx';
 import CreateBoard from '../Boards/CreateBoard.js';
+import ManagerView from '../../components/ManagerView/managerView.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -67,7 +68,11 @@ function ManagerDashBoard() {
 
   return (
     <section className="mothercard">
-      <Frame logout={() => setStep(5)} ChangePassword={() => setStep(6)} />
+      <Frame
+        logout={() => setStep(5)}
+        ChangePassword={() => setStep(6)}
+        managerdetails={() => setStep(12)}
+      />
       <Sider step={step} selectstep={(step) => setStep(step)} />
       <>
         {step === 0 && (
@@ -132,6 +137,7 @@ function ManagerDashBoard() {
         )}
         {step === 10 && <AllProjects />}
         {step === 11 && <CreateBoard />}
+        {step === 12 && <ManagerView />}
       </>
     </section>
   );

@@ -66,18 +66,18 @@ const Text = styled.h6`
 const AllProjects = () => {
   const [allProjects, setProject] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 8;
   const [totalItems, setTotalItems] = useState(0);
 
   const getPojects = async () => {
     try {
       const res = await AxiosInstance2.get(
         // `/Project/GetProjectsByBoardId?boardId=${localStorage.getItem('boardId')}&page=${currentPage}&perPage=${itemsPerPage}`
-        `/Project/GetProjectsByBoardId?boardId= &page=${currentPage}&perPage=${itemsPerPage}`
+        `/Project/GetProjectsByBoardId?boardId=16600789-f9b3-4ef6-bc80-289a4ef9fc86&page=${currentPage}&perPage=${itemsPerPage}`
       );
 
-      const { data, totalCount } = res.data;
-
+      const { data, totalCount } = res.data.data;
+      console.log('Data:', data);
       setProject(data);
       setTotalItems(totalCount);
     } catch (error) {
@@ -113,8 +113,17 @@ const AllProjects = () => {
             </Sort>
           </Show>
 
-          <Table
+          {/* <Table
             data={allProjects}
+            currentPage={currentPage}
+            itemsPerPage={itemsPerPage}
+            handleViewClick={handleViewClick}
+            totalItems={totalItems}
+            setCurrentPage={setCurrentPage}
+            getProjects={getPojects}
+          /> */}
+          <Table
+            data={Array.isArray(allProjects) ? allProjects : []}
             currentPage={currentPage}
             itemsPerPage={itemsPerPage}
             handleViewClick={handleViewClick}

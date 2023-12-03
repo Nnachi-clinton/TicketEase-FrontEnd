@@ -45,7 +45,12 @@ const Table = ({
     <div>
       {/* Table content */}
       <table
-        style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px', background: '#FFF'}}
+        style={{
+          width: '100%',
+          borderCollapse: 'collapse',
+          marginTop: '10px',
+          background: '#FFF',
+        }}
       >
         <thead>
           <tr style={{ background: '#FAFAFA', color: '#444' }}>
@@ -58,31 +63,32 @@ const Table = ({
         </thead>
 
         <tbody>
-        {console.log('Data:', data)}
-        {data && data.map((item, index) => (
-            <tr key={item.id}>
-              <td style={tableCellStyle}>
-                {(currentPage - 1) * itemsPerPage + index + 1}
-              </td>
-              <td style={tableCellStyle}>{item.BoardId}</td>
-              <td style={tableCellStyle}>{item.Title}</td>
-              <td style={tableCellStyle}>{item.description}</td>
-              <td style={tableCellStyle}>
-                <button
-                  onClick={() => handleViewClick(item)}
-                  style={viewButtonStyle}
-                >
-                  View Tickets
-                </button>
-                <button
-                  onClick={() => handleViewClick(item)}
-                  style={viewButtonStyle}
-                >
-                  Create Ticket
-                </button>
-              </td>
-            </tr>
-          ))}
+          {console.log('Data:', data)}
+          {data &&
+            data.map((item, index) => (
+              <tr key={item.id}>
+                <td style={tableCellStyle}>
+                  {(currentPage - 1) * itemsPerPage + index + 1}
+                </td>
+                <td style={tableCellStyle}>{item.boardId}</td>
+                <td style={tableCellStyle}>{item.title}</td>
+                <td style={tableCellStyle}>{item.description}</td>
+                <td style={tableCellStyle}>
+                  <button
+                    onClick={() => handleViewClick(item)}
+                    style={viewButtonStyle}
+                  >
+                    View Tickets
+                  </button>
+                  <button
+                    onClick={() => handleViewClick(item)}
+                    style={viewButtonStyle}
+                  >
+                    Create Ticket
+                  </button>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
 
