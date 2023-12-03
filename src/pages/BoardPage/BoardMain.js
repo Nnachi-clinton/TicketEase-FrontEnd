@@ -15,6 +15,7 @@ const BoardMain = ({
   handleCreateProject,
   handleViewAllProjecs,
   handleCreateBoard,
+  handleViewTickets,
 }) => {
   // State to store the board data
   const [boardData, setBoardData] = useState([]);
@@ -51,6 +52,7 @@ const BoardMain = ({
             <BoardCard
               handleCreateProject={handleCreateProject}
               handleViewAllProjecs={handleViewAllProjecs}
+              handleViewTickets={handleViewTickets}
               key={board.id}
               boardName={board.name}
             />

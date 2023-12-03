@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { IoIosAddCircle } from "react-icons/io";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { IoIosAddCircle } from 'react-icons/io';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -34,7 +34,7 @@ export const StyledLabel = styled.label`
   margin-bottom: 5px;
   font-weight: bold;
   padding-top: 1em;
-  color: ${(props) => (props.invalid ? "red" : "black")};
+  color: ${(props) => (props.invalid ? 'red' : 'black')};
 `;
 
 export const StyledSelect = styled.select`
@@ -105,16 +105,17 @@ function CreateTicket() {
     description: '',
     status: 0,
     priority: 0,
-    assignedTo: ''
+    assignedTo: '',
   });
 
-  const userId = '8f0598ed-e732-45c7-85ab-3aa7c6379d7b'; 
-  const projectId = '9fd2436d-8cad-4bdb-aead-4c9b65a98b34';
+  const userId = '54e92c8f-e076-4cf6-b65a-6cedced31743';
+  const projectId = '00598ed2-da89-4531-aa4b-f736027aecd0';
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    const updatedValue = (name === 'status' || name === 'priority') ? parseInt(value, 10) : value;
+    const updatedValue =
+      name === 'status' || name === 'priority' ? parseInt(value, 10) : value;
 
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -135,7 +136,7 @@ function CreateTicket() {
           },
         }
       );
-      
+
       Swal.fire({
         icon: 'success',
         title: 'Ticket created successfully!',
@@ -160,7 +161,9 @@ function CreateTicket() {
       <Container>
         <Board>Ticket</Board>
         <Button>
-          <div>< IoIosAddCircle />   </div>
+          <div>
+            <IoIosAddCircle />{' '}
+          </div>
           <div>Create a Ticket</div>
         </Button>
       </Container>
@@ -168,10 +171,10 @@ function CreateTicket() {
       <Innerdiv>
         <FormSpace>
           <StyledForm onSubmit={handleSubmit}>
-            <h1 style={{ textAlign: "left", gap: "5px" }}>
+            <h1 style={{ textAlign: 'left', gap: '5px' }}>
               Work Collaboratively with <br />
-              team members.{" "}
-              <span style={{ color: "#505f98" }}> Create a Ticket</span>{" "}
+              team members.{' '}
+              <span style={{ color: '#505f98' }}> Create a Ticket</span>{' '}
             </h1>
             <StyledLabel>Title:</StyledLabel>
             <StyledInput
@@ -225,7 +228,7 @@ function CreateTicket() {
             <StyledButton type="submit">Create a New Ticket</StyledButton>
           </StyledForm>
         </FormSpace>
-    </Innerdiv>
+      </Innerdiv>
     </Fulldiv>
   );
 }

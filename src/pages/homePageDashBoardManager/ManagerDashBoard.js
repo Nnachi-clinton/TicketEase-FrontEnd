@@ -16,6 +16,7 @@ import CreateProject from '../Projects/CreateProject.js';
 import AllProjects from '../AllProjectsPage/AllProjects.jsx';
 import CreateBoard from '../Boards/CreateBoard.js';
 import ManagerView from '../../components/ManagerView/managerView.js';
+import AllTickets from '../tickets/all-tickets.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -41,6 +42,10 @@ function ManagerDashBoard() {
 
   const handleCreateBoard = () => {
     setStep(11);
+  };
+
+  const handleViewTickets = () => {
+    setStep(13);
   };
 
   const getUsers = async () => {
@@ -129,15 +134,17 @@ function ManagerDashBoard() {
             handleCreateProject={handleCreateProject}
             handleViewAllProjecs={handleViewAllProjecs}
             handleCreateBoard={handleCreateBoard}
+            handleViewTickets={handleViewTickets}
           />
         )}
         {step === 8 && <AllMembers />}
         {step === 9 && (
           <CreateProject handleViewAllProjecs={handleViewAllProjecs} />
         )}
-        {step === 10 && <AllProjects />}
+        {step === 10 && <AllProjects handleViewTickets={handleViewTickets} />}
         {step === 11 && <CreateBoard />}
         {step === 12 && <ManagerView />}
+        {step === 13 && <AllTickets />}
       </>
     </section>
   );
