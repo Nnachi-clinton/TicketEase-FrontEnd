@@ -5,17 +5,19 @@ import Swal from 'sweetalert2';
 const Fulldiv = styled.div`
   overflow: hidden;
   background-color: #f0f0f0;
-  width: 70%;
+  width: 80%;
   margin-left: 20em;
   margin-right: 40em;
   margin-top: 6em;
+  height: 91vh !important;
 `;
 
 const Innerdiv = styled.div`
   background-color: white;
   margin-left: 20px;
   margin-right: 20px;
-  padding-top: 4em;
+  padding-top: 8em;
+  height: 91vh !important;
 
   & .marginb {
     margin-bottom: 20px;

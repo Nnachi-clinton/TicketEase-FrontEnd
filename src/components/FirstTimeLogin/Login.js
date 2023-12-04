@@ -4,6 +4,8 @@ import image from './Login.png';
 import Logo from './TicketEaseLogo.jpg';
 import ErrorIcon from './ErrorIcon.svg';
 import './Login.css';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -11,40 +13,73 @@ export const Login = () => {
   const [loginError, setLoginError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
-    fetch('https://localhost:7075/api/Authentication/Login/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Successful login
-          navigate('/update-password');
-          setLoginError('');
-          return response.json();
-        } else {
-          // Failed login
-          throw new Error('Login failed');
+    try {
+      const response = await axios.post(
+        'https://localhost:7075/api/Authentication/login',
+        {
+          email: email,
+          password: password,
         }
-      })
-      .then((data) => {
-        // Handle successful login
-        console.log('Login successful:', data);
-        // Perform actions upon successful login, e.g., redirect to another page
-      })
-      .catch((error) => {
-        // Handle failed login
-        console.error('Login error:', error);
-        setLoginError('Login failed. Please check your credentials.');
-      });
+      );
+      console.log(response);
+
+
+      if (response.data.statusCode === 200) {
+        const token = response.data.data;
+        console.log(token);
+        localStorage.setItem('authToken', token);
+        navigate('/ManagerDashBoard');
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Login successful!',
+          showConfirmButton: false,
+          timer: 1500, // Automatically close after 1.5 seconds
+          position: 'top-end',
+        });
+      } else {
+        console.error('Error:', response.data);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: `Error: ${response.data.message}`,
+          confirmButtonText: 'OK',
+        });
+      }
+    } catch (error) {
+      if (error.response) {
+        console.error('Server Error:', error.response.status);
+        console.error('Error Message:', error.response.data.message);
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'An unexpected error occurred: ' + error.message,
+          confirmButtonText: 'OK',
+        });
+      } else if (error.request) {
+        console.error('No Response from Server');
+
+        Swal.fire({
+          icon: 'error',
+          title: 'No Response from Server',
+          text: 'No response from the server. Please try again.',
+          confirmButtonText: 'OK',
+        });
+      } else {
+        console.error('Unexpected Error:', error.message);
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Error during login.',
+          text: 'An unexpected error occurred during login.',
+          confirmButtonText: 'OK',
+        });
+      }
+    }
   };
 
   return (
