@@ -1,109 +1,86 @@
-// MyComponent.js
 import React from 'react';
 import styled from 'styled-components';
-import ProfileImage from '../ProfileDetails/ProfileImage';
-import Direction from '../assets/ProfileDetails/Direction.svg';
-import ProfilePhoto from '../assets/ProfileDetails/ProfilePhoto.svg';
-import GeneralInformation from '../ProfileDetails/GeneralInformation';
-import calender from '../assets/ProfileDetails/calender.svg';
-import communication from '../assets/ProfileDetails/communication.svg';
-import gender from '../assets/ProfileDetails/gender.svg';
-import General from '../assets/ProfileDetails/General.svg';
-import map from '../assets/ProfileDetails/map.svg';
-import phone from '../assets/ProfileDetails/phone.svg';
+
+import GeneralIcon from '../assets/ProfileDetails/General.svg';
+import PhoneIcon from '../assets/ProfileDetails/phone.svg';
+import CommunicationIcon from '../assets/ProfileDetails/communication.svg';
 
 const Container = styled.div`
-background-color: red:
-width: 75%;
-`;
-
-const SubContainer = styled.div`
-display: flex;
-flex-direction: column;
-align-items: end;
-width: 25%
-justify-content: center;
-padding: 20px;
-`;
-
-const Header = styled.div`
-  display: flex;
-  width: 141px;
-  max-width: 100%;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  margin-left: 12px;
-  margin-top: 20px;
-  margin-bottom: 22px;
-
-  @media (max-width: 600px) {
-    margin-left: 2.5px;
-  }
-`;
-
-const Title = styled.div`
-  color: black;
-  font-size: 1rem;
-  font-weight: bold;
-  line-height: 1.25;
-  flex-grow: 1;
-  white-space: nowrap;
-`;
-
-const Separator = styled.div`
-  background-color: #d3d3d3;
-  align-self: stretch;
-  min-height: 1px;
+  background-color: white;
   width: 100%;
-  margin-top: 6px;
-  margin-bottom: 30px;
+  margin-top: 0.7em;
+  display: flex;
+  flex-direction: column; /* Adjusted to column layout */
+  align-items: center; /* Centered horizontally */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+`;
+
+const ProfileImage = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 `;
 
 const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 8px;
-  margin-right: 20px;
-
-  @media (max-width: 600px) {
-    padding-left: 5px;
-    padding-right: 20px;
-  }
+  margin-left: 20px;
 `;
 
-const MyComponent = (props) => {
+const GeneralInformation = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #333;
+`;
+
+const Icon = styled.img`
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+`;
+
+const AddressText = styled.div`
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const CloseButton = styled.button`
+  background: #505f98;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: auto; /* Push the close button to the bottom */
+`;
+
+const ProfileDetails = ({ userDetails, onClose }) => {
   return (
     <Container>
-      <SubContainer>
-        <div>
-          <Header>
-            <img src={Direction} alt="direction" />
-            <Title>Profile Detail</Title>
-          </Header>
-          <Separator />
-          <DetailsContainer>
-            <ProfileImage src={ProfilePhoto} />
-            <GeneralInformation
-              imageSrc={General}
-              addressText="Chiebuka Ikenna"
-            />
-            <GeneralInformation
-              imageSrc={map}
-              addressText="10, Ayo Street, Ikoyi, Lagos"
-            />
-            <GeneralInformation imageSrc={phone} addressText="07069298070" />
-            <GeneralInformation imageSrc={gender} addressText="Male" />
-            <GeneralInformation imageSrc={calender} addressText="24/04/1996" />
-            <GeneralInformation
-              imageSrc={communication}
-              addressText="chiebukaikenna@gmail.com"
-            />
-          </DetailsContainer>
-        </div>
-      </SubContainer>
+      <ProfileImage src={userDetails.imageUrl} alt="Profile" />
+      <DetailsContainer>
+        <GeneralInformation>
+          <Icon src={GeneralIcon} alt="General" />
+          <AddressText>{`${userDetails.firstName} ${userDetails.lastName}`}</AddressText>
+        </GeneralInformation>
+        <GeneralInformation>
+          <Icon src={PhoneIcon} alt="Phone" />
+          <AddressText>{userDetails.phoneNumber}</AddressText>
+        </GeneralInformation>
+        <GeneralInformation>
+          <Icon src={CommunicationIcon} alt="Communication" />
+          <AddressText>{userDetails.email}</AddressText>
+        </GeneralInformation>
+      </DetailsContainer>
+      <CloseButton onClick={onClose}>Close</CloseButton>
     </Container>
   );
 };
 
-export default MyComponent;
+export default ProfileDetails;

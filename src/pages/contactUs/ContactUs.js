@@ -56,7 +56,7 @@ const ContactUs = () => {
           timer: 1500, // Automatically close after 1.5 seconds
           position: 'top-end',
         });
-        navigate('/contactResponse');
+        // navigate('/contactResponse');
       } else {
         Swal.fire({
           icon: 'error',

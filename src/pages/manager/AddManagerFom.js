@@ -53,7 +53,7 @@ export const StyledInput = styled.input`
   width: 465px;
   padding: 10px;
   margin: 10px;
-  height: 28px;
+  height: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
@@ -62,7 +62,7 @@ export const StyledInput = styled.input`
 export const StyledButton = styled.button`
   color: white;
   width: 465px;
-  height: 28px;
+  height: 40px;
   margin-top: 20px;
   margin-left: 10px;
   border: none;
@@ -117,7 +117,7 @@ function AddManager2() {
         }
       );
 
-      if (response.ok) {
+      if (response.status === 200) {
         Swal.fire({
           icon: 'success',
           title: 'Email sent successfully!',
@@ -125,7 +125,6 @@ function AddManager2() {
           timer: 1500, // Automatically close after 1.5 seconds
           position: 'top-end',
         });
-        navigate('/contactResponse');
       } else {
         Swal.fire({
           icon: 'error',
@@ -179,7 +178,12 @@ function AddManager2() {
               value="companyDescription"
               onChange={(e) => setCompanyDescription(e.target.value)}
             />
-            <StyledButton type="submit">Submit</StyledButton>
+
+            <StyledButton
+              style={{ backgroundColor: '#505F98', color: 'white' }}
+            >
+              Submit
+            </StyledButton>
           </StyledForm>
         </FormSpace>
       </Innerdiv>

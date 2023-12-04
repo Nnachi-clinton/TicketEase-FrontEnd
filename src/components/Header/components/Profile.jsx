@@ -90,7 +90,12 @@ const PrivacyPolicy = styled.div`
   }
 `;
 
-export const ProfileDropdown = ({ name, logout, ChangePassword }) => {
+export const ProfileDropdown = ({
+  name,
+  logout,
+  ChangePassword,
+  managerdetails,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   let timeoutId;
@@ -142,18 +147,20 @@ export const ProfileDropdown = ({ name, logout, ChangePassword }) => {
         {name}
       </ProfileButton>
       <DropdownContent isOpen={isOpen} ref={dropdownRef}>
-        <Dropdown logout={logout} ChangePassword={ChangePassword} />
+        <Dropdown
+          logout={logout}
+          ChangePassword={ChangePassword}
+          managerdetails={managerdetails}
+        />
       </DropdownContent>
     </ProfileDropdownContainer>
   );
 };
 
-const Dropdown = ({ logout, ChangePassword }) => {
+const Dropdown = ({ logout, ChangePassword, managerdetails }) => {
   return (
     <>
-      <InteractiveMenuItem
-        onClick={() => console.log('Navigate to Personal Info')}
-      >
+      <InteractiveMenuItem onClick={managerdetails}>
         <MenuItemText>Personal Info</MenuItemText>
         <Icon src={arrow} alt="Personal Info Icon" />
       </InteractiveMenuItem>

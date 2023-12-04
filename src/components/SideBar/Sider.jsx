@@ -7,7 +7,9 @@ import { Logo } from '../../components/Header/components/Logo';
 const menuItems = [
   { name: 'Home', icon: require('../../assets/Polygon.svg').default },
   { name: 'Add Member', icon: require('../../assets/User.svg').default },
-  { name: 'Create Board', icon: require('../../assets/Group.svg').default },
+  { name: 'Board', icon: require('../../assets/Group.svg').default },
+  { name: 'Projects', icon: require('../../assets/Group.svg').default },
+  { name: 'Tickets', icon: require('../../assets/Group.svg').default },
   {
     name: 'Contact Admin',
     icon: require('../../assets/Credit-card.svg').default,
@@ -102,9 +104,9 @@ export default function SideBar({ step, selectstep }) {
             style={{
               top:
                 name === 'Settings'
-                  ? '500px'
+                  ? '240px'
                   : name === 'Logout'
-                  ? '505px'
+                  ? '245px'
                   : 'auto',
             }}
           >

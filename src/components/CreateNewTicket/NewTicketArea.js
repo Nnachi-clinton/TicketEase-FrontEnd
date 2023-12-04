@@ -22,8 +22,12 @@ const NewTicketContainer = styled.button`
   }
 `;
 
-const NewTicketSection = () => {
-  return <NewTicketContainer>Create a new Ticket</NewTicketContainer>;
+const NewTicketSection = ({ handleCreateTicket }) => {
+  return (
+    <NewTicketContainer onClick={handleCreateTicket}>
+      Create a new Ticket
+    </NewTicketContainer>
+  );
 };
 
 export default NewTicketSection;

@@ -49,7 +49,7 @@ const HorizontalBarChart = () => {
       {
         label: 'Tracker',
         data: [ticket, board, project],
-        backgroundColor: ['#F7C450', '#14A800', '#14A800'],
+        backgroundColor: ['#F7C450', '#14A800', '#009999'],
         tension: 0.1,
         borderWidth: 4,
         datalabels: {

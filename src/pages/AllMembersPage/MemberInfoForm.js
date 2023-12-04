@@ -24,6 +24,7 @@ const Input = styled.input`
   border: none;
   height: 48px;
   border-radius: 4px;
+  padding: 10px;
 
   &::placeholder {
     padding-left: 30px;
@@ -80,7 +81,7 @@ const MemberInfoForm = ({ handleAllMembers }) => {
     e.preventDefault();
 
     try {
-      const response = await AxiosInstance.post('/Authentication/Register/263559eb-cec8-4402-b2f2-a094153db202', {
+      const response = await AxiosInstance.post('/Authentication/Register', {
         firstName,
         lastName,
         email,
@@ -90,7 +91,10 @@ const MemberInfoForm = ({ handleAllMembers }) => {
 
       console.log('API Response:', response.data);
       // Assuming success status code is 200
-      if (response.status === 200) {
+      if (
+        response.data.statusCode === 201 ||
+        response.data.statusCode === 200
+      ) {
         // alert('Personal Information saved!');
         Swal.fire({
           icon: 'success',

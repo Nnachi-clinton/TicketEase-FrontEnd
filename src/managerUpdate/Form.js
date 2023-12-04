@@ -67,11 +67,11 @@ const SubmitButton = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 390px;
+  width: 350px;
   height: 48px;
   margin-top: 58px;
   margin-bottom: 94px;
-  margin-left: -8px;
+  margin-left: 3px;
 `;
 
 const ErrorMsg = styled.span`

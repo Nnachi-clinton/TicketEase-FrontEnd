@@ -13,6 +13,13 @@ import ChangePassword from '../ChangePassword.js';
 import BoardMain from '../BoardPage/BoardMain.js';
 import AllMembers from '../AllMembersPage/AllMembersPage.js';
 import CreateProject from '../Projects/CreateProject.js';
+import AllProjects from '../AllProjectsPage/AllProjects.jsx';
+import CreateBoard from '../Boards/CreateBoard.js';
+import ManagerView from '../../components/ManagerView/managerView.js';
+import AllTickets from '../tickets/all-tickets.js';
+import CreateNewTicket from '../CreateNewTicket.js';
+import CreateTicket from '../TicketInputfield.js';
+import ViewTicket from '../tickets/all-tickets.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -22,14 +29,30 @@ function ManagerDashBoard() {
   const [step, setStep] = useState(0);
 
   const handleBoardMain = () => {
-    setStep(7);
+    setStep(8);
   };
   const handleAllMembers = () => {
-    setStep(8);
+    setStep(16);
   };
 
   const handleCreateProject = () => {
     setStep(9);
+  };
+
+  const handleViewAllProjecs = () => {
+    setStep(10);
+  };
+
+  const handleCreateBoard = () => {
+    setStep(11);
+  };
+
+  const handleViewTickets = () => {
+    setStep(13);
+  };
+
+  const handleCreateTicket = () => {
+    setStep(15);
   };
 
   const getUsers = async () => {
@@ -57,7 +80,11 @@ function ManagerDashBoard() {
 
   return (
     <section className="mothercard">
-      <Frame logout={() => setStep(5)} ChangePassword={() => setStep(6)} />
+      <Frame
+        logout={() => setStep(7)}
+        ChangePassword={() => setStep(14)}
+        managerdetails={() => setStep(12)}
+      />
       <Sider step={step} selectstep={(step) => setStep(step)} />
       <>
         {step === 0 && (
@@ -106,12 +133,37 @@ function ManagerDashBoard() {
         {step === 2 && (
           <CreateBoardEmptyManager handleBoardMain={handleBoardMain} />
         )}
-        {step === 3 && <ContactUs />}
-        {step === 5 && <LogoutPopout />}
-        {step === 6 && <ChangePassword />}
-        {step === 7 && <BoardMain handleCreateProject={handleCreateProject} />}
-        {step === 8 && <AllMembers />}
-        {step === 9 && <CreateProject />}
+        {step === 3 && (
+          <CreateProject handleViewAllProjecs={handleViewAllProjecs} />
+        )}
+        {step === 4 && (
+          <CreateNewTicket handleCreateTicket={handleCreateTicket} />
+        )}
+        {step === 5 && <ContactUs />}
+        {step === 7 && <LogoutPopout />}
+        {step === 14 && <ChangePassword />}
+        {step === 8 && (
+          <BoardMain
+            handleCreateProject={handleCreateProject}
+            handleViewAllProjecs={handleViewAllProjecs}
+            handleCreateBoard={handleCreateBoard}
+            handleViewTickets={handleViewTickets}
+          />
+        )}
+        {step === 16 && <AllMembers />}
+        {step === 9 && (
+          <CreateProject handleViewAllProjecs={handleViewAllProjecs} />
+        )}
+        {step === 10 && (
+          <AllProjects
+            handleViewTickets={handleViewTickets}
+            handleCreateTicket={handleCreateTicket}
+          />
+        )}
+        {step === 11 && <CreateBoard />}
+        {step === 12 && <ManagerView />}
+        {step === 13 && <AllTickets />}
+        {step === 15 && <CreateTicket handleViewTickets={handleViewTickets} />}
       </>
     </section>
   );
