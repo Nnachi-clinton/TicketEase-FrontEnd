@@ -16,6 +16,10 @@ import CreateProject from '../Projects/CreateProject.js';
 import AllProjects from '../AllProjectsPage/AllProjects.jsx';
 import CreateBoard from '../Boards/CreateBoard.js';
 import ManagerView from '../../components/ManagerView/managerView.js';
+import AllTickets from '../tickets/all-tickets.js';
+import CreateNewTicket from '../CreateNewTicket.js';
+import CreateTicket from '../TicketInputfield.js';
+import ViewTicket from '../tickets/all-tickets.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -25,10 +29,10 @@ function ManagerDashBoard() {
   const [step, setStep] = useState(0);
 
   const handleBoardMain = () => {
-    setStep(7);
+    setStep(8);
   };
   const handleAllMembers = () => {
-    setStep(8);
+    setStep(16);
   };
 
   const handleCreateProject = () => {
@@ -43,11 +47,19 @@ function ManagerDashBoard() {
     setStep(11);
   };
 
+  const handleViewTickets = () => {
+    setStep(13);
+  };
+
+  const handleCreateTicket = () => {
+    setStep(15);
+  };
+
   const getUsers = async () => {
     try {
       const res = await AxiosInstance.get(
         // `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem('mangerId')}&page=${currentPage}&perPage=${itemsPerPage}`
-        `/User/get-Users-By-ManagerId?managerId=b59466aa-a65c-4a70-8d0b-5394a160ef67&page=${currentPage}&perPage=${itemsPerPage}`
+        `/User/get-Users-By-ManagerId?managerId=6db01435-a30c-44ae-9e23-95e1fecf0180&page=${currentPage}&perPage=${itemsPerPage}`
       );
 
       console.log(res.data);
@@ -69,8 +81,8 @@ function ManagerDashBoard() {
   return (
     <section className="mothercard">
       <Frame
-        logout={() => setStep(5)}
-        ChangePassword={() => setStep(6)}
+        logout={() => setStep(7)}
+        ChangePassword={() => setStep(14)}
         managerdetails={() => setStep(12)}
       />
       <Sider step={step} selectstep={(step) => setStep(step)} />
@@ -121,23 +133,37 @@ function ManagerDashBoard() {
         {step === 2 && (
           <CreateBoardEmptyManager handleBoardMain={handleBoardMain} />
         )}
-        {step === 3 && <ContactUs />}
-        {step === 5 && <LogoutPopout />}
-        {step === 6 && <ChangePassword />}
-        {step === 7 && (
+        {step === 3 && (
+          <CreateProject handleViewAllProjecs={handleViewAllProjecs} />
+        )}
+        {step === 4 && (
+          <CreateNewTicket handleCreateTicket={handleCreateTicket} />
+        )}
+        {step === 5 && <ContactUs />}
+        {step === 7 && <LogoutPopout />}
+        {step === 14 && <ChangePassword />}
+        {step === 8 && (
           <BoardMain
             handleCreateProject={handleCreateProject}
             handleViewAllProjecs={handleViewAllProjecs}
             handleCreateBoard={handleCreateBoard}
+            handleViewTickets={handleViewTickets}
           />
         )}
-        {step === 8 && <AllMembers />}
+        {step === 16 && <AllMembers />}
         {step === 9 && (
           <CreateProject handleViewAllProjecs={handleViewAllProjecs} />
         )}
-        {step === 10 && <AllProjects />}
+        {step === 10 && (
+          <AllProjects
+            handleViewTickets={handleViewTickets}
+            handleCreateTicket={handleCreateTicket}
+          />
+        )}
         {step === 11 && <CreateBoard />}
         {step === 12 && <ManagerView />}
+        {step === 13 && <AllTickets />}
+        {step === 15 && <CreateTicket handleViewTickets={handleViewTickets} />}
       </>
     </section>
   );

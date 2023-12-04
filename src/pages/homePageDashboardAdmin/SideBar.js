@@ -103,9 +103,9 @@ export default function SideBar({ step, selectStep }) {
             style={{
               top:
                 name === 'Settings'
-                  ? '500px'
+                  ? '365px'
                   : name === 'Logout'
-                  ? '505px'
+                  ? '360px'
                   : 'auto',
             }}
           >

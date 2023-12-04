@@ -117,7 +117,7 @@ function AddManager2() {
         }
       );
 
-      if (response.ok) {
+      if (response.status === 200) {
         Swal.fire({
           icon: 'success',
           title: 'Email sent successfully!',
@@ -125,7 +125,6 @@ function AddManager2() {
           timer: 1500, // Automatically close after 1.5 seconds
           position: 'top-end',
         });
-        navigate('/contactResponse');
       } else {
         Swal.fire({
           icon: 'error',

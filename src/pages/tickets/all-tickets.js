@@ -4,10 +4,10 @@ import TicketCard from './TicketCard';
 import styled from 'styled-components';
 
 const ParentDiv = styled.div`
-display: flex;
-justify-content: space-around; 
+  display: flex;
+  justify-content: space-around;
+  margin-top: 8em;
 `;
-
 
 const App = () => {
   const dragItem = useRef();
@@ -17,32 +17,31 @@ const App = () => {
   const [list3, setList3] = useState([]); // New list
 
   useEffect(() => {
-    
     const fetchData = async (url) => {
       try {
         const response = await axios.get(url);
         const apiData = response.data.data.data;
 
-        apiData.forEach(item => {
-          if(item.status===0){
-            setList1(prevList => [...prevList, item]);
+        apiData.forEach((item) => {
+          if (item.status === 0) {
+            setList1((prevList) => [...prevList, item]);
           }
-          if(item.status===1){
-            setList2(prevList => [...prevList, item]);
+          if (item.status === 1) {
+            setList2((prevList) => [...prevList, item]);
           }
-          if(item.status===2){
-            setList3(prevList => [...prevList, item]);
+          if (item.status === 2) {
+            setList3((prevList) => [...prevList, item]);
           }
         });
       } catch (error) {
         console.error(`Error fetching data from ${url}:`, error);
       }
     };
-    const apiUrl1 =  'https://localhost:7075/api/Ticket/project/b0fc9152-aa78-46d5-84a0-8b53fb5008c2?page=1&perPage=5';
-   
-    fetchData(apiUrl1);
-  }, []); 
+    const apiUrl1 =
+      'https://localhost:7075/api/Ticket/project/bfcd5980-ab10-441c-b8a5-e857bb3eae98?page=1&perPage=5';
 
+    fetchData(apiUrl1);
+  }, []);
 
   async function updateStatus(item, destinationStatus) {
     console.log(item, destinationStatus);
@@ -124,8 +123,7 @@ const App = () => {
 
   return (
     <>
-      <ParentDiv  onDragOver={dragOver}
-      >
+      <ParentDiv onDragOver={dragOver}>
         <div
           style={{
             flex: 1,
@@ -135,9 +133,7 @@ const App = () => {
             backgroundColor: 'white',
           }}
         >
-          <div style={{ fontWeight: 'bold', margin: '1em' }}  >
-            Pending
-          </div>
+          <div style={{ fontWeight: 'bold', margin: '1em' }}>Pending</div>
 
           {list1.length === 0 ? (
             <div
@@ -152,7 +148,7 @@ const App = () => {
             // Loop through the list when it is not empty
             list1.map((item, index) => (
               <div
-                style={{ marginLeft: '1em',marginBottom:'1em'  }}
+                style={{ marginLeft: '1em', marginBottom: '1em' }}
                 onDragStart={(e) => dragStart(e, index, 'list1')}
                 onDragEnter={(e) => dragEnter(e, index, 'list1')}
                 onDragEnd={dragEnd}
@@ -181,8 +177,10 @@ const App = () => {
         <div style={{ flex: 1, backgroundColor: 'white', margin: '2em' }}>
           <div style={{ fontWeight: 'bold', margin: '1em' }}>In Progress</div>
           {list2.length === 0 ? (
-            <div style={{ margin: '1em' }} onDragEnter={(e) => dragEnter(e, 0, 'list2')}
-            onDragEnd={dragEnd}
+            <div
+              style={{ margin: '1em' }}
+              onDragEnter={(e) => dragEnter(e, 0, 'list2')}
+              onDragEnd={dragEnd}
             >
               No tickets in progress
             </div>
@@ -190,7 +188,7 @@ const App = () => {
             // Loop through the list when it is not empty
             list2.map((item, index) => (
               <div
-                style={{ marginLeft: '1em',marginBottom:'1em' }}
+                style={{ marginLeft: '1em', marginBottom: '1em' }}
                 onDragStart={(e) => dragStart(e, index, 'list2')}
                 onDragEnter={(e) => dragEnter(e, index, 'list2')}
                 onDragEnd={dragEnd}
@@ -223,14 +221,13 @@ const App = () => {
               onDragEnter={(e) => dragEnter(e, 0, 'list3')}
               onDragEnd={dragEnd}
             >
-              
               No completed projects
             </div>
           ) : (
             // Loop through the list when it is not empty
             list3.map((item, index) => (
               <div
-                style={{ marginLeft: '1em',marginBottom:'1em' }}
+                style={{ marginLeft: '1em', marginBottom: '1em' }}
                 onDragStart={(e) => dragStart(e, index, 'list3')}
                 onDragEnter={(e) => dragEnter(e, index, 'list3')}
                 onDragEnd={dragEnd}
@@ -255,8 +252,6 @@ const App = () => {
             ))
           )}
         </div>
-      
-        
       </ParentDiv>
     </>
   );

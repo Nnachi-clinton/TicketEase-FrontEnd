@@ -10,6 +10,7 @@ const StyledComponent = styled.div`
   position: fixed;
   height: 80px;
   width: 100vw;
+  margin-left: -165px;
 
   .overlap-group {
     background-color: #ffffff;

@@ -63,7 +63,7 @@ const Text = styled.h6`
   font-size: 16px;
 `;
 
-const AllProjects = () => {
+const AllProjects = ({ handleViewTickets, handleCreateTicket }) => {
   const [allProjects, setProject] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -113,15 +113,6 @@ const AllProjects = () => {
             </Sort>
           </Show>
 
-          {/* <Table
-            data={allProjects}
-            currentPage={currentPage}
-            itemsPerPage={itemsPerPage}
-            handleViewClick={handleViewClick}
-            totalItems={totalItems}
-            setCurrentPage={setCurrentPage}
-            getProjects={getPojects}
-          /> */}
           <Table
             data={Array.isArray(allProjects) ? allProjects : []}
             currentPage={currentPage}
@@ -130,6 +121,8 @@ const AllProjects = () => {
             totalItems={totalItems}
             setCurrentPage={setCurrentPage}
             getProjects={getPojects}
+            handleViewTickets={handleViewTickets}
+            handleCreateTicket={handleCreateTicket}
           />
         </div>
       </StyledContainer>

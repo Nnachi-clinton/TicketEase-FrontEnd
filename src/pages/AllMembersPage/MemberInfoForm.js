@@ -24,6 +24,7 @@ const Input = styled.input`
   border: none;
   height: 48px;
   border-radius: 4px;
+  padding: 10px;
 
   &::placeholder {
     padding-left: 30px;
@@ -90,7 +91,10 @@ const MemberInfoForm = ({ handleAllMembers }) => {
 
       console.log('API Response:', response.data);
       // Assuming success status code is 200
-      if (response.status === 200) {
+      if (
+        response.data.statusCode === 201 ||
+        response.data.statusCode === 200
+      ) {
         // alert('Personal Information saved!');
         Swal.fire({
           icon: 'success',
