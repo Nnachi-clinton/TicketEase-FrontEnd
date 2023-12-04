@@ -319,7 +319,7 @@ const CardContainer = ({ organizationName }) => {
   //   // Function to get member photos
   //   const getMemberPhotos = () => {
   //     return members.map((member) => member.photoUrl);
-  //   };
+  //   };g
 
   //   const memberPhotos = getMemberPhotos();
 
