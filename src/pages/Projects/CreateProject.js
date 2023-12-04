@@ -63,29 +63,34 @@ export const StyledButton = styled.button`
   background: #505f98;
 `;
 
-export const StyledAlert = styled.div`
-  padding: 10px;
-  background-color: #f44336;
-  color: white;
-  margin-top: 10px;
-  border-radius: 5px;
+// Adjusted styling for error text
+export const StyledError = styled.div`
+  color: red;
+  margin-top: 5px;
 `;
 
 const CreateProject = ({ boardId, handleViewAllProjecs }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [existingProjects, setExistingProjects] = useState([]);
+  const [titleError, setTitleError] = useState('');
+  const [descriptionError, setDescriptionError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !description) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Empty input',
-        text: 'Please fill input',
-        confirmButtonText: 'OK',
-      });
+    // Reset previous errors
+    setTitleError('');
+    setDescriptionError('');
+
+    // Validate title
+    if (!title) {
+      setTitleError('Title cannot be empty');
+      return;
+    }
+
+    if (!description) {
+      setDescriptionError('Description cannot be empty');
       return;
     }
 
@@ -109,7 +114,6 @@ const CreateProject = ({ boardId, handleViewAllProjecs }) => {
 
     try {
       // Make a POST request to your API endpoint
-      const boardId = '16600789-f9b3-4ef6-bc80-289a4ef9fc86';
       const response = await fetch(
         `https://localhost:7075/Project/AddProject/${boardId}`,
         {
@@ -166,20 +170,25 @@ const CreateProject = ({ boardId, handleViewAllProjecs }) => {
               team members.{' '}
               <span style={{ color: '#505f98' }}> Create Project</span>{' '}
             </h1>
-            <StyledLabel>Title:</StyledLabel>
+            <StyledLabel invalid={titleError !== ''}>Title:</StyledLabel>
             <StyledInput
               type="text"
               placeholder=""
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <StyledLabel>Description:</StyledLabel>
+            {titleError && <StyledError>{titleError}</StyledError>}
+
+            <StyledLabel invalid={descriptionError !== ''}>
+              Description:
+            </StyledLabel>
             <StyledInput
               type="text"
               placeholder="Cc"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
+            {descriptionError && <StyledError>{descriptionError}</StyledError>}
 
             <StyledButton type="submit">Create Project</StyledButton>
           </StyledForm>
