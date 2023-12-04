@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Component } from '../components/Component';
 
-// const StyledFrame = styled.div`
-//   max-width: 1440px;
 //   width: 100%;
 //   margin: 0 auto;
 //   height: 80px;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import HeaderArea from '../components/CreateNewTicket/HeaderArea';
 import ImageArea from '../components/CreateNewTicket/ImageArea';

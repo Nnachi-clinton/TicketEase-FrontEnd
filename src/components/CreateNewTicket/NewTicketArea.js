@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import CreateTicket from '../../pages/TicketInputfield';
 
 const NewTicketContainer = styled.button`
   color: #fff;
@@ -23,7 +24,19 @@ const NewTicketContainer = styled.button`
 `;
 
 const NewTicketSection = () => {
-  return <NewTicketContainer>Create a new Ticket</NewTicketContainer>;
+  const [steps, setSteps] = useState(0);
+  return (
+    <>
+      {steps === 0 && (
+        <>
+          <NewTicketContainer onClick={() => setSteps(2)}>
+            Create a new Ticket
+          </NewTicketContainer>
+        </>
+      )}
+      {steps === 2 && <CreateTicket />}
+    </>
+  );
 };
 
 export default NewTicketSection;
