@@ -10,6 +10,7 @@ const StyledComponent = styled.div`
   position: fixed;
   height: 80px;
   width: 100vw;
+  margin-left: -165px;
 
   .overlap-group {
     background-color: #ffffff;
@@ -120,6 +121,7 @@ export const Component = ({
   className,
   logout,
   ChangePassword,
+  managerdetails,
   overlapGroupClassName,
 }) => {
   return (
@@ -138,6 +140,7 @@ export const Component = ({
           <ProfileDropdown
             logout={logout}
             ChangePassword={ChangePassword}
+            managerdetails={managerdetails}
             name="Goliath"
           />
         </div>

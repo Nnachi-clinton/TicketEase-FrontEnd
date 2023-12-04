@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { validateEmail } from '../../utils/validateEmail';
 import AxiosInstance from '../../Request/AxiosInstance';
+import Swal from 'sweetalert2';
 
 const Container = styled.div`
   display: grid;
@@ -15,6 +16,7 @@ const Fieldset = styled.fieldset`
   flex-shrink: 0;
   border-radius: 4px;
   background: #fff;
+  margin-left: 20rem;
 `;
 
 const Input = styled.input`
@@ -22,6 +24,7 @@ const Input = styled.input`
   border: none;
   height: 48px;
   border-radius: 4px;
+  padding: 10px;
 
   &::placeholder {
     padding-left: 30px;
@@ -55,11 +58,12 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const MemberInfoForm = () => {
+const MemberInfoForm = ({ handleAllMembers }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [managerId, setManagerId] = useState('');
 
   const getIsFormValid = () => {
     return firstName && lastName && password && validateEmail(email);
@@ -70,47 +74,58 @@ const MemberInfoForm = () => {
     setLastName('');
     setEmail('');
     setPassword('');
+    setManagerId('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // try {
-    //   const response = await AxiosInstance.post(
-    //     '/Authentication/Register/6db01435-a30c-44ae-9e23-95e1fecf0180',
-    //     {
-    //       firstName,
-    //       lastName,
-    //       email,
-    //       password,
-    //     }
-    //   );
-
-    //   console.log('API Response:', response.data);
-    //   // alert('Personal Information saved!');
-    //   clearForm();
-    // } catch (error) {
-    //   console.error('API Error:', error.message);
-    // }
     try {
-      const response = await AxiosInstance.post('/Authentication/Register/', {
+      const response = await AxiosInstance.post('/Authentication/Register', {
         firstName,
         lastName,
         email,
         password,
+        managerId,
       });
 
       console.log('API Response:', response.data);
       // Assuming success status code is 200
-      if (response.status === 200) {
+      if (
+        response.data.statusCode === 201 ||
+        response.data.statusCode === 200
+      ) {
         // alert('Personal Information saved!');
-        clearForm();
+        Swal.fire({
+          icon: 'success',
+          title: 'Personal Information saved!',
+          showConfirmButton: false,
+          timer: 1500,
+          position: 'top-end',
+        });
+        const handleMembers = () => {
+          handleAllMembers();
+        };
+        handleMembers();
+        // clearForm();
       } else {
         console.error('API Error:', 'Unexpected status code:', response.status);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: `Error: ${response.data.message}`,
+          confirmButtonText: 'OK',
+        });
       }
     } catch (error) {
       console.error('API Error:', error.message);
       // Handle specific error scenarios here
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An unexpected error occurred: ' + error.message,
+        confirmButtonText: 'OK',
+      });
     }
   };
 
@@ -161,6 +176,16 @@ const MemberInfoForm = () => {
                     setEmail(e.target.value);
                   }}
                   placeholder="Email"
+                />
+              </Field>
+              <Field className="Field">
+                <Label>ManagerId</Label>
+                <Input
+                  value={managerId}
+                  onChange={(e) => {
+                    setManagerId(e.target.value);
+                  }}
+                  placeholder="manager Id"
                 />
               </Field>
             </div>

@@ -269,7 +269,7 @@ const Img = styled.img`
 `;
 
 const StyledButton = styled.button`
-  width: 413px;
+  width: 382px;
   height: 48px;
   border-radius: 4px;
   background-color: #505f98;
@@ -279,7 +279,7 @@ const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 30px;
+  margin-left: 0px;
 
   &:hover {
     background-color: #3d4d80;

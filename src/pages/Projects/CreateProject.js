@@ -5,12 +5,19 @@ import Swal from 'sweetalert2';
 const Fulldiv = styled.div`
   overflow: hidden;
   background-color: #f0f0f0;
+  width: 80%;
+  margin-left: 20em;
+  margin-right: 40em;
+  margin-top: 6em;
+  height: 91vh !important;
 `;
 
 const Innerdiv = styled.div`
   background-color: white;
   margin-left: 20px;
   margin-right: 20px;
+  padding-top: 8em;
+  height: 91vh !important;
 
   & .marginb {
     margin-bottom: 20px;
@@ -56,29 +63,34 @@ export const StyledButton = styled.button`
   background: #505f98;
 `;
 
-export const StyledAlert = styled.div`
-  padding: 10px;
-  background-color: #f44336;
-  color: white;
-  margin-top: 10px;
-  border-radius: 5px;
+// Adjusted styling for error text
+export const StyledError = styled.div`
+  color: red;
+  margin-top: 5px;
 `;
 
-const CreateProject = ({ boardId }) => {
+const CreateProject = ({ boardId, handleViewAllProjecs }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [existingProjects, setExistingProjects] = useState([]);
+  const [titleError, setTitleError] = useState('');
+  const [descriptionError, setDescriptionError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !description) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Empty input',
-        text: 'Please fill input',
-        confirmButtonText: 'OK',
-      });
+    // Reset previous errors
+    setTitleError('');
+    setDescriptionError('');
+
+    // Validate title
+    if (!title) {
+      setTitleError('Title cannot be empty');
+      return;
+    }
+
+    if (!description) {
+      setDescriptionError('Description cannot be empty');
       return;
     }
 
@@ -102,7 +114,6 @@ const CreateProject = ({ boardId }) => {
 
     try {
       // Make a POST request to your API endpoint
-
       const response = await fetch(
         `https://localhost:7075/Project/AddProject/${boardId}`,
         {
@@ -114,7 +125,7 @@ const CreateProject = ({ boardId }) => {
         }
       );
 
-      if (response.ok) {
+      if (response.status === 200) {
         // Update the list of existing projects with the new project
         setExistingProjects([...existingProjects, { title, description }]);
 
@@ -125,10 +136,10 @@ const CreateProject = ({ boardId }) => {
           timer: 1500, // Automatically close after 1.5 seconds
           position: 'top-end',
         });
-
-        // Clear the input fields
-        setTitle('');
-        setDescription('');
+        const handleViewAllProjects = () => {
+          handleViewAllProjecs();
+        };
+        handleViewAllProjects();
       } else {
         Swal.fire({
           icon: 'error',
@@ -159,20 +170,25 @@ const CreateProject = ({ boardId }) => {
               team members.{' '}
               <span style={{ color: '#505f98' }}> Create Project</span>{' '}
             </h1>
-            <StyledLabel>Title:</StyledLabel>
+            <StyledLabel invalid={titleError !== ''}>Title:</StyledLabel>
             <StyledInput
               type="text"
               placeholder=""
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <StyledLabel>Description:</StyledLabel>
+            {titleError && <StyledError>{titleError}</StyledError>}
+
+            <StyledLabel invalid={descriptionError !== ''}>
+              Description:
+            </StyledLabel>
             <StyledInput
               type="text"
               placeholder="Cc"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
+            {descriptionError && <StyledError>{descriptionError}</StyledError>}
 
             <StyledButton type="submit">Create Project</StyledButton>
           </StyledForm>

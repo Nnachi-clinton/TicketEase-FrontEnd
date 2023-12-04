@@ -52,8 +52,10 @@ function LoginForm() {
           password: password,
         }
       );
+      console.log(response);
 
-      if (response.status === 200) {
+
+      if (response.data.statusCode === 200) {
         const token = response.data.data;
         console.log(token);
         localStorage.setItem('authToken', token);
