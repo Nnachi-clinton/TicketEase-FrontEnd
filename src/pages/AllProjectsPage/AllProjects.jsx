@@ -63,7 +63,7 @@ const Text = styled.h6`
   font-size: 16px;
 `;
 
-const AllProjects = ({ handleViewTickets }) => {
+const AllProjects = ({ handleViewTickets, handleCreateTicket }) => {
   const [allProjects, setProject] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -122,6 +122,7 @@ const AllProjects = ({ handleViewTickets }) => {
             setCurrentPage={setCurrentPage}
             getProjects={getPojects}
             handleViewTickets={handleViewTickets}
+            handleCreateTicket={handleCreateTicket}
           />
         </div>
       </StyledContainer>

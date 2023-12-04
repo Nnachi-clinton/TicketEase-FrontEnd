@@ -18,6 +18,8 @@ import CreateBoard from '../Boards/CreateBoard.js';
 import ManagerView from '../../components/ManagerView/managerView.js';
 import AllTickets from '../tickets/all-tickets.js';
 import CreateNewTicket from '../CreateNewTicket.js';
+import CreateTicket from '../TicketInputfield.js';
+import ViewTicket from '../tickets/all-tickets.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -30,7 +32,7 @@ function ManagerDashBoard() {
     setStep(8);
   };
   const handleAllMembers = () => {
-    setStep(8);
+    setStep(16);
   };
 
   const handleCreateProject = () => {
@@ -47,6 +49,10 @@ function ManagerDashBoard() {
 
   const handleViewTickets = () => {
     setStep(13);
+  };
+
+  const handleCreateTicket = () => {
+    setStep(15);
   };
 
   const getUsers = async () => {
@@ -130,7 +136,9 @@ function ManagerDashBoard() {
         {step === 3 && (
           <CreateProject handleViewAllProjecs={handleViewAllProjecs} />
         )}
-        {step === 4 && <CreateNewTicket />}
+        {step === 4 && (
+          <CreateNewTicket handleCreateTicket={handleCreateTicket} />
+        )}
         {step === 5 && <ContactUs />}
         {step === 7 && <LogoutPopout />}
         {step === 14 && <ChangePassword />}
@@ -142,14 +150,20 @@ function ManagerDashBoard() {
             handleViewTickets={handleViewTickets}
           />
         )}
-        {step === 8 && <AllMembers />}
+        {step === 16 && <AllMembers />}
         {step === 9 && (
           <CreateProject handleViewAllProjecs={handleViewAllProjecs} />
         )}
-        {step === 10 && <AllProjects handleViewTickets={handleViewTickets} />}
+        {step === 10 && (
+          <AllProjects
+            handleViewTickets={handleViewTickets}
+            handleCreateTicket={handleCreateTicket}
+          />
+        )}
         {step === 11 && <CreateBoard />}
         {step === 12 && <ManagerView />}
         {step === 13 && <AllTickets />}
+        {step === 15 && <CreateTicket handleViewTickets={handleViewTickets} />}
       </>
     </section>
   );

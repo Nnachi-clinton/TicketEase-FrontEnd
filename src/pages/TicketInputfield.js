@@ -7,6 +7,9 @@ import Swal from 'sweetalert2';
 const Fulldiv = styled.div`
   overflow: hidden;
   background-color: #f0f0f0;
+  margin-top: 80px;
+  width: 82%;
+  margin-left: 20%;
 `;
 
 const Innerdiv = styled.div`
@@ -99,7 +102,7 @@ const Button = styled.button`
   gap: 10px;
 `;
 
-function CreateTicket() {
+function CreateTicket({ handleViewTickets }) {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -143,8 +146,11 @@ function CreateTicket() {
         showConfirmButton: false,
         timer: 3000,
       });
-
-      console.log('Ticket created successfully:', response.data);
+      const handleViewAllProjecs = () => {
+        handleViewTickets();
+      };
+      handleViewAllProjecs();
+      // console.log('Ticket created successfully:', response.data);
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -225,7 +231,12 @@ function CreateTicket() {
               onChange={handleChange}
               name="assignedTo"
             />
-            <StyledButton type="submit">Create a New Ticket</StyledButton>
+            <StyledButton
+              type="submit"
+              style={{ backgroundColor: '#505f98', height: '50px' }}
+            >
+              Create a New Ticket
+            </StyledButton>
           </StyledForm>
         </FormSpace>
       </Innerdiv>

@@ -96,7 +96,7 @@ function App() {
                   path="/createboard"
                   element={<CreateBoardEmptyManager />}
                 />
-                
+
                 <Route path="/view-tickets" element={<ViewTicket />} />
                 <Route path="/CreateProject" element={<CreateProject />} />
                 <Route path="/CreateTicket" element={<CreateTicket />} />

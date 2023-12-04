@@ -9,6 +9,7 @@ const Table = ({
   setCurrentPage,
   getProjects,
   handleViewTickets,
+  handleCreateTicket,
 }) => {
   const changePage = (direction) => {
     if (direction === 'prev' && currentPage > 1) {
@@ -82,10 +83,7 @@ const Table = ({
                   >
                     View Tickets
                   </button>
-                  <button
-                    onClick={() => handleViewClick(item)}
-                    style={viewButtonStyle}
-                  >
+                  <button onClick={handleCreateTicket} style={viewButtonStyle}>
                     Create Ticket
                   </button>
                 </td>
