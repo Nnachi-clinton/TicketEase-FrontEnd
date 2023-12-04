@@ -34,7 +34,7 @@ import CreateBoardEmptyManager from './CreateBoardEmptyManager';
 import TableData from './companyInfoTable/TableData';
 import CreateProject from './Projects/CreateProject';
 import CreateTicket from './TicketInputfield';
-import CreateNewTicket from './CreateNewTicket';
+import CreateNewTicket from './CreateNewTicket.js';
 import TicketInputfield from '../pages/TicketInputfield';
 import PersonalInfo from './PersonalInfo.js';
 import AllProjects from './AllProjectsPage/AllProjects.jsx';
@@ -113,7 +113,10 @@ function App() {
                 <Route path="/MemberProfile" element={<MemberProfile />} />
                 <Route path="/EmailSent" element={<EmailSent />} />
                 <Route path="/EditMember" element={<EditMember />} />
-                <Route path="/ManagerAlertPage" element={<ManagerAlertPage />} />
+                <Route
+                  path="/ManagerAlertPage"
+                  element={<ManagerAlertPage />}
+                />
               </Routes>
             </AuthState>
           </GlobalProvider>
