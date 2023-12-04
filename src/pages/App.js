@@ -34,7 +34,7 @@ import CreateBoardEmptyManager from './CreateBoardEmptyManager';
 import TableData from './companyInfoTable/TableData';
 import CreateProject from './Projects/CreateProject';
 import CreateTicket from './TicketInputfield';
-import CreateNewTicket from './CreateNewTicket';
+import CreateNewTicket from './CreateNewTIcket';
 import TicketInputfield from '../pages/TicketInputfield';
 import PersonalInfo from './PersonalInfo.js';
 import EmailSent from '../components/checkEmail/EmailSent.js';
