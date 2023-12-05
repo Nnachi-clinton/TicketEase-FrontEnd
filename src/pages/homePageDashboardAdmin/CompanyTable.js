@@ -12,7 +12,6 @@ const CompanyTable = ({
   companies,
   currentPage,
   itemsPerPage,
-  //handleViewClick,
   totalItems,
   setCurrentPage,
   getManagers,
@@ -33,7 +32,6 @@ const CompanyTable = ({
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    //handleViewClick(pageNumber);
     getManagers(pageNumber);
   };
 
@@ -53,10 +51,10 @@ const CompanyTable = ({
     color: "white",
   };
 
-  const viewButtonStyle = {
-    padding: '3px 8px',
-    cursor: 'pointer',
-  };
+  // const viewButtonStyle = {
+  //   padding: '3px 8px',
+  //   cursor: 'pointer',
+  // };
 
   return (
     <>
@@ -64,7 +62,14 @@ const CompanyTable = ({
         <div>
           {/* Table content */}
           <table
-            style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}
+            // style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}
+            style={{
+              width: '125%',
+              borderCollapse: 'collapse',
+              marginTop: '10px',
+              background: '#FFF',
+              height: '100%',
+            }}
           >
             <thead>
               <tr style={{ background: '#E5E5E5', color: '#444' }}>
@@ -89,8 +94,9 @@ const CompanyTable = ({
                   <td style={tableCellStyle}>{company.businessPhone}</td>
                   <td style={tableCellStyle}>
                     <button
+                    style={{ ...paginationButtonStyle, cursor: 'pointer' }}
                       onClick={() => handleViewDetails(company)}
-                      style={viewButtonStyle}
+                      //style={viewButtonStyle}
                     >
                       View
                     </button>

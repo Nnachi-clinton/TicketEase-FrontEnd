@@ -5,6 +5,7 @@ import GeneralIcon from '../../assets/ProfileDetails/General.svg';
 import PhoneIcon from '../../assets/ProfileDetails/phone.svg';
 import CommunicationIcon from '../../assets/ProfileDetails/communication.svg';
 import AddressIcon from '../../assets/Polygon.svg';
+import UserIcon from '../../assets/User.svg';
 
 const Container = styled.div`
   background-color: white;
@@ -67,7 +68,7 @@ const OrganizationsDetails = ({ userDetails, onClose }) => {
       <ProfileImage src={userDetails.imageUrl} alt="Profile" />
       <DetailsContainer>
         <GeneralInformation>
-          <Icon src={GeneralIcon} alt="General" />
+          <Icon src={UserIcon} alt="General" />
           <AddressText>{userDetails.companyName}</AddressText>
         </GeneralInformation>
         <GeneralInformation>
