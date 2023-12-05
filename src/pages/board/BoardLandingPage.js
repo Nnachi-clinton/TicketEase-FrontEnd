@@ -7,7 +7,7 @@ import groupIcons from '../../assets/cardimages/group-icons.svg';
 import stockholmiconsNavigationAngleright from '../../assets/cardimages/stockholmicons--navigation--angleright.svg';
 
 import styled from 'styled-components';
-import CardContainer from '../../components/oragnization/CardContainer';
+import CardContainer from '../../components/organization/CardContainer';
 
 const GroupItem = styled.div`
   position: absolute;

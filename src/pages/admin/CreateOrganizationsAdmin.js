@@ -1,322 +1,107 @@
-import { useState, useCallback } from 'react';
-import stockholmiconsNavigationLeft2 from '../../assets/cardimages/stockholmicons--navigation--left2.svg';
-import stockholmiconsNavigationLeft21 from '../../assets/cardimages/stockholmicons--navigation--left21.svg';
-import group1554 from '../../assets/cardimages/group-1554.svg';
-import stockholmiconsCodePlus from '../../assets/cardimages/stockholmicons--code--plus.svg';
-import groupIcons from '../../assets/cardimages/group-icons.svg';
-import stockholmiconsNavigationAngleright from '../../assets/cardimages/stockholmicons--navigation--angleright.svg';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import CardContainer from '../../components/oragnization/CardContainer';
-import AddManager2 from '../manager/AddManagerFom';
+import CardContainer, {
+  MergedComponent,
+} from '../../components/organization/CardContainer.js';
+import AxiosInstance from '../../Request/AxiosInstance.js';
+import Pagination from '../../components/organization/Pagination.js';
 
-const GroupItem = styled.div`
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  border-radius: var(--br-11xs);
-  background-color: var(--color-steelblue-100);
-  width: 20px;
-  height: 20px;
+const NoOrganizationsMessage = styled.div`
+  margin-top: 2em;
+  margin-left: 22em;
+  font-size: 18px;
+  color: #505f98;
+  white-space: nowrap;
 `;
 
-const breakpoint = '768px';
-
-const Div = styled.div`
-  position: absolute;
-  top: calc(50% - 9px);
-  left: 30%;
-  line-height: 17px;
-`;
-const GroupDiv = styled.div`
-  position: absolute;
-  top: 2px;
-  left: 63px;
-  width: 20px;
-  height: 20px;
-  color: var(--color-white);
-`;
-const Div1 = styled.div`
-  position: absolute;
-  top: calc(50% - 9px);
-  left: 48.47%;
-  line-height: 17px;
-`;
-const Div2 = styled.div`
-  position: absolute;
-  top: calc(50% - 9px);
-  left: 67.94%;
-  line-height: 17px;
-`;
-const Copy2 = styled.div`
-  position: absolute;
-  top: calc(50% - 9px);
-  left: 38.55%;
-  line-height: 17px;
-`;
-const Div3 = styled.div`
-  position: absolute;
-  top: calc(50% - 9px);
-  left: 45.28%;
-  line-height: 17px;
-`;
-const StockholmIconsNavigation1 = styled.img`
-  position: absolute;
-  height: 100%;
-  width: 45.28%;
-  top: 0%;
-  right: 54.72%;
-  bottom: 0%;
-  left: 0%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-`;
-const Parent1 = styled.div`
-  position: absolute;
-  width: 20.23%;
-  top: calc(50% - 12px);
-  right: 79.77%;
-  left: 0%;
-  height: 24px;
-  color: #dadada;
-`;
-const Div4 = styled.div`
-  position: absolute;
-  top: calc(50% - 9px);
-  left: 0%;
-  line-height: 17px;
-`;
-const StockholmIconsNavigation2 = styled.img`
-  position: absolute;
-  height: 100%;
-  width: 44.44%;
-  top: 0%;
-  right: 0%;
-  bottom: 0%;
-  left: 55.56%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-`;
-const Group = styled.div`
-  position: absolute;
-  width: 20.61%;
-  top: calc(50% - 12px);
-  right: 0%;
-  left: 79.39%;
-  height: 24px;
-`;
-const GroupInner = styled.img`
-  position: absolute;
-  top: 10px;
-  left: 149px;
-  width: 15px;
-  height: 3px;
-`;
-const GroupParent = styled.div`
-  position: absolute;
-  top: 840px;
-  left: 709px;
-  width: 262px;
-  height: 24px;
-  text-align: center;
-  color: var(--color-gray-300);
-  font-family: var(--font-helvetica-neue);
-`;
-const Organizations1 = styled.h2`
-  margin: 0;
-  position: absolute;
-  top: 7px;
-  left: 0px;
-  font-size: inherit;
-  font-weight: 700;
-  font-family: inherit;
-`;
-const StockholmIconsCodePlus = styled.img`
-  position: relative;
-  width: 24px;
-  height: 24px;
-`;
-const CreateOrganizations = styled.div`
-  position: relative;
-  font-weight: 600;
-`;
-const StockholmIconsCodePlusParent = styled.div`
-  position: absolute;
-  top: 0px;
-  left: 814px;
-  border-radius: var(--br-7xs);
-  background-color: var(--color-steelblue-100);
-  width: 190px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+const CardsContainer = styled.div`
+  display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 0px;
   justify-content: center;
-  padding: 16px 24px;
-  box-sizing: border-box;
-  gap: 10px;
-  cursor: pointer;
-  font-size: var(--font-size-sm);
-  color: var(--color-white);
+  margin-left: 21em;
+  margin-right: em;
+  margin-top: 2em;
+  flex-wrap: wrap;
 
-  @media (max-width: ${breakpoint}) {
-    /* Adjust styles for smaller screens */
-    /* For example, you might change the width of certain elements or adjust margins/paddings */
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
   }
-`;
-const OrganizationsGroup = styled.div`
-  position: absolute;
-  top: 110px;
-  left: 318px;
-  width: 1045px;
-  height: 56px;
-  font-size: var(--font-size-5xl);
 
-  @media (max-width: ${breakpoint}) {
-    /* Adjust styles for smaller screens */
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
   }
 `;
 
-const CreateorganizationsadminRoot = styled.div`
-  position: relative;
-  background-color: #f6f6f6;
-  width: 1513px;
-  height: 923px;
-  overflow: hidden;
-  text-align: left;
-  font-size: var(--font-size-sm);
-  color: var(--color-gray-100);
-  font-family: var(--font-mulish);
-
-  @media (max-width: ${breakpoint}) {
-    /* Adjust styles for smaller screens */
-    /* For example, you might change the width of certain elements or adjust margins/paddings */
-  }
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 1em;
+  margin-right: 1em;
 `;
 
-const CreateOrganizationsAdmin = () => {
-  const [isFrameOpen, setFrameOpen] = useState(false);
-  const [steps, setSteps] = useState(0);
+const CreateOrganizationsAdmin = ({ handleCreateOrganization }) => {
+  const [managerData, setManagerData] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPageCount, setTotalPageCount] = useState(0);
 
-  const onGroupContainer14Click = useCallback(() => {
-    // Please sync "AllMembersProfile/Manager" to the project
-  }, []);
+  const fetchManagerData = async (page) => {
+    try {
+      const response = await AxiosInstance.get(
+        `/managers/GetAll?page=${page}&perPage=6`
+      );
 
-  const onFrameContainer10Click = useCallback(() => {
-    // Please sync "CreateBoard/Manager" to the project
-  }, []);
+      const responseData = response.data?.result?.data || [];
 
-  const closeFrame = useCallback(() => {
-    setFrameOpen(false);
-  }, []);
+      setTotalItems(responseData.totalCount || 0);
+      setTotalPageCount(responseData.totalPageCount || 0);
+
+      setManagerData(responseData.data || []);
+    } catch (error) {
+      console.error('Error fetching manager data:', error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchManagerData(currentPage);
+  }, [currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
-    <>
-      {steps === 0 && (
-        <>
-          <CreateorganizationsadminRoot>
-            <GroupParent>
-              <GroupDiv>
-                <GroupItem />
-                <Div>1</Div>
-              </GroupDiv>
-              <Div1>3</Div1>
-              <Div2>10</Div2>
-              <Copy2>2</Copy2>
-              <Parent1>
-                <Div3>Prev</Div3>
-                <StockholmIconsNavigation1
-                  alt="stockholmiconsNavigationLeft2"
-                  src={stockholmiconsNavigationLeft2}
-                />
-              </Parent1>
-              <Group>
-                <Div4>Next</Div4>
-                <StockholmIconsNavigation2
-                  alt="stockholmiconsNavigationLeft21"
-                  src={stockholmiconsNavigationLeft21}
-                />
-              </Group>
-              <GroupInner alt="group1554" src={group1554} />
-            </GroupParent>
-            <OrganizationsGroup>
-              <Organizations1>Organizations</Organizations1>
-              <StockholmIconsCodePlusParent onClick={() => setSteps(1)}>
-                <StockholmIconsCodePlus
-                  alt="stockholmiconsCodePlus"
-                  src={stockholmiconsCodePlus}
-                />
-                <CreateOrganizations>Create Organizations</CreateOrganizations>
-              </StockholmIconsCodePlusParent>
-            </OrganizationsGroup>
+    <StyledContainer>
+      <MergedComponent />
+
+      <CardsContainer>
+        {managerData.length > 0 ? (
+          managerData.map((manager) => (
             <CardContainer
-              institutionName="Decagon"
-              groupIcon={groupIcons}
-              navigationIcon={stockholmiconsNavigationAngleright}
-              propTop="196px"
-              propLeft="306px"
-              onGroupContainer14Click={onGroupContainer14Click}
+              handleCreateOrganization={handleCreateOrganization}
+              key={manager.id}
+              organizationName={manager.companyName}
             />
-            <CardContainer
-              institutionName="Gloryland College"
-              groupIcon={groupIcons}
-              navigationIcon={stockholmiconsNavigationAngleright}
-              onGroupContainer14Click={onGroupContainer14Click}
-              propTop="518px"
-              propLeft="306px"
-              propWidth="220px"
-              propBorder="unset"
-              //propCursor="unset"
-            />
-            <CardContainer
-              institutionName="Sterling Bank"
-              groupIcon={groupIcons}
-              navigationIcon={stockholmiconsNavigationAngleright}
-              onGroupContainer14Click={onGroupContainer14Click}
-              propTop="196px"
-              propLeft="672px"
-              propWidth="155px"
-              propBorder="unset"
-              //propCursor="unset"
-            />
-            <CardContainer
-              institutionName="Lily Hospital"
-              groupIcon={groupIcons}
-              navigationIcon={stockholmiconsNavigationAngleright}
-              onGroupContainer14Click={onGroupContainer14Click}
-              propTop="518px"
-              propLeft="672px"
-              propWidth="150px"
-              propBorder="1px solid var(--color-black)"
-              //propCursor="unset"
-            />
-            <CardContainer
-              institutionName="Access Bank"
-              groupIcon={groupIcons}
-              navigationIcon={stockholmiconsNavigationAngleright}
-              onGroupContainer14Click={onGroupContainer14Click}
-              propTop="196px"
-              propLeft="1038px"
-              propWidth="150px"
-              propBorder="unset"
-              //propCursor="unset"
-            />
-            <CardContainer
-              institutionName="Arsenal Football Club"
-              groupIcon={groupIcons}
-              navigationIcon={stockholmiconsNavigationAngleright}
-              onGroupContainer14Click={onGroupContainer14Click}
-              propTop="518px"
-              propLeft="1038px"
-              propWidth="250px"
-              propBorder="unset"
-              //propCursor="unset"
-            />
-          </CreateorganizationsadminRoot>
-        </>
-      )}
-      {steps === 1 && <AddManager2 />}
-    </>
+          ))
+        ) : (
+          <NoOrganizationsMessage>
+            No Available Organizations
+          </NoOrganizationsMessage>
+        )}
+      </CardsContainer>
+
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPageCount={totalPageCount}
+      />
+    </StyledContainer>
   );
 };
 
