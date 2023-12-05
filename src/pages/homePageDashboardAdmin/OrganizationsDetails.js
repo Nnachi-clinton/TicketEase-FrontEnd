@@ -23,3 +23,40 @@ const ProfileImage = styled.img`
   height: 100px;
   border-radius: 50%;
 `;
+
+const DetailsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+`;
+
+const GeneralInformation = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #333;
+`;
+
+const Icon = styled.img`
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+`;
+
+const AddressText = styled.div`
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const CloseButton = styled.button`
+  background: #505f98;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: auto; /* Push the close button to the bottom */
+`;
+
