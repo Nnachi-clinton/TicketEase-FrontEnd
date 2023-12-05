@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import GeneralIcon from '../assets/ProfileDetails/General.svg';
-import PhoneIcon from '../assets/ProfileDetails/phone.svg';
-import CommunicationIcon from '../assets/ProfileDetails/communication.svg';
+import GeneralIcon from '../assets/OrganizationsDetails/General.svg';
+import PhoneIcon from '../assets/OrganizationsDetails/phone.svg';
+import CommunicationIcon from '../assets/OrganizationsDetails/communication.svg';
 
 const Container = styled.div`
   background-color: white;
@@ -60,3 +60,27 @@ const CloseButton = styled.button`
   margin-top: auto; /* Push the close button to the bottom */
 `;
 
+const OrganizationsDetails = ({ userDetails, onClose }) => {
+    return (
+      <Container>
+        <ProfileImage src={userDetails.imageUrl} alt="Profile" />
+        <DetailsContainer>
+          <GeneralInformation>
+            <Icon src={GeneralIcon} alt="General" />
+            <AddressText>{`${userDetails.firstName} ${userDetails.lastName}`}</AddressText>
+          </GeneralInformation>
+          <GeneralInformation>
+            <Icon src={PhoneIcon} alt="Phone" />
+            <AddressText>{userDetails.phoneNumber}</AddressText>
+          </GeneralInformation>
+          <GeneralInformation>
+            <Icon src={CommunicationIcon} alt="Communication" />
+            <AddressText>{userDetails.email}</AddressText>
+          </GeneralInformation>
+        </DetailsContainer>
+        <CloseButton onClick={onClose}>Close</CloseButton>
+      </Container>
+    );
+  };
+  
+  export default OrganizationsDetails;
