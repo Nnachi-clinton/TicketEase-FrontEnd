@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import OrganizationsDetails from '../OrganizationsDetails.js';
+import OrganizationsDetails from '../homePageDashboardAdmin/OrganizationsDetails';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -143,12 +143,12 @@ const CompanyTable = ({
             </button>
           </div>
         </div>
-        {selectedUserDetails && (
+        {/* {selectedUserDetails && (
           <OrganizationsDetails
             userDetails={selectedUserDetails}
             onClose={() => setSelectedUserDetails(null)}
           />
-        )}
+        )} */}
       </Container>
     </>
   );
