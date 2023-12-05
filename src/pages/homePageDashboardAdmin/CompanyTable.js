@@ -12,11 +12,14 @@ const CompanyTable = ({
   companies,
   currentPage,
   itemsPerPage,
-  handleViewClick,
+  //handleViewClick,
   totalItems,
   setCurrentPage,
   getManagers,
 }) => {
+
+  const [selectedUserDetails, setSelectedUserDetails] = useState(null);
+
   const changePage = (direction) => {
     if (direction === 'prev' && currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
@@ -30,8 +33,12 @@ const CompanyTable = ({
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    handleViewClick(pageNumber);
+    //handleViewClick(pageNumber);
     getManagers(pageNumber);
+  };
+
+  const handleViewDetails = (userDetails) => {
+    setSelectedUserDetails(userDetails);
   };
 
   const tableCellStyle = {
@@ -50,6 +57,7 @@ const CompanyTable = ({
     padding: '3px 8px',
     cursor: 'pointer',
   };
+
   return (
     <>
       <Container>
@@ -81,7 +89,7 @@ const CompanyTable = ({
                   <td style={tableCellStyle}>{company.businessPhone}</td>
                   <td style={tableCellStyle}>
                     <button
-                      onClick={() => handleViewClick(company)}
+                      onClick={() => handleViewDetails(company)}
                       style={viewButtonStyle}
                     >
                       View
@@ -143,12 +151,12 @@ const CompanyTable = ({
             </button>
           </div>
         </div>
-        {/* {selectedUserDetails && (
+        {selectedUserDetails && (
           <OrganizationsDetails
             userDetails={selectedUserDetails}
             onClose={() => setSelectedUserDetails(null)}
           />
-        )} */}
+        )}
       </Container>
     </>
   );
