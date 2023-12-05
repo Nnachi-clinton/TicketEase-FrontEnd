@@ -78,12 +78,27 @@ const Table = ({
                 <td style={tableCellStyle}>
                   <button
                     // onClick={() => handleViewClick(item)}
-                    style={viewButtonStyle}
+                    style={{
+                      backgroundColor: '#505F98',
+                      cursor: 'pointer',
+                      border: '1px solid ',
+                      padding: '3px 8px',
+                      color: '#FFF',
+                    }}
                     onClick={handleViewTickets}
                   >
                     View Tickets
                   </button>
-                  <button onClick={handleCreateTicket} style={viewButtonStyle}>
+                  <button
+                    onClick={handleCreateTicket}
+                    style={{
+                      backgroundColor: '#505F98',
+                      cursor: 'pointer',
+                      border: '1px solid ',
+                      padding: '3px 8px',
+                      color: '#FFF',
+                    }}
+                  >
                     Create Ticket
                   </button>
                 </td>
@@ -102,7 +117,12 @@ const Table = ({
       >
         <button
           onClick={() => changePage('prev')}
-          style={paginationButtonStyle}
+          style={{
+            backgroundColor: '#505F98',
+            cursor: 'pointer',
+            border: 'none',
+            padding: '3px 8px',
+          }}
           disabled={currentPage === 1}
         >
           Prev
@@ -125,6 +145,9 @@ const Table = ({
                     ...paginationButtonStyle,
                     fontWeight: currentPage === index + 1 ? 'bold' : 'normal',
                     cursor: 'pointer',
+                    backgroundColor: '#505F98',
+                    padding: '3px 8px',
+                    border: 'none',
                   }}
                 >
                   {index + 1}
@@ -136,7 +159,12 @@ const Table = ({
 
         <button
           onClick={() => changePage('next')}
-          style={paginationButtonStyle}
+          style={{
+            backgroundColor: '#505F98',
+            cursor: 'pointer',
+            border: 'none',
+            padding: '3px 8px',
+          }}
           disabled={currentPage === Math.ceil(totalItems / itemsPerPage)}
         >
           Next

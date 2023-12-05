@@ -191,7 +191,7 @@ const MemberInfoForm = ({ handleAllMembers }) => {
             </div>
           </Container>
           <Button type="submit" disabled={!getIsFormValid()}>
-            Save
+            Create
           </Button>
         </Fieldset>
       </form>

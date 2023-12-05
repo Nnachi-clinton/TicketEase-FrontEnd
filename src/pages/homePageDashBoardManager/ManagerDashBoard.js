@@ -8,7 +8,7 @@ import ManagerTable from './ManagerTable.js';
 import CreateBoardEmptyManager from '../CreateBoardEmptyManager.js';
 import RegisteredMembers from '../RegisteredMembers.js';
 import LogoutPopout from '../../components/logout/Logout.js';
-import ContactUs from '../contactUs/ContactUs.js';
+import ContactUs2Form from '../contactUs2/ContactUs2.js';
 import ChangePassword from '../ChangePassword.js';
 import BoardMain from '../BoardPage/BoardMain.js';
 import AllMembers from '../AllMembersPage/AllMembersPage.js';
@@ -19,7 +19,7 @@ import ManagerView from '../../components/ManagerView/managerView.js';
 import AllTickets from '../tickets/all-tickets.js';
 import CreateNewTicket from '../CreateNewTicket.js';
 import CreateTicket from '../TicketInputfield.js';
-import ViewTicket from '../tickets/all-tickets.js';
+// import ViewTicket from '../tickets/all-tickets.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -139,7 +139,7 @@ function ManagerDashBoard() {
         {step === 4 && (
           <CreateNewTicket handleCreateTicket={handleCreateTicket} />
         )}
-        {step === 5 && <ContactUs />}
+        {step === 5 && <ContactUs2Form />}
         {step === 7 && <LogoutPopout />}
         {step === 14 && <ChangePassword />}
         {step === 8 && (
