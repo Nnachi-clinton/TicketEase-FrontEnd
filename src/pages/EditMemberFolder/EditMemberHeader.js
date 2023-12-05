@@ -1,50 +1,89 @@
 import styled from 'styled-components';
-import UserDp from './Editimg/UserDp.svg';
-import DarkPen from './Editimg/DarkPen.svg';
+import { useRef, useState } from 'react';
+import { RxAvatar } from "react-icons/rx";
 
 const Header = styled.div`
   height: 120px;
   background: #505f98;
+  //
 `;
-const Image = styled.img`
-  width: 186px;
-  border-radius: 50%;
-  position: absolute;
-  left: 80px;
-  top: 40px;
-  margin-left: 300px;
-`;
+
 const Ellipse = styled.div`
   background: white;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   position: absolute;
-  left: 240px;
+  left: 150px;
   top: 160px;
   box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.5);
   margin-left: 300px;
 `;
+
 const Description = styled.div`
   padding-left: 26%;
-  margin-left: 270px;
-`;
-const Pencil = styled.img`
-  padding-left: 10px;
-  padding-top: 8px;
+  margin-left: 150px;
+  margin-top: -70px;
+  //
 `;
 
 const EditMemberHeader = () => {
+  const inputRef = useRef(null);
+  const [image, setImage] = useState(null);
+
+  const handleImageClick = () => {
+    inputRef.current.click();
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div>
       <Header></Header>
-      <Image src={UserDp} alt="Admin Image" />
-      <Ellipse>
-        <Pencil src={DarkPen} />
-      </Ellipse>
+      <div onClick={handleImageClick}>
+        {image ? (
+          <img
+            src={image}
+            alt="Selected Avatar"
+            style={{
+              width: '150px',
+              height: '150px',
+              marginLeft: '100px',
+              marginTop: '-40px',
+              borderRadius: 100,
+            }}
+          />
+        ) : (
+          <RxAvatar
+            style={{
+              width: '150px',
+              height: '150px',
+              marginLeft: '100px',
+              marginTop: '-40px',
+              backgroundColor: 'gray',
+              borderRadius: 100,
+            }}
+          />
+        )}
+        <input
+          type="file"
+          ref={inputRef}
+          onChange={handleImageChange}
+          style={{ display: 'none' }}
+        />
+      </div>
       <Description>
-        <h3> Clinton Amadi</h3>
-        <p> Squad 17 CTO</p>
+        <h3> Manager Details</h3>
+        <p> Edit and Save the Below Details</p>
       </Description>
     </div>
   );

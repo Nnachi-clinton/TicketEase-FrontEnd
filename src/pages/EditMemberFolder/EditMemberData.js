@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { validateEmail } from '../../utils/validateEmail';
 import Edit from './Editimg/Edit.svg';
@@ -6,7 +6,7 @@ import AxiosInstance from '../../Request/AxiosInstance';
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 45% 45%;
+  grid-template-columns: 120% 120%;
   justify-content: center;
 `;
 const Fieldset = styled.fieldset`
@@ -15,13 +15,13 @@ const Fieldset = styled.fieldset`
   border: none;
 `;
 const Input = styled.input`
-  background: rgba(246, 246, 246, 0.49);
+  background: rgba(246, 246, 246, 1);
   border: none;
   height: 48px;
-  border-radius: 4px;
+  border-radius: 10px;
 
   &::placeholder {
-    padding-left: 30px;
+    padding-left: 4m0px;
     color: rgba(151, 151, 151, 1);
   }
 `;
@@ -43,118 +43,161 @@ const ImageIcon = styled.img`
 
 const Button = styled.button`
   display: block;
-  width: 50%;
+  width: 100%;
   height: 48px;
   border: none;
   border-radius: 4px;
   background: rgba(80, 95, 152, 1);
   color: white;
   margin: 16px auto 16px auto;
-  // margin-top: 16px;
-  // margin-left: 10%;
-  // margin-right: 10%;
 `;
 
 const EditMemberData = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [businessEmail, setBusinessEmail] = useState('');
+  const [businessPhone, setBusinessPhone] = useState('');
+  const [companyAddress, setCompanyAddress] = useState('');
+  const [state, setState] = useState('');
 
   const getIsFormValid = () => {
-    return firstName && lastName && password && validateEmail(email);
+    return (
+      companyName &&
+      validateEmail(businessEmail) &&
+      businessPhone &&
+      companyAddress &&
+      state
+    );
   };
 
   const clearForm = () => {
-    setFirstName('');
-    setLastName('');
-    setEmail('');
-    setPassword('');
+    setCompanyName('');
+    setBusinessEmail('');
+    setBusinessPhone('');
+    setCompanyAddress('');
+    setState('');
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const fetchData = async () => {
     try {
-      const response = await AxiosInstance.post(
-        '/Authentication/Register/263559eb-cec8-4402-b2f2-a094153db202',
-        {
-          firstName,
-          lastName,
-          email,
-          password,
-        }
+      const response = await AxiosInstance.get(
+        '/managers/GetById?id=a491ea82-f52c-45c8-8fd2-4e50a0656a3f'
       );
+      const managerData = response.data.data;
 
-      console.log('API Response:', response.data);
-      if (response.status === 200) {
-        clearForm();
+      if (response.data.statusCode === 200) {
+        setCompanyName(managerData.companyName);
+        setBusinessEmail(managerData.businessEmail);
+        setBusinessPhone(managerData.businessPhone);
+        setCompanyAddress(managerData.companyAddress);
+        setState(managerData.state);
       } else {
-        console.error('API Error:', 'Unexpected status code:', response.status);
+        clearForm();
+        console.error(
+          'API Error:',
+          'Unexpected status code:',
+          response.data.statusCode
+        );
       }
     } catch (error) {
       console.error('API Error:', error.message);
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleBusinessPhoneChange = (e) => {
+    setBusinessPhone(e.target.value);
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    if (getIsFormValid()) {
+      try {
+        const response = await AxiosInstance.put(
+          '/managers/Edit?id=a491ea82-f52c-45c8-8fd2-4e50a0656a3f',
+          {
+            companyName,
+            businessEmail,
+            businessPhone,
+            companyAddress,
+            state,
+          }
+        );
+
+        if (response.data.statusCode === 200) {
+          console.log('Data successfully saved to the database');
+          fetchData(); // Fetch updated data after successful save
+        } else {
+          console.error('API Error:', response.data.statusCode);
+        }
+      } catch (error) {
+        console.error('API Error:', error.message);
+      }
+    }
+  };
+
   return (
     <div className="App">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <Fieldset>
           <Container>
             <div>
               <Field className="Field">
-                <Label>First Name</Label>
+                <Label>Company Name</Label>
                 <Input
-                  value={firstName}
-                  onChange={(e) => {
-                    setFirstName(e.target.value);
-                  }}
-                  placeholder="First Name"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  placeholder="Company Name"
                 />
                 <ImageIcon src={Edit} alt="Edit Icon" />
               </Field>
+
               <Field className="Field">
-                <Label>Last Name</Label>
+                <Label>Company Email</Label>
                 <Input
-                  value={lastName}
-                  onChange={(e) => {
-                    setLastName(e.target.value);
-                  }}
-                  placeholder="Last Name"
+                  value={businessEmail}
+                  placeholder="Business Email"
+                  readOnly
+                />
+              </Field>
+              <Field className="Field">
+                <Label>Contact Phone</Label>
+                <Input
+                  value={businessPhone}
+                  onChange={handleBusinessPhoneChange}
+                  placeholder="Contact Phone"
                 />
                 <ImageIcon src={Edit} alt="Edit Icon" />
               </Field>
             </div>
 
             <div>
-            <Field className="Field">
-                <Label>Password</Label>
+              <Field className="Field">
+                <Label>Address</Label>
                 <Input
-                  value={password}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                  placeholder="Password"
+                  value={companyAddress}
+                  onChange={(e) => setCompanyAddress(e.target.value)}
+                  placeholder="Address"
                 />
                 <ImageIcon src={Edit} alt="Edit Icon" />
               </Field>
+
               <Field className="Field">
-                <Label>Email</Label>
+                <Label>State</Label>
                 <Input
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                  placeholder="Email"
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
+                  placeholder="State"
                 />
                 <ImageIcon src={Edit} alt="Edit Icon" />
               </Field>
             </div>
           </Container>
           <Button type="submit" disabled={!getIsFormValid()}>
-            {' '}
-            Save{' '}
+            Save
           </Button>
         </Fieldset>
       </form>
