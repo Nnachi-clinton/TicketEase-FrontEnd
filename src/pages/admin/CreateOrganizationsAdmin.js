@@ -8,17 +8,20 @@ import Pagination from '../../components/organization/Pagination.js';
 
 const NoOrganizationsMessage = styled.div`
   margin-top: 2em;
+  margin-left: 22em;
   font-size: 18px;
   color: #505f98;
+  white-space: nowrap;
 `;
 
 const CardsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 10px;
+  // grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 0px;
   justify-content: center;
-  margin-left: 1em;
-  margin-right: 1em;
+  margin-left: 21em;
+  margin-right: em;
   margin-top: 2em;
   flex-wrap: wrap;
 
