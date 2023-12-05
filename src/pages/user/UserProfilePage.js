@@ -24,14 +24,13 @@ function UserProfilePage() {
     }));
   };
 
-  // Handler for updating the selected image
+ 
   const handleImageChange = (image) => {
     setSelectedImg(image);
   };
 
-  // Handler for submitting the form
   const handleSubmit = () => {
-    // Your logic for handling the form submission with user data and selected image
+
     console.log('Submitting form:', userData, selectedImg);
   };
 
@@ -48,14 +47,6 @@ function UserProfilePage() {
     </div>
   );
 }
-
-// const Cover = styled.div`
-//   width: 1084px;
-//   height: 892px;
-//   border-radius: 4px;
-//   background: #fff;
-//   /* Add any additional styles as needed */
-// `;
 
 export default UserProfilePage;
 
