@@ -28,25 +28,25 @@ const Htop = styled.h2`
   font-weight: bold;
   color: black;
 `;
-const FlexDiv2 = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 0px;
-  height: 30px;
-  background-color: #d3d3d3;
-  .selectt {
-    cursor: pointer;
-    background-color: #d3d3d3;
-    border: none;
-  }
-`;
-const SpanSortby = styled.span`
-  white-space: nowrap;
-  padding-top: 5px;
-`;
-const SpanInnerSortBy = styled.span`
-  padding-top: 3px;
-`;
+// const FlexDiv2 = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 0px;
+//   height: 30px;
+//   background-color: #d3d3d3;
+//   .selectt {
+//     cursor: pointer;
+//     background-color: #d3d3d3;
+//     border: none;
+//   }
+// `;
+// const SpanSortby = styled.span`
+//   white-space: nowrap;
+//   padding-top: 5px;
+// `;
+// const SpanInnerSortBy = styled.span`
+//   padding-top: 3px;
+// `;
 
 const Innerdiv = styled.div`
   background-color: white;
@@ -108,14 +108,14 @@ function RegisteredMembers({ handleAllMembers }) {
             <Ptop style={{ marginLeft: 20 }}>&#x2B05; Go Back</Ptop>
             <Flexdiv>
               <Htop>All Registered Members</Htop>
-              <FlexDiv2>
+              {/* <FlexDiv2>
                 <SpanSortby>&nbsp;Sort by &nbsp;</SpanSortby>
                 <SpanInnerSortBy>|&nbsp;</SpanInnerSortBy>
                 <select className="selectt">
                   <option>Newest</option>
                   <option>Oldest</option>
                 </select>
-              </FlexDiv2>
+              </FlexDiv2> */}
             </Flexdiv>
             <Innerdiv style={{ margin: 20 }}>
               <Roww>

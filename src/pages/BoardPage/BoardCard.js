@@ -220,6 +220,7 @@ const BoardCard = ({
   boardName,
   handleCreateProject,
   handleViewAllProjecs,
+  handleViewTickets,
 }) => {
   const navigate = useNavigate();
 
