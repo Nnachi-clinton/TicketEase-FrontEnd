@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import GeneralIcon from '../../assets/ProfileDetails/General.svg';
 import PhoneIcon from '../../assets/ProfileDetails/phone.svg';
 import CommunicationIcon from '../../assets/ProfileDetails/communication.svg';
+import AddressIcon from '../../assets/Polygon.svg';
 
 const Container = styled.div`
   background-color: white;
@@ -70,6 +71,10 @@ const OrganizationsDetails = ({ userDetails, onClose }) => {
           <AddressText>{userDetails.companyName}</AddressText>
         </GeneralInformation>
         <GeneralInformation>
+          <Icon src={GeneralIcon} alt="General" />
+          <AddressText>{userDetails.companyDescription}</AddressText>
+        </GeneralInformation>
+        <GeneralInformation>
           <Icon src={PhoneIcon} alt="Phone" />
           <AddressText>{userDetails.businessPhone}</AddressText>
         </GeneralInformation>
@@ -78,8 +83,8 @@ const OrganizationsDetails = ({ userDetails, onClose }) => {
           <AddressText>{userDetails.businessEmail}</AddressText>
         </GeneralInformation>
         <GeneralInformation>
-          <Icon src={CommunicationIcon} alt="Communication" />
-          <AddressText>{userDetails.companyAddress}</AddressText>
+          <Icon src={AddressIcon} alt="Address" />
+          <AddressText>{`${userDetails.companyAddress} ${userDetails.state}`}</AddressText>
         </GeneralInformation>
       </DetailsContainer>
       <CloseButton onClick={onClose}>Close</CloseButton>
