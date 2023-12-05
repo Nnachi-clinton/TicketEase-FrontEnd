@@ -61,26 +61,30 @@ const CloseButton = styled.button`
 `;
 
 const OrganizationsDetails = ({ userDetails, onClose }) => {
-    return (
-      <Container>
-        <ProfileImage src={userDetails.imageUrl} alt="Profile" />
-        <DetailsContainer>
-          <GeneralInformation>
-            <Icon src={GeneralIcon} alt="General" />
-            <AddressText>{`${userDetails.firstName} ${userDetails.lastName}`}</AddressText>
-          </GeneralInformation>
-          <GeneralInformation>
-            <Icon src={PhoneIcon} alt="Phone" />
-            <AddressText>{userDetails.phoneNumber}</AddressText>
-          </GeneralInformation>
-          <GeneralInformation>
-            <Icon src={CommunicationIcon} alt="Communication" />
-            <AddressText>{userDetails.email}</AddressText>
-          </GeneralInformation>
-        </DetailsContainer>
-        <CloseButton onClick={onClose}>Close</CloseButton>
-      </Container>
-    );
-  };
-  
-  export default OrganizationsDetails;
+  return (
+    <Container>
+      <ProfileImage src={userDetails.imageUrl} alt="Profile" />
+      <DetailsContainer>
+        <GeneralInformation>
+          <Icon src={GeneralIcon} alt="General" />
+          <AddressText>{userDetails.companyName}</AddressText>
+        </GeneralInformation>
+        <GeneralInformation>
+          <Icon src={PhoneIcon} alt="Phone" />
+          <AddressText>{userDetails.businessPhone}</AddressText>
+        </GeneralInformation>
+        <GeneralInformation>
+          <Icon src={CommunicationIcon} alt="Communication" />
+          <AddressText>{userDetails.businessEmail}</AddressText>
+        </GeneralInformation>
+        <GeneralInformation>
+          <Icon src={CommunicationIcon} alt="Communication" />
+          <AddressText>{userDetails.companyAddress}</AddressText>
+        </GeneralInformation>
+      </DetailsContainer>
+      <CloseButton onClick={onClose}>Close</CloseButton>
+    </Container>
+  );
+};
+
+export default OrganizationsDetails;
