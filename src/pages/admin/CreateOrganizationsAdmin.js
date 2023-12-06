@@ -78,7 +78,7 @@ const CreateOrganizationsAdmin = ({ handleCreateOrganization }) => {
 
   return (
     <StyledContainer>
-      <MergedComponent />
+      <MergedComponent handleCreateOrganization={handleCreateOrganization} />
 
       <CardsContainer>
         {managerData.length > 0 ? (

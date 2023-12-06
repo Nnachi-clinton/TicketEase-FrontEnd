@@ -10,7 +10,8 @@ const Container = styled.div`
   flex-shrink: 0;
   border-radius: 4px;
   background: #fff;
-  margin-left: 100px;
+  margin-left: 20em;
+  margin-top: 8em;
 `;
 const Form = styled.div`
   margin-top: 5%;

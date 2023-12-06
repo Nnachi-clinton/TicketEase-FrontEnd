@@ -6,6 +6,7 @@ import { validateEmail } from '../../utils/validateEmail';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import jwtDecode from 'jwt-decode';
 
 const Fieldset = styled.fieldset`
   border: none;
@@ -54,12 +55,32 @@ function LoginForm() {
       );
       console.log(response);
 
-
       if (response.data.statusCode === 200) {
-        const token = response.data.data;
-        console.log(token);
+        const token = response.data.message;
+
+        console.log('Tokens:', token);
+        const decodedToken = jwtDecode(token);
+        const userid = decodedToken['jti'];
+
+        console.log('decoded token:', decodedToken);
+        console.log('useridd:', decodedToken['jti']);
+        const userRole =
+          decodedToken[
+            'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+          ];
+
+        //  console.log('decoded role:', userRole);
+
         localStorage.setItem('authToken', token);
-        navigate('/ManagerDashBoard');
+
+        localStorage.setItem('userId', userid);
+        localStorage.setItem('userRole', userRole);
+
+        if (userRole === 'Admin') {
+          navigate('/AdminDashBoard');
+        } else {
+          navigate('/Managerdashboard');
+        }
 
         Swal.fire({
           icon: 'success',
@@ -124,8 +145,8 @@ function LoginForm() {
               email && !validateEmail(email) ? <EmailErrorMessage /> : ''
             }
             style={{
-              height: '26px',
-              width: '90%',
+              height: '35px',
+              width: '100%',
               background: 'white',
             }}
           />
@@ -138,8 +159,8 @@ function LoginForm() {
               password && password.length < 8 ? <PasswordErrorMessage /> : ''
             }
             style={{
-              height: '26px',
-              width: '90%',
+              height: '35px',
+              width: '100%',
               background: 'white',
             }}
           />
@@ -159,7 +180,8 @@ function LoginForm() {
             style={{
               background: '#505F98',
               height: '48px',
-              width: '98%',
+              width: '100%',
+              cursor: 'pointer',
             }}
             type="submit"
             disabled={!getIsFormValid()}

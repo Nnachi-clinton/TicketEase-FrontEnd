@@ -19,7 +19,9 @@ import ManagerView from '../../components/ManagerView/managerView.js';
 import AllTickets from '../tickets/all-tickets.js';
 import CreateNewTicket from '../CreateNewTicket.js';
 import CreateTicket from '../TicketInputfield.js';
-// import ViewTicket from '../tickets/all-tickets.js';
+import EditMember from '../EditMemberFolder/EditMember.js';
+import ViewTicket from '../tickets/all-tickets.js';
+import { useNavigate } from 'react-router-dom';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -27,6 +29,20 @@ function ManagerDashBoard() {
   const itemsPerPage = 5;
   const [totalItems, setTotalItems] = useState(0);
   const [step, setStep] = useState(0);
+  const navigate = useNavigate();
+  var userid = localStorage.getItem('userId');
+
+  if (userid === null) {
+    console.log('userId is null');
+    navigate('/regularlogin');
+  }
+
+  console.log('userid ' + userid);
+  var userole = localStorage.getItem('userRole');
+  console.log('userRole ' + userole);
+  // if (userole !== 'Manager' || userole !== 'User') {
+  //   navigate('/regularlogin');
+  // }
 
   const handleBoardMain = () => {
     setStep(8);
@@ -35,7 +51,8 @@ function ManagerDashBoard() {
     setStep(16);
   };
 
-  const handleCreateProject = () => {
+  const handleCreateProject = (e) => {
+    console.log('current boardid= ' + e);
     setStep(9);
   };
 
@@ -58,8 +75,8 @@ function ManagerDashBoard() {
   const getUsers = async () => {
     try {
       const res = await AxiosInstance.get(
-        // `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem('mangerId')}&page=${currentPage}&perPage=${itemsPerPage}`
-        `/User/get-Users-By-ManagerId?managerId=6db01435-a30c-44ae-9e23-95e1fecf0180&page=${currentPage}&perPage=${itemsPerPage}`
+        `/User/get-Users-By-ManagerId?managerId=${userid}&page=${currentPage}&perPage=${itemsPerPage}`
+        // `/User/get-Users-By-ManagerId?managerId=6db01435-a30c-44ae-9e23-95e1fecf0180&page=${currentPage}&perPage=${itemsPerPage}`
       );
 
       console.log(res.data);
@@ -91,7 +108,9 @@ function ManagerDashBoard() {
           <>
             <h2 className="dashboard">Manager DashBoard</h2>
             <div className="container">
-              <h2 className="text">Total Members</h2>
+              <h2 className="text" style={{ paddingTop: '0.5em' }}>
+                Total Members
+              </h2>
               <div className="inner-box">
                 <h1 className="text2">{totalItems}</h1>
               </div>
@@ -161,7 +180,7 @@ function ManagerDashBoard() {
           />
         )}
         {step === 11 && <CreateBoard />}
-        {step === 12 && <ManagerView />}
+        {step === 12 && <EditMember />}
         {step === 13 && <AllTickets />}
         {step === 15 && <CreateTicket handleViewTickets={handleViewTickets} />}
       </>

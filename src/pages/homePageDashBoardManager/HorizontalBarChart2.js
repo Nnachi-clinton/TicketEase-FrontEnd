@@ -19,7 +19,7 @@ const HorizontalBarChart2 = () => {
 
   useEffect(() => {
     // Define the API endpoint
-    const id = '6db01435-a30c-44ae-9e23-95e1fecf0180';
+    const id = localStorage.getItem('userid');
     const apiUrl =
       'https://localhost:7075/api/managers/GetManagerDetails/' + id;
 
