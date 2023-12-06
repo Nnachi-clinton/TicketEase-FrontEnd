@@ -19,7 +19,7 @@
 
 .Firstlabel {
     text-align: left;
-    padding: 0.25rem 0;
+    padding: 0.50rem 0;
     color: #505F98;
 }
 
@@ -28,6 +28,7 @@
     padding: 20px;
     border-radius: 4px;
     color: #505F98;
+    height: 30px;
 }
 
 
@@ -38,12 +39,12 @@
     border-radius: 4px;
     cursor: pointer;
     color: #F6F6F6;
-    height: 55px;
+    height: 30px;
 }
 
 
 .Firstpassword-warning {
-    padding-bottom: 30px;
+    margin-bottom: 50px;
     width: 100%;
     height: 18%;
     left: 465%;
@@ -63,7 +64,7 @@
     padding-left: 100px;
 }
 
-.FirstlogoEase {
+/* .FirstlogoEase {
     width: 170px;
     height: 33px;
     left: 204px;
@@ -79,31 +80,29 @@
     font-size: 24px;
     line-height: 32.63px;
     color: #21334F;
-}
+} */
 
-.FirstTicketLogo {
+/* .FirstTicketLogo {
     padding-left: 0px;
     padding-top: 40px;
-}
+} */
 
 .FirstLoginImagery {
     /* display: flex; */
     justify-content: center;
     /* align-items: center; */
     height: 1125px;
-    width: 600px;
-    padding-left: 80px;
-    margin-left: 50px;
+    width: 600%;
+    padding-top: 30px;
+    padding-left: 50px;
+    margin-left: 5px;
 }
 
 .Firstimage {
-    max-width: 70%;
-    /* Reducing the image width by half */
-    height: auto;
-    /* Maintain aspect ratio */
+    max-width: 150%;
+    height: 80%;
     display: block;
-    /* Remove default inline spacing */
-    padding-top: 10px;
+    padding-top: 35px;
 }
 
 .FirstErrorIcon {
@@ -121,21 +120,22 @@
     line-height: 30px;
     width: 253px;
     height: 30px;
+    margin-bottom: 50px;
 }
 
-.Firstlogo-container {
+/* .Firstlogo-container {
     display: flex;
     align-items: center;
 
-}
+} */
 
-.FirstPassEmail {
+/* .FirstPassEmail {
     font-family: Mulish;
     font: normal;
     font-style: normal;
-    font-weight: 400px;
+    font-weight: 4000px;
     font-size: 16px;
     line-height: 20.08px;
     width: 74px;
-    height: 20px;
-}
+    height: 70px;
+} */

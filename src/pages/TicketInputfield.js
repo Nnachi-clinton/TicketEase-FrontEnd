@@ -56,6 +56,8 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledButton = styled.button`
+  background-color: #505f98 !important;
+  height: 38px;
   color: white;
   width: 100%;
   margin-top: 30px;
@@ -88,7 +90,7 @@ const Board = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #505f98;
+  background-color: #505f98 !important;
   color: white;
   border: none;
   padding: 10px 30px;
