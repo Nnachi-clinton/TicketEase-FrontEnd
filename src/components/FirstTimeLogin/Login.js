@@ -1,19 +1,112 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import image from './Login.png';
-import Logo from './TicketEaseLogo.jpg';
-import ErrorIcon from './ErrorIcon.svg';
-import './Login.css';
+import styled from 'styled-components';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import TicketEaseLogo from '../../assets/TicketEaseLogo.svg';
+import ErrorIcon from './ErrorIcon.svg';
+import image from './Login.png';
+import eyeIcon from './eyeIcon.svg';
+import { VscEyeClosed, VscEye } from 'react-icons/vsc';
 
-export const Login = () => {
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-left: 230px;
+  margin-top: 10px;
+`;
+
+const LogoContainer = styled.span`
+  margin-top: 20%;
+  @media screen and (max-width: 1024px) {
+    max-width: 80%;
+  }
+`;
+
+const Logo = styled.img`
+  width: 170px;
+  height: 70px;
+  margin-left: -15px;
+`;
+
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const LoginToYourAccount = styled.h3`
+  font-family: Mulish;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+  width: 253px;
+  height: 30px;
+  margin-top: 0px;
+  margin-bottom: 50px;
+`;
+
+const StyledLabel = styled.label`
+  text-align: left;
+  padding: 0.25rem 0;
+  color: #505F98;
+`;
+
+const StyledInputContainer = styled.div`
+  position: relative;
+`;
+
+
+const StyledInput = styled.input`
+  border: none;
+  padding: 20px;
+  border-radius: 4px;
+  color: #505F98;
+  display: block;
+  margin-bottom: 3px;
+  width: 75%;
+  height: 45px;
+`;
+
+const ShowPassword = styled.div`
+  position: absolute;
+  bottom: 0px;
+  right: 170px;
+  padding: 10px;
+  min-width: 40px;
+`;
+
+const PasswordWarning = styled.h6`
+  display: inline-block;
+  position: relative;
+  bottom: 7px;
+  margin-top: 0px;
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  color: #505F98;
+`;
+
+const StyledButton = styled.button`
+  border: none;
+  background-color: #505F98;
+  padding: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #F6F6F6;
+  height: 45px;
+  width: 75%;
+`;
+
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -37,7 +130,7 @@ export const Login = () => {
           icon: 'success',
           title: 'Login successful!',
           showConfirmButton: false,
-          timer: 1500, // Automatically close after 1.5 seconds
+          timer: 1500, 
           position: 'top-end',
         });
       } else {
@@ -83,53 +176,51 @@ export const Login = () => {
   };
 
   return (
-    <div className="FirstHeader">
-      <div className="auth-form-container">
-        <span className="Firstlogo-container">
-          <Link to="/Footer-header">
-            <img src={Logo} alt="" className="FirstTicketLogo" />
-          </Link>
-          <span className="FirstlogoEase">TICKET EASE</span>
-        </span>
-        <h3 className="FirstLoginToYourAccount">Login to your account</h3>
-        <form className="Firstlogin-form" onSubmit={handleSubmit}>
-          <label className="PassEmailLabel" htmlFor="email">
-            Email
-          </label>
-          <input
-            className="FirstInput"
+    <Container>
+      <FormContainer>
+      <LogoContainer>
+        <Link to="/Footer-header">
+          <Logo src={TicketEaseLogo} alt="TicketEaseLogo" />
+        </Link>
+      </LogoContainer>
+
+        <LoginToYourAccount>Login to your account</LoginToYourAccount>
+        <form onSubmit={handleSubmit}>
+          <StyledLabel htmlFor="email">Email</StyledLabel>
+          <StyledInput
             type="email"
             placeholder="TicketEase@gmail.com"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label className="Firstlabel" htmlFor="password">
-            Password
-          </label>
-          <input
-            className="FirstInput"
-            type="password"
-            placeholder="*********"
-            id="epasswordmail"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <h6>
-            <img src={ErrorIcon} alt="" className="FirstErrorIcon" />
-            <label className="Firstpassword-warning">
-              Please input the password that was sent to you
-            </label>
-          </h6>
-          <button className="FirstButton" type="submit">
-            Login
-          </button>
+           <StyledLabel htmlFor="password">Password</StyledLabel>
+          <StyledInputContainer>
+            <StyledInput
+              type={showPassword ? 'text' : 'password'}
+              placeholder="*********"
+              id="epasswordmail"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <ShowPassword onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? <VscEye /> : <VscEyeClosed />}
+            </ShowPassword>
+          </StyledInputContainer>
+
+          <img src={ErrorIcon} alt="" style={{ marginTop: '0px' }} />
+          <PasswordWarning>
+            Please input the password that was sent to you
+          </PasswordWarning>
+          <StyledButton type="submit">Login</StyledButton>
           {loginError && <p>{loginError}</p>}
         </form>
-      </div>
+      </FormContainer>
       <div className="FirstLoginImagery frame">
-        <img src={image} alt="" className="Firstimage" />
+        <img src={image} alt="" className="Firstimage" style={{ width: '85%', height: '85%'}}/>
       </div>
-    </div>
+    </Container>
   );
 };
+
+export default Login;
