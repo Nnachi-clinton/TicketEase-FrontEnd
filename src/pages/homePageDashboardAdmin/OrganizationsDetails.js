@@ -65,7 +65,7 @@ const CloseButton = styled.button`
 const OrganizationsDetails = ({ userDetails, onClose }) => {
   return (
     <Container>
-      <ProfileImage src={userDetails.imageUrl} alt="Profile" />
+      <ProfileImage src={userDetails.imgUrl} alt="Profile" />
       <DetailsContainer>
         <GeneralInformation>
           <Icon src={UserIcon} alt="General" />
