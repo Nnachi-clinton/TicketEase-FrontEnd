@@ -45,6 +45,8 @@ import ManagerView from '../components/ManagerView/managerView';
 import EditMember from './EditMemberFolder/EditMember.js';
 import ViewTicket from './tickets/all-tickets.js';
 import ManagerAlertPage from './ManagerAlert/ManagerAlertPage.js';
+import OrganizationsDetails from './homePageDashboardAdmin/OrganizationsDetails';
+
 
 function App() {
   return (
