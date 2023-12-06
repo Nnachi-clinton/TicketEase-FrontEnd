@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
+import MembersDetails from '../homePageDashBoardManager/MembersDetails';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 180px;
+`;
 
 const ManagerTable = ({
   registeredUsers,
   currentPage,
   itemsPerPage,
-  handleViewClick,
+  //handleViewClick,
   totalItems,
   setCurrentPage,
   getUsers,
 }) => {
+  const [selectedUserDetails, setSelectedUserDetails] = useState(null);
+
   const changePage = (direction) => {
     if (direction === 'prev' && currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
@@ -22,8 +32,12 @@ const ManagerTable = ({
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    handleViewClick(pageNumber);
+    //handleViewClick(pageNumber);
     getUsers(pageNumber);
+  };
+
+  const handleViewDetails = (userDetails) => {
+    setSelectedUserDetails(userDetails);
   };
 
   const tableCellStyle = {
@@ -31,17 +45,103 @@ const ManagerTable = ({
     padding: '8px',
   };
 
-  const paginationButtonStyle = {
-    padding: '3px 8px',
-    cursor: 'pointer',
-    background: '#505F98',
-    color: 'white',
+  // const paginationButtonStyle = {
+  //   padding: '3px 8px',
+  //   cursor: 'pointer',
+  //   background: '#505F98',
+  //   color: 'white',
+  // };
+
+  // const viewButtonStyle = {
+  //   padding: '3px 8px',
+  //   cursor: 'pointer',
+  // };
+
+  const renderPageNumbers = () => {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const pageNumbers = [];
+    const ellipsis = <span style={{ margin: '0 5px' }}>...</span>;
+
+    if (totalPages <= 3) {
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(
+          <button
+            key={i}
+            onClick={() => handlePageChange(i)}
+            style={{
+              padding: '3px 8px',
+              cursor: 'pointer',
+              background: '#505F98',
+              color: 'white',
+              fontWeight: currentPage === i ? 'bold' : 'normal',
+            }}
+          >
+            {i}
+          </button>
+        );
+      }
+    } else {
+      const startPage = Math.max(1, currentPage - 2);
+      const endPage = Math.min(totalPages, currentPage + 2);
+
+      if (startPage > 1) {
+        pageNumbers.push(
+          <button
+            key={1}
+            onClick={() => handlePageChange(1)}
+            style={{
+              padding: '3px 8px',
+              cursor: 'pointer',
+              background: '#505F98',
+              color: 'white',
+            }}
+          >
+            1
+          </button>
+        );
+        pageNumbers.push(ellipsis);
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(
+          <button
+            key={i}
+            onClick={() => handlePageChange(i)}
+            style={{
+              padding: '3px 8px',
+              cursor: 'pointer',
+              background: '#505F98',
+              color: 'white',
+              fontWeight: currentPage === i ? 'bold' : 'normal',
+            }}
+          >
+            {i}
+          </button>
+        );
+      }
+
+      if (endPage < totalPages) {
+        pageNumbers.push(ellipsis);
+        pageNumbers.push(
+          <button
+            key={totalPages}
+            onClick={() => handlePageChange(totalPages)}
+            style={{
+              padding: '3px 8px',
+              cursor: 'pointer',
+              background: '#505F98',
+              color: 'white',
+            }}
+          >
+            {totalPages}
+          </button>
+        );
+      }
+    }
+
+    return pageNumbers;
   };
 
-  const viewButtonStyle = {
-    padding: '3px 8px',
-    cursor: 'pointer',
-  };
   return (
     <div>
       {/* Table content */}
