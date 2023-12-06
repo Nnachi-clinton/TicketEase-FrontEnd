@@ -13,7 +13,7 @@ import ContactResponse from './ContactResponse';
 import Header from './landingPage/Header';
 import UpdateManager from './UpdateManager';
 import AdminDashboard from './homePageDashboardAdmin/AdminDashboard';
-import { Login } from '../components/FirstTimeLogin/Login';
+import Login  from '../components/FirstTimeLogin/Login';
 import ContactUs from './contactUs/ContactUs';
 import UserProfilePage from './user/UserProfilePage';
 import UpdateUser from './user/UpdateUser';
