@@ -62,30 +62,30 @@ const CloseButton = styled.button`
   margin-top: auto; /* Push the close button to the bottom */
 `;
 
-const OrganizationsDetails = ({ userDetails, onClose }) => {
+const ProfileDetails = ({ userDetails, onClose }) => {
   return (
     <Container>
-      <ProfileImage src={userDetails.imgUrl} alt="Profile" />
+      <ProfileImage src={userDetails.imageUrl} alt="Profile" />
       <DetailsContainer>
         <GeneralInformation>
           <Icon src={UserIcon} alt="General" />
-          <AddressText>{userDetails.companyName}</AddressText>
-        </GeneralInformation>
-        <GeneralInformation>
-          <Icon src={GeneralIcon} alt="General" />
-          <AddressText>{userDetails.companyDescription}</AddressText>
-        </GeneralInformation>
-        <GeneralInformation>
-          <Icon src={PhoneIcon} alt="Phone" />
-          <AddressText>{userDetails.businessPhone}</AddressText>
+          <AddressText>{`${userDetails.firstName} ${userDetails.lastName}`}</AddressText>
         </GeneralInformation>
         <GeneralInformation>
           <Icon src={CommunicationIcon} alt="Communication" />
-          <AddressText>{userDetails.businessEmail}</AddressText>
+          <AddressText>{userDetails.email}</AddressText>
+        </GeneralInformation>
+        <GeneralInformation>
+          <Icon src={PhoneIcon} alt="Phone" />
+          <AddressText>{userDetails.phoneNumber}</AddressText>
+        </GeneralInformation>
+        <GeneralInformation>
+          <Icon src={GeneralIcon} alt="Sex" />
+          <AddressText>{userDetails.gender}</AddressText>
         </GeneralInformation>
         <GeneralInformation>
           <Icon src={AddressIcon} alt="Address" />
-          <AddressText>{userDetails.companyAddress}</AddressText>
+          <AddressText>{userDetails.address}</AddressText>
         </GeneralInformation>
         <GeneralInformation>
           <Icon src={AddressIcon} alt="Address" />
@@ -97,4 +97,4 @@ const OrganizationsDetails = ({ userDetails, onClose }) => {
   );
 };
 
-export default OrganizationsDetails;
+export default ProfileDetails;
