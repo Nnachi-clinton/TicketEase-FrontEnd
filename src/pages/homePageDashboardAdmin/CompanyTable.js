@@ -16,7 +16,6 @@ const CompanyTable = ({
   setCurrentPage,
   getManagers,
 }) => {
-
   const [selectedUserDetails, setSelectedUserDetails] = useState(null);
 
   const changePage = (direction) => {
@@ -44,25 +43,96 @@ const CompanyTable = ({
     padding: '8px',
   };
 
-  const paginationButtonStyle = {
-    padding: '3px 8px',
-    cursor: 'pointer',
-    background: "#505F98",
-    color: "white",
-  };
+  const renderPageNumbers = () => {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const pageNumbers = [];
+    const ellipsis = <span style={{ margin: '0 5px' }}>...</span>;
 
-  // const viewButtonStyle = {
-  //   padding: '3px 8px',
-  //   cursor: 'pointer',
-  // };
+    if (totalPages <= 3) {
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(
+          <button
+            key={i}
+            onClick={() => handlePageChange(i)}
+            style={{
+              padding: '3px 8px',
+              cursor: 'pointer',
+              background: '#505F98',
+              color: 'white',
+              fontWeight: currentPage === i ? 'bold' : 'normal',
+            }}
+          >
+            {i}
+          </button>
+        );
+      }
+    } else {
+      const startPage = Math.max(1, currentPage - 2);
+      const endPage = Math.min(totalPages, currentPage + 2);
+
+      if (startPage > 1) {
+        pageNumbers.push(
+          <button
+            key={1}
+            onClick={() => handlePageChange(1)}
+            style={{
+              padding: '3px 8px',
+              cursor: 'pointer',
+              background: '#505F98',
+              color: 'white',
+            }}
+          >
+            1
+          </button>
+        );
+        pageNumbers.push(ellipsis);
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(
+          <button
+            key={i}
+            onClick={() => handlePageChange(i)}
+            style={{
+              padding: '3px 8px',
+              cursor: 'pointer',
+              background: '#505F98',
+              color: 'white',
+              fontWeight: currentPage === i ? 'bold' : 'normal',
+            }}
+          >
+            {i}
+          </button>
+        );
+      }
+
+      if (endPage < totalPages) {
+        pageNumbers.push(ellipsis);
+        pageNumbers.push(
+          <button
+            key={totalPages}
+            onClick={() => handlePageChange(totalPages)}
+            style={{
+              padding: '3px 8px',
+              cursor: 'pointer',
+              background: '#505F98',
+              color: 'white',
+            }}
+          >
+            {totalPages}
+          </button>
+        );
+      }
+    }
+
+    return pageNumbers;
+  };
 
   return (
     <>
       <Container>
         <div>
-          {/* Table content */}
           <table
-            // style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}
             style={{
               width: '125%',
               borderCollapse: 'collapse',
@@ -94,9 +164,13 @@ const CompanyTable = ({
                   <td style={tableCellStyle}>{company.businessPhone}</td>
                   <td style={tableCellStyle}>
                     <button
-                    style={{ ...paginationButtonStyle, cursor: 'pointer' }}
+                      style={{
+                        padding: '3px 8px',
+                        cursor: 'pointer',
+                        background: '#505F98',
+                        color: 'white',
+                      }}
                       onClick={() => handleViewDetails(company)}
-                      //style={viewButtonStyle}
                     >
                       View
                     </button>
@@ -106,7 +180,6 @@ const CompanyTable = ({
             </tbody>
           </table>
 
-          {/* Pagination */}
           <div
             style={{
               marginTop: '10px',
@@ -116,7 +189,12 @@ const CompanyTable = ({
           >
             <button
               onClick={() => changePage('prev')}
-              style={paginationButtonStyle}
+              style={{
+                padding: '3px 8px',
+                cursor: 'pointer',
+                background: '#505F98',
+                color: 'white',
+              }}
               disabled={currentPage === 1}
             >
               Prev
@@ -129,28 +207,16 @@ const CompanyTable = ({
                 margin: '0 10px',
               }}
             >
-              {Array.from(
-                { length: Math.ceil(totalItems / itemsPerPage) },
-                (_, index) => (
-                  <li key={index} style={{ margin: '0 5px' }}>
-                    <button
-                      onClick={() => handlePageChange(index + 1)}
-                      style={{
-                        ...paginationButtonStyle,
-                        fontWeight: currentPage === index + 1 ? 'bold' : 'normal',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      {index + 1}
-                    </button>
-                  </li>
-                )
-              )}
+              {renderPageNumbers()}
             </ul>
-
             <button
               onClick={() => changePage('next')}
-              style={paginationButtonStyle}
+              style={{
+                padding: '3px 8px',
+                cursor: 'pointer',
+                background: '#505F98',
+                color: 'white',
+              }}
               disabled={currentPage === Math.ceil(totalItems / itemsPerPage)}
             >
               Next
