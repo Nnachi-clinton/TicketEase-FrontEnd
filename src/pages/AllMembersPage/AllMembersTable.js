@@ -43,9 +43,89 @@ const AllMembersTable = ({
     padding: '8px',
   };
 
-  const paginationButtonStyle = {
-    padding: '3px 8px',
-    cursor: 'pointer',
+  const renderPageNumbers = () => {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const pageNumbers = [];
+    const ellipsis = <span style={{ margin: '0 5px' }}>...</span>;
+
+    if (totalPages <= 3) {
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(
+          <button
+            key={i}
+            onClick={() => handlePageChange(i)}
+            style={{
+              padding: '3px 8px',
+              cursor: 'pointer',
+              background: '#505F98',
+              color: 'white',
+              fontWeight: currentPage === i ? 'bold' : 'normal',
+            }}
+          >
+            {i}
+          </button>
+        );
+      }
+    } else {
+      const startPage = Math.max(1, currentPage - 2);
+      const endPage = Math.min(totalPages, currentPage + 2);
+
+      if (startPage > 1) {
+        pageNumbers.push(
+          <button
+            key={1}
+            onClick={() => handlePageChange(1)}
+            style={{
+              padding: '3px 8px',
+              cursor: 'pointer',
+              background: '#505F98',
+              color: 'white',
+            }}
+          >
+            1
+          </button>
+        );
+        pageNumbers.push(ellipsis);
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(
+          <button
+            key={i}
+            onClick={() => handlePageChange(i)}
+            style={{
+              padding: '3px 8px',
+              cursor: 'pointer',
+              background: '#505F98',
+              color: 'white',
+              fontWeight: currentPage === i ? 'bold' : 'normal',
+            }}
+          >
+            {i}
+          </button>
+        );
+      }
+
+      if (endPage < totalPages) {
+        pageNumbers.push(ellipsis);
+        pageNumbers.push(
+          <button
+            key={totalPages}
+            onClick={() => handlePageChange(totalPages)}
+            style={{
+              padding: '3px 8px',
+              cursor: 'pointer',
+              background: '#505F98',
+              color: 'white',
+            }}
+          >
+            {totalPages}
+          </button>
+        );
+      }
+    }
+
+    return pageNumbers;
   };
 
   return (
@@ -63,7 +143,7 @@ const AllMembersTable = ({
             }}
           >
             <thead>
-              <tr style={{ background: '#FAFAFA', color: '#444' }}>
+              <tr style={{ background: '#E5E5E5', color: '#444' }}>
                 <th style={tableCellStyle}>SN</th>
                 <th style={tableCellStyle}>First Name</th>
                 <th style={tableCellStyle}>Last Name</th>
@@ -74,26 +154,31 @@ const AllMembersTable = ({
             </thead>
 
             <tbody>
-              {data &&
-                data.map((item, index) => (
-                  <tr key={item.id}>
-                    <td style={tableCellStyle}>
-                      {(currentPage - 1) * itemsPerPage + index + 1}
-                    </td>
-                    <td style={tableCellStyle}>{item.firstName}</td>
-                    <td style={tableCellStyle}>{item.lastName}</td>
-                    <td style={tableCellStyle}>{item.email}</td>
-                    <td style={tableCellStyle}>{item.phoneNumber}</td>
-                    <td style={tableCellStyle}>
-                      <button
-                        style={{ ...paginationButtonStyle, cursor: 'pointer' }}
-                        onClick={() => handleViewDetails(item)}
-                      >
-                        View Details
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+               {data &&
+                 data.map((item, index) => (
+                   <tr key={item.id}>
+                     <td style={tableCellStyle}>
+                       {(currentPage - 1) * itemsPerPage + index + 1}
+                     </td>
+                     <td style={tableCellStyle}>{item.firstName}</td>
+                     <td style={tableCellStyle}>{item.lastName}</td>
+                     <td style={tableCellStyle}>{item.email}</td>
+                     <td style={tableCellStyle}>{item.phoneNumber}</td>
+                     <td style={tableCellStyle}>
+                    <button
+                      style={{
+                        padding: '3px 8px',
+                        cursor: 'pointer',
+                        background: '#505F98',
+                        color: 'white',
+                      }}
+                      onClick={() => handleViewDetails(item)}
+                    >
+                      View
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
 
@@ -107,7 +192,12 @@ const AllMembersTable = ({
           >
             <button
               onClick={() => changePage('prev')}
-              style={paginationButtonStyle}
+              style={{
+                padding: '3px 8px',
+                cursor: 'pointer',
+                background: '#505F98',
+                color: 'white',
+              }}
               disabled={currentPage === 1}
             >
               Prev
@@ -120,29 +210,17 @@ const AllMembersTable = ({
                 margin: '0 10px',
               }}
             >
-              {Array.from(
-                { length: Math.ceil(totalItems / itemsPerPage) },
-                (_, index) => (
-                  <li key={index} style={{ margin: '0 5px' }}>
-                    <button
-                      onClick={() => handlePageChange(index + 1)}
-                      style={{
-                        ...paginationButtonStyle,
-                        fontWeight:
-                          currentPage === index + 1 ? 'bold' : 'normal',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      {index + 1}
-                    </button>
-                  </li>
-                )
-              )}
+              {renderPageNumbers()}
             </ul>
 
             <button
               onClick={() => changePage('next')}
-              style={paginationButtonStyle}
+              style={{
+                padding: '3px 8px',
+                cursor: 'pointer',
+                background: '#505F98',
+                color: 'white',
+              }}
               disabled={currentPage === Math.ceil(totalItems / itemsPerPage)}
             >
               Next

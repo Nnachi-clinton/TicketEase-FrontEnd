@@ -65,7 +65,7 @@ const CloseButton = styled.button`
 const OrganizationsDetails = ({ userDetails, onClose }) => {
   return (
     <Container>
-      <ProfileImage src={userDetails.imageUrl} alt="Profile" />
+      <ProfileImage src={userDetails.imgUrl} alt="Profile" />
       <DetailsContainer>
         <GeneralInformation>
           <Icon src={UserIcon} alt="General" />
@@ -85,7 +85,11 @@ const OrganizationsDetails = ({ userDetails, onClose }) => {
         </GeneralInformation>
         <GeneralInformation>
           <Icon src={AddressIcon} alt="Address" />
-          <AddressText>{`${userDetails.companyAddress} ${userDetails.state}`}</AddressText>
+          <AddressText>{userDetails.companyAddress}</AddressText>
+        </GeneralInformation>
+        <GeneralInformation>
+          <Icon src={AddressIcon} alt="Address" />
+          <AddressText>{userDetails.state}</AddressText>
         </GeneralInformation>
       </DetailsContainer>
       <CloseButton onClick={onClose}>Close</CloseButton>
