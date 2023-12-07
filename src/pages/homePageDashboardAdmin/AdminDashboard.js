@@ -20,15 +20,17 @@ function AdminDashBoard() {
   const [totalItems, setTotalItems] = useState(0);
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
-  var userid = localStorage.getItem('userid');
+  var userid = localStorage.getItem('userId');
 
   if (userid === null) {
     console.log('userId is null');
     navigate('/regularlogin');
   }
 
-  console.log('userid ' + userid);
   var userole = localStorage.getItem('userRole');
+  if (userole !== 'SuperAdmin') {
+    navigate('/managerdashboard');
+  }
   console.log('userRole ' + userole);
 
   const handleCreateOrganization = () => {
@@ -72,7 +74,7 @@ function AdminDashBoard() {
             </div>
 
             <div>
-              <div className="card">
+              <div className="cardd">
                 <div className="graphwork">
                   <div className="card4">
                     <h1 className="active">ACTIVITIES</h1>

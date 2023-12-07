@@ -13,7 +13,7 @@ import ContactResponse from './ContactResponse';
 import Header from './landingPage/Header';
 import UpdateManager from './UpdateManager';
 import AdminDashboard from './homePageDashboardAdmin/AdminDashboard';
-import Login  from '../components/FirstTimeLogin/Login';
+import Login from '../components/FirstTimeLogin/Login';
 import ContactUs from './contactUs/ContactUs';
 import UserProfilePage from './user/UserProfilePage';
 import UpdateUser from './user/UpdateUser';
@@ -45,7 +45,6 @@ import ManagerView from '../components/ManagerView/managerView';
 import EditMember from './EditMemberFolder/EditMember.js';
 import ViewTicket from './tickets/all-tickets.js';
 import ManagerAlertPage from './ManagerAlert/ManagerAlertPage.js';
-
 
 function App() {
   return (

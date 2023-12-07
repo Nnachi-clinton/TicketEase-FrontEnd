@@ -20,11 +20,16 @@ const MergedComponent = ({ handleCreateOrganization }) => {
 const CardContainer = ({ organizationName }) => {
   const navigate = useNavigate();
   const [memberPhotos, setMemberPhotos] = useState([]);
+  const [totalMembersCount, setTotalMembersCount] = useState(0);
 
   // Function to fetch member photos
   const fetchMemberPhotos = async () => {
     try {
-      const response = await AxiosInstance.get('/user/get-Users-By-Pagination');
+      const response = await AxiosInstance.get(
+        `/User/get-Users-By-ManagerId?managerId=${localStorage.getItem(
+          'userId'
+        )}`
+      );
       console.log(response.data); // Log the response to inspect its structure
 
       // Assuming the images are nested under a property like 'data' or 'members'
@@ -41,6 +46,7 @@ const CardContainer = ({ organizationName }) => {
         const firstFourPhotos = photos.slice(0, 4);
 
         setMemberPhotos(firstFourPhotos);
+        setTotalMembersCount(photos.length);
 
         // Log the actual images
         console.log('Fetched Images:', firstFourPhotos);
@@ -97,7 +103,7 @@ const CardContainer = ({ organizationName }) => {
             </StyledDiv14>
           </StyledDiv11>
           <StyledDiv15>
-            <StyledDiv16>10</StyledDiv16>
+            <StyledDiv16>{totalMembersCount}</StyledDiv16>
           </StyledDiv15>
         </StyledDiv10>
       </StyledDiv8>

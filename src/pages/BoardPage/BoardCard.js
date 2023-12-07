@@ -52,7 +52,10 @@ const StyledCardContainer = styled.div`
   border-radius: 4px;
   background: #fff;
   margin-top: 30px;
-  margin-left: 120px;
+  // margin-left: 160px;
+  // margin-right: -10px;
+  // gap: 80px;
+  margin: 20px;
 `;
 
 const StyledClickableContainer = styled.div`
@@ -108,9 +111,9 @@ const StyledDiv8 = styled.div`
 `;
 
 const StyledDiv9 = styled.div`
-  color: #c4c4c4;
+  color: black;
   white-space: nowrap;
-  font: 400 12px Mulish, sans-serif;
+  font: 500 14px Mulish, sans-serif;
   @media (max-width: 991px) {
     white-space: initial;
   }
@@ -196,6 +199,7 @@ const StyledDiv16 = styled.div`
   justify-content: center;
   position: relative;
   right: 40px;
+  margin-top: -20px;
 
   @media (max-width: 991px) {
     white-space: initial;
@@ -246,10 +250,10 @@ const BoardCard = ({
       </StyledDiv5>
       <StyledDiv7 />
       <StyledDiv8>
-        <StyledDiv9>TOTAL BOARDS</StyledDiv9>
+        <StyledDiv9>TOTAL PROJECTS</StyledDiv9>
         <StyledDiv10>
           <StyledDiv11>
-            <StyledImg3 loading="lazy" srcSet="..." />
+            {/* <StyledImg3 loading="lazy" srcSet="..." /> */}
             <StyledDiv12>STATUS</StyledDiv12>
             <StyledDiv13>Active</StyledDiv13>
             <StyledDiv14>
@@ -257,20 +261,42 @@ const BoardCard = ({
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
-                  paddingTop: '0px',
+                  paddingTop: '30px',
                 }}
               >
                 <div>
                   <button
-                    style={{ marginBottom: '16px', marginRight: '3em' }}
-                    onClick={handleViewAllProjecs}
+                    style={{
+                      marginBottom: '16px',
+                      marginRight: '3em',
+                      background: '#505f98',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '4px',
+                      padding: '10px 20px',
+                      fontSize: '12px',
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => {
+                      handleViewAllProjecs();
+                      handleClick();
+                    }}
                   >
                     View all Projects
                   </button>
                 </div>
 
                 <button
-                  style={{ marginBottom: '16px' }}
+                  style={{
+                    marginBottom: '16px',
+                    background: '#505f98',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '4px',
+                    padding: '10px 20px',
+                    fontSize: '12px',
+                    cursor: 'pointer',
+                  }}
                   onClick={() => {
                     handleCreateProject();
                     handleClick();

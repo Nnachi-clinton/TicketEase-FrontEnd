@@ -63,22 +63,22 @@ function LoginForm() {
         const userid = decodedToken['jti'];
         const id = decodedToken['nameid'];
 
-        console.log('decoded token:', decodedToken);
-        console.log('useridd:', decodedToken['jti']);
-        console.log('Id:', id);
+        // console.log('decoded token:', decodedToken);
+        // console.log('useridd:', decodedToken['jti']);
+        // console.log('Id:', id);
         const userRole =
           decodedToken[
             'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
           ];
 
-        //  console.log('decoded role:', userRole);
+        console.log('decoded role:', userRole);
 
         localStorage.setItem('authToken', token);
         localStorage.setItem('Id', id);
         localStorage.setItem('userId', userid);
         localStorage.setItem('userRole', userRole);
 
-        if (userRole === 'Admin') {
+        if (userRole === 'SuperAdmin') {
           navigate('/AdminDashBoard');
         } else {
           navigate('/Managerdashboard');

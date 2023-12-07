@@ -71,8 +71,7 @@ const CardssContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr !important;
   gap: 0px;
   justify-content: center;
-  margin-left: 21em;
-  margin-right: em;
+  margin-left: 11em;
   margin-top: 2em;
   flex-wrap: wrap;
 
@@ -94,6 +93,7 @@ const BoardMain = ({
   handleViewAllProjecs,
   handleCreateBoard,
   handleViewTickets,
+  handleBoardMain,
 }) => {
   // State to store the board data
   //   const [boardData, setBoardData] = useState([]);
@@ -213,6 +213,7 @@ const BoardMain = ({
               handleCreateProject={handleCreateProject}
               handleViewAllProjecs={handleViewAllProjecs}
               handleViewTickets={handleViewTickets}
+              handleBoardMain={handleBoardMain}
               key={board.id}
               boardName={board.name}
               boardId={board.id}

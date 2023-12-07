@@ -10,6 +10,7 @@ const ProfileDropdownContainer = styled.div`
   position: relative;
   align-items: flex-start;
   margin-top: -12px;
+  margin-left: -30px;
 `;
 
 const ProfileButton = styled.button`
@@ -135,7 +136,7 @@ export const ProfileDropdown = ({
     <ProfileDropdownContainer>
       <ProfileButton onClick={toggleDropdown}>
         <img
-          src={image}
+          src="https://icon-library.com/images/no-profile-picture-icon/no-profile-picture-icon-2.jpg"
           alt="Profile"
           style={{
             width: '30px',
@@ -144,7 +145,7 @@ export const ProfileDropdown = ({
             marginRight: '8px',
           }}
         />
-        {name}
+        <span style={{ paddingTop: '6px' }}>{name}</span>
       </ProfileButton>
       <DropdownContent isOpen={isOpen} ref={dropdownRef}>
         <Dropdown

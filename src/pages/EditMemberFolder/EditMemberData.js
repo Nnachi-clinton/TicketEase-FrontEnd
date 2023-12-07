@@ -80,7 +80,7 @@ const EditMemberData = () => {
   const fetchData = async () => {
     try {
       const response = await AxiosInstance.get(
-        '/managers/GetById?id=6db01435-a30c-44ae-9e23-95e1fecf0180'
+        `/managers/GetById?id=${localStorage.getItem('userId')}`
       );
       const managerData = response.data.data;
 
@@ -117,7 +117,7 @@ const EditMemberData = () => {
     if (getIsFormValid()) {
       try {
         const response = await AxiosInstance.put(
-          '/managers/Edit?id=6db01435-a30c-44ae-9e23-95e1fecf0180',
+          `/managers/Edit?id=${localStorage.getItem('userId')}`,
           {
             companyName,
             businessEmail,

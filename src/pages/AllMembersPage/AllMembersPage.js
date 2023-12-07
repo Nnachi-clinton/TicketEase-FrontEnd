@@ -46,14 +46,16 @@ const AllMembers = () => {
           </S.Leftarrow>
 
           <S.Show>
-            <S.MainTop>All Registered Members</S.MainTop>
-            <S.Sort>
+            <S.MainTop style={{ whiteSpace: 'nowrap' }}>
+              All Registered Members
+            </S.MainTop>
+            {/* <S.Sort>
               Sort By{' '}
               <select>
                 <option value="all">All</option>
                 <option value="Newest">Newest</option>
               </select>
-            </S.Sort>
+            </S.Sort> */}
           </S.Show>
 
           {/* Updated prop name from 'companies' to 'data' */}

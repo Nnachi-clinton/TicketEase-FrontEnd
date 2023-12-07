@@ -15,13 +15,12 @@ import AllMembers from '../AllMembersPage/AllMembersPage.js';
 import CreateProject from '../Projects/CreateProject.js';
 import AllProjects from '../AllProjectsPage/AllProjects.jsx';
 import CreateBoard from '../Boards/CreateBoard.js';
-import ManagerView from '../../components/ManagerView/managerView.js';
 import AllTickets from '../tickets/all-tickets.js';
 import CreateNewTicket from '../CreateNewTicket.js';
 import CreateTicket from '../TicketInputfield.js';
 import EditMember from '../EditMemberFolder/EditMember.js';
-import ViewTicket from '../tickets/all-tickets.js';
 import { useNavigate } from 'react-router-dom';
+import MemberProfile from '../../pages/MemberProfile.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -37,12 +36,12 @@ function ManagerDashBoard() {
     navigate('/regularlogin');
   }
 
-  console.log('userid ' + userid);
   var userole = localStorage.getItem('userRole');
   console.log('userRole ' + userole);
-  // if (userole !== 'Manager' || userole !== 'User') {
-  //   navigate('/regularlogin');
-  // }
+
+  if (userole === 'SuperAdmin') {
+    navigate('/admindashboard');
+  }
 
   const handleBoardMain = () => {
     setStep(8);
@@ -52,7 +51,6 @@ function ManagerDashBoard() {
   };
 
   const handleCreateProject = (e) => {
-    console.log('current boardid= ' + e);
     setStep(9);
   };
 
@@ -79,8 +77,6 @@ function ManagerDashBoard() {
         // `/User/get-Users-By-ManagerId?managerId=6db01435-a30c-44ae-9e23-95e1fecf0180&page=${currentPage}&perPage=${itemsPerPage}`
       );
 
-      console.log(res.data);
-      //const { data, totalCount } = res.data;
       setUsers(res.data.data);
       setTotalItems(res.data.totalCount);
     } catch (error) {
@@ -107,7 +103,7 @@ function ManagerDashBoard() {
         {step === 0 && (
           <>
             <h2 className="dashboard">Manager DashBoard</h2>
-            <div className="container">
+            <div className="containe" style={{ width: '1100px' }}>
               <h2 className="text" style={{ paddingTop: '0.5em' }}>
                 Total Members
               </h2>
@@ -146,23 +142,28 @@ function ManagerDashBoard() {
             </div>
           </>
         )}
-        {step === 1 && (
-          <RegisteredMembers handleAllMembers={handleAllMembers} />
-        )}
+        {step === 1 && <MemberProfile handleAllMembers={handleAllMembers} />}
         {step === 2 && (
-          <CreateBoardEmptyManager handleBoardMain={handleBoardMain} />
+          <BoardMain
+            handleBoardMain={handleBoardMain}
+            handleCreateProject={handleCreateProject}
+            handleViewAllProjecs={handleViewAllProjecs}
+            handleCreateBoard={handleCreateBoard}
+            handleViewTickets={handleViewTickets}
+          />
         )}
-        {step === 3 && (
+        {/* {step === 3 && (
           <CreateProject handleViewAllProjecs={handleViewAllProjecs} />
-        )}
-        {step === 4 && (
+        )} */}
+        {/* {step === 4 && (
           <CreateNewTicket handleCreateTicket={handleCreateTicket} />
-        )}
-        {step === 5 && <ContactUs2Form />}
-        {step === 7 && <LogoutPopout />}
+        )} */}
+        {step === 3 && <ContactUs2Form />}
+        {step === 5 && <LogoutPopout />}
         {step === 14 && <ChangePassword />}
         {step === 8 && (
           <BoardMain
+            handleBoardMain={handleBoardMain}
             handleCreateProject={handleCreateProject}
             handleViewAllProjecs={handleViewAllProjecs}
             handleCreateBoard={handleCreateBoard}
@@ -179,7 +180,7 @@ function ManagerDashBoard() {
             handleCreateTicket={handleCreateTicket}
           />
         )}
-        {step === 11 && <CreateBoard />}
+        {step === 11 && <CreateBoard handleBoardMain={handleBoardMain} />}
         {step === 12 && <EditMember />}
         {step === 13 && <AllTickets />}
         {step === 15 && <CreateTicket handleViewTickets={handleViewTickets} />}

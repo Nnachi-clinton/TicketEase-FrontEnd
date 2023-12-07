@@ -19,7 +19,8 @@ const LogoutPopout = ({ onLogout }) => {
       if (response.status === 200) {
         navigate('/Footer-header');
         //  toast.success('Logout successful');
-        alert('Logout Successful');
+        //alert('Logout Successful');
+        localStorage.removeItem('userId');
         Swal.fire({
           icon: 'success',
           title: 'Logout Successful',

@@ -8,8 +8,8 @@ const menuItems = [
   { name: 'Home', icon: require('../../assets/Polygon.svg').default },
   { name: 'Add Member', icon: require('../../assets/User.svg').default },
   { name: 'Board', icon: require('../../assets/Group.svg').default },
-  { name: 'Projects', icon: require('../../assets/Group.svg').default },
-  { name: 'Tickets', icon: require('../../assets/Group.svg').default },
+  // { name: 'Projects', icon: require('../../assets/Group.svg').default },
+  // { name: 'Tickets', icon: require('../../assets/Group.svg').default },
   {
     name: 'Contact Admin',
     icon: require('../../assets/Credit-card.svg').default,
@@ -48,7 +48,7 @@ const MenuItem = styled.div`
   &.active {
     background-color: #505f98;
     color: #ffffff;
-    width: 211px;
+    width: 100%;
   }
 
   &:hover {

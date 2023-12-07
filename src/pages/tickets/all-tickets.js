@@ -37,8 +37,9 @@ const App = () => {
         console.error(`Error fetching data from ${url}:`, error);
       }
     };
-    const apiUrl1 =
-      'https://localhost:7075/api/Ticket/project/00598ed2-da89-4531-aa4b-f736027aecd0?page=1&perPage=5';
+    const apiUrl1 = `https://localhost:7075/api/Ticket/project/${localStorage.getItem(
+      'projectid'
+    )}?page=1&perPage=5000`;
 
     fetchData(apiUrl1);
   }, []);
@@ -133,7 +134,7 @@ const App = () => {
             backgroundColor: 'white',
           }}
         >
-          <div style={{ fontWeight: 'bold', margin: '1em' }}>Pending</div>
+          <div style={{ fontWeight: 'bold', margin: '1em' }}>To Do</div>
 
           {list1.length === 0 ? (
             <div

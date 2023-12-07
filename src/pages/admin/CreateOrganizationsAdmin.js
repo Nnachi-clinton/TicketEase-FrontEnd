@@ -16,7 +16,7 @@ const NoOrganizationsMessage = styled.div`
 
 const CardsContainer = styled.div`
   display: grid;
-  // grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
   grid-template-columns: 1fr 1fr 1fr !important;
   gap: 0px;
   justify-content: center;

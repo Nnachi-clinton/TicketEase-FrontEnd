@@ -54,7 +54,7 @@ const Table = ({
       {/* Table content */}
       <table
         style={{
-          width: '100%',
+          width: '75em',
           borderCollapse: 'collapse',
           marginTop: '10px',
           background: '#FFF',
@@ -62,12 +62,12 @@ const Table = ({
       >
         <thead>
           <tr style={{ background: '#FAFAFA', color: '#444' }}>
-            <th style={tableCellStyle}>SN</th>
-            <th style={tableCellStyle}>Board ID</th>
-            <th style={tableCellStyle}>Project ID</th>
-            <th style={tableCellStyle}>Title</th>
-            <th style={tableCellStyle}>Description</th>
-            <th style={tableCellStyle}></th>
+            <th style={{ tableCellStyle, width: '4em' }}>SN</th>
+            {/* <th style={tableCellStyle}>Board ID</th>
+            <th style={tableCellStyle}>Project ID</th> */}
+            <th style={{ tableCellStyle, width: '20em' }}>Title</th>
+            <th style={{ tableCellStyle, width: '20em' }}>Description</th>
+            <th style={{ tableCellStyle, width: '10em' }}></th>
           </tr>
         </thead>
 
@@ -80,8 +80,8 @@ const Table = ({
                 <td style={tableCellStyle}>
                   {(currentPage - 1) * itemsPerPage + index + 1}
                 </td>
-                <td style={tableCellStyle}>{item.boardId}</td>
-                <td style={tableCellStyle}>{item.id}</td>
+                {/* <td style={tableCellStyle}>{item.boardId}</td>
+                <td style={tableCellStyle}>{item.id}</td> */}
                 <td style={tableCellStyle}>{item.title}</td>
                 <td style={tableCellStyle}>{item.description}</td>
                 <td style={tableCellStyle}>
@@ -94,7 +94,10 @@ const Table = ({
                       padding: '3px 8px',
                       color: '#FFF',
                     }}
-                    onClick={handleViewTickets}
+                    onClick={() => {
+                      handleViewTickets();
+                      handleProjectId(item.id);
+                    }}
                   >
                     View Tickets
                   </button>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useRef, useState } from 'react';
-import { RxAvatar } from "react-icons/rx";
+import { RxAvatar } from 'react-icons/rx';
 
 const Header = styled.div`
   height: 120px;
