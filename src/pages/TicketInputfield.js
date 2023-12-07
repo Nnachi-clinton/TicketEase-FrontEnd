@@ -56,6 +56,8 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledButton = styled.button`
+  background-color: #505f98 !important;
+  height: 38px;
   color: white;
   width: 100%;
   margin-top: 30px;
@@ -88,7 +90,7 @@ const Board = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #505f98;
+  background-color: #505f98 !important;
   color: white;
   border: none;
   padding: 10px 30px;
@@ -111,8 +113,10 @@ function CreateTicket({ handleViewTickets }) {
     assignedTo: '',
   });
 
-  const userId = '54e92c8f-e076-4cf6-b65a-6cedced31743';
-  const projectId = '00598ed2-da89-4531-aa4b-f736027aecd0';
+  const userId = localStorage.getItem('Id');
+  console.log(userId);
+  const projectId = localStorage.getItem('projectid');
+  console.log(projectId);
 
   const handleChange = (event) => {
     const { name, value } = event.target;

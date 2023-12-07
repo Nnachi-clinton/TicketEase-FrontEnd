@@ -43,6 +43,12 @@ const Table = ({
     padding: '3px 8px',
     cursor: 'pointer',
   };
+
+  const handleProjectId = (itemId) => {
+    // Save item.id in localStorage
+    localStorage.setItem('projectid', itemId);
+  };
+
   return (
     <div>
       {/* Table content */}
@@ -58,6 +64,7 @@ const Table = ({
           <tr style={{ background: '#FAFAFA', color: '#444' }}>
             <th style={tableCellStyle}>SN</th>
             <th style={tableCellStyle}>Board ID</th>
+            <th style={tableCellStyle}>Project ID</th>
             <th style={tableCellStyle}>Title</th>
             <th style={tableCellStyle}>Description</th>
             <th style={tableCellStyle}></th>
@@ -66,6 +73,7 @@ const Table = ({
 
         <tbody>
           {console.log('Data:', data)}
+
           {data &&
             data.map((item, index) => (
               <tr key={item.id}>
@@ -73,6 +81,7 @@ const Table = ({
                   {(currentPage - 1) * itemsPerPage + index + 1}
                 </td>
                 <td style={tableCellStyle}>{item.boardId}</td>
+                <td style={tableCellStyle}>{item.id}</td>
                 <td style={tableCellStyle}>{item.title}</td>
                 <td style={tableCellStyle}>{item.description}</td>
                 <td style={tableCellStyle}>
@@ -90,7 +99,10 @@ const Table = ({
                     View Tickets
                   </button>
                   <button
-                    onClick={handleCreateTicket}
+                    onClick={() => {
+                      handleCreateTicket();
+                      handleProjectId(item.id);
+                    }}
                     style={{
                       backgroundColor: '#505F98',
                       cursor: 'pointer',

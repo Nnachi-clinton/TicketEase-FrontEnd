@@ -225,6 +225,10 @@ const BoardCard = ({
 }) => {
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    localStorage.setItem('boardid', boardId);
+  };
+
   return (
     <StyledCardContainer>
       <StyledDiv5 style={{ width: '100%' }}>
@@ -267,7 +271,10 @@ const BoardCard = ({
 
                 <button
                   style={{ marginBottom: '16px' }}
-                  onClick={handleCreateProject}
+                  onClick={() => {
+                    handleCreateProject();
+                    handleClick();
+                  }}
                 >
                   Create Project
                 </button>

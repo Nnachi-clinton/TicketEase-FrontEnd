@@ -71,8 +71,10 @@ const AllProjects = ({ handleViewTickets, handleCreateTicket }) => {
   const getPojects = async () => {
     try {
       const res = await AxiosInstance2.get(
-        // `/Project/GetProjectsByBoardId?boardId=${localStorage.getItem('boardId')}&page=${currentPage}&perPage=${itemsPerPage}`
-        `/Project/GetProjectsByBoardId?boardId=16600789-f9b3-4ef6-bc80-289a4ef9fc86&page=${currentPage}&perPage=${itemsPerPage}`
+        `/Project/GetProjectsByBoardId?boardId=${localStorage.getItem(
+          'boardid'
+        )}&page=${currentPage}&perPage=${itemsPerPage}`
+        // `/Project/GetProjectsByBoardId?boardId=81a63952-4ce6-4a29-8e8c-b62aa1b6927a&page=${currentPage}&perPage=${itemsPerPage}`
       );
 
       const { data, totalCount } = res.data.data;

@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import GeneralIcon from '../assets/ProfileDetails/General.svg';
-import PhoneIcon from '../assets/ProfileDetails/phone.svg';
-import CommunicationIcon from '../assets/ProfileDetails/communication.svg';
-import AddressIcon from '../assets/Polygon.svg';
-import UserIcon from '../assets/User.svg';
+import GeneralIcon from '../../assets/ProfileDetails/General.svg';
+import PhoneIcon from '../../assets/ProfileDetails/phone.svg';
+import CommunicationIcon from '../../assets/ProfileDetails/communication.svg';
+import AddressIcon from '../../assets/Polygon.svg';
+import UserIcon from '../../assets/User.svg';
 
 const Container = styled.div`
   background-color: white;
@@ -62,30 +62,30 @@ const CloseButton = styled.button`
   margin-top: auto; /* Push the close button to the bottom */
 `;
 
-const ProfileDetails = ({ userDetails, onClose }) => {
+const OrganizationsDetails = ({ userDetails, onClose }) => {
   return (
     <Container>
-      <ProfileImage src={userDetails.imageUrl} alt="Profile" />
+      <ProfileImage src={userDetails.imgUrl} alt="Profile" />
       <DetailsContainer>
         <GeneralInformation>
           <Icon src={UserIcon} alt="General" />
-          <AddressText>{`${userDetails.firstName} ${userDetails.lastName}`}</AddressText>
+          <AddressText>{userDetails.companyName}</AddressText>
         </GeneralInformation>
         <GeneralInformation>
-          <Icon src={CommunicationIcon} alt="Communication" />
-          <AddressText>{userDetails.email}</AddressText>
+          <Icon src={GeneralIcon} alt="General" />
+          <AddressText>{userDetails.companyDescription}</AddressText>
         </GeneralInformation>
         <GeneralInformation>
           <Icon src={PhoneIcon} alt="Phone" />
-          <AddressText>{userDetails.phoneNumber}</AddressText>
+          <AddressText>{userDetails.businessPhone}</AddressText>
         </GeneralInformation>
         <GeneralInformation>
-          <Icon src={GeneralIcon} alt="Sex" />
-          <AddressText>{userDetails.gender}</AddressText>
+          <Icon src={CommunicationIcon} alt="Communication" />
+          <AddressText>{userDetails.businessEmail}</AddressText>
         </GeneralInformation>
         <GeneralInformation>
           <Icon src={AddressIcon} alt="Address" />
-          <AddressText>{userDetails.address}</AddressText>
+          <AddressText>{userDetails.companyAddress}</AddressText>
         </GeneralInformation>
         <GeneralInformation>
           <Icon src={AddressIcon} alt="Address" />
@@ -97,4 +97,4 @@ const ProfileDetails = ({ userDetails, onClose }) => {
   );
 };
 
-export default ProfileDetails;
+export default OrganizationsDetails;

@@ -61,9 +61,11 @@ function LoginForm() {
         console.log('Tokens:', token);
         const decodedToken = jwtDecode(token);
         const userid = decodedToken['jti'];
+        const id = decodedToken['nameid'];
 
         console.log('decoded token:', decodedToken);
         console.log('useridd:', decodedToken['jti']);
+        console.log('Id:', id);
         const userRole =
           decodedToken[
             'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
@@ -72,7 +74,7 @@ function LoginForm() {
         //  console.log('decoded role:', userRole);
 
         localStorage.setItem('authToken', token);
-
+        localStorage.setItem('Id', id);
         localStorage.setItem('userId', userid);
         localStorage.setItem('userRole', userRole);
 
