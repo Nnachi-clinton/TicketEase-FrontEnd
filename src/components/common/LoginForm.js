@@ -4,7 +4,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { validateEmail } from '../../utils/validateEmail';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import jwtDecode from 'jwt-decode';
 
@@ -167,16 +167,18 @@ function LoginForm() {
             }}
           />
           {
-            <p
-              style={{
-                fontSize: 'small',
-                marginTop: '-7px',
-                marginBottom: '25px',
-                color: '#505F98',
-              }}
-            >
-              Forgot Password?
-            </p>
+            <Link to="/forgot-password">
+              <p
+                style={{
+                  fontSize: 'small',
+                  marginTop: '-7px',
+                  marginBottom: '25px',
+                  color: '#505F98',
+                }}
+              >
+                Forgot Password?
+              </p>
+            </Link>
           }
           <Button
             style={{

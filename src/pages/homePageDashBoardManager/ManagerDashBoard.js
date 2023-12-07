@@ -21,6 +21,7 @@ import CreateTicket from '../TicketInputfield.js';
 import EditMember from '../EditMemberFolder/EditMember.js';
 import { useNavigate } from 'react-router-dom';
 import MemberProfile from '../../pages/MemberProfile.js';
+import EditMember2 from '../EditMemberFolder2/EditMember2.js';
 
 function ManagerDashBoard() {
   const [users, setUsers] = useState([]);
@@ -97,6 +98,7 @@ function ManagerDashBoard() {
         logout={() => setStep(7)}
         ChangePassword={() => setStep(14)}
         managerdetails={() => setStep(12)}
+        personaldetails={() => setStep(18)}
       />
       <Sider step={step} selectstep={(step) => setStep(step)} />
       <>
@@ -182,6 +184,7 @@ function ManagerDashBoard() {
         )}
         {step === 11 && <CreateBoard handleBoardMain={handleBoardMain} />}
         {step === 12 && <EditMember />}
+        {step === 18 && <EditMember2 />}
         {step === 13 && <AllTickets />}
         {step === 15 && <CreateTicket handleViewTickets={handleViewTickets} />}
       </>

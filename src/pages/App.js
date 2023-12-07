@@ -45,6 +45,7 @@ import ManagerView from '../components/ManagerView/managerView';
 import EditMember from './EditMemberFolder/EditMember.js';
 import ViewTicket from './tickets/all-tickets.js';
 import ManagerAlertPage from './ManagerAlert/ManagerAlertPage.js';
+import EditMember2 from './EditMemberFolder2/EditMember2.js';
 
 function App() {
   return (
@@ -117,6 +118,7 @@ function App() {
                   path="/ManagerAlertPage"
                   element={<ManagerAlertPage />}
                 />
+                <Route path="/EditMember2" element={<EditMember2 />} />
               </Routes>
             </AuthState>
           </GlobalProvider>

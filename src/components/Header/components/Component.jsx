@@ -121,6 +121,7 @@ export const Component = ({
   className,
   logout,
   ChangePassword,
+  personaldetails,
   managerdetails,
   overlapGroupClassName,
 }) => {
@@ -141,6 +142,7 @@ export const Component = ({
             logout={logout}
             ChangePassword={ChangePassword}
             managerdetails={managerdetails}
+            personaldetails={personaldetails}
             name={localStorage.getItem('userRole')}
           />
         </div>

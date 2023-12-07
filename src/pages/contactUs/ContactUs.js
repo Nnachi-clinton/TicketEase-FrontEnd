@@ -122,6 +122,7 @@ const ContactUs = () => {
           </label>
           <input
             className="form-input"
+            style={{ backgroundColor: 'white', color: 'black' }}
             type="text"
             id="Company Name"
             value={companyName}
@@ -133,6 +134,7 @@ const ContactUs = () => {
           </label>
           <input
             className="form-input"
+            style={{ backgroundColor: 'white', color: 'black' }}
             type="text"
             id="Business Email"
             value={businessEmail}
@@ -145,6 +147,7 @@ const ContactUs = () => {
           </label>
           <textarea
             className="form-textarea"
+            style={{ backgroundColor: 'white', color: 'black' }}
             id="Company Description"
             value={companyDescription}
             onChange={(e) => setreasonToOnboard(e.target.value)}
