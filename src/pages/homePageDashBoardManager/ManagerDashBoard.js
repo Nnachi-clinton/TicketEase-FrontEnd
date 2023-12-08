@@ -90,8 +90,6 @@ function ManagerDashBoard() {
     getUsers();
   }, [currentPage]);
 
- 
-
   const handleViewClick = (users) => {
     console.log('View clicked:', users);
   };
@@ -99,7 +97,7 @@ function ManagerDashBoard() {
   return (
     <section className="mothercard">
       <Frame
-        logout={() => setStep(7)}
+        logout={() => setStep(5)}
         ChangePassword={() => setStep(14)}
         managerdetails={() => setStep(12)}
         personaldetails={() => setStep(18)}

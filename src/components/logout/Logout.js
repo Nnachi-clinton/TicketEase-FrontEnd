@@ -21,6 +21,11 @@ const LogoutPopout = ({ onLogout }) => {
         //  toast.success('Logout successful');
         //alert('Logout Successful');
         localStorage.removeItem('userId');
+        localStorage.removeItem('boardid');
+        localStorage.removeItem('userRole');
+        localStorage.removeItem('projectid');
+        localStorage.removeItem('Id');
+        localStorage.removeItem('authToken');
         Swal.fire({
           icon: 'success',
           title: 'Logout Successful',
