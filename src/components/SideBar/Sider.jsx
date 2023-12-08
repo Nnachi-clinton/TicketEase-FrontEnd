@@ -71,7 +71,7 @@ const ToggleIcon = styled.div`
 `;
 
 const ItemName = styled.div`
-  color: #1d2125;
+  // color: #1d2125;
   font: 400 14px/18px Mulish, sans-serif;
   white-space: nowrap;
 `;

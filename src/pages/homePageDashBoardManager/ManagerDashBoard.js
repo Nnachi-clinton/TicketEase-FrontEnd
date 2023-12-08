@@ -31,6 +31,7 @@ function ManagerDashBoard() {
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
   var userid = localStorage.getItem('userId');
+  var boardid = localStorage.getItem('boardid');
 
   if (userid === null) {
     console.log('userId is null');

@@ -15,10 +15,7 @@ const Fieldset = styled.fieldset`
 
 const PasswordErrorMessage = () => {
   return (
-    <p className="FieldError">
-      {' '}
-      Password incorrect. If you don't remember your password. Reset it{' '}
-    </p>
+    <p className="FieldError"> Password should be at least 8 characters </p>
   );
 };
 

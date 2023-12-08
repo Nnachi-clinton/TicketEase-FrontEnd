@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { validateEmail } from '../../utils/validateEmail';
 import Edit from './Editimg/Edit.svg';
 import AxiosInstance from '../../Request/AxiosInstance';
+import Swal from 'sweetalert2';
 
 const Container = styled.div`
   display: grid;
@@ -19,7 +20,7 @@ const Input = styled.input`
   border: none;
   height: 48px;
   border-radius: 10px;
-
+  padding: 10px;
   &::placeholder {
     padding-left: 4m0px;
     color: rgba(151, 151, 151, 1);
@@ -139,14 +140,34 @@ const EditMemberData2 = () => {
         );
         console.log(response);
 
-        if (response.status === 200) {
-          console.log('Data successfully saved to the database');
+        if (response.status === 200 || response.status === 201) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Data updated successfully',
+            showConfirmButton: false,
+            timer: 1500, // Automatically close after 1.5 seconds
+            position: 'top-end',
+          });
           fetchData(); // Fetch updated data after successful save
         } else {
+          Swal.fire({
+            icon: 'error',
+            title: response.status,
+            showConfirmButton: false,
+            timer: 1500, // Automatically close after 1.5 seconds
+            position: 'top-end',
+          });
           console.error('API Error:', response.status);
         }
       } catch (error) {
         console.error('API Error:', error.message);
+        Swal.fire({
+          icon: 'error',
+          title: error.status,
+          showConfirmButton: false,
+          timer: 1500, // Automatically close after 1.5 seconds
+          position: 'top-end',
+        });
       }
     }
   };
@@ -158,7 +179,7 @@ const EditMemberData2 = () => {
           <Container>
             <div>
               <Field className="Field">
-                <Label>first Name</Label>
+                <Label>First Name</Label>
                 <Input
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
@@ -167,7 +188,7 @@ const EditMemberData2 = () => {
                 <ImageIcon src={Edit} alt="Edit Icon" />
               </Field>
               <Field className="Field">
-                <Label>last Name</Label>
+                <Label>Last Name</Label>
                 <Input
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
@@ -193,7 +214,7 @@ const EditMemberData2 = () => {
 
             <div>
               <Field className="Field">
-                <Label>gender</Label>
+                <Label>Gender</Label>
                 <Input
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
@@ -223,7 +244,11 @@ const EditMemberData2 = () => {
               </Field>
             </div>
           </Container>
-          <Button type="submit" disabled={!getIsFormValid()}>
+          <Button
+            type="submit"
+            style={{ cursor: 'pointer' }}
+            disabled={!getIsFormValid()}
+          >
             Save
           </Button>
         </Fieldset>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { validateEmail } from '../../utils/validateEmail';
 import Edit from './Editimg/Edit.svg';
 import AxiosInstance from '../../Request/AxiosInstance';
+import Swal from 'sweetalert2';
 
 const Container = styled.div`
   display: grid;
@@ -83,7 +84,7 @@ const EditMemberData = () => {
         `/managers/GetById?id=${localStorage.getItem('userId')}`
       );
       const managerData = response.data.data;
-
+      console.log(response.data.statusCode);
       if (response.data.statusCode === 200) {
         setCompanyName(managerData.companyName);
         setBusinessEmail(managerData.businessEmail);
@@ -126,15 +127,42 @@ const EditMemberData = () => {
             state,
           }
         );
-
-        if (response.data.statusCode === 200) {
+        console.log(response);
+        console.log(response.data.result.statusCode);
+        if (
+          response.data.result.statusCode === 200 ||
+          response.data.result.statusCode === 201
+        ) {
           console.log('Data successfully saved to the database');
+          Swal.fire({
+            icon: 'success',
+            title: 'Data updated successfully',
+            showConfirmButton: false,
+            timer: 1500, // Automatically close after 1.5 seconds
+            position: 'top-end',
+          });
           fetchData(); // Fetch updated data after successful save
         } else {
+          Swal.fire({
+            icon: 'error',
+            title: response.status,
+            showConfirmButton: false,
+            timer: 1500, // Automatically close after 1.5 seconds
+            position: 'top-end',
+          });
+          console.error('API Error:', response.status);
+
           console.error('API Error:', response.data.statusCode);
         }
       } catch (error) {
         console.error('API Error:', error.message);
+        Swal.fire({
+          icon: 'error',
+          title: error.status,
+          showConfirmButton: false,
+          timer: 1500, // Automatically close after 1.5 seconds
+          position: 'top-end',
+        });
       }
     }
   };
@@ -196,7 +224,11 @@ const EditMemberData = () => {
               </Field>
             </div>
           </Container>
-          <Button type="submit" disabled={!getIsFormValid()}>
+          <Button
+            type="submit"
+            style={{ cursor: 'pointer' }}
+            disabled={!getIsFormValid()}
+          >
             Save
           </Button>
         </Fieldset>

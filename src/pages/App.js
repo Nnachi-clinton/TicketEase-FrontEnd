@@ -62,7 +62,7 @@ function App() {
                 {/* </Route> */}
                 <Route path="/TableData" element={<TableData />} />
                 <Route path="/TableData" element={<TableData />} />
-                <Route path="/" element={<HomePage />} />
+                <Route path="/" element={<Header />} />
                 <Route path="/add-manager" element={<AddManager2 />} />
                 <Route path="/no-organisation" element={<NoOrganisation />} />
                 <Route path="/update-password" element={<ChangePassword />} />
