@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { AxiosInstance2 } from '../../Request/AxiosInstance';
 
 const MergedComponent = ({ handleCreateBoard }) => {
   return (
@@ -227,7 +228,32 @@ const BoardCard = ({
   handleViewTickets,
   boardId,
 }) => {
-  const navigate = useNavigate();
+  const [totalProjects, setTotalProjects] = useState(0);
+
+  useEffect(() => {
+    const fetchProjectsCount = async () => {
+      try {
+        const response = await AxiosInstance2.get(
+          'Project/GetProjectsByBoardId',
+          {
+            params: {
+              boardId: localStorage.getItem('boardid'), // Replace with the actual board ID
+              perPage: 10, // Adjust as needed
+              page: 1, // Adjust as needed
+            },
+          }
+        );
+        console.log('Fetched Project Data:', response.data?.data.totalCount);
+
+        // Assuming the response data has a property named 'totalProjects'
+        setTotalProjects(response.data?.data.totalCount);
+      } catch (error) {
+        console.error('Error fetching project count:', error);
+      }
+    };
+
+    fetchProjectsCount();
+  }, []); // Empty dependency array ensures the effect runs only once on mount
 
   const handleClick = () => {
     localStorage.setItem('boardid', boardId);
@@ -308,7 +334,7 @@ const BoardCard = ({
             </StyledDiv14>
           </StyledDiv11>
           <StyledDiv15>
-            <StyledDiv16>10</StyledDiv16>
+            <StyledDiv16>{totalProjects}</StyledDiv16>
           </StyledDiv15>
         </StyledDiv10>
       </StyledDiv8>

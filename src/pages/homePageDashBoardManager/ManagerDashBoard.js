@@ -3,6 +3,7 @@ import '../homePageDashBoardManager/ManagerDashBoard.css';
 import HorizontalBarChart2 from '../homePageDashBoardManager/HorizontalBarChart2.js';
 import Sider from '../../components/SideBar/Sider.jsx';
 import AxiosInstance from '../../Request/AxiosInstance.js';
+import AxiosInstance2 from '../../Request/AxiosInstance.js';
 import { Frame } from '../../components/Header/Header/Header.js';
 import ManagerTable from './ManagerTable.js';
 import CreateBoardEmptyManager from '../CreateBoardEmptyManager.js';
@@ -88,6 +89,8 @@ function ManagerDashBoard() {
   useEffect(() => {
     getUsers();
   }, [currentPage]);
+
+ 
 
   const handleViewClick = (users) => {
     console.log('View clicked:', users);
