@@ -84,6 +84,7 @@ function AddManager2() {
   const [businessEmail, setBusinessEmail] = useState('');
   const [companyDescription, setCompanyDescription] = useState('');
   const navigate = useNavigate();
+  console.log(companyDescription);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 import TicketEaseLogo from '../../assets/TicketEaseLogo.svg';
 import ErrorIcon from './ErrorIcon.svg';
 import image from './Login.png';
-import eyeIcon from './eyeIcon.svg';
 import { VscEyeClosed, VscEye } from 'react-icons/vsc';
 
 const Container = styled.div`
@@ -204,13 +203,13 @@ const Login = () => {
               {showPassword ? <VscEye /> : <VscEyeClosed />}
             </ShowPassword>
           </StyledInputContainer>
-
           <img src={ErrorIcon} alt="" style={{ marginTop: '0px' }} />
           <PasswordWarning>
             Please input the password that was sent to you
           </PasswordWarning>
           <StyledButton type="submit">Login</StyledButton>
           {loginError && <p>{loginError}</p>}
+          console.log({setLoginError})
         </form>
       </FormContainer>
       <div className="FirstLoginImagery frame">

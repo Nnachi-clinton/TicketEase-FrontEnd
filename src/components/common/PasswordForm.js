@@ -129,6 +129,7 @@ function PasswordForm() {
   useEffect(() => {
     const validateToken = async () => {
       const isValidToken = await validateAuthToken();
+      console.log(isValidToken);
     };
 
     validateToken();

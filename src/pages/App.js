@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalProvider } from '../context/GlobalState';
 import AuthState from '../context/auth/AuthState';
 import 'react-toastify/dist/ReactToastify.css';
-import HomePage from './Home';
+// import HomePage from './Home';
 import ChangePassword from './ChangePassword';
 import ContactResponse from './ContactResponse';
 import Header from './landingPage/Header';

@@ -3,11 +3,11 @@ import '../homePageDashBoardManager/ManagerDashBoard.css';
 import HorizontalBarChart2 from '../homePageDashBoardManager/HorizontalBarChart2.js';
 import Sider from '../../components/SideBar/Sider.jsx';
 import AxiosInstance from '../../Request/AxiosInstance.js';
-import AxiosInstance2 from '../../Request/AxiosInstance.js';
+// import AxiosInstance2 from '../../Request/AxiosInstance.js';
 import { Frame } from '../../components/Header/Header/Header.js';
 import ManagerTable from './ManagerTable.js';
-import CreateBoardEmptyManager from '../CreateBoardEmptyManager.js';
-import RegisteredMembers from '../RegisteredMembers.js';
+// import CreateBoardEmptyManager from '../CreateBoardEmptyManager.js';
+// import RegisteredMembers from '../RegisteredMembers.js';
 import LogoutPopout from '../../components/logout/Logout.js';
 import ContactUs2Form from '../contactUs2/ContactUs2.js';
 import ChangePassword from '../ChangePassword.js';
@@ -17,7 +17,7 @@ import CreateProject from '../Projects/CreateProject.js';
 import AllProjects from '../AllProjectsPage/AllProjects.jsx';
 import CreateBoard from '../Boards/CreateBoard.js';
 import AllTickets from '../tickets/all-tickets.js';
-import CreateNewTicket from '../CreateNewTicket.js';
+// import CreateNewTicket from '../CreateNewTicket.js';
 import CreateTicket from '../TicketInputfield.js';
 import EditMember from '../EditMemberFolder/EditMember.js';
 import { useNavigate } from 'react-router-dom';
@@ -33,6 +33,7 @@ function ManagerDashBoard() {
   const navigate = useNavigate();
   var userid = localStorage.getItem('userId');
   var boardid = localStorage.getItem('boardid');
+  console.log(boardid);
 
   if (userid === null) {
     console.log('userId is null');

@@ -4,10 +4,10 @@ import Arrow from './Arrow-left.svg';
 import email from './email(2) 1.svg';
 
 export default function EmailSent(props) {
-  const handleResendClick = () => {
-    // Handle click to resend action
-    // Add your logic here
-  };
+  // const handleResendClick = () => {
+  //   // Handle click to resend action
+  //   // Add your logic here
+  // };
 
   return (
     <Div>
@@ -36,7 +36,7 @@ export default function EmailSent(props) {
             >
               Don’t receive the email?
             </span>
-            <a
+            {/* <a
               href="#"
               onClick={handleResendClick}
               style={{ color: '#505F98', textDecoration: 'none' }}
@@ -50,7 +50,7 @@ export default function EmailSent(props) {
               >
                 Click to Resend link
               </span>
-            </a>
+            </a> */}
           </Div7>
           <a href="/login" style={{ color: '#505F98', textDecoration: 'none' }}>
             <Div8>

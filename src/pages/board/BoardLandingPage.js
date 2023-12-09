@@ -209,6 +209,8 @@ const BoardLandingPage = () => {
     setFrameOpen(false);
   }, []);
 
+  console.log(closeFrame, isFrameOpen);
+
   return (
     <>
       <CreateorganizationsadminRoot>

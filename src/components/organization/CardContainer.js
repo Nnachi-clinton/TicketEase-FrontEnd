@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
 import AxiosInstance from '../../Request/AxiosInstance';
 
 const MergedComponent = ({ handleCreateOrganization }) => {
@@ -18,7 +17,6 @@ const MergedComponent = ({ handleCreateOrganization }) => {
 };
 
 const CardContainer = ({ organizationName }) => {
-  const navigate = useNavigate();
   const [memberPhotos, setMemberPhotos] = useState([]);
   const [totalMembersCount, setTotalMembersCount] = useState(0);
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoIosAddCircle } from 'react-icons/io';
 import Swal from 'sweetalert2';
@@ -106,7 +106,7 @@ function AddManager({ handleBoardMain }) {
     managerId: localStorage.getItem('userId'),
     description: '',
   });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

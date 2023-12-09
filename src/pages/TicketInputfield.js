@@ -143,6 +143,7 @@ function CreateTicket({ handleViewTickets }) {
           },
         }
       );
+      console.log(response.data);
 
       Swal.fire({
         icon: 'success',

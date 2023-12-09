@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import image from '../pages/manager/images/vector.jpg';
 import styled from 'styled-components';
-import { StyledButton } from './TicketInputfield';
 import MemberProfile from './MemberProfile';
 
 const Fulldiv = styled.div`

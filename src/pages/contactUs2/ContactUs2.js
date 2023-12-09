@@ -5,7 +5,6 @@ import Call from '../../assets/images/Call-Icon.svg';
 import Mail from '../../assets/images/Mail-Icon.svg';
 import Map from '../../assets/images/Map-Icon.svg';
 import Button from '../../components/common/Button';
-import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 //import Input from "../../components/common/Input";

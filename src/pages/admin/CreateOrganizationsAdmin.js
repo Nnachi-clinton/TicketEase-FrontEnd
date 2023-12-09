@@ -76,6 +76,8 @@ const CreateOrganizationsAdmin = ({ handleCreateOrganization }) => {
     setCurrentPage(page);
   };
 
+  console.log('handlePageChange', handlePageChange + totalItems, totalItems);
+
   return (
     <StyledContainer>
       <MergedComponent handleCreateOrganization={handleCreateOrganization} />

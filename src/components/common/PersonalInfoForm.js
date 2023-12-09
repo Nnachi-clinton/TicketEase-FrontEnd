@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { validateEmail } from '../../utils/validateEmail';
-import Pen from '../../assets/Pen.svg';
 import PenColored from '../../assets/PenColored.svg';
 
 const Container = styled.div`

@@ -1,6 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import image from '../../../assets/image.jpeg';
 import arrow from '../../../assets/ArrowRight.svg';
 
 const ProfileDropdownContainer = styled.div`
@@ -131,7 +131,7 @@ export const ProfileDropdown = ({
         dropdownRef.current.removeEventListener('mouseleave', handleMouseLeave);
       }
     };
-  }, [isOpen]);
+  }, [isOpen, handleMouseEnter, handleMouseLeave]);
 
   return (
     <ProfileDropdownContainer>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
 import { AxiosInstance2 } from '../../Request/AxiosInstance';
 
 const MergedComponent = ({ handleCreateBoard }) => {
@@ -134,14 +133,14 @@ const StyledDiv11 = styled.div`
   flex-direction: column;
 `;
 
-const StyledImg3 = styled.img`
-  aspect-ratio: 3.13;
-  object-fit: contain;
-  object-position: center;
-  width: 163px;
-  overflow: hidden;
-  align-self: center;
-`;
+// const StyledImg3 = styled.img`
+//   aspect-ratio: 3.13;
+//   object-fit: contain;
+//   object-position: center;
+//   width: 163px;
+//   overflow: hidden;
+//   align-self: center;
+// `;
 
 const StyledDiv12 = styled.div`
   color: #c4c4c4;
@@ -207,19 +206,19 @@ const StyledDiv16 = styled.div`
   }
 `;
 
-const StyledImg4 = styled.img`
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 18px;
-  overflow: hidden;
-  align-self: end;
-  margin-top: 110px;
-  max-width: 100%;
-  @media (max-width: 991px) {
-    margin-top: 40px;
-  }
-`;
+// const StyledImg4 = styled.img`
+//   aspect-ratio: 1;
+//   object-fit: contain;
+//   object-position: center;
+//   width: 18px;
+//   overflow: hidden;
+//   align-self: end;
+//   margin-top: 110px;
+//   max-width: 100%;
+//   @media (max-width: 991px) {
+//     margin-top: 40px;
+//   }
+// `;
 
 const BoardCard = ({
   boardName,

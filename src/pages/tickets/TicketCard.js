@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const InProgress1 = styled.div`
-  position: relative;
-  font-size: 16px;
-  font-weight: 500;
-  color: #000;
-`;
+// const InProgress1 = styled.div`
+//   position: relative;
+//   font-size: 16px;
+//   font-weight: 500;
+//   color: #000;
+// `;
 const Medium = styled.div`
   position: relative;
   font-size: 11px;
@@ -27,16 +27,16 @@ const AddMoreUser = styled.div`
   display: inline-block;
   width: 100%;
 `;
-const Tagmobile = styled.div`
-  border-radius: var(--br-9xs);
-  background-color: var(--color-deeppink);
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  padding: var(--padding-9xs);
-`;
+// const Tagmobile = styled.div`
+//   border-radius: var(--br-9xs);
+//   background-color: var(--color-deeppink);
+//   overflow: hidden;
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: flex-start;
+//   padding: var(--padding-9xs);
+// `;
 const Tagweb = styled.div`
   border-radius: var(--br-9xs);
   background-color: #505f98;
@@ -96,16 +96,16 @@ const Prioritylow = styled.div`
   justify-content: flex-start;
   padding: var(--padding-9xs) var(--padding-5xs);
 `;
-const Tagmobile1 = styled.div`
-  border-radius: var(--br-9xs);
-  background-color: var(--color-deeppink);
-  overflow: hidden;
-  display: none;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  padding: var(--padding-9xs);
-`;
+// const Tagmobile1 = styled.div`
+//   border-radius: var(--br-9xs);
+//   background-color: var(--color-deeppink);
+//   overflow: hidden;
+//   display: none;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: flex-start;
+//   padding: var(--padding-9xs);
+// `;
 
 const Bod = styled.div`
   /* fonts */

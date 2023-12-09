@@ -6,6 +6,7 @@ export const GlobalContext = createContext();
 export const GlobalProvider = ({ children }) => {
   const baseUrl = 'https://ticket-ease.herokuapp.com/api/v1';
   const [loggedIn, setLoggedIn] = useState(false);
+  console.log(loggedIn);
   var word = 'testing';
 
   function login(email, password) {

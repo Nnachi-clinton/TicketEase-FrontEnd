@@ -8,18 +8,6 @@ const Header = styled.div`
   //
 `;
 
-const Ellipse = styled.div`
-  background: white;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  position: absolute;
-  left: 150px;
-  top: 160px;
-  box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.5);
-  margin-left: 300px;
-`;
-
 const Description = styled.div`
   padding-left: 26%;
   margin-left: 150px;

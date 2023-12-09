@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import AuthContext from './AuthContext';
 import { apiPost } from '../../utils/apiHelper';
 import AuthReducer from './AuthReducer';
-import { LOGIN_SUCCESS, LOGIN_FAIL, LOADING, FORGOT_FAIL, FORGOT_SUCCESS } from '../types';
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOADING } from '../types';
 
 // AuthState Provider Component
 
@@ -35,40 +35,32 @@ const AuthState = (props) => {
       payload: true,
     });
     try {
-
-        const loginData = {
+      const loginData = {
         usernameOrEmail: formData.email,
-        password: formData.password
-      }
+        password: formData.password,
+      };
       console.log(loginData);
-        const res = await apiPost('/auth/login', loginData, config, false);
+      const res = await apiPost('/auth/login', loginData, config, false);
 
-      if(res.status === 200){
-        
+      if (res.status === 200) {
         dispatch({
           type: LOGIN_SUCCESS,
           payload: res.data,
         });
-
-      }else{
-          
+      } else {
         dispatch({
           type: LOGIN_FAIL,
           payload: res.data,
         });
       }
-    
     } catch (err) {
-
-        console.log(err.response.data.msg);
-        dispatch({
-          type: LOGIN_FAIL,
-          payload: err.response,
-        });
+      console.log(err.response.data.msg);
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: err.response,
+      });
     }
-    };
-    
-    
+  };
 
   return (
     <AuthContext.Provider
@@ -78,7 +70,7 @@ const AuthState = (props) => {
         user: state.user,
         loading: state.loading,
         error: state.error,
-        state : state
+        state: state,
       }}
     >
       {props.children}

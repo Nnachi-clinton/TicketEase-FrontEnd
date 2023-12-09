@@ -39,10 +39,10 @@ const Table = ({
     cursor: 'pointer',
   };
 
-  const viewButtonStyle = {
-    padding: '3px 8px',
-    cursor: 'pointer',
-  };
+  // const viewButtonStyle = {
+  //   padding: '3px 8px',
+  //   cursor: 'pointer',
+  // };
 
   const handleProjectId = (itemId) => {
     // Save item.id in localStorage

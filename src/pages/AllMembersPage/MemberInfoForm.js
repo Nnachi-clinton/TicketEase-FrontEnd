@@ -32,10 +32,10 @@ const Input = styled.input`
   }
 `;
 
-const Select = styled.select`
-  height: 48px; /* Adjust the height as needed */
-  font-size: 14px;
-`;
+// const Select = styled.select`
+//   height: 48px; /* Adjust the height as needed */
+//   font-size: 14px;
+// `;
 
 const Field = styled.div`
   width: 90%;
